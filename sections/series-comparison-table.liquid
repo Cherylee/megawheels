@@ -4,20 +4,32 @@
 {%- assign product_2 = all_products[section.settings.product_2_handle] -%}
 {%- assign product_3 = all_products[section.settings.product_3_handle] -%}
 
+{%- assign product_1_image = section.settings.product_1_image | default: product_1.featured_image -%}
+{%- assign product_2_image = section.settings.product_2_image | default: product_2.featured_image -%}
+{%- assign product_3_image = section.settings.product_3_image | default: product_3.featured_image -%}
+
+{%- assign product_1_title = section.settings.product_1_title | default: product_1.title -%}
+{%- assign product_2_title = section.settings.product_2_title | default: product_2.title -%}
+{%- assign product_3_title = section.settings.product_3_title | default: product_3.title -%}
+
 <style>
   #shopify-section-{{ section.id }} {
     padding-top: 20px;
     padding-bottom: 20px;
-    background: linear-gradient(0deg, #5c0909 -1%, #200505 5%, #000000 80%);
+    background: linear-gradient(0deg, #5a0909 -1%, #200505 5%, #000000 80%);
+  }
+  .series-comparison-table-sl{
   }
 
   .series-comparison-table {
     max-width: 1240px;
     margin: 0 auto;
-    background: rgba(21,20,20,0.7);
-    border-radius: 10px;
+    {% comment %} background: rgba(21,20,20,0.5); {% endcomment %}
+    border-radius: 30px;
     overflow: hidden;
     padding: 20px 20px;
+    box-shadow: 0 90px 800px 10px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(0deg, #271716 0%, #1f1817 10%, #151414 80%);
    }
 
   .series-comparison-table__header {
@@ -80,10 +92,11 @@
     background-clip: text!important;
     color: transparent;
     margin-bottom: {{ section.settings.price_button_gap }}px;
-    font-size:24px;
+    font-size:32px;
     display: block;
     width: fit-content;
     margin:0 auto;
+    -webkit-text-stroke: 0.3px #000000;
   }
 
   .series-comparison-table__product-button {
@@ -117,7 +130,7 @@
 
   .series-comparison-table__label {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 800;
     padding: 10px;
     align-self: center;
     text-align: left;
@@ -129,7 +142,7 @@
 
   .series-comparison-table__value {
     color: #ffffff;
-    font-size: 18px;
+    font-size: 20px;
     padding: {{ section.settings.cell_padding }}px;
     text-align: center;
     align-self: center;
@@ -185,47 +198,71 @@
   }
 </style>
 
-<div {% render 'section-properties' %}>
+<div class="series-comparison-table-sl">
   <div class="series-comparison-table">
     <div class="series-comparison-table__header">
         <div class="series-comparison-table__header-cell"></div>
-      {%- if product_1 -%}
+      {%- if product_1 or section.settings.product_1_image -%}
         <div class="series-comparison-table__header-cell">
           <div class="series-comparison-table__product-image">
-            {{- product_1.featured_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+            {%- if product_1_image -%}
+              {{- product_1_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+            {%- endif -%}
           </div>
           <div class="series-comparison-table__product-title-wrap">
             <div class="series-comparison-table__product-title-bg"></div>
-            <a href="{{ product_1.url }}" class="series-comparison-table__product-title">{{ product_1.title }}</a>
+            {%- if product_1 -%}
+              <a href="{{ product_1.url }}" class="series-comparison-table__product-title">{{ product_1_title }}</a>
+            {%- else -%}
+              <span class="series-comparison-table__product-title">{{ product_1_title }}</span>
+            {%- endif -%}
           </div>
-          <div class="series-comparison-table__product-price">{{ product_1.price | money }}</div>
-          <a href="{{ product_1.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+          {%- if product_1 -%}
+            <div class="series-comparison-table__product-price">{{ product_1.price | money }}</div>
+            <a href="{{ product_1.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+          {%- endif -%}
         </div>
       {%- endif -%}
-      {%- if product_2 -%}
+      {%- if product_2 or section.settings.product_2_image -%}
         <div class="series-comparison-table__header-cell">
           <div class="series-comparison-table__product-image">
-            {{- product_2.featured_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+            {%- if product_2_image -%}
+              {{- product_2_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+            {%- endif -%}
           </div>
           <div class="series-comparison-table__product-title-wrap">
             <div class="series-comparison-table__product-title-bg"></div>
-            <a href="{{ product_2.url }}" class="series-comparison-table__product-title">{{ product_2.title }}</a>
+            {%- if product_2 -%}
+              <a href="{{ product_2.url }}" class="series-comparison-table__product-title">{{ product_2_title }}</a>
+            {%- else -%}
+              <span class="series-comparison-table__product-title">{{ product_2_title }}</span>
+            {%- endif -%}
           </div>
-          <div class="series-comparison-table__product-price">{{ product_2.price | money }}</div>
-          <a href="{{ product_2.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+          {%- if product_2 -%}
+            <div class="series-comparison-table__product-price">{{ product_2.price | money }}</div>
+            <a href="{{ product_2.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+          {%- endif -%}
         </div>
       {%- endif -%}
-      {%- if product_3 -%}
+      {%- if product_3 or section.settings.product_3_image -%}
         <div class="series-comparison-table__header-cell">
           <div class="series-comparison-table__product-image">
-            {{- product_3.featured_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+            {%- if product_3_image -%}
+              {{- product_3_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+            {%- endif -%}
           </div>
           <div class="series-comparison-table__product-title-wrap">
             <div class="series-comparison-table__product-title-bg"></div>
-            <a href="{{ product_3.url }}" class="series-comparison-table__product-title">{{ product_3.title }}</a>
+            {%- if product_3 -%}
+              <a href="{{ product_3.url }}" class="series-comparison-table__product-title">{{ product_3_title }}</a>
+            {%- else -%}
+              <span class="series-comparison-table__product-title">{{ product_3_title }}</span>
+            {%- endif -%}
           </div>
-          <div class="series-comparison-table__product-price">{{ product_3.price | money }}</div>
-          <a href="{{ product_3.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+          {%- if product_3 -%}
+            <div class="series-comparison-table__product-price">{{ product_3.price | money }}</div>
+            <a href="{{ product_3.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+          {%- endif -%}
         </div>
       {%- endif -%}
     </div>
@@ -367,6 +404,42 @@
       "id": "product_3_handle",
       "label": "Product 3 handle",
       "info": "Enter the product handle (slug)"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_1_image",
+      "label": "Product 1 custom image",
+      "info": "Leave empty to use product's featured image"
+    },
+    {
+      "type": "text",
+      "id": "product_1_title",
+      "label": "Product 1 custom title",
+      "info": "Leave empty to use product's title"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_2_image",
+      "label": "Product 2 custom image",
+      "info": "Leave empty to use product's featured image"
+    },
+    {
+      "type": "text",
+      "id": "product_2_title",
+      "label": "Product 2 custom title",
+      "info": "Leave empty to use product's title"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_3_image",
+      "label": "Product 3 custom image",
+      "info": "Leave empty to use product's featured image"
+    },
+    {
+      "type": "text",
+      "id": "product_3_title",
+      "label": "Product 3 custom title",
+      "info": "Leave empty to use product's title"
     },
     {
       "type": "text",
