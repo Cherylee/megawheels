@@ -1,0 +1,100 @@
+{%- comment -%}
+/**
+ * Page Hero Banner Section
+ * 纯图片 Banner，宽度 100%，高度自适应
+ * 移动端使用小尺寸图片，避免直接下载 PC 大图（优化 Lighthouse 评分）
+ * 未上传图片时显示灰色背景占位
+ */
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-outer-spacing-block: 0;
+  }
+  #shopify-section-{{ section.id }} .hero-banner {
+    width: 100%;
+    line-height: 0; /* 去除图片底部间隙 */
+  }
+  #shopify-section-{{ section.id }} .hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .hero-banner--placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 5;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+</style>
+
+<div class="hero-banner">
+  {%- if section.settings.image != blank -%}
+    {%- assign desktop_image = section.settings.image -%}
+    {%- assign mobile_image = section.settings.mobile_image | default: desktop_image -%}
+    <picture>
+      <!-- 移动端：最大 800px 宽度，避免下载 PC 大尺寸 -->
+      <source
+        media="(max-width: 699px)"
+        srcset="
+          {{ mobile_image | image_url: width: 400 }} 400w,
+          {{ mobile_image | image_url: width: 600 }} 600w,
+          {{ mobile_image | image_url: width: 800 }} 800w
+        "
+        sizes="100vw"
+        width="{{ mobile_image.width }}"
+        height="{{ mobile_image.height }}"
+      >
+      <!-- 桌面端 -->
+      {{ desktop_image | image_url: width: desktop_image.width | image_tag:
+        loading: 'eager',
+        fetchpriority: 'high',
+        sizes: '100vw',
+        widths: '600,800,1000,1200,1400,1600,1800,2000,2400',
+        alt: section.settings.image.alt | escape
+      }}
+    </picture>
+  {%- else -%}
+    <div class="hero-banner--placeholder">
+      No banner image selected
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Page Hero Banner",
+  "class": "shopify-section--page-hero-banner",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner image",
+      "info": "Recommended 3200 x 1000px .jpg. Displays at 100% width with auto height."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image (optional)",
+      "info": "If left empty, desktop image will be used. Upload a smaller file for faster mobile load."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Hero Banner",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}

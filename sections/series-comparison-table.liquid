@@ -1,0 +1,605 @@
+{%- render 'section-spacing-collapsing' -%}
+
+{%- assign product_1 = all_products[section.settings.product_1_handle] -%}
+{%- assign product_2 = all_products[section.settings.product_2_handle] -%}
+{%- assign product_3 = all_products[section.settings.product_3_handle] -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: linear-gradient(0deg, #2b0101 0%, #000000 10%);
+  }
+
+  .series-comparison-table {
+    max-width: 1440px;
+    margin: 0 auto;
+    background: #151414;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0 20px;
+   }
+
+  .series-comparison-table__header {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: {{ section.settings.header_body_gap }}px;
+    padding-bottom: {{ section.settings.header_body_gap }}px;
+  }
+
+  .series-comparison-table__header-cell {
+    text-align: center;
+  }
+
+  .series-comparison-table__product-image {
+    aspect-ratio: {{ section.settings.product_image_aspect_ratio }};
+    overflow: hidden;
+    margin-bottom: {{ section.settings.image_title_gap }}px;
+  }
+
+  .series-comparison-table__product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: transparent;
+  }
+
+  .series-comparison-table__product-title-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: {{ section.settings.title_price_gap }}px;
+  }
+
+  .series-comparison-table__product-title-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: {{ section.settings.title_background }};
+    clip-path: polygon(10% 0%, 90% 5%, 100% 100%, 0% 95%);
+    z-index: 0;
+  }
+
+  .series-comparison-table__product-title {
+    position: relative;
+    color: {{ section.settings.product_title_color }};
+    font-size: {{ section.settings.product_title_font_size }}px;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-block;
+    z-index: 1;
+    padding: 4px 16px;
+  }
+
+  .series-comparison-table__product-price {
+    color: {{ section.settings.product_price_color }};
+    font-size: {{ section.settings.product_price_font_size }}px;
+    font-weight: 700;
+    margin-bottom: {{ section.settings.price_button_gap }}px;
+  }
+
+  .series-comparison-table__product-button {
+    display: inline-block;
+    padding: {{ section.settings.button_padding_y }}px {{ section.settings.button_padding_x }}px;
+    background: linear-gradient(180deg, {{ section.settings.button_background }} 0%, {{ section.settings.button_background_dark }} 100%);
+    color: {{ section.settings.button_text_color }};
+    font-size: {{ section.settings.button_font_size }}px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: {{ section.settings.button_border_radius }}px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255,0,0,0.3);
+    border: none;
+    cursor: pointer;
+  }
+
+  .series-comparison-table__product-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255,0,0,0.4);
+  }
+
+  .series-comparison-table__body {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 1fr);
+    gap: {{ section.settings.row_gap }}px;
+  }
+
+  .series-comparison-table__row {
+    display: contents;
+  }
+
+  .series-comparison-table__label {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    align-self: center;
+    text-align: left;
+    background: linear-gradient(45deg, red, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .series-comparison-table__value {
+    color: {{ section.settings.value_color }};
+    font-size: {{ section.settings.value_font_size }}px;
+    padding: {{ section.settings.cell_padding }}px;
+    text-align: center;
+    align-self: center;
+  }
+
+  @media screen and (max-width: 900px) {
+    .series-comparison-table__header {
+      grid-template-columns: 1fr;
+      gap: {{ section.settings.column_gap_mobile }}px;
+    }
+
+    .series-comparison-table__body {
+      grid-template-columns: 1fr 1fr;
+      gap: {{ section.settings.row_gap_mobile }}px;
+    }
+
+    .series-comparison-table__row {
+      display: block;
+      border-bottom: 1px solid {{ section.settings.border_color }};
+      padding-bottom: {{ section.settings.row_gap_mobile }}px;
+      margin-bottom: {{ section.settings.row_gap_mobile }}px;
+    }
+
+    .series-comparison-table__label {
+      grid-column: 1;
+    }
+
+    .series-comparison-table__value:nth-child(2) {
+      grid-column: 2;
+    }
+
+    .series-comparison-table__value:nth-child(3),
+    .series-comparison-table__value:nth-child(4) {
+      grid-column: span 2;
+      text-align: left;
+      padding-left: calc({{ section.settings.cell_padding }}px + 12px);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .series-comparison-table {
+      padding: {{ section.settings.container_padding_mobile }}px;
+    }
+
+    .series-comparison-table__body {
+      grid-template-columns: 1fr;
+    }
+
+    .series-comparison-table__value:nth-child(3),
+    .series-comparison-table__value:nth-child(4) {
+      grid-column: 1;
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="series-comparison-table">
+    <div class="series-comparison-table__header">
+        <div class="series-comparison-table__header-cell"></div>
+      {%- if product_1 -%}
+        <div class="series-comparison-table__header-cell">
+          <div class="series-comparison-table__product-image">
+            {{- product_1.featured_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+          </div>
+          <div class="series-comparison-table__product-title-wrap">
+            <div class="series-comparison-table__product-title-bg"></div>
+            <a href="{{ product_1.url }}" class="series-comparison-table__product-title">{{ product_1.title }}</a>
+          </div>
+          <div class="series-comparison-table__product-price">{{ product_1.price | money }}</div>
+          <a href="{{ product_1.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+        </div>
+      {%- endif -%}
+      {%- if product_2 -%}
+        <div class="series-comparison-table__header-cell">
+          <div class="series-comparison-table__product-image">
+            {{- product_2.featured_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+          </div>
+          <div class="series-comparison-table__product-title-wrap">
+            <div class="series-comparison-table__product-title-bg"></div>
+            <a href="{{ product_2.url }}" class="series-comparison-table__product-title">{{ product_2.title }}</a>
+          </div>
+          <div class="series-comparison-table__product-price">{{ product_2.price | money }}</div>
+          <a href="{{ product_2.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+        </div>
+      {%- endif -%}
+      {%- if product_3 -%}
+        <div class="series-comparison-table__header-cell">
+          <div class="series-comparison-table__product-image">
+            {{- product_3.featured_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+          </div>
+          <div class="series-comparison-table__product-title-wrap">
+            <div class="series-comparison-table__product-title-bg"></div>
+            <a href="{{ product_3.url }}" class="series-comparison-table__product-title">{{ product_3.title }}</a>
+          </div>
+          <div class="series-comparison-table__product-price">{{ product_3.price | money }}</div>
+          <a href="{{ product_3.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="series-comparison-table__body">
+      {%- for block in section.blocks -%}
+        <div class="series-comparison-table__row">
+          <div class="series-comparison-table__label">{{ block.settings.label }}</div>
+          <div class="series-comparison-table__value">{{ block.settings.value_1 }}</div>
+          <div class="series-comparison-table__value">{{ block.settings.value_2 }}</div>
+          <div class="series-comparison-table__value">{{ block.settings.value_3 }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Series Comparison Table",
+  "class": "shopify-section--series-comparison-table",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "container_padding_mobile",
+      "label": "Container padding (mobile)",
+      "min": 10,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#ff0000"
+    },
+    {
+      "type": "range",
+      "id": "column_gap_mobile",
+      "label": "Column gap (mobile)",
+      "min": 10,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "label": "Row gap",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "row_gap_mobile",
+      "label": "Row gap (mobile)",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "header_body_gap",
+      "label": "Header body gap",
+      "min": 20,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "text",
+      "id": "product_image_aspect_ratio",
+      "label": "Product image aspect ratio",
+      "default": "1/1"
+    },
+    {
+      "type": "range",
+      "id": "image_title_gap",
+      "label": "Image title gap",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "title_price_gap",
+      "label": "Title price gap",
+      "min": 5,
+      "max": 20,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "price_button_gap",
+      "label": "Price button gap",
+      "min": 5,
+      "max": 20,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "product_1_handle",
+      "label": "Product 1 handle",
+      "info": "Enter the product handle (slug)"
+    },
+    {
+      "type": "text",
+      "id": "product_2_handle",
+      "label": "Product 2 handle",
+      "info": "Enter the product handle (slug)"
+    },
+    {
+      "type": "text",
+      "id": "product_3_handle",
+      "label": "Product 3 handle",
+      "info": "Enter the product handle (slug)"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Jetzt shoppen"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_y",
+      "label": "Button vertical padding",
+      "min": 8,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "button_padding_x",
+      "label": "Button horizontal padding",
+      "min": 16,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#ff0000"
+    },
+    {
+      "type": "color",
+      "id": "button_background_dark",
+      "label": "Button background (dark)",
+      "default": "#cc0000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_background",
+      "label": "Title background",
+      "default": "#ff0000"
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "product_title_font_size",
+      "label": "Product title font size",
+      "min": 14,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "product_price_color",
+      "label": "Product price color",
+      "default": "#ff0000"
+    },
+    {
+      "type": "range",
+      "id": "product_price_font_size",
+      "label": "Product price font size",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "Parameter value color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "value_font_size",
+      "label": "Parameter value font size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+  ],
+  "blocks": [
+    {
+      "type": "parameter",
+      "name": "Comparison Parameter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Parameter label",
+          "default": "Peak Power"
+        },
+        {
+          "type": "text",
+          "id": "value_1",
+          "label": "Value for Product 1"
+        },
+        {
+          "type": "text",
+          "id": "value_2",
+          "label": "Value for Product 2"
+        },
+        {
+          "type": "text",
+          "id": "value_3",
+          "label": "Value for Product 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Series Comparison Table",
+      "category": "Products",
+      "blocks": [
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Peak Power",
+            "value_1": "3000 W",
+            "value_2": "3550 W",
+            "value_3": "4800 W"
+          }
+        },
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Battery Capacity",
+            "value_1": "48V23.4Ah",
+            "value_2": "48V26 Ah",
+            "value_3": "60V30 Ah"
+          }
+        },
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Torque",
+            "value_1": "180 Nm",
+            "value_2": "204 Nm",
+            "value_3": "226 Nm"
+          }
+        },
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Max range",
+            "value_1": "24.85 Miles",
+            "value_2": "28 Miles",
+            "value_3": "34.2 Miles"
+          }
+        },
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Top Speed",
+            "value_1": "37.28 MPH",
+            "value_2": "38 MPH",
+            "value_3": "50 MPH"
+          }
+        },
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Payload",
+            "value_1": "242.5 lbs (110kg)",
+            "value_2": "242.5 lbs (110kg)",
+            "value_3": "264.6 lbs (120kg)"
+          }
+        },
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Tire",
+            "value_1": "14\"/12\"",
+            "value_2": "14\"/12\"",
+            "value_3": "17\"/14\""
+          }
+        },
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Suitable Height",
+            "value_1": "3.94ft-5.9ft",
+            "value_2": "3.94ft-5.9ft",
+            "value_3": "4.7ft-6.3ft"
+          }
+        },
+        {
+          "type": "parameter",
+          "settings": {
+            "label": "Charging Time",
+            "value_1": "6.5 Hours",
+            "value_2": "7 Hours",
+            "value_3": "7 Hours"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

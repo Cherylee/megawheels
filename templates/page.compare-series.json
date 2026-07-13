@@ -1,0 +1,221 @@
+/*
+ * ------------------------------------------------------------
+ * Series Comparison Page Template
+ * 系列对比页面模板
+ * 包含：Banner + 产品缩略图 + 三产品对比 + 媒体文本 + 品牌轮播 + FAQ + 产品评论
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "image": "",
+        "mobile_image": ""
+      }
+    },
+    "gallery": {
+      "type": "product-thumbnail-gallery",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "background_color": "#000000",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "side_padding": 20,
+        "max_width": 1200,
+        "gap": 8,
+        "gap_mobile": 6,
+        "image_aspect_ratio": "4/3",
+        "show_caption": true,
+        "caption_color": "#ffffff",
+        "caption_font_size": 14
+      }
+    },
+    "comparison": {
+      "type": "series-comparison-table",
+      "blocks": {
+        "param_1": {
+          "type": "parameter",
+          "settings": {
+            "label": "Peak Power",
+            "value_1": "",
+            "value_2": "",
+            "value_3": ""
+          }
+        }
+      },
+      "block_order": ["param_1"],
+      "settings": {
+        "background_gradient": "linear-gradient(180deg, #1a1a1a 0%, #000000 100%)",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "side_padding": 20,
+        "max_width": 1400,
+        "gap": 12,
+        "gap_mobile": 8,
+        "border_radius": 8,
+        "product_image_aspect_ratio": "4/3",
+        "product_1_handle": "",
+        "product_2_handle": "",
+        "product_3_handle": "",
+        "button_text": "Shop Now",
+        "button_padding_y": 10,
+        "button_padding_x": 24,
+        "button_font_size": 14,
+        "button_border_radius": 20,
+        "button_background": "#ff0000",
+        "button_text_color": "#ffffff",
+        "button_hover_background": "#cc0000",
+        "product_title_color": "#ffffff",
+        "product_title_hover_color": "#ff0000",
+        "product_title_font_size": 18,
+        "product_price_color": "#ff0000",
+        "product_price_font_size": 22,
+        "label_color": "#aaaaaa",
+        "label_font_size": 14,
+        "value_color": "#ffffff",
+        "value_font_size": 14
+      }
+    },
+    "media_text": {
+      "type": "media-with-text",
+      "blocks": {
+        "media_block": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "subheading": "",
+            "title": "",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "text_color": "#ffffff",
+            "button_background": "#ff0000",
+            "button_text_color": "#ffffff",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#ffffff",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": ["media_block"],
+      "settings": {
+        "section_background": "#000000",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "spacing": "small"
+      }
+    },
+    "carousel": {
+      "type": "brand-cta-carousel",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "background_color": "#000000",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "side_padding": 20,
+        "max_width": 1400,
+        "gap": 16,
+        "gap_mobile": 8,
+        "slide_width": 45,
+        "slide_width_mobile": 80,
+        "image_aspect_ratio": "16/9",
+        "border_radius": 8,
+        "auto_play": true,
+        "auto_play_interval": 5,
+        "show_arrows": true,
+        "show_dots": true,
+        "arrow_size": 40,
+        "arrow_color": "#ffffff",
+        "dot_size": 10,
+        "dot_active_color": "#ff0000",
+        "dot_inactive_color": "#444444"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Megawheels FAQ",
+        "content": "<p>Find answers to common questions about our products and services.</p>",
+        "team_avatar": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#000000",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#111111",
+        "accordion_text_color": "#ffffff"
+      }
+    },
+    "reviews": {
+      "type": "product-reviews-grid",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "background_color": "#000000",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "side_padding": 20,
+        "max_width": 1400,
+        "gap": 16,
+        "gap_mobile": 8,
+        "columns": "4",
+        "columns_tablet": "3",
+        "columns_mobile": "2",
+        "title": "Customer Reviews",
+        "title_font_size": 32,
+        "title_color": "#ffffff",
+        "title_alignment": "center",
+        "title_margin_bottom": 32,
+        "image_aspect_ratio": "4/3",
+        "border_radius": 8,
+        "card_padding": 16,
+        "card_background": "#1a1a1a",
+        "product_title_color": "#ffffff",
+        "product_title_font_size": 14,
+        "star_size": 16,
+        "star_color": "#FFB303",
+        "review_count_color": "#aaaaaa",
+        "review_count_font_size": 12,
+        "review_text_color": "#cccccc",
+        "review_text_font_size": 14,
+        "review_text_lines": 2,
+        "reviewer_color": "#888888",
+        "reviewer_font_size": 12,
+        "price_color": "#ff0000",
+        "price_font_size": 18
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "gallery",
+    "comparison",
+    "media_text",
+    "carousel",
+    "faq",
+    "reviews"
+  ]
+}
