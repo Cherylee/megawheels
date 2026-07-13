@@ -1,0 +1,635 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "aftership_product_reviews_product_page_star_widget_Jjgiry": {
+          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_star_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
+          "settings": {
+            "product": "{{product}}",
+            "block_alignment": "flex-start",
+            "star_and_font_size": 20
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "badges",
+        "aftership_product_reviews_product_page_star_widget_Jjgiry",
+        "price",
+        "rating",
+        "payment_terms",
+        "separator",
+        "description",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "slideshow_8jjDxA": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RFrkza": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-S10-Electric-Scooter-1900x868-01.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "The most cost-effective electric scooter for adults.",
+            "title": "S10 Electric Scooter",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RFrkza"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_tdLkPV": {
+      "type": "slideshow",
+      "blocks": {
+        "image_npP3dC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/S10-electric-scooter-1464x600-03-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "The 250W motor provides enhanced power, enabling the scooter to reach a max speed of 25km/h and a 15% climbing ability.",
+            "title": "250W brushless motor",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_npP3dC"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_PwdQQr": {
+      "type": "slideshow",
+      "blocks": {
+        "image_hhDzAc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/S10-electric-scooter-1464x600-02-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "Featuring a 7.8Ah battery, this electric scooter offers up to 25km of range, ideal for daily commuting and short-distance traveling.",
+            "title": "Long endurance battery",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_hhDzAc"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_CtfQ6x": {
+      "type": "slideshow",
+      "blocks": {
+        "image_XEFRLT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/S10-electric-scooter-1464x600-04-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "The scooter packs high quality solid tires, long-lasting, no worry about tire puncture.",
+            "title": "8-inch solid tires",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_XEFRLT"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_ctUjDT": {
+      "type": "slideshow",
+      "blocks": {
+        "image_cXJ4me": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/S10-electric-scooter-1464x600-05.png",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start sm:text-start",
+            "subheading": "The display clearly shows remained battery, current speed, riding mode and headlight status.",
+            "title": "LCD display",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_NGJmYU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/S10-electric-scooter-1464x600-06.png",
+            "content_max_width": 540,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start sm:text-start",
+            "subheading": "The electric scooter packs front electronic brake and rear foot brake, provides a safer and comfortable riding experience.",
+            "title": "Dual brake system",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_yhi3RR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/S10-electric-scooter-1464x600-09.png",
+            "content_max_width": 600,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "With the bright headlight, we can ride the scooter at night safely, and with shining taillight to alert passers-by.",
+            "title": "LED headlight & taillight",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_QJdtte": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/S10-electric-scooter-1464x600-10.png",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start sm:text-start",
+            "subheading": "The dilated wooden pedal offers a more comfortable riding experience for you.",
+            "title": "Wooden footboard",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cXJ4me",
+        "image_NGJmYU",
+        "image_yhi3RR",
+        "image_QJdtte"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "media_with_text_Etbwfj": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_Fyb7i6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/D2-Pro-dirt-bike-1900-01.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "All-Terrain Tires & Frame",
+            "content": "<p>Built tough with 17\"/14\" all-terrain tires and a carbon steel frame. Stable and durable for adult riders on any off-road surface.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "video_X7RNnf": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/MEGAWHEELS-EB01-electric-bike.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": true,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "picto-star",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Less recharge, longer ride",
+            "content": "<p>Ride <strong>60 miles</strong> per charge with the 60V <strong>30Ah</strong> UL certified battery. Your off-road e-bike stays powered for long adventures without range anxiety.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#c6c1c1",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "radial-gradient(rgba(255, 154, 98, 1), rgba(255, 204, 75, 1) 100%)",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "image_Bxbafz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/D2-Pro-dirt-bike-1080-03.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "picto-coupon",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "6000W Peak Power Beast",
+            "content": "<p>Unleash 6000W peak power with 226Nm torque. This electric dirt bike hits 50mph and climbs 35° hills—ultimate performance for adult riders.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#c6c1c1",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_Fyb7i6",
+        "video_X7RNnf",
+        "image_Bxbafz"
+      ],
+      "disabled": true,
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": true,
+        "spacing": "none"
+      }
+    },
+    "specification_table_V9fxRr": {
+      "type": "specification-table",
+      "blocks": {
+        "row_Nwxakf": {
+          "type": "row",
+          "settings": {
+            "heading": "Product weight",
+            "value": "<p>12 kg</p>"
+          }
+        },
+        "row_HkPYwM": {
+          "type": "row",
+          "settings": {
+            "heading": "Tire size",
+            "value": "<p>8.0 inch</p>"
+          }
+        },
+        "row_CWiV4g": {
+          "type": "row",
+          "settings": {
+            "heading": "Motor",
+            "value": "<p>250W</p>"
+          }
+        },
+        "row_wfbqJA": {
+          "type": "row",
+          "settings": {
+            "heading": "Speed mode",
+            "value": "<p>3 speed modes</p>"
+          }
+        },
+        "row_LkpRh7": {
+          "type": "row",
+          "settings": {
+            "heading": "Max Speed",
+            "value": "<p>15.5 Mph</p>"
+          }
+        },
+        "row_a4nrn4": {
+          "type": "row",
+          "settings": {
+            "heading": "Battery",
+            "value": "<p>7.8Ah</p>"
+          }
+        },
+        "row_Kjkwrb": {
+          "type": "row",
+          "settings": {
+            "heading": "Mileage",
+            "value": "<p>15.5 Miles</p>"
+          }
+        },
+        "row_tTD4zN": {
+          "type": "row",
+          "settings": {
+            "heading": "Brake type",
+            "value": "<p>Electronic brake</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_Nwxakf",
+        "row_HkPYwM",
+        "row_CWiV4g",
+        "row_wfbqJA",
+        "row_LkpRh7",
+        "row_a4nrn4",
+        "row_Kjkwrb",
+        "row_tTD4zN"
+      ],
+      "name": "Specification table",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Product specification",
+        "content": "<p>The S10 electric scooter packs 7.8Ah battery, supports 15.5mph max speed and a range of 15.5 miles. Best cheap electric scooter for adults.</p>",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "17750442987ce02a00": {
+      "type": "apps",
+      "blocks": {
+        "aftership_product_reviews_product_page_main_widget_T8HzQz": {
+          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_main_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "aftership_product_reviews_product_page_main_widget_T8HzQz"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 4,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_8jjDxA",
+    "slideshow_tdLkPV",
+    "slideshow_PwdQQr",
+    "slideshow_CtfQ6x",
+    "slideshow_ctUjDT",
+    "media_with_text_Etbwfj",
+    "specification_table_V9fxRr",
+    "17750442987ce02a00",
+    "related-products"
+  ]
+}

@@ -1,0 +1,163 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRODUCT VARIANTS CARD (新版 product variants)
+----------------------------------------------------------------------------------------------------------------------
+
+以卡片网格展示一组关联产品（PC 端一行两个，H5 端一行一个）。当前正在浏览的产品卡片会带黑色边框。
+卡片之间通过 <a> 链接互相跳转（与既有 product_variations 一致，无需 JS）。
+
+价格规则：
+* 展示价格为「折扣后价格」= variant.price - custom.discount_money_count
+* Save 金额取 custom.discount_money_count
+* custom.discount_money_count 是「金额(money)」类型字段，其 .value 在数值运算中即为最小货币单位(分)，
+  因此 times: 1 仅做数值强制转换，无需再乘以 100（与 price_second / discount_code 写法保持一致）。
+
+配置来源：
+* 标题(Heading)         : 固定写死为 "Choice"
+* 关联产品列表(Products): current_product.metafields.custom.variants_card_products （产品参考列表，需包含当前产品自身）
+* 卡片内的产品标题      : 每个产品自身的 metafields.custom.variants_card_title    （单行文本，留空回退到产品标题）
+* Save 金额 / 折扣      : 每个产品自身的 metafields.custom.discount_money_count    （金额，已有字段）
+
+********************************************
+Supported variables
+********************************************
+
+* current_product: 当前页面正在浏览的产品
+{%- endcomment -%}
+
+{%- liquid
+  assign pvc_heading = 'Choice'
+  assign pvc_products = current_product.metafields.custom.variants_card_products.value
+-%}
+
+<style>
+  .product-variants-card__heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-block-end: 1rem;
+    color: rgb(var(--text-color));
+  }
+
+  .product-variants-card__list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .product-variants-card__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .product-variants-card__item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem;
+    border: 1px solid rgb(var(--text-color) / 0.12);
+    border-radius: 12px;
+    background: rgb(var(--background));
+    color: rgb(var(--text-color));
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .product-variants-card__item:hover {
+    border-color: rgb(var(--text-color) / 0.35);
+  }
+
+  /* 当前正在浏览的产品：黑色加粗边框。padding 减 1px 抵消加粗的边框，避免卡片尺寸跳动 */
+  .product-variants-card__item.is-selected {
+    border-color: rgb(var(--text-color));
+    border-width: 2px;
+    padding: calc(1rem - 1px);
+  }
+
+  .product-variants-card__media {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-variants-card__image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .product-variants-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .product-variants-card__title {
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .product-variants-card__price {
+    font-weight: 700;
+  }
+
+  .product-variants-card__save {
+    font-size: var(--text-sm);
+    color: rgb(var(--text-color) / 0.6);
+  }
+</style>
+
+<div class="product-variants-card">
+  {%- if pvc_heading != blank -%}
+    <p class="product-variants-card__heading">{{ pvc_heading | escape }}</p>
+  {%- endif -%}
+
+  <div class="product-variants-card__list">
+    {%- for variation in pvc_products -%}
+      {%- liquid
+        assign variation_variant = variation.selected_or_first_available_variant
+
+        assign pvc_save_cents = 0
+        assign pvc_discount_value = variation.metafields.custom.discount_money_count.value
+        if pvc_discount_value != blank and pvc_discount_value > 0
+          assign pvc_save_cents = pvc_discount_value | times: 1
+        endif
+        assign pvc_price_cents = variation_variant.price | minus: pvc_save_cents
+
+        assign pvc_title = variation.metafields.custom.variants_card_title
+        if pvc_title == blank
+          assign pvc_title = variation.title
+        endif
+
+        assign pvc_is_selected = false
+        if variation.id == current_product.id
+          assign pvc_is_selected = true
+        endif
+      -%}
+
+      <a href="{{ variation.url }}" class="product-variants-card__item{% if pvc_is_selected %} is-selected{% endif %}"{% if pvc_is_selected %} aria-current="true"{% endif %}>
+        <div class="product-variants-card__media">
+          {%- if variation.featured_media != blank -%}
+            {{- variation.featured_media | image_url: width: 144 | image_tag: loading: 'lazy', sizes: '72px', widths: '72,144', class: 'product-variants-card__image' -}}
+          {%- endif -%}
+        </div>
+
+        <div class="product-variants-card__info">
+          <span class="product-variants-card__title">{{ pvc_title | escape }}</span>
+          <span class="product-variants-card__price">{{ pvc_price_cents | money }}</span>
+          {%- if pvc_save_cents > 0 -%}
+            <span class="product-variants-card__save">Save {{ pvc_save_cents | money }} with Coupon</span>
+          {%- endif -%}
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>

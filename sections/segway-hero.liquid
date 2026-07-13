@@ -1,0 +1,419 @@
+<div id="segway-slider-{{ section.id }}" 
+     class="segway-slider {% if section.settings.overlay_header %}header-overlay{% endif %}" 
+     data-autoplay="{{ section.settings.autoplay }}" 
+     data-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
+  
+  <div class="segway-slider__wrapper">
+    {% for block in section.blocks %}
+      <div class="segway-slider__slide {% if forloop.first %}is-active{% endif %}" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+        <!-- 背景图片 -->
+        <div class="segway-slider__bg">
+          {% if block.settings.image_desktop != blank %}
+            <img class="hero-img-desktop" src="{{ block.settings.image_desktop | img_url: '2000x' }}" alt="{{ block.settings.title | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+          {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          
+          {% if block.settings.image_mobile != blank %}
+            <img class="hero-img-mobile" src="{{ block.settings.image_mobile | img_url: '800x' }}" alt="{{ block.settings.title | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+          {% else %}
+            {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          
+          <!-- 蒙版层 -->
+          <div class="segway-slider__mask" style="background-color: {{ section.settings.mask_color }}; opacity: {{ section.settings.mask_opacity | divided_by: 100.0 }};"></div>
+        </div>
+
+        <!-- 内容区域 (动态对齐) -->
+        {%- assign h_align = block.settings.content_h_align -%}
+        {%- assign v_align = block.settings.content_v_align -%}
+        {%- assign text_align = h_align | replace: 'flex-start', 'left' | replace: 'flex-end', 'right' -%}
+
+        <div class="segway-slider__content" style="justify-content: {{ v_align }}; align-items: {{ h_align }}; text-align: {{ text_align }};">
+          <div class="segway-slider__inner">
+            {% if block.settings.logo_text != blank %}
+              <span class="segway-slider__logo-text">{{ block.settings.logo_text }}</span>
+            {% endif %}
+            
+            {% if block.settings.title != blank %}
+              <h2 class="segway-slider__title">{{ block.settings.title }}</h2>
+            {% endif %}
+            
+            {% if block.settings.subtitle != blank %}
+              <p class="segway-slider__subtitle">{{ block.settings.subtitle }}</p>
+            {% endif %}
+
+            <div class="segway-slider__buttons" style="justify-content: {{ h_align }};">
+              {% if block.settings.btn1_text != blank %}
+                <a href="{{ block.settings.btn1_link }}" class="btn-primary">{{ block.settings.btn1_text }}</a>
+              {% endif %}
+              {% if block.settings.btn2_text != blank %}
+                <a href="{{ block.settings.btn2_link }}" class="btn-secondary">{{ block.settings.btn2_text }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- 左右切换按钮 -->
+  <button class="slider-nav prev" aria-label="Previous">
+    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="slider-nav next" aria-label="Next">
+    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+
+  <!-- 底部导航条 -->
+  <div class="segway-slider__bottom-nav">
+    <div class="bottom-nav__line">
+      <div class="bottom-nav__progress"></div>
+    </div>
+    <div class="bottom-nav__items">
+      {% for block in section.blocks %}
+        <div class="bottom-nav__item {% if forloop.first %}is-active{% endif %}" data-go-to="{{ forloop.index0 }}">
+          {{ block.settings.nav_label | default: block.settings.title }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #segway-slider-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    height: {{ section.settings.mobile_height }}vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  @media screen and (min-width: 768px) {
+    #segway-slider-{{ section.id }} {
+      height: {{ section.settings.desktop_height }}vh;
+    }
+  }
+
+  /* 覆盖导航栏逻辑 */
+  {% if section.settings.overlay_header %}
+  #segway-slider-{{ section.id }}.header-overlay {
+    margin-top: -{{ section.settings.header_height_mobile }}px;
+    z-index: 1;
+  }
+  @media screen and (min-width: 768px) {
+    #segway-slider-{{ section.id }}.header-overlay {
+      margin-top: -{{ section.settings.header_height_desktop }}px;
+    }
+  }
+  /* 强制使导航栏透明 (可能需要根据主题调整类名) */
+  .header-wrapper, .site-header, .header {
+    background: transparent !important;
+    position: relative;
+    z-index: 10;
+  }
+  {% endif %}
+
+  .segway-slider__wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .segway-slider__slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .segway-slider__bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  }
+
+  .segway-slider__bg img { width: 100%; height: 100%; object-fit: cover; }
+  .segway-slider__mask { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+  .hero-img-mobile { display: none; }
+  @media (max-width: 767px) {
+    .hero-img-desktop { display: none; }
+    .hero-img-mobile { display: block; }
+  }
+
+  .segway-slider__content {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    padding: 80px 20px;
+    color: #fff; z-index: 2;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 40%, rgba(0,0,0,0.3) 100%);
+    box-sizing: border-box;
+  }
+
+  @media screen and (min-width: 768px) {
+    .segway-slider__content {
+      padding: 120px 8%;
+    }
+  }
+
+  .segway-slider__inner {
+    max-width: 100%;
+  }
+  @media screen and (min-width: 768px) {
+    .segway-slider__inner {
+      max-width: 800px;
+    }
+  }
+
+  .segway-slider__logo-text { 
+    font-size: 1rem; font-weight: 300; letter-spacing: 3px; 
+    text-transform: lowercase; display: block; margin-bottom: 5px; 
+  }
+  @media screen and (min-width: 768px) {
+    .segway-slider__logo-text { font-size: 1.2rem; letter-spacing: 4px; }
+  }
+  
+  .segway-slider__title { 
+    font-size: clamp(2rem, 10vw, 7rem); font-weight: 900; font-style: italic; 
+    text-transform: uppercase; margin: 0; line-height: 0.95; letter-spacing: -1px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  @media screen and (min-width: 768px) {
+    .segway-slider__title { line-height: 0.9; letter-spacing: -2px; }
+  }
+  
+  .segway-slider__subtitle { 
+    font-size: 0.9rem; margin: 15px 0 25px; letter-spacing: 0.5px; font-weight: 300;
+  }
+  @media screen and (min-width: 768px) {
+    .segway-slider__subtitle { font-size: 1.1rem; margin: 15px 0 35px; letter-spacing: 1px; }
+  }
+
+  .segway-slider__buttons { 
+    display: flex; 
+    flex-direction: column;
+    gap: 10px; 
+  }
+  @media screen and (min-width: 480px) {
+    .segway-slider__buttons {
+      flex-direction: row;
+      gap: 15px;
+    }
+  }
+
+  .btn-primary, .btn-secondary { 
+    padding: 12px 30px; border-radius: 50px; text-decoration: none; 
+    font-weight: 600; font-size: 12px; transition: all 0.3s ease; 
+    text-transform: uppercase; text-align: center;
+  }
+  @media screen and (min-width: 768px) {
+    .btn-primary, .btn-secondary { padding: 14px 40px; font-size: 13px; }
+  }
+
+  .btn-primary { background: #ff0000; color: #fff; border: 2px solid #ff0000; }
+  .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 2px solid #fff; backdrop-filter: blur(10px); }
+  
+  .btn-primary:hover { background: #cc0000; border-color: #cc0000; transform: translateY(-2px); }
+  .btn-secondary:hover { background: #fff; color: #000; transform: translateY(-2px); }
+
+  .slider-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; width: 40px; height: 40px; border-radius: 50%;
+    cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease; backdrop-filter: blur(5px);
+  }
+  @media screen and (min-width: 768px) {
+    .slider-nav { width: 50px; height: 50px; }
+  }
+  .slider-nav:hover { background: #fff; color: #000; }
+  .slider-nav.prev { left: 15px; }
+  .slider-nav.next { right: 15px; }
+  @media screen and (min-width: 768px) {
+    .slider-nav.prev { left: 30px; }
+    .slider-nav.next { right: 30px; }
+  }
+  @media (max-width: 767px) { .slider-nav { display: none; } }
+
+  .segway-slider__bottom-nav { 
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); 
+    width: 90%; max-width: 1200px; z-index: 5; 
+  }
+  @media screen and (min-width: 768px) {
+    .segway-slider__bottom-nav { bottom: 50px; width: 85%; }
+  }
+
+  .bottom-nav__line { height: 2px; background: rgba(255,255,255,0.2); margin-bottom: 15px; position: relative; }
+  @media screen and (min-width: 768px) {
+    .bottom-nav__line { margin-bottom: 20px; }
+  }
+
+  .bottom-nav__progress { position: absolute; top: 0; left: 0; height: 100%; background: #fff; width: 0%; transition: width 0.3s ease; }
+  .bottom-nav__items { display: flex; justify-content: space-between; gap: 10px; }
+  @media screen and (min-width: 768px) {
+    .bottom-nav__items { gap: 20px; }
+  }
+
+  .bottom-nav__item { 
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px; 
+    color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s ease; 
+    flex: 1; text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media screen and (min-width: 768px) {
+    .bottom-nav__item { font-size: 11px; letter-spacing: 1.5px; }
+  }
+  .bottom-nav__item.is-active { color: #fff; font-weight: 800; }
+  @media (max-width: 767px) { .bottom-nav__items { display: none; } }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var sectionId = '{{ section.id }}';
+    var container = document.querySelector('#segway-slider-' + sectionId);
+    if (!container) return;
+    var wrapper = container.querySelector('.segway-slider__wrapper');
+    var slides = container.querySelectorAll('.segway-slider__slide');
+    var bottomItems = container.querySelectorAll('.bottom-nav__item');
+    var progressBar = container.querySelector('.bottom-nav__progress');
+    var currentIndex = 0;
+    var slideCount = slides.length;
+    var autoplay = container.getAttribute('data-autoplay') === 'true';
+    var speed = parseInt(container.getAttribute('data-speed')) || 5000;
+    var interval;
+
+    function updateSlider() {
+      wrapper.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+      bottomItems.forEach(function(item, i) { item.classList.toggle('is-active', i === currentIndex); });
+      if (progressBar) {
+        var progress = ((currentIndex + 1) / slideCount) * 100;
+        progressBar.style.width = progress + '%';
+      }
+    }
+
+    function nextSlide() { currentIndex = (currentIndex + 1) % slideCount; updateSlider(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + slideCount) % slideCount; updateSlider(); }
+    function startAutoplay() { if (autoplay && slideCount > 1) interval = setInterval(nextSlide, speed); }
+    function resetAutoplay() { clearInterval(interval); startAutoplay(); }
+
+    var nextBtn = container.querySelector('.next');
+    var prevBtn = container.querySelector('.prev');
+    if (nextBtn) nextBtn.addEventListener('click', function() { nextSlide(); resetAutoplay(); });
+    if (prevBtn) prevBtn.addEventListener('click', function() { prevSlide(); resetAutoplay(); });
+
+    bottomItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        currentIndex = parseInt(this.getAttribute('data-go-to'));
+        updateSlider(); resetAutoplay();
+      });
+    });
+
+    var touchStartX = 0;
+    container.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+    container.addEventListener('touchend', function(e) {
+      var touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) nextSlide();
+      if (touchEndX - touchStartX > 50) prevSlide();
+      resetAutoplay();
+    }, {passive: true});
+
+    updateSlider(); startAutoplay();
+
+    document.addEventListener('shopify:block:select', function(e) {
+      if (!container.contains(e.target)) return;
+      var blockSlide = e.target;
+      var index = -1;
+      for (var k = 0; k < slides.length; k++) {
+        if (slides[k] === blockSlide) {
+          index = k;
+          break;
+        }
+      }
+      if (index !== -1) {
+        currentIndex = index;
+        updateSlider();
+        clearInterval(interval);
+      }
+    });
+    document.addEventListener('shopify:block:deselect', function(e) { if (container.contains(e.target)) startAutoplay(); });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Segway Slider",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "header", "content": "布局与高度" },
+    { "type": "range", "id": "desktop_height", "min": 50, "max": 100, "step": 5, "unit": "vh", "label": "PC端高度", "default": 100 },
+    { "type": "range", "id": "mobile_height", "min": 40, "max": 100, "step": 5, "unit": "vh", "label": "移动端高度", "default": 85 },
+    { "type": "header", "content": "导航栏覆盖设置" },
+    { "type": "checkbox", "id": "overlay_header", "label": "覆盖顶部导航栏", "default": true },
+    { "type": "range", "id": "header_height_desktop", "min": 40, "max": 150, "step": 5, "unit": "px", "label": "PC端导航栏高度", "default": 80 },
+    { "type": "range", "id": "header_height_mobile", "min": 30, "max": 100, "step": 5, "unit": "px", "label": "移动端导航栏高度", "default": 60 },
+    { "type": "header", "content": "轮播设置" },
+    { "type": "checkbox", "id": "autoplay", "label": "自动轮播", "default": true },
+    { "type": "range", "id": "autoplay_speed", "min": 3, "max": 10, "step": 1, "unit": "s", "label": "切换速度", "default": 5 },
+    { "type": "header", "content": "蒙版画布设置" },
+    { "type": "color", "id": "mask_color", "label": "蒙版颜色", "default": "#000000" },
+    { "type": "range", "id": "mask_opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "蒙版透明度", "default": 20 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "幻灯片",
+      "settings": [
+        { "type": "header", "content": "内容位置与对齐" },
+        {
+          "type": "select",
+          "id": "content_h_align",
+          "label": "内容水平对齐",
+          "options": [
+            { "value": "flex-start", "label": "左对齐" },
+            { "value": "center", "label": "居中对齐" },
+            { "value": "flex-end", "label": "右对齐" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "content_v_align",
+          "label": "内容垂直位置",
+          "options": [
+            { "value": "flex-start", "label": "顶部" },
+            { "value": "center", "label": "中间" },
+            { "value": "flex-end", "label": "底部" }
+          ],
+          "default": "center"
+        },
+        { "type": "header", "content": "背景与文字" },
+        { "type": "image_picker", "id": "image_desktop", "label": "PC端背景图" },
+        { "type": "image_picker", "id": "image_mobile", "label": "移动端背景图" },
+        { "type": "text", "id": "nav_label", "label": "底部导航文字", "default": "产品名称" },
+        { "type": "text", "id": "logo_text", "label": "顶部小标题", "default": "ninebot" },
+        { "type": "text", "id": "title", "label": "大标题", "default": "MAX G3" },
+        { "type": "textarea", "id": "subtitle", "label": "副标题", "default": "Designed for Ultimate Urban Exploration" },
+        { "type": "header", "content": "按钮 1 (红色)" },
+        { "type": "text", "id": "btn1_text", "label": "文字", "default": "Learn More" },
+        { "type": "url", "id": "btn1_link", "label": "链接" },
+        { "type": "header", "content": "按钮 2 (透明)" },
+        { "type": "text", "id": "btn2_text", "label": "文字", "default": "Order Now" },
+        { "type": "url", "id": "btn2_link", "label": "链接" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Segway Slider",
+      "blocks": [
+        { "type": "slide", "settings": { "nav_label": "MAX G3", "title": "MAX G3" } },
+        { "type": "slide", "settings": { "nav_label": "XYBER", "title": "XYBER" } },
+        { "type": "slide", "settings": { "nav_label": "NAVIMOW", "title": "NAVIMOW" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

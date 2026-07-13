@@ -1,0 +1,201 @@
+{% schema %}
+{
+  "name": "🔥万能悬浮贴纸 (涂鸦)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "💡 提示：将此组件添加到目标区块的上边或下边。设置负数的 z-index 可以让贴纸垫在组件背后。"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "贴纸图片 (透明背景PNG)"
+    },
+    {
+      "type": "header",
+      "content": "贴纸尺寸"
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "min": 50,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "桌面端宽度",
+      "default": 250
+    },
+    {
+      "type": "range",
+      "id": "width_mobile",
+      "min": 30,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "移动端宽度",
+      "default": 120
+    },
+    {
+      "type": "header",
+      "content": "位置控制 (X轴与Y轴)"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_align",
+      "label": "水平对齐",
+      "options": [
+        { "value": "left", "label": "靠左" },
+        { "value": "center", "label": "居中" },
+        { "value": "right", "label": "靠右" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "horizontal_offset",
+      "min": -200,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "水平微调偏移",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "vertical_anchor",
+      "label": "垂直依附方向",
+      "info": "决定贴纸是从上方往下算距离，还是从下方往上算",
+      "options": [
+        { "value": "top", "label": "依附上方" },
+        { "value": "bottom", "label": "依附下方" }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "range",
+      "id": "vertical_offset",
+      "min": -500,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "垂直偏移",
+      "default": -100
+    },
+    {
+      "type": "header",
+      "content": "图层与街头感控制"
+    },
+    {
+      "type": "range",
+      "id": "rotation",
+      "min": -180,
+      "max": 180,
+      "step": 5,
+      "unit": "deg",
+      "label": "旋转角度",
+      "default": -15
+    },
+    {
+      "type": "range",
+      "id": "z_index",
+      "min": -20,
+      "max": 50,
+      "step": 1,
+      "label": "图层高度 (z-index)",
+      "info": "🔥 设为负数(如 -1)可让贴纸垫底被挡住，设为正数则悬浮在表面。",
+      "default": -1
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "在手机端隐藏",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "🔥万能悬浮贴纸"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  /* 🔥 核心黑科技：穿透直接修改 Shopify 官方最外层外壳的层级 */
+  #shopify-section-{{ section.id }} {
+    position: relative !important;
+    z-index: {{ section.settings.z_index }} !important;
+    pointer-events: none !important; /* 防止遮挡下方按钮点击 */
+  }
+
+  .sticker-wrapper-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    height: 0; /* 高度设为0，不挤占页面正常组件的空间 */
+    margin: 0;
+    padding: 0;
+    {% if section.settings.hide_mobile %}
+      display: none;
+    {% endif %}
+  }
+
+  @media (min-width: 769px) {
+    .sticker-wrapper-{{ section.id }} {
+      display: block;
+    }
+  }
+
+  .sticker-img-{{ section.id }} {
+    position: absolute;
+    width: {{ section.settings.width_mobile }}px;
+    
+    /* 垂直方向基准 */
+    {% if section.settings.vertical_anchor == 'top' %}
+      top: {{ section.settings.vertical_offset }}px;
+    {% else %}
+      bottom: {{ section.settings.vertical_offset }}px;
+    {% endif %}
+    
+    /* 水平方向基准 */
+    {% if section.settings.horizontal_align == 'left' %}
+      left: {{ section.settings.horizontal_offset }}px;
+    {% elsif section.settings.horizontal_align == 'right' %}
+      right: {{ section.settings.horizontal_offset }}px;
+    {% else %}
+      left: calc(50% + {{ section.settings.horizontal_offset }}px);
+    {% endif %}
+    
+    /* 居中偏移修复与旋转 */
+    {% if section.settings.horizontal_align == 'center' %}
+      transform: translateX(-50%) rotate({{ section.settings.rotation }}deg);
+    {% else %}
+      transform: rotate({{ section.settings.rotation }}deg);
+    {% endif %}
+    
+    will-change: transform;
+  }
+
+  /* 桌面端尺寸 */
+  @media (min-width: 769px) {
+    .sticker-img-{{ section.id }} {
+      width: {{ section.settings.width }}px;
+    }
+  }
+</style>
+
+<div class="sticker-wrapper-{{ section.id }}">
+  {%- if section.settings.image != blank -%}
+    <img 
+      src="{{ section.settings.image | image_url: width: 1000 }}" 
+      alt="Decoration Sticker" 
+      class="sticker-img-{{ section.id }}"
+      loading="lazy"
+    >
+  {%- else -%}
+    <div class="sticker-img-{{ section.id }}" style="background: rgba(255,0,0,0.1); border: 2px dashed red; height: 100px; display: flex; align-items: center; justify-content: center; color: red; font-weight: bold; text-align: center;">
+      上传贴纸 PNG
+    </div>
+  {%- endif -%}
+</div>

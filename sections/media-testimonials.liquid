@@ -1,0 +1,356 @@
+{% comment %}
+  Section: Media Testimonials (Centered + Logo Link + View More Inline)
+  功能：居中布局 + Logo跳转 + 评论切换 + View More按钮紧跟文字后
+{% endcomment %}
+
+<style>
+  .media-testimonials-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .media-testimonials-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .media-testimonials-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1;
+  }
+  .media-testimonials-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .media-testimonials-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .media-testimonials-right {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  /* 媒体Logo条 —— 圆角 */
+  .media-logos-wrapper {
+    display: flex;
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .media-logo-item {
+    flex: 1;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-right: 1px solid #eee;
+  }
+  .media-logo-item:last-child {
+    border-right: none;
+  }
+  .media-logo-item.active {
+    box-shadow: inset 0 0 0 1px #ddd;
+  }
+  .media-logo-item:hover {
+    transform: scale(1.03);
+    filter: brightness(0.96);
+  }
+  .media-logo-item img {
+    max-height: 40px;
+    max-width: 80%;
+    object-fit: contain;
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 评论卡片 —— 圆角 */
+  .media-quote-card {
+    background: #fff;
+    padding: 35px 30px;
+    border: 1px solid #eee;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+  }
+  .media-quote-text {
+    font-size: 24px;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+    color: #111;
+  }
+  .media-quote-footer {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+  }
+
+  /* View More 按钮（行内嵌入文字后） */
+  .view-more-btn {
+    display: inline;
+    margin-left: 8px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #111;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .view-more-btn:hover {
+    color: #666;
+    opacity: 0.8;
+  }
+
+  /* 评论内容切换动画 */
+  .quote-content {
+    display: none;
+  }
+  .quote-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 移动端适配 */
+  @media screen and (max-width: 768px) {
+    .media-logo-item {
+      height: 70px;
+    }
+    .media-quote-text {
+      font-size: 18px;
+    }
+    .view-more-btn {
+      font-size: 16px;
+    }
+    .media-quote-card {
+      padding: 25px 20px;
+    }
+  }
+</style>
+
+{% assign section_id = section.id %}
+{% assign bg_opacity = section.settings.background_opacity | divided_by: 100.0 %}
+
+<section class="media-testimonials-section" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  {% if section.settings.background_image != blank %}
+    <div class="media-testimonials-bg" style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"></div>
+    <div class="media-testimonials-overlay" style="opacity: {{ bg_opacity }};"></div>
+  {% endif %}
+
+  <div class="media-testimonials-container">
+    <div class="media-testimonials-wrapper">
+      <!-- 右侧评价区域（居中显示） -->
+      <div class="media-testimonials-right">
+        {% if section.blocks.size > 0 %}
+          <!-- 媒体Logo -->
+          <div class="media-logos-wrapper" id="mediaLogos_{{ section_id }}">
+            {% for block in section.blocks limit:5 %}
+              {% assign logo_bg = block.settings.logo_single_bg | default: '#ffffff' %}
+              <div class="media-logo-item {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}" style="background-color: {{ logo_bg }};">
+                {% if block.settings.logo_url != blank %}
+                  <a href="{{ block.settings.logo_url }}" target="_blank" class="logo-link" rel="noopener noreferrer">
+                    {% if block.settings.logo != blank %}
+                      <img src="{{ block.settings.logo | image_url: width:200 }}" alt="{{ block.settings.logo_alt | default: 'Media' }}">
+                    {% endif %}
+                  </a>
+                {% else %}
+                  {% if block.settings.logo != blank %}
+                    <img src="{{ block.settings.logo | image_url: width:200 }}" alt="{{ block.settings.logo_alt | default: 'Media' }}">
+                  {% endif %}
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- 评论内容 -->
+          <div class="media-quote-card" id="quoteCard_{{ section_id }}">
+            {% for block in section.blocks limit:5 %}
+              <div class="quote-content {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+                <!-- 评价文字 + View More按钮 同行显示 -->
+                <p class="media-quote-text" style="text-align: {{ section.settings.quote_align }};">
+                  {{ block.settings.quote }}
+                  {% if block.settings.view_more_url != blank %}
+                    <a href="{{ block.settings.view_more_url }}" target="_blank" class="view-more-btn" rel="noopener noreferrer">
+                      {{ block.settings.view_more_text | default: 'View More' }}
+                    </a>
+                  {% endif %}
+                </p>
+                {% if block.settings.footer_text != blank %}
+                  <p class="media-quote-footer" style="text-align: {{ section.settings.quote_align }};">{{ block.settings.footer_text }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 点击切换评论 JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionId = '{{ section.id }}';
+    const logos = document.querySelectorAll('#mediaLogos_{{ section.id }} .media-logo-item');
+    const contents = document.querySelectorAll('#quoteCard_{{ section.id }} .quote-content');
+
+    logos.forEach(logo => {
+      logo.addEventListener('click', () => {
+        const idx = logo.dataset.index;
+        logos.forEach(l => l.classList.remove('active'));
+        logo.classList.add('active');
+        contents.forEach(c => c.classList.remove('active'));
+        document.querySelector(`.quote-content[data-index="${idx}"]`).classList.add('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "媒体评价模块（居中版）",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "背景图片"
+    },
+    {
+      "type": "range",
+      "id": "background_opacity",
+      "label": "背景图片透明度",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 90,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "模块顶部间距",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "模块底部间距",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "评价内容样式设置"
+    },
+    {
+      "type": "select",
+      "id": "quote_align",
+      "label": "评价内容对齐方式",
+      "options": [
+        { "value": "left", "label": "左对齐" },
+        { "value": "center", "label": "居中" },
+        { "value": "right", "label": "右对齐" }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media_item",
+      "name": "媒体评价",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "媒体Logo"
+        },
+        {
+          "type": "color",
+          "id": "logo_single_bg",
+          "label": "当前Logo框背景色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "url",
+          "id": "logo_url",
+          "label": "Logo跳转链接（选填）"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Logo替代文本(SEO)"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "评价内容",
+          "default": "Excellent product and service!"
+        },
+        {
+          "type": "text",
+          "id": "footer_text",
+          "label": "底部来源/备注",
+          "default": "Trusted by global media"
+        },
+        {
+          "type": "header",
+          "content": "View More 按钮设置"
+        },
+        {
+          "type": "text",
+          "id": "view_more_text",
+          "label": "按钮文字",
+          "default": "View More"
+        },
+        {
+          "type": "url",
+          "id": "view_more_url",
+          "label": "按钮跳转链接（填链接则显示按钮）"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "媒体评价模块（居中版）",
+      "category": "custom"
+    }
+  ]
+}
+{% endschema %}

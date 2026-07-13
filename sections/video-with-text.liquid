@@ -1,0 +1,288 @@
+{% comment %}
+  文字+视频模块 | 16:9/1:1双比例 + 字体选择(新增Bayon)
+  适配Impact主题 | 新增原生标题字体 Bayon | 所有原有功能保留
+{% endcomment %}
+
+{% assign text_align = section.settings.text_align | default: 'left' %}
+{% assign desktop_layout = section.settings.desktop_layout | default: 'text-left' %}
+{% assign mobile_order = section.settings.mobile_order | default: 'text-top' %}
+{% assign video_ratio = section.settings.video_ratio | default: '16-9' %}
+
+{% if video_ratio == '1-1' %}
+  {% assign padding_top = '100%' %}
+{% else %}
+  {% assign padding_top = '56.25%' %}
+{% endif %}
+
+<section class="video-with-text-section" style="padding-top: {{ section.settings.section_padding_top }}px; padding-bottom: {{ section.settings.section_padding_bottom }}px; background-color: {{ section.settings.section_bg }};">
+  <div class="video-with-text-wrapper {% if desktop_layout == 'text-right' %}reverse{% endif %} {% if mobile_order == 'video-top' %}mobile-reverse{% endif %}">
+    <!-- 左侧文字区域 -->
+    <div class="text-block" style="background-color: {{ section.settings.text_bg }}; padding: {{ section.settings.text_padding }}px; text-align: {{ text_align }};">
+      {% if section.settings.subtitle != blank %}
+        <p class="text-block__subtitle" style="color: {{ section.settings.subtitle_color }}; font-size: {{ section.settings.subtitle_size }}px; margin-bottom: {{ section.settings.subtitle_margin_bottom }}px; font-family: {{ section.settings.subtitle_font }}; font-weight: {{ section.settings.subtitle_font_weight }};">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="text-block__title" style="color: {{ section.settings.title_color }}; font-size: {{ section.settings.title_size }}px; margin-bottom: {{ section.settings.title_margin_bottom }}px; font-family: {{ section.settings.title_font }}; font-weight: {{ section.settings.title_font_weight }};">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="text-block__desc" style="color: {{ section.settings.description_color }}; font-size: {{ section.settings.description_size }}px; line-height: {{ section.settings.description_line_height }};">
+          {{ section.settings.description | newline_to_br }}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- 右侧视频区域 - 双比例自适应 -->
+    <div class="video-block">
+      {% if section.settings.video_url != blank %}
+        <div class="video-wrap" style="border-radius: {{ section.settings.video_border_radius }}px; overflow: hidden; padding-top: {{ padding_top }};">
+          <video 
+            class="video-block__player" 
+            src="{{ section.settings.video_url }}"
+            autoplay="autoplay"
+            muted="muted"
+            loop="loop"
+            playsinline="playsinline"
+            preload="auto"
+            webkit-playsinline="true"
+            x5-playsinline="true"
+          >
+            你的浏览器不支持视频播放
+          </video>
+        </div>
+      {% else %}
+        <div class="video-placeholder" style="border-radius: {{ section.settings.video_border_radius }}px; padding-top: {{ padding_top }};">
+          <p>粘贴MP4视频链接</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+/* 整体模块 */
+.video-with-text-section {
+  width: 100%;
+  overflow: hidden;
+}
+.video-with-text-wrapper {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+}
+
+/* 桌面端 左右 50% 分栏 */
+@media screen and (min-width: 750px) {
+  .video-with-text-wrapper {
+    flex-direction: row;
+  }
+  .video-with-text-wrapper.reverse {
+    flex-direction: row-reverse;
+  }
+  .text-block,
+  .video-block {
+    flex: 0 0 50%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* 移动端 上下布局 */
+@media screen and (max-width: 749px) {
+  .video-with-text-wrapper {
+    flex-direction: column;
+  }
+  .video-with-text-wrapper.mobile-reverse {
+    flex-direction: column-reverse;
+  }
+  .text-block,
+  .video-block {
+    width: 100%;
+  }
+  .video-block {
+    margin-top: {{ section.settings.mobile_video_margin_top }}px;
+  }
+  .text-block {
+    padding: 24px !important;
+  }
+}
+
+/* 文字基础样式 */
+.text-block__subtitle { margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+.text-block__title { margin: 0; line-height: 1.1; }
+.text-block__desc { margin: 0; }
+
+/* 视频容器 - 双比例核心 */
+.video-block { position: relative; }
+.video-wrap {
+  position: relative;
+  width: 100%;
+  background: #000;
+}
+.video-block__player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #000;
+}
+.video-placeholder {
+  width: 100%;
+  background: #f0f0f0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+</style>
+
+{% schema %}
+{
+  "name": "文字+视频模块（双比例+字体选择含Bayon）",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "模块整体设置" },
+    { "type": "color", "id": "section_bg", "label": "模块背景色", "default": "#000000" },
+    { "type": "range", "id": "section_padding_top", "label": "模块上边距px", "min":0,"max":100,"step":5,"default":0 },
+    { "type": "range", "id": "section_padding_bottom", "label": "模块下边距px", "min":0,"max":100,"step":5,"default":0 },
+    {
+      "type": "select",
+      "id": "desktop_layout",
+      "label": "桌面布局",
+      "options": [
+        {"value":"text-left","label":"文字左+视频右"},
+        {"value":"text-right","label":"视频左+文字右"}
+      ],
+      "default": "text-left"
+    },
+    {
+      "type": "select",
+      "id": "mobile_order",
+      "label": "手机顺序",
+      "options": [
+        {"value":"text-top","label":"文字上"},
+        {"value":"video-top","label":"视频上"}
+      ],
+      "default": "text-top"
+    },
+    { "type": "header", "content": "文字区域设置" },
+    { "type": "color", "id": "text_bg", "label": "文字背景色", "default": "#000000" },
+    { "type": "range", "id": "text_padding", "label": "文字内边距px", "min":10,"max":100,"step":5,"default":40 },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "文字对齐",
+      "options": [{"value":"left","label":"左"},{"value":"center","label":"中"},{"value":"right","label":"右"}],
+      "default": "left"
+    },
+
+    { "type": "header", "content": "副标题设置（字体独立选择）" },
+    { "type": "text", "id": "subtitle", "label": "副标题", "default": "Instant power" },
+    { "type": "color", "id": "subtitle_color", "label": "颜色", "default": "#ff0000" },
+    { "type": "range", "id": "subtitle_size", "label": "字体大小px", "min":12,"max":30,"step":1,"default":24 },
+    { "type": "range", "id": "subtitle_margin_bottom", "label": "下边距px", "min":0,"max":30,"step":1,"default":10 },
+    {
+      "type": "select",
+      "id": "subtitle_font",
+      "label": "副标题字体",
+      "options": [
+        {"value":"inherit","label":"继承主题默认字体"},
+        {"value":"'Bayon', sans-serif","label":"Bayon"},
+        {"value":"'Inter', sans-serif","label":"Inter"},
+        {"value":"'Roboto', sans-serif","label":"Roboto"},
+        {"value":"'Montserrat', sans-serif","label":"Montserrat"},
+        {"value":"'Open Sans', sans-serif","label":"Open Sans"},
+        {"value":"'Poppins', sans-serif","label":"Poppins"},
+        {"value":"'Lato', sans-serif","label":"Lato"},
+        {"value":"'Playfair Display', serif","label":"Playfair Display(衬线)"},
+        {"value":"'Merriweather', serif","label":"Merriweather(衬线)"}
+      ],
+      "default": "inherit"
+    },
+    {
+      "type": "select",
+      "id": "subtitle_font_weight",
+      "label": "副标题字重",
+      "options": [
+        {"value":"400","label":"常规(400)"},
+        {"value":"500","label":"中等(500)"},
+        {"value":"600","label":"半粗(600)"},
+        {"value":"700","label":"加粗(700)"},
+        {"value":"800","label":"特粗(800)"}
+      ],
+      "default": "700"
+    },
+
+    { "type": "header", "content": "主标题设置（字体独立选择）" },
+    { "type": "text", "id": "title", "label": "主标题", "default": "Raw Power, Pure Speed" },
+    { "type": "color", "id": "title_color", "label": "颜色", "default": "#ffffff" },
+    { "type": "range", "id": "title_size", "label": "字体大小px", "min":20,"max":60,"step":1,"default":48 },
+    { "type": "range", "id": "title_margin_bottom", "label": "下边距px", "min":0,"max":30,"step":1,"default":20 },
+    {
+      "type": "select",
+      "id": "title_font",
+      "label": "主标题字体",
+      "options": [
+        {"value":"inherit","label":"继承主题默认字体"},
+        {"value":"'Bayon', sans-serif","label":"Bayon"},
+        {"value":"'Inter', sans-serif","label":"Inter"},
+        {"value":"'Roboto', sans-serif","label":"Roboto"},
+        {"value":"'Montserrat', sans-serif","label":"Montserrat"},
+        {"value":"'Open Sans', sans-serif","label":"Open Sans"},
+        {"value":"'Poppins', sans-serif","label":"Poppins"},
+        {"value":"'Lato', sans-serif","label":"Lato"},
+        {"value":"'Playfair Display', serif","label":"Playfair Display(衬线)"},
+        {"value":"'Merriweather', serif","label":"Merriweather(衬线)"}
+      ],
+      "default": "inherit"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "主标题字重",
+      "options": [
+        {"value":"400","label":"常规(400)"},
+        {"value":"500","label":"中等(500)"},
+        {"value":"600","label":"半粗(600)"},
+        {"value":"700","label":"加粗(700)"},
+        {"value":"800","label":"特粗(800)"}
+      ],
+      "default": "800"
+    },
+
+    { "type": "header", "content": "描述文本设置" },
+    { "type": "textarea", "id": "description", "label": "描述文本" },
+    { "type": "color", "id": "description_color", "label": "颜色", "default": "#ccc" },
+    { "type": "range", "id": "description_size", "label": "大小px", "min":12,"max":24,"step":1,"default":18 },
+    { "type": "range", "id": "description_line_height", "label": "行高", "min":1,"max":2,"step":0.1,"default":1.6 },
+
+    { "type": "header", "content": "视频设置" },
+    { "type": "text", "id": "video_url", "label": "MP4视频链接", "info": "粘贴Shopify文件里的MP4地址" },
+    {
+      "type": "select",
+      "id": "video_ratio",
+      "label": "视频比例",
+      "options": [
+        {"value":"16-9","label":"16:9 标准视频"},
+        {"value":"1-1","label":"1:1 正方形视频"}
+      ],
+      "default": "16-9"
+    },
+    { "type": "range", "id": "video_border_radius", "label": "视频圆角px", "min":0,"max":20,"step":1,"default":0 },
+    { "type": "range", "id": "mobile_video_margin_top", "label": "手机端视频上边距px", "min":0,"max":50,"step":5,"default":15 }
+  ],
+  "presets": [{"name": "文字+视频模块（双比例+字体选择含Bayon）","category":"Custom"}]
+}
+{% endschema %}

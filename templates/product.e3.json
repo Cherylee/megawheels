@@ -1,0 +1,866 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "judge_me_reviews_preview_badge_FNc99A": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_second_BFNU4U": {
+          "type": "price_second",
+          "settings": {
+            "show_currency_code": false
+          }
+        },
+        "discount_code_ydkBN8": {
+          "type": "discount_code",
+          "settings": {
+            "default_checked": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "collapsible_text_HP3qXP": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Fast, Free Shipping",
+            "content": "<p>The order will be typically shiped within<strong>1-2 business days</strong>. Delivery takes<strong>2-7 business days</strong>. Shipping times are estimates and may vary due to external factors.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_7dUYTA": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-money",
+            "icon_width": 20,
+            "title": "Secured Payments",
+            "content": "<p>We accept paypal, credit cards and payment by instalments (Klarna) as payment methods.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_DCtVXc": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-building",
+            "icon_width": 20,
+            "title": "One-year Warranty",
+            "content": "<p>All electric scooters, electric bikes and electric dirt bikes of <a href=\"https://megawheels.com/\" target=\"_blank\" title=\"MEGAWHEELS electric scooters\">MEGAWHEELS</a> are covered by our manufacturer's 1-year all-inclusive warranty for all manufacturing defects to the original owner.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "judge_me_reviews_preview_badge_FNc99A",
+        "badges",
+        "price_second_BFNU4U",
+        "discount_code_ydkBN8",
+        "price",
+        "rating",
+        "payment_terms",
+        "separator",
+        "description",
+        "quantity_selector",
+        "buy_buttons",
+        "collapsible_text_HP3qXP",
+        "collapsible_text_7dUYTA",
+        "collapsible_text_DCtVXc"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_reviews_A9rptx": {
+      "type": "video-reviews",
+      "blocks": {
+        "youtube_video_YP4AGx": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "a_bcB1M1AzM",
+            "video_title": "Best Budget Friendly Electric Scooter for Adults With Turn Signals & 28 Mile Range | AOTOS E3",
+            "date": "2026/6/10",
+            "author_name": "Reviews From Jonathan",
+            "author_avatar": "shopify://shop_images/YTB-Reviews_From_Jonathan.jpg"
+          }
+        },
+        "youtube_video_Xh7iBx": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "DrFxoSexpPw",
+            "video_title": "AOTOS E3 Scooter First Look | Complete Unboxing and Assembly",
+            "date": "2026/6/20",
+            "author_name": "Gadget Junkie Reviews",
+            "author_avatar": "shopify://shop_images/YTB-Gadget_Junkie_Reviews.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "youtube_video_YP4AGx",
+        "youtube_video_Xh7iBx"
+      ],
+      "name": "视频展示轮播",
+      "settings": {
+        "title": "E3 Electric Scooter Review By Our Riders",
+        "subtitle": "Watch our latest videos",
+        "section_bg": "#ffffff",
+        "section_padding": 20,
+        "items_per_row": 4,
+        "title_color": "#111111",
+        "title_size": 36,
+        "subtitle_color": "#6b7280",
+        "subtitle_size": 16,
+        "video_title_color": "#111111",
+        "video_title_size": 16,
+        "author_color": "#111111",
+        "author_size": 14,
+        "date_color": "#6b7280",
+        "date_size": 12,
+        "arrow_color": "#111111",
+        "arrow_bg": "#ffffff",
+        "arrow_size": 36,
+        "arrow_font_size": 18,
+        "youtube_tab_text": "YouTube",
+        "short_tab_text": "Short Video"
+      }
+    },
+    "slideshow_8jjDxA": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RFrkza": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-01.jpg",
+            "content_max_width": 740,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RFrkza"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_tdLkPV": {
+      "type": "slideshow",
+      "blocks": {
+        "image_npP3dC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-02.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_npP3dC"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_PwdQQr": {
+      "type": "slideshow",
+      "blocks": {
+        "image_hhDzAc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-03.jpg",
+            "content_max_width": 560,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_hhDzAc"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_CtfQ6x": {
+      "type": "slideshow",
+      "blocks": {
+        "image_XEFRLT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-04.jpg",
+            "content_max_width": 500,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_XEFRLT"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_ctUjDT": {
+      "type": "slideshow",
+      "blocks": {
+        "image_cXJ4me": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-05.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cXJ4me"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_KDVBzb": {
+      "type": "slideshow",
+      "blocks": {
+        "image_4mnqeT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-06.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#3e3d3d",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_4mnqeT"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_7hUL4y": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RXDBFc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-07.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#3e3d3d",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RXDBFc"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_VwAbDf": {
+      "type": "slideshow",
+      "blocks": {
+        "image_wVrfMG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-08.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#3e3d3d",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 5,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_wVrfMG"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_rLq4Ym": {
+      "type": "slideshow",
+      "blocks": {
+        "image_3JqaBK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-09.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3JqaBK"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_qJ3JjX": {
+      "type": "slideshow",
+      "blocks": {
+        "image_CbYjKY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-10.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_CbYjKY"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_cK3CFD": {
+      "type": "slideshow",
+      "blocks": {
+        "image_4rRpw8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/E3-electric-scooter-1900-11.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_4rRpw8"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "specification_table_V9fxRr": {
+      "type": "specification-table",
+      "blocks": {
+        "row_HkPYwM": {
+          "type": "row",
+          "settings": {
+            "heading": "Tire size",
+            "value": "<p>12 inch</p>"
+          }
+        },
+        "row_CWiV4g": {
+          "type": "row",
+          "settings": {
+            "heading": "Motor",
+            "value": "<p>650W</p>"
+          }
+        },
+        "row_wfbqJA": {
+          "type": "row",
+          "settings": {
+            "heading": "Speed mode",
+            "value": "<p>3 speed modes</p>"
+          }
+        },
+        "row_LkpRh7": {
+          "type": "row",
+          "settings": {
+            "heading": "Max Speed",
+            "value": "<p>20 Mph</p>"
+          }
+        },
+        "row_TX9rUX": {
+          "type": "row",
+          "settings": {
+            "heading": "Max loading",
+            "value": "<p>265 lbs</p>"
+          }
+        },
+        "row_a4nrn4": {
+          "type": "row",
+          "settings": {
+            "heading": "Battery",
+            "value": "<p>10Ah battery</p>"
+          }
+        },
+        "row_Nwxakf": {
+          "type": "row",
+          "settings": {
+            "heading": "Mileage",
+            "value": "<p>28 Miles</p>"
+          }
+        },
+        "row_Kjkwrb": {
+          "type": "row",
+          "settings": {
+            "heading": "Light system",
+            "value": "<p>Front LED Lights, Rear Brake Lights, Side light</p>"
+          }
+        },
+        "row_tTD4zN": {
+          "type": "row",
+          "settings": {
+            "heading": "Brake type",
+            "value": "<p>Drum Brake+ EABS Brake</p>"
+          }
+        },
+        "row_geYNtN": {
+          "type": "row",
+          "settings": {
+            "heading": "APP function",
+            "value": "<p>Yes</p>"
+          }
+        },
+        "row_fc7Cqa": {
+          "type": "row",
+          "settings": {
+            "heading": "Suspension",
+            "value": "<p>Front twin-tube shock absorber</p>"
+          }
+        },
+        "row_eaPagN": {
+          "type": "row",
+          "settings": {
+            "heading": "Product weight",
+            "value": "<p>56 lbs</p>"
+          }
+        },
+        "row_xA6733": {
+          "type": "row",
+          "settings": {
+            "heading": "Applicable age",
+            "value": "<p>14+ years old</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_HkPYwM",
+        "row_CWiV4g",
+        "row_wfbqJA",
+        "row_LkpRh7",
+        "row_TX9rUX",
+        "row_a4nrn4",
+        "row_Nwxakf",
+        "row_Kjkwrb",
+        "row_tTD4zN",
+        "row_geYNtN",
+        "row_fc7Cqa",
+        "row_eaPagN",
+        "row_xA6733"
+      ],
+      "name": "Specification table",
+      "settings": {
+        "full_width": false,
+        "subheading": "",
+        "title": "E3 Electric Scooter",
+        "content": "<p>The E3 electric scooter packs 12-inch big solid tires, 650W powerful motor on rear wheel and 10Ah lithium battery. It offers 3 speed modes, 20mph max speed and 28 miles range per fully charge. Besides, the front-fork suspension, rear spring shock absorber, and big wheel promise you a very comfortable riding on your way to school, university and company. </p>",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "178347794617cddedb": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_biAVUh": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_biAVUh"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 6,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_reviews_A9rptx",
+    "slideshow_8jjDxA",
+    "slideshow_tdLkPV",
+    "slideshow_PwdQQr",
+    "slideshow_CtfQ6x",
+    "slideshow_ctUjDT",
+    "slideshow_KDVBzb",
+    "slideshow_7hUL4y",
+    "slideshow_VwAbDf",
+    "slideshow_rLq4Ym",
+    "slideshow_qJ3JjX",
+    "slideshow_cK3CFD",
+    "specification_table_V9fxRr",
+    "178347794617cddedb",
+    "related-products"
+  ]
+}

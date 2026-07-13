@@ -1,0 +1,223 @@
+<style>
+  /* 外层全屏背景 */
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    width: 100%;
+  }
+
+  /* 核心内容区 1440px 限制 */
+  .cit-wrapper-{{ section.id }} {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px; /* 移动端安全边距 */
+  }
+
+  /* 内层卡片背景与圆角 */
+  .cit-container-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    background-color: {{ section.settings.inner_bg_color }};
+    border-radius: {{ section.settings.container_radius }}px;
+    overflow: hidden; /* 确保图片外侧贴合卡片圆角 */
+  }
+
+  @media (min-width: 768px) {
+    .cit-container-{{ section.id }} {
+      flex-direction: {% if section.settings.layout == 'left' %}row{% else %}row-reverse{% endif %};
+      align-items: stretch; /* 强制左右等高 */
+    }
+    .cit-wrapper-{{ section.id }} {
+      padding: 0 40px; /* PC端安全边距 */
+    }
+  }
+
+  /* 图片区域：各占一半，自适应高度 */
+  .cit-image-{{ section.id }} {
+    width: 100%;
+    display: flex; /* 让内部图片可以继承高度 */
+  }
+
+  @media (min-width: 768px) {
+    .cit-image-{{ section.id }} {
+      width: 50%;
+      flex: 0 0 50%; /* 强制占据 50% 宽度 */
+    }
+  }
+
+  .cit-image-{{ section.id }} img,
+  .cit-image-{{ section.id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保证图片填满区域且不变形 */
+    display: block;
+    /* 移动端底部圆角 */
+    border-radius: 0 0 {{ section.settings.image_radius }}px {{ section.settings.image_radius }}px;
+  }
+
+  @media (min-width: 768px) {
+    .cit-image-{{ section.id }} img,
+    .cit-image-{{ section.id }} svg {
+      /* PC端内侧圆角切割效果 */
+      {% if section.settings.layout == 'left' %}
+        border-radius: 0 {{ section.settings.image_radius }}px {{ section.settings.image_radius }}px 0;
+      {% else %}
+        border-radius: {{ section.settings.image_radius }}px 0 0 {{ section.settings.image_radius }}px;
+      {% endif %}
+    }
+  }
+
+  /* 占位图背景色和默认比例 */
+  .cit-image-{{ section.id }} svg {
+    background-color: #333;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* 文字区域：各占一半，垂直居中 */
+  .cit-content-{{ section.id }} {
+    width: 100%;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 核心：垂直居中对齐 */
+  }
+
+  @media (min-width: 768px) {
+    .cit-content-{{ section.id }} {
+      width: 50%;
+      flex: 0 0 50%; /* 强制占据 50% 宽度 */
+      padding: 80px 8%;
+    }
+  }
+
+  /* --- 字体排版独立控制（新增字体变量） --- */
+  .cit-subtitle-{{ section.id }} {
+    color: {{ section.settings.subtitle_color }};
+    font-size: {{ section.settings.subtitle_size_mb }}px;
+    font-weight: {{ section.settings.subtitle_weight }};
+    font-family: {{ section.settings.subtitle_font }};
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .cit-title-{{ section.id }} {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_size_mb }}px;
+    font-weight: {{ section.settings.title_weight }};
+    font-family: {{ section.settings.title_font }};
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    word-wrap: break-word;
+  }
+
+  .cit-text-{{ section.id }} {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size_mb }}px;
+    font-weight: {{ section.settings.text_weight }};
+    font-family: {{ section.settings.text_font }};
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .cit-subtitle-{{ section.id }} { font-size: {{ section.settings.subtitle_size_pc }}px; }
+    .cit-title-{{ section.id }} { font-size: {{ section.settings.title_size_pc }}px; }
+    .cit-text-{{ section.id }} { font-size: {{ section.settings.text_size_pc }}px; }
+  }
+</style>
+
+<div class="cit-wrapper-{{ section.id }}">
+  <div class="cit-container-{{ section.id }}">
+    
+    <!-- 图片区域 -->
+    <div class="cit-image-{{ section.id }}">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | img_url: '1440x' }}" alt="{{ section.settings.title | escape }}" loading="lazy">
+      {% else %}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+    <!-- 文字区域 -->
+    <div class="cit-content-{{ section.id }}">
+      {% if section.settings.subtitle != blank %}
+        <div class="cit-subtitle-{{ section.id }}">{{ section.settings.subtitle }}</div>
+      {% endif %}
+      
+      {% if section.settings.title != blank %}
+        <h2 class="cit-title-{{ section.id }}">{{ section.settings.title | newline_to_br }}</h2>
+      {% endif %}
+      
+      {% if section.settings.text != blank %}
+        <div class="cit-text-{{ section.id }}">{{ section.settings.text | newline_to_br }}</div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image with Text Pro",
+  "settings": [
+    { "type": "header", "content": "全局布局与背景" },
+    { "type": "color", "id": "bg_color", "label": "外层全屏背景色", "default": "#ffffff" },
+    { "type": "color", "id": "inner_bg_color", "label": "内层卡片(文字)背景色", "default": "#000000" },
+    { "type": "range", "id": "container_radius", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "卡片外侧圆角", "default": 16 },
+    { "type": "range", "id": "image_radius", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "图片内侧圆角切割", "default": 24 },
+    { "type": "select", "id": "layout", "label": "PC端图片位置", "options": [ { "value": "left", "label": "左侧" }, { "value": "right", "label": "右侧" } ], "default": "left" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "顶部间距", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "底部间距", "default": 60 },
+
+    { "type": "header", "content": "图片设置" },
+    { "type": "image_picker", "id": "image", "label": "上传图片" },
+
+    { "type": "header", "content": "小标题 (Subtitle)" },
+    { "type": "text", "id": "subtitle", "label": "小标题文本" },
+    { "type": "color", "id": "subtitle_color", "label": "颜色", "default": "#ff0000" },
+    { "type": "select", "id": "subtitle_font", "label": "字体", "options": [
+        {"value": "var(--font-body-family)", "label": "默认正文字体"},
+        {"value": "var(--font-heading-family)", "label": "默认标题字体"},
+        {"value": "BAYON", "label": "BAYON"},
+        {"value": "Impact", "label": "Impact"}
+      ], "default": "var(--font-heading-family)" },
+    { "type": "range", "id": "subtitle_size_pc", "min": 12, "max": 40, "step": 1, "unit": "px", "label": "PC端字号", "default": 16 },
+    { "type": "range", "id": "subtitle_size_mb", "min": 12, "max": 40, "step": 1, "unit": "px", "label": "移动端字号", "default": 14 },
+    { "type": "select", "id": "subtitle_weight", "label": "字重", "options": [ {"value":"300","label":"细(300)"}, {"value":"400","label":"正常(400)"}, {"value":"600","label":"半粗(600)"}, {"value":"700","label":"粗(700)"}, {"value":"900","label":"极粗(900)"} ], "default": "700" },
+
+    { "type": "header", "content": "大标题 (Title)" },
+    { "type": "textarea", "id": "title", "label": "大标题文本", "default": "204NM TORQUE RIDE THROUGH ANYTHING" },
+    { "type": "color", "id": "title_color", "label": "颜色", "default": "#ffffff" },
+    { "type": "select", "id": "title_font", "label": "字体", "options": [
+        {"value": "var(--font-body-family)", "label": "默认正文字体"},
+        {"value": "var(--font-heading-family)", "label": "默认标题字体"},
+        {"value": "BAYON", "label": "BAYON"},
+        {"value": "Impact", "label": "Impact"}
+      ], "default": "BAYON" },
+    { "type": "range", "id": "title_size_pc", "min": 20, "max": 80, "step": 2, "unit": "px", "label": "PC端字号", "default": 48 },
+    { "type": "range", "id": "title_size_mb", "min": 16, "max": 60, "step": 1, "unit": "px", "label": "移动端字号", "default": 32 },
+    { "type": "select", "id": "title_weight", "label": "字重", "options": [ {"value":"300","label":"细(300)"}, {"value":"400","label":"正常(400)"}, {"value":"600","label":"半粗(600)"}, {"value":"700","label":"粗(700)"}, {"value":"900","label":"极粗(900)"} ], "default": "900" },
+
+    { "type": "header", "content": "正文 (Text)" },
+    { "type": "textarea", "id": "text", "label": "正文文本", "default": "204Nm torque delivers consistent pulling power across trails, slopes, and loose terrain - keeping you moving forward." },
+    { "type": "color", "id": "text_color", "label": "颜色", "default": "#cccccc" },
+    { "type": "select", "id": "text_font", "label": "字体", "options": [
+        {"value": "var(--font-body-family)", "label": "默认正文字体"},
+        {"value": "var(--font-heading-family)", "label": "默认标题字体"},
+        {"value": "BAYON", "label": "BAYON"},
+        {"value": "Impact", "label": "Impact"}
+      ], "default": "var(--font-body-family)" },
+    { "type": "range", "id": "text_size_pc", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "PC端字号", "default": 16 },
+    { "type": "range", "id": "text_size_mb", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "移动端字号", "default": 14 },
+    { "type": "select", "id": "text_weight", "label": "字重", "options": [ {"value":"300","label":"细(300)"}, {"value":"400","label":"正常(400)"}, {"value":"600","label":"半粗(600)"}, {"value":"700","label":"粗(700)"}, {"value":"900","label":"极粗(900)"} ], "default": "400" }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text Pro"
+    }
+  ]
+}
+{% endschema %}

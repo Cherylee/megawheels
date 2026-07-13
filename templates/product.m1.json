@@ -1,0 +1,922 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "judge_me_reviews_preview_badge_i3NKqb": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_second_UXQPyz": {
+          "type": "price_second",
+          "settings": {
+            "show_currency_code": true
+          }
+        },
+        "discount_code_CNAz8H": {
+          "type": "discount_code",
+          "settings": {
+            "default_checked": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "text_4M3Ltg": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Save $55.29 At Checkout: <strong>A1CDC2026</strong></p>"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "collapsible_text_mzAGbx": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Fast, Free Shipping",
+            "content": "<p>The order will be typically shiped within<strong>1-2 business days</strong>. Delivery takes<strong>2-7 business days</strong>. Shipping times are estimates and may vary due to external factors.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_KJrzrx": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-money",
+            "icon_width": 20,
+            "title": "Secured Payments",
+            "content": "<p>We accept paypal, credit cards and payment by instalments as payment methods.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_gdwCc7": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-building",
+            "icon_width": 20,
+            "title": "One-year Warranty",
+            "content": "<p>All electric scooters, electric bikes and electric dirt bikes of <a href=\"https://megawheels.com/\" target=\"_blank\" title=\"MEGAWHEELS electric scooters\">MEGAWHEELS</a> are covered by our manufacturer's 1-year all-inclusive warranty for all manufacturing defects to the original owner.</p>",
+            "page": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "judge_me_reviews_preview_badge_i3NKqb",
+        "badges",
+        "price_second_UXQPyz",
+        "discount_code_CNAz8H",
+        "price",
+        "text_4M3Ltg",
+        "rating",
+        "payment_terms",
+        "separator",
+        "description",
+        "quantity_selector",
+        "buy_buttons",
+        "collapsible_text_mzAGbx",
+        "collapsible_text_KJrzrx",
+        "collapsible_text_gdwCc7",
+        "variant_picker"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_reviews_RayLLM": {
+      "type": "video-reviews",
+      "disabled": true,
+      "name": "视频展示轮播",
+      "settings": {
+        "title": "Hear from Our Riders",
+        "subtitle": "Watch our latest videos",
+        "section_bg": "#f0f0f0",
+        "section_padding": 20,
+        "items_per_row": 4,
+        "title_color": "#111111",
+        "title_size": 36,
+        "subtitle_color": "#6b7280",
+        "subtitle_size": 16,
+        "video_title_color": "#111111",
+        "video_title_size": 16,
+        "author_color": "#111111",
+        "author_size": 14,
+        "date_color": "#6b7280",
+        "date_size": 12,
+        "arrow_color": "#111111",
+        "arrow_bg": "#ffffff",
+        "arrow_size": 36,
+        "arrow_font_size": 18,
+        "youtube_tab_text": "YouTube",
+        "short_tab_text": "Short Video"
+      }
+    },
+    "slideshow_8jjDxA": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RFrkza": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-3840x1600-01.jpg",
+            "mobile_image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-1300x1500-01.jpg",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 10,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RFrkza"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_tdLkPV": {
+      "type": "slideshow",
+      "blocks": {
+        "image_npP3dC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-3840x1600-02.jpg",
+            "mobile_image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-1300x1500-02.jpg",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_npP3dC"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_PwdQQr": {
+      "type": "slideshow",
+      "blocks": {
+        "image_hhDzAc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-3840x1600-03.jpg",
+            "mobile_image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-1300x1500-03.jpg",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_hhDzAc"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "images_with_text_scrolling_p9rbpV": {
+      "type": "images-with-text-scrolling",
+      "blocks": {
+        "item_kqFdaa": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-motor-3840x2160-01.jpg",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "350W Powerful Motor",
+            "content": "<p>Delivers smooth, quiet power for daily commutes. Tackle urban inclines and accelerate confidently from stops.</p>"
+          }
+        },
+        "item_WDKexH": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-battery-3840x2160-01.jpg",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "10 AH Lithium Battery",
+            "content": "<p>Long-lasting 10AH cells deliver 28 miles per charge. Perfect for week-long commutes without plugging in daily.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_kqFdaa",
+        "item_WDKexH"
+      ],
+      "name": "Images and text scrolling",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "show_counter": true,
+        "desktop_image_effect": "reveal",
+        "image_position": "end",
+        "background": "#000000",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "slideshow_CtfQ6x": {
+      "type": "slideshow",
+      "blocks": {
+        "image_XEFRLT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-3840x1600-04.jpg",
+            "mobile_image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-1300x1500-04.jpg",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_XEFRLT"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "media_with_text_geLgeP": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_pLUFtT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-suspension-3840x2160-01.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Ride Comfort",
+            "title": "No More Bumpy Roads",
+            "content": "<p>Front and rear suspension absorbs shocks. Airless 8.5\" tires = zero flats, zero stress.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 24,
+            "subheading_color": "#fc0000",
+            "title_font_size": 48,
+            "title_color": "#ffffff",
+            "content_font_size": 20,
+            "content_color": "#ffffff"
+          }
+        },
+        "image_bKqHWd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-brake-3840x2160-01.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Braking Safety",
+            "title": "Stop Fast, Stop Safe.",
+            "content": "<p>Dual braking system cuts reaction time. E-Brake grabs quickly; drum brake adds backup power.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 24,
+            "subheading_color": "#fc0000",
+            "title_font_size": 48,
+            "title_color": "#ffffff",
+            "content_font_size": 20,
+            "content_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_pLUFtT",
+        "image_bKqHWd"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#000000",
+        "section_padding_top": 0,
+        "section_padding_bottom": 0,
+        "full_width": true,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "slideshow_ctUjDT": {
+      "type": "slideshow",
+      "blocks": {
+        "image_cXJ4me": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-3840x1600-05.jpg",
+            "mobile_image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-1300x1500-05.jpg",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cXJ4me"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "media_with_text_pcYBQp": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_PLAdzp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-display-3840x2160-01.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Display & Controls",
+            "title": "Every Ride, Clearly Told",
+            "content": "<p>Check speed, battery, mode at a glance. Simple controls keep your eyes on the road.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 24,
+            "subheading_color": "#fc0000",
+            "title_font_size": 48,
+            "title_color": "#ffffff",
+            "content_font_size": 20,
+            "content_color": "#ffffff"
+          }
+        },
+        "image_hxXjC6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-headlight-3840x2160-01.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Bright Lighting system",
+            "title": "See & Be Seen",
+            "content": "<p>Bright headlight lights your path. Taillight and brake light alert drivers — night or day.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 24,
+            "subheading_color": "#fc0000",
+            "title_font_size": 48,
+            "title_color": "#ffffff",
+            "content_font_size": 20,
+            "content_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_PLAdzp",
+        "image_hxXjC6"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#000000",
+        "section_padding_top": 0,
+        "section_padding_bottom": 0,
+        "full_width": true,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "image_with_text_pro_4twVnc": {
+      "type": "image-with-text-pro",
+      "disabled": true,
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "right",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-display-3840x2160-01.jpg",
+        "subtitle": "Display & Controls",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "Every Ride, Clearly Told",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 48,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "Check speed, battery, mode at a glance. Simple controls keep your eyes on the road.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 14,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_pro_DXfaEd": {
+      "type": "image-with-text-pro",
+      "disabled": true,
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "left",
+        "padding_top": 0,
+        "padding_bottom": 8,
+        "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-headlight-3840x2160-01.jpg",
+        "subtitle": "Bright Lighting system",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "See & Be Seen",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 48,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "Bright headlight lights your path. Taillight and brake light alert drivers — night or day.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 14,
+        "text_weight": "400"
+      }
+    },
+    "slideshow_Xew3Yq": {
+      "type": "slideshow",
+      "blocks": {
+        "image_bDedKq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-3840x1600-06.jpg",
+            "mobile_image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-red-1300x1500-06.jpg",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_bDedKq"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "specification_table_V9fxRr": {
+      "type": "specification-table",
+      "blocks": {
+        "row_8bCqqM": {
+          "type": "row",
+          "settings": {
+            "heading": "Model",
+            "value": "<p>M1</p>"
+          }
+        },
+        "row_HkPYwM": {
+          "type": "row",
+          "settings": {
+            "heading": "Tire size",
+            "value": "<p>8.5 inch</p>"
+          }
+        },
+        "row_CWiV4g": {
+          "type": "row",
+          "settings": {
+            "heading": "Motor",
+            "value": "<p>350W</p>"
+          }
+        },
+        "row_wfbqJA": {
+          "type": "row",
+          "settings": {
+            "heading": "Speed mode",
+            "value": "<p>3 speed modes</p>"
+          }
+        },
+        "row_LkpRh7": {
+          "type": "row",
+          "settings": {
+            "heading": "Max Speed",
+            "value": "<p>20 Mph</p>"
+          }
+        },
+        "row_a4nrn4": {
+          "type": "row",
+          "settings": {
+            "heading": "Battery",
+            "value": "<p>10Ah</p>"
+          }
+        },
+        "row_wfdC7U": {
+          "type": "row",
+          "settings": {
+            "heading": "Range",
+            "value": "<p>28 miles</p>"
+          }
+        },
+        "row_8KwQN9": {
+          "type": "row",
+          "settings": {
+            "heading": "Charger",
+            "value": "<p>42V/1.5A</p>"
+          }
+        },
+        "row_Kjkwrb": {
+          "type": "row",
+          "settings": {
+            "heading": "Suspension",
+            "value": "<p>Dual suspension</p>"
+          }
+        },
+        "row_tTD4zN": {
+          "type": "row",
+          "settings": {
+            "heading": "Brake type",
+            "value": "<p>Electric Brake +Drum Brake</p>"
+          }
+        },
+        "row_ezMycQ": {
+          "type": "row",
+          "settings": {
+            "heading": "Light",
+            "value": "<p>LED headlight, taillight and brake light</p>"
+          }
+        },
+        "row_geYNtN": {
+          "type": "row",
+          "settings": {
+            "heading": "APP function",
+            "value": "<p>Yes</p>"
+          }
+        },
+        "row_Nwxakf": {
+          "type": "row",
+          "settings": {
+            "heading": "Product weight",
+            "value": "<p>17.2 kg</p>"
+          }
+        },
+        "row_fBrJF3": {
+          "type": "row",
+          "settings": {
+            "heading": "Product size",
+            "value": "<p>41.06*18.74*48.35 inch</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_8bCqqM",
+        "row_HkPYwM",
+        "row_CWiV4g",
+        "row_wfbqJA",
+        "row_LkpRh7",
+        "row_a4nrn4",
+        "row_wfdC7U",
+        "row_8KwQN9",
+        "row_Kjkwrb",
+        "row_tTD4zN",
+        "row_ezMycQ",
+        "row_geYNtN",
+        "row_Nwxakf",
+        "row_fBrJF3"
+      ],
+      "name": "Specification table",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "M1 Electric Scooter",
+        "content": "<p>The M1 e-scooter with 8.5\" solid tires, 10Ah lithium battery, 350W motor, APP function and dual suspension design is one of the most budget friendly smart electric scooters for commuting.</p>",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "1775044976d9b0a06d": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_7WjKAa": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_7WjKAa"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 4,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_reviews_RayLLM",
+    "slideshow_8jjDxA",
+    "slideshow_tdLkPV",
+    "slideshow_PwdQQr",
+    "images_with_text_scrolling_p9rbpV",
+    "slideshow_CtfQ6x",
+    "media_with_text_geLgeP",
+    "slideshow_ctUjDT",
+    "media_with_text_pcYBQp",
+    "image_with_text_pro_4twVnc",
+    "image_with_text_pro_DXfaEd",
+    "slideshow_Xew3Yq",
+    "specification_table_V9fxRr",
+    "1775044976d9b0a06d",
+    "related-products"
+  ]
+}

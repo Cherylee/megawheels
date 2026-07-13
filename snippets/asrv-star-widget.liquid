@@ -1,0 +1,99 @@
+{% assign ratingsPlus = product.metafields['app--4551725'].ratings.value.ratings | plus:0 %}
+{% assign externalProductId = product.metafields['app--4551725'].ratings.value.external_product_id | plus: 0 %}
+{% assign productId = product.id | plus: 0 %}
+
+{% if shop.metafields['app--4551725'].store_settings.value.show_stars_under_product_name == 'true' and ratingsPlus > 0 and externalProductId == productId %}
+  {% assign ratings = product.metafields['app--4551725'].ratings.value.ratings %}
+  {% assign fulfillStar = ratings | floor %}
+  {% assign emptyStar = 5 | minus: ratings | floor %}
+  {% assign partiallyFulfillStar = ratings | minus: fulfillStar | times: 100 %}
+  {% assign starSize = size | default: 20 %}
+  {% assign fontSize = size | default: 20 %}
+  {% assign starColor = shop.metafields['app--4551725'].store_settings.value.star_color | default: '#FFB303' %}
+  {% assign starFontColor = shop.metafields['app--4551725'].store_settings.value.star_font_color | default: '#212B36' %}
+  {% assign blockAlign = blockAlign | default: 'flex-start' %}
+  {% assign min = 1 %}
+  {% assign max = 100000 %}
+  {% assign diff = max | minus: min %}
+  {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+
+  {% capture count %}
+{{ fulfillStar }},{% if partiallyFulfillStar != 0%}1{% else %}0{% endif %}},{{ emptyStar }}
+{% endcapture %}
+
+  {% capture percentage %}
+100,{{ partiallyFulfillStar }},0
+{% endcapture %}
+
+  {% assign count = count | split: ',' %}
+  {% assign percentage = percentage | split: ',' %}
+
+ <div
+    style="--rating-size:100px;display:flex;justify-content:{{blockAlign}};align-items:center; cursor: pointer;color: #000; text-decoration: none;{% if anchor == false %}pointer-events: none;{% endif %}"
+    class="asrv-star-widget"
+    onclick="document.getElementById('am-reviews-carousel-shadow-container-production')?.scrollIntoView({ behavior: 'smooth' });"
+
+  >
+    {% for c in count %}
+      {% for p in (1..c) %}
+        <div style="width: {{ starSize  }}px; height: {{ starSize }}px; display: flex;">
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 24 24"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <defs>
+             <clipPath id="clip_{{ forloop.parentloop.index0 }}_{{ forloop.index0 }}_{{ randomNumber }}">
+              <path
+               d="M12,0.145898039 L8.47328849,7.29179607 L0.587321804,8.43769411 L6.2936609,14 L4.94657697,21.854102 L12,18.145898 L19.053423,21.854102 L17.7063391,14 L23.4126782,8.43769411 L15.5267115,7.29179607 L12,0.145898039 Z"
+              />
+             </clipPath>
+            </defs>
+            <rect
+             x="0"
+             y="0"
+             width="24"
+             height="24"
+             clip-path="url(#clip_{{ forloop.parentloop.index0 }}_{{ forloop.index0 }}_{{ randomNumber }})"
+             style="fill: #DFE3E8;"
+            />
+            <rect
+             x="0"
+             y="0"
+             width="{{ percentage[forloop.parentloop.index0] }}%"
+             height="24"
+             clip-path="url(#clip_{{ forloop.parentloop.index0 }}_{{ forloop.index0 }}_{{ randomNumber }})"
+             style="fill: {{ starColor }}"
+            />
+          </svg>
+        </div>
+      {% endfor %}
+    {% endfor %}
+    <p style="font-size: {{ fontSize }}px;margin:0;color:{{ starFontColor }}">({{ product.metafields['app--4551725'].ratings.value.raters }})</p>
+  </div>
+{% endif %}
+
+{% if request.design_mode %}
+  {% assign show_stars = shop.metafields['app--4551725'].store_settings.value.show_stars_under_product_name %}
+  {% if show_stars == 'false' or show_stars == nil or show_stars == '' %}
+    <!-- This will only render in the theme editor -->
+    {{ 'Banner.css' | asset_url | stylesheet_tag }}
+    {{ 'Content.css' | asset_url | stylesheet_tag }}
+    {{ 'Link.css' | asset_url | stylesheet_tag }}
+    {% comment %} <div> Design mode</div> {% endcomment %}
+    <div class="Banner--warning">
+        <svg fill="none" height="20" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd"
+                  d="M10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 -4.82049e-07 10 0C4.486 4.82049e-07 -4.82049e-07 4.486 0 10C4.82049e-07 15.514 4.486 20 10 20ZM11 14C11 14.5523 10.5523 15 10 15C9.44771 15 9 14.5523 9 14V10C9 9.44772 9 9 10 9C10.5523 9 11 9.44772 11 10V14ZM10 5C9.44771 5 9 5.44771 9 6C9 6.55229 9.44771 7 10 7C10.5523 7 11 6.55229 11 6C11 5.44771 10.5523 5 10 5Z"
+                  fill-rule="evenodd" fill="#B98900" />
+        </svg>
+        <div class="Content">
+            You haven’t activated the star rating widget of AfterShip Reviews.
+            <a class="Link" href="https://admin.aftership.com/reviews/display-settings/star-ratings">Activate now</a>
+        </div>
+    </div>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,685 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "judge_me_reviews_preview_badge_Yq4kTr": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "aftership_product_reviews_product_page_star_widget_QYwRT7": {
+          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_star_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}",
+            "block_alignment": "flex-start",
+            "star_and_font_size": 20
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_second_8FiCaH": {
+          "type": "price_second",
+          "settings": {
+            "show_currency_code": false
+          }
+        },
+        "discount_code_LKLbd7": {
+          "type": "discount_code",
+          "settings": {
+            "default_checked": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "offer_pnECfr": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "icon_width": 20,
+            "title": "$100 Off Code",
+            "content": "<p>Save $100 at checkout with code <strong>L2DC100</strong></p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "collapsible_text_bE6PBr": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Fast, Free Shipping",
+            "content": "<p>The order will be typically shiped within<strong>1-2 business days</strong>. Delivery takes<strong>2-7 business days</strong>. Shipping times are estimates and may vary due to external factors.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_gj7mqw": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-money",
+            "icon_width": 20,
+            "title": "Secured Payments",
+            "content": "<p>We accept paypal, credit cards and payment by instalments as payment methods.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_gPAWUU": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-building",
+            "icon_width": 20,
+            "title": "One-year Warranty",
+            "content": "<p>All electric scooters, electric bikes and electric dirt bikes of <a href=\"https://megawheels.com/\" target=\"_blank\" title=\"MEGAWHEELS electric scooters\">MEGAWHEELS</a> are covered by our manufacturer's 1-year all-inclusive warranty for all manufacturing defects to the original owner.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "judge_me_reviews_preview_badge_Yq4kTr",
+        "aftership_product_reviews_product_page_star_widget_QYwRT7",
+        "badges",
+        "price_second_8FiCaH",
+        "discount_code_LKLbd7",
+        "price",
+        "offer_pnECfr",
+        "rating",
+        "payment_terms",
+        "separator",
+        "description",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "collapsible_text_bE6PBr",
+        "collapsible_text_gj7mqw",
+        "collapsible_text_gPAWUU"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_Fa7Ldh": {
+      "type": "video",
+      "blocks": {
+        "play_rrHEyW": {
+          "type": "play",
+          "settings": {}
+        },
+        "heading_j7jqYT": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_rrHEyW",
+        "heading_j7jqYT"
+      ],
+      "name": "Video",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "auto",
+        "video": "shopify://files/videos/品宣视频-电脑版-带字幕.mp4",
+        "external_video_url": "",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "slideshow_8jjDxA": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RFrkza": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-L2-electric-luggage-1900x868-02.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RFrkza"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "none",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "media_with_text_ykmLdb": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_k9p34Y": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/L2-electric-luggage-960x1248-01.jpg",
+            "media_width": 35,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 36,
+            "subheading": "",
+            "title": "Premium Craftsmanship, Lasting Appeal",
+            "content": "<p>This 20-inch suitcase meets carry-on size limits while boasting a 31L capacity, offering exceptional storage efficiency- perfect for smart travelers.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_k9p34Y"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "media_with_text_XncfTd": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_aDYwFM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-L2-electric-luggage-960x1248-02.jpg",
+            "media_width": 35,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Seamless Strength, Built to Last",
+            "content": "<p>Crafted with an integrated aluminum alloy frame, this suitcase delivers unmatched durability and supports up to 242 lbs- designed for long-lasting performance on every journey.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#f0f0f0",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_aDYwFM"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "media_with_text_Etbwfj": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_Fyb7i6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-L2-electric-luggage-960x1248-03.jpg",
+            "media_width": 35,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Swift Ride, Extended Range",
+            "content": "<p>Reach speeds up to 6.2 mph and travel as far as 6.2 miles on a single charge, engineered for efficient, reliable mobility wherever your journey takes you.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#f0f0f0",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_Fyb7i6"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "full_width": false,
+        "alternate_media_position": true,
+        "spacing": "none"
+      }
+    },
+    "media_with_text_FMztdz": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_8KDXf4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-L2-electric-luggage-960x1248-04.jpg",
+            "media_width": 35,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Dual-Purpose Power Solution",
+            "content": "<p>Featuring a detachable power bank that fuels both the suitcase and your mobile devices, this design ensures seamless energy for your journey anytime, anywhere.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#f0f0f0",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_8KDXf4"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "multiple_images_with_text_VQqUrt": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_nHCwjA": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-L2-electric-luggage-1000x1000-01.jpg",
+            "image_rotation_degrees": 0,
+            "subheading": "",
+            "title": "Premium Craftsmanship, Lasting Appeal",
+            "content": "<p>Meticulously crafted with high-quality materials, this suitcase exudes sophistication and durability, delivering a luxurious feel that elevates your travel style.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_rYL9T3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-L2-electric-luggage-1000x1000-02.jpg",
+            "image_rotation_degrees": -2,
+            "subheading": "",
+            "title": "Stylish Illumination, App-Controlled",
+            "content": "<p>Featuring chic lighting on both sides, customizable via app, this suitcase lets you switch modes effortlessly - adding a bold, modern flair to your travels.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_ky83VF": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-L2-electric-luggage-1000x1000-03.jpg",
+            "image_rotation_degrees": 1.5,
+            "subheading": "",
+            "title": "Smart Handle, Space-Saving Design",
+            "content": "<p>Equipped with a foldable, intuitive handle for precise control, this suitcase maximizes space efficiency, blending functionality with a sleek, compact form.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_nHCwjA",
+        "item_rYL9T3",
+        "item_ky83VF"
+      ],
+      "name": "Multiple images with text",
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "specification_table_V9fxRr": {
+      "type": "specification-table",
+      "blocks": {
+        "row_HkPYwM": {
+          "type": "row",
+          "settings": {
+            "heading": "Tire",
+            "value": "<p>4\" solid tires</p>"
+          }
+        },
+        "row_CWiV4g": {
+          "type": "row",
+          "settings": {
+            "heading": "Motor",
+            "value": "<p>200W</p>"
+          }
+        },
+        "row_tTD4zN": {
+          "type": "row",
+          "settings": {
+            "heading": "Max loading",
+            "value": "<p>242lbs</p>"
+          }
+        },
+        "row_LkpRh7": {
+          "type": "row",
+          "settings": {
+            "heading": "Max speed",
+            "value": "<p>6.2mph</p>"
+          }
+        },
+        "row_a4nrn4": {
+          "type": "row",
+          "settings": {
+            "heading": "Battery",
+            "value": "<p>37V, 2.5Ah</p>"
+          }
+        },
+        "row_Kjkwrb": {
+          "type": "row",
+          "settings": {
+            "heading": "Mileage",
+            "value": "<p>6.2miles</p>"
+          }
+        },
+        "row_UpWQTN": {
+          "type": "row",
+          "settings": {
+            "heading": "Charging time",
+            "value": "<p>3-4 hours</p>"
+          }
+        },
+        "row_geYNtN": {
+          "type": "row",
+          "settings": {
+            "heading": "APP function",
+            "value": "<p>Yes</p>"
+          }
+        },
+        "row_Nwxakf": {
+          "type": "row",
+          "settings": {
+            "heading": "Product weight",
+            "value": "<p>17.3lbs</p>"
+          }
+        },
+        "row_y39CNp": {
+          "type": "row",
+          "settings": {
+            "heading": "Volume",
+            "value": "<p>31 L</p>"
+          }
+        },
+        "row_Jm8LUP": {
+          "type": "row",
+          "settings": {
+            "heading": "Size",
+            "value": "<p>14.2*9.9*21.7 inch</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_HkPYwM",
+        "row_CWiV4g",
+        "row_tTD4zN",
+        "row_LkpRh7",
+        "row_a4nrn4",
+        "row_Kjkwrb",
+        "row_UpWQTN",
+        "row_geYNtN",
+        "row_Nwxakf",
+        "row_y39CNp",
+        "row_Jm8LUP"
+      ],
+      "name": "Specification table",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "L2",
+        "content": "<p>AOTOS L2 smart electric luggage, which is not only a normal suitcase, it is also ridable. You can sit on it, which can reach speeds up to 6.2 mph and travel as far as 6.2 miles on a single charge. </p>",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "177504552125647cf4": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_8wYPmG": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
+        "aftership_product_reviews_product_page_main_widget_ThKa4E": {
+          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_main_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_8wYPmG",
+        "aftership_product_reviews_product_page_main_widget_ThKa4E"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 4,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_Fa7Ldh",
+    "slideshow_8jjDxA",
+    "media_with_text_ykmLdb",
+    "media_with_text_XncfTd",
+    "media_with_text_Etbwfj",
+    "media_with_text_FMztdz",
+    "multiple_images_with_text_VQqUrt",
+    "specification_table_V9fxRr",
+    "177504552125647cf4",
+    "related-products"
+  ]
+}

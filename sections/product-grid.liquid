@@ -1,0 +1,752 @@
+{% comment %}
+产品展示网格 Section
+修复header缺少content报错；价格居中；卡片文字独立字体/字号/颜色配置
+{% endcomment %}
+
+<style>
+  .iscooter-grid-section {
+    background: {{ section.settings.bg_color }};
+    padding: {{ section.settings.section_padding_top }}px 0 {{ section.settings.section_padding_bottom }}px;
+  }
+
+  .iscooter-grid-container {
+    max-width: {{ section.settings.grid_max_width }}px;
+    margin: 0 auto;
+    padding: 0 {{ section.settings.container_padding }}px;
+  }
+
+  .iscooter-grid-header {
+    text-align: {{ section.settings.title_align }};
+    margin-bottom: {{ section.settings.header_spacing }}px;
+  }
+
+  .iscooter-grid-title {
+    margin: 0;
+    font-size: {{ section.settings.title_font_size }}px;
+    color: {{ section.settings.title_color }};
+    line-height: 1.2;
+    font-family: {{ section.settings.title_font_family }};
+  }
+
+  .iscooter-grid-subtitle {
+    margin: 8px 0 0;
+    font-size: {{ section.settings.subtitle_font_size }}px;
+    color: {{ section.settings.subtitle_color }};
+    opacity: 0.9;
+    font-family: {{ section.settings.subtitle_font_family }};
+  }
+
+  .iscooter-grid-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: {{ section.settings.grid_gap }}px;
+    align-items: stretch;
+  }
+
+  .iscooter-grid-item {
+    background: #fff;
+    border-radius: {{ section.settings.card_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+  }
+
+  .iscooter-grid-item:hover {
+    transform: translateY(-4px);
+  }
+
+  /* ========== Banner 区域 ========== */
+  .iscooter-banner-item {
+    grid-column: span 2;
+    position: relative;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .iscooter-banner-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    z-index: 1;
+  }
+
+  .iscooter-banner-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .iscooter-banner-sale {
+    font-size: 20px;
+    font-weight: bold;
+    color: {{ section.settings.sale_text_color }};
+    margin-bottom: 12px;
+  }
+
+  .iscooter-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    background: {{ section.settings.btn_bg_color }};
+    color: {{ section.settings.btn_text_color }};
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+  }
+
+  .iscooter-btn:hover {
+    background: {{ section.settings.btn_hover_color }};
+  }
+
+  /* ========== 产品卡片基础 ========== */
+  .iscooter-product-card-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .iscooter-product-item {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-between;
+  }
+
+  .iscooter-product-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 产品标题 独立样式配置 */
+  .iscooter-product-title {
+    font-size: {{ section.settings.prod_title_size }}px;
+    font-weight: 600;
+    color: {{ section.settings.prod_title_color }};
+    font-family: {{ section.settings.prod_title_font }};
+    margin: 0;
+    text-align: center;
+  }
+
+  /* 产品图片 放大纯白背景 */
+  .iscooter-product-img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 6px;
+    margin: 10px 0 12px;
+    display: block;
+  }
+
+  /* 产品参数 独立样式配置 */
+  .iscooter-product-specs {
+    font-size: {{ section.settings.prod_spec_size }}px;
+    color: {{ section.settings.prod_spec_color }};
+    font-family: {{ section.settings.prod_spec_font }};
+    line-height: 1.4;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* 价格区域 水平居中 */
+  .iscooter-product-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* 售价 独立样式配置 */
+  .iscooter-price-sale {
+    font-size: {{ section.settings.prod_price_size }}px;
+    font-weight: bold;
+    color: {{ section.settings.prod_price_color }};
+    font-family: {{ section.settings.prod_price_font }};
+  }
+
+  /* Save 节省额徽章（仅当产品两个折扣元字段都有值时展示） */
+  .iscooter-save-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    font-size: {{ section.settings.prod_tag_size }}px;
+    color: {{ section.settings.prod_tag_color }};
+    font-family: {{ section.settings.prod_tag_font }};
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    background: rgb(var(--button-background-secondary));
+    border-radius: 60px;
+  }
+
+  /* ========== 移动端适配 ========== */
+  @media (max-width: 768px) {
+    .iscooter-grid-row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: {{ section.settings.grid_gap_mobile }}px;
+    }
+    .iscooter-banner-item {
+      grid-column: span 2;
+      min-height: 300px;
+    }
+    .iscooter-grid-title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+    .iscooter-banner-sale {
+      font-size: 16px;
+    }
+    .iscooter-product-item {
+      height: auto;
+      min-height: 320px;
+    }
+    .iscooter-product-img {
+      height: 180px;
+    }
+    .iscooter-product-price {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+    }
+  }
+</style>
+
+<section class="iscooter-grid-section">
+  <div class="iscooter-grid-container">
+    {% if section.settings.section_title != blank %}
+    <div class="iscooter-grid-header">
+      <h2 class="iscooter-grid-title">{{ section.settings.section_title }}</h2>
+      {% if section.settings.section_subtitle != "Add sub title" and section.settings.section_subtitle != blank %}
+      <p class="iscooter-grid-subtitle">{{ section.settings.section_subtitle }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="iscooter-grid-row">
+      {% if section.settings.banner_enable %}
+      <div class="iscooter-grid-item iscooter-banner-item">
+        {% if section.settings.banner_image %}
+          {% assign banner_img_url = section.settings.banner_image | image_url: width: 1920 %}
+          <img src="{{ banner_img_url }}" class="iscooter-banner-bg" alt="Banner background">
+        {% endif %}
+
+        <div class="iscooter-banner-content">
+          {% if section.settings.banner_sale_text != blank %}
+          <div class="iscooter-banner-sale">{{ section.settings.banner_sale_text }}</div>
+          {% endif %}
+          {% if section.settings.banner_btn_text != blank %}
+          <a href="{{ section.settings.banner_btn_link }}" class="iscooter-btn">
+            {{ section.settings.banner_btn_text }}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% for block in section.blocks %}
+        {% if block.type == 'product_item' %}
+        {%- liquid
+          assign card_product = block.settings.product
+          assign card_title = block.settings.product_title | default: card_product.title
+          assign card_url = card_product.url | default: '/'
+
+          # 元字段折扣：仅当 custom.discount_code 与 custom.discount_money_count 同时有值时，
+          # 价格区展示「折后价 + Save 节省额徽章」。discount_money_count 为 money 类型，其 .value 即为分，可直接 minus / money。
+          assign card_discount_code = card_product.metafields.custom.discount_code.value
+          assign card_discount_amount = card_product.metafields.custom.discount_money_count.value
+          assign card_has_discount = false
+          if card_discount_code != blank and card_discount_amount != blank and card_discount_amount > 0
+            assign card_has_discount = true
+            assign card_discounted_price = card_product.price | minus: card_discount_amount
+          endif
+        -%}
+        <div class="iscooter-grid-item iscooter-product-item">
+          <a href="{{ card_url }}" class="iscooter-product-card-link">
+            <div class="iscooter-product-content">
+              <h3 class="iscooter-product-title">{{ card_title }}</h3>
+
+              {%- if block.settings.product_image -%}
+                <img src="{{ block.settings.product_image | image_url: width: 800 }}" class="iscooter-product-img" alt="{{ card_title | default: 'Product' | escape }}">
+              {%- elsif card_product.featured_image -%}
+                <img src="{{ card_product.featured_image | image_url: width: 800 }}" class="iscooter-product-img" alt="{{ card_product.featured_image.alt | default: card_title | escape }}">
+              {%- endif -%}
+
+              {% if block.settings.product_specs != blank %}
+              <div class="iscooter-product-specs">{{ block.settings.product_specs }}</div>
+              {% endif %}
+            </div>
+
+            <div class="iscooter-product-price">
+              {%- if card_has_discount -%}
+                <span class="iscooter-price-sale">
+                  {%- if settings.currency_code_enabled -%}{{ card_discounted_price | money_with_currency }}{%- else -%}{{ card_discounted_price | money }}{%- endif -%}
+                </span>
+                <span class="iscooter-save-badge">Save&nbsp;{{ card_discount_amount | money }}</span>
+              {%- else -%}
+                <span class="iscooter-price-sale">
+                  {%- if settings.currency_code_enabled -%}{{ card_product.price | money_with_currency }}{%- else -%}{{ card_product.price | money }}{%- endif -%}
+                </span>
+              {%- endif -%}
+            </div>
+          </a>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "产品展示网格",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "模块背景色",
+      "default": "#661010"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "模块上内边距",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "模块下内边距",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "grid_max_width",
+      "label": "网格最大宽度",
+      "min": 900,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "container_padding",
+      "label": "容器左右内边距",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "主标题",
+      "default": "Discover the Latest from iScooter"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "副标题",
+      "default": "Add sub title"
+    },
+
+    {
+      "type": "select",
+      "id": "title_font_family",
+      "label": "顶部大标题 字体",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": "Impact 主题默认字体" },
+        { "value": "Impact", "label": "Impact" },
+        { "value": "Bayon", "label": "Bayon" },
+        { "value": "Arial, Helvetica, sans-serif", "label": "Arial / Helvetica" },
+        { "value": "Georgia, serif", "label": "Georgia" },
+        { "value": "\"Times New Roman\", serif", "label": "Times New Roman" },
+        { "value": "Verdana, sans-serif", "label": "Verdana" },
+        { "value": "\"Open Sans\", sans-serif", "label": "Open Sans" },
+        { "value": "Roboto, sans-serif", "label": "Roboto" },
+        { "value": "Montserrat, sans-serif", "label": "Montserrat" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "subtitle_font_family",
+      "label": "顶部副标题 字体",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": "Impact 主题默认字体" },
+        { "value": "Impact", "label": "Impact" },
+        { "value": "Bayon", "label": "Bayon" },
+        { "value": "Arial, Helvetica, sans-serif", "label": "Arial / Helvetica" },
+        { "value": "Georgia, serif", "label": "Georgia" },
+        { "value": "\"Times New Roman\", serif", "label": "Times New Roman" },
+        { "value": "Verdana, sans-serif", "label": "Verdana" },
+        { "value": "\"Open Sans\", sans-serif", "label": "Open Sans" },
+        { "value": "Roboto, sans-serif", "label": "Roboto" },
+        { "value": "Montserrat, sans-serif", "label": "Montserrat" }
+      ]
+    },
+
+    {
+      "type": "select",
+      "id": "title_align",
+      "label": "顶部标题对齐方式",
+      "options": [
+        { "value": "left", "label": "左对齐" },
+        { "value": "center", "label": "居中" },
+        { "value": "right", "label": "右对齐" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "顶部标题字体大小(桌面)",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "顶部标题字体大小(移动端)",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "顶部标题颜色",
+      "default": "#222222"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "label": "顶部副标题字体大小",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "顶部副标题颜色",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "标题与网格间距",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "网格项间距(桌面)",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "label": "网格项间距(移动端)",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "卡片圆角",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "sale_text_color",
+      "label": "Banner促销文字颜色",
+      "default": "#ffcc00"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Banner按钮背景色",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Banner按钮文字颜色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_color",
+      "label": "Banner按钮悬停背景色",
+      "default": "#444444"
+    },
+    {
+      "type": "header",
+      "content": "卡片 - 产品标题设置"
+    },
+    {
+      "type": "select",
+      "id": "prod_title_font",
+      "label": "标题字体",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": "主题默认字体" },
+        { "value": "Impact", "label": "Impact" },
+        { "value": "Bayon", "label": "Bayon" },
+        { "value": "Arial, Helvetica, sans-serif", "label": "Arial / Helvetica" },
+        { "value": "Georgia, serif", "label": "Georgia" },
+        { "value": "\"Times New Roman\", serif", "label": "Times New Roman" },
+        { "value": "Verdana, sans-serif", "label": "Verdana" },
+        { "value": "\"Open Sans\", sans-serif", "label": "Open Sans" },
+        { "value": "Roboto, sans-serif", "label": "Roboto" },
+        { "value": "Montserrat, sans-serif", "label": "Montserrat" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "prod_title_size",
+      "label": "标题字号",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "prod_title_color",
+      "label": "标题文字颜色",
+      "default": "#222222"
+    },
+
+    {
+      "type": "header",
+      "content": "卡片 - 产品参数设置"
+    },
+    {
+      "type": "select",
+      "id": "prod_spec_font",
+      "label": "参数字体",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": "主题默认字体" },
+        { "value": "Impact", "label": "Impact" },
+        { "value": "Bayon", "label": "Bayon" },
+        { "value": "Arial, Helvetica, sans-serif", "label": "Arial / Helvetica" },
+        { "value": "Georgia, serif", "label": "Georgia" },
+        { "value": "\"Times New Roman\", serif", "label": "Times New Roman" },
+        { "value": "Verdana, sans-serif", "label": "Verdana" },
+        { "value": "\"Open Sans\", sans-serif", "label": "Open Sans" },
+        { "value": "Roboto, sans-serif", "label": "Roboto" },
+        { "value": "Montserrat, sans-serif", "label": "Montserrat" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "prod_spec_size",
+      "label": "参数字号",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "prod_spec_color",
+      "label": "参数文字颜色",
+      "default": "#666666"
+    },
+
+    {
+      "type": "header",
+      "content": "卡片 - 售价文字设置"
+    },
+    {
+      "type": "select",
+      "id": "prod_price_font",
+      "label": "售价字体",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": "主题默认字体" },
+        { "value": "Impact", "label": "Impact" },
+        { "value": "Bayon", "label": "Bayon" },
+        { "value": "Arial, Helvetica, sans-serif", "label": "Arial / Helvetica" },
+        { "value": "Georgia, serif", "label": "Georgia" },
+        { "value": "\"Times New Roman\", serif", "label": "Times New Roman" },
+        { "value": "Verdana, sans-serif", "label": "Verdana" },
+        { "value": "\"Open Sans\", sans-serif", "label": "Open Sans" },
+        { "value": "Roboto, sans-serif", "label": "Roboto" },
+        { "value": "Montserrat, sans-serif", "label": "Montserrat" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "prod_price_size",
+      "label": "售价字号",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "prod_price_color",
+      "label": "售价文字颜色",
+      "default": "#ff0000"
+    },
+
+    {
+      "type": "header",
+      "content": "卡片 - Save 徽章设置"
+    },
+    {
+      "type": "select",
+      "id": "prod_tag_font",
+      "label": "Save 徽章字体",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": "主题默认字体" },
+        { "value": "Impact", "label": "Impact" },
+        { "value": "Bayon", "label": "Bayon" },
+        { "value": "Arial, Helvetica, sans-serif", "label": "Arial / Helvetica" },
+        { "value": "Georgia, serif", "label": "Georgia" },
+        { "value": "\"Times New Roman\", serif", "label": "Times New Roman" },
+        { "value": "Verdana, sans-serif", "label": "Verdana" },
+        { "value": "\"Open Sans\", sans-serif", "label": "Open Sans" },
+        { "value": "Roboto, sans-serif", "label": "Roboto" },
+        { "value": "Montserrat, sans-serif", "label": "Montserrat" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "prod_tag_size",
+      "label": "Save 徽章字号",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "prod_tag_color",
+      "label": "Save 徽章文字颜色",
+      "default": "#1a1a1a"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "banner_enable",
+      "label": "启用左侧Banner",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner 背景图片"
+    },
+    {
+      "type": "text",
+      "id": "banner_sale_text",
+      "label": "Banner促销文字",
+      "default": "Up to £450 off 11th Anniversary Sale"
+    },
+    {
+      "type": "text",
+      "id": "banner_btn_text",
+      "label": "Banner按钮文字",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "banner_btn_link",
+      "label": "Banner按钮链接",
+      "default": "/"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_item",
+      "name": "产品卡片",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "选择产品",
+          "info": "价格、跳转链接及折扣元字段(custom.discount_code / custom.discount_money_count)均取自所选产品"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "产品图片（留空则使用所选产品主图）"
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "产品标题（留空则使用所选产品标题）"
+        },
+        {
+          "type": "textarea",
+          "id": "product_specs",
+          "label": "产品参数",
+          "default": "1500W | 45 Miles | 34.2 Mph"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "产品展示网格",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}

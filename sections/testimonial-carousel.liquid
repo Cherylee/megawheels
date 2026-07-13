@@ -1,0 +1,316 @@
+{% comment %}
+客户评价轮播 - Bayon标题字体+可设置标题大小+顶对齐+边框分隔+放大均等留白图片
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Customer Reviews Carousel",
+  "class": "testimonial-carousel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title",
+      "default": "Real reviews from real customers"
+    },
+    {
+      "type": "select",
+      "id": "title_align",
+      "label": "Title Alignment",
+      "options": [
+        {"value":"left","label":"Left"},
+        {"value":"center","label":"Center"},
+        {"value":"right","label":"Right"}
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Main Title Font Size (px)",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Sub Title Font Size (px)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#FF9529"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "Scroll Speed (s)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "scroll_dir",
+      "label": "Scroll Direction",
+      "options": [
+        {"value":"normal","label":"Left to Right"},
+        {"value":"reverse","label":"Right to Left"}
+      ],
+      "default": "normal"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Customer Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "review_image",
+          "label": "Review Image"
+        },
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "Review Title",
+          "default": "Great Product"
+        },
+        {
+          "type": "select",
+          "id": "review_stars",
+          "label": "Star Rating",
+          "options": [
+            { "value": "1", "label": "1 Star" },
+            { "value": "2", "label": "2 Stars" },
+            { "value": "3", "label": "3 Stars" },
+            { "value": "4", "label": "4 Stars" },
+            { "value": "5", "label": "5 Stars" }
+          ],
+          "default": "5"
+        },
+        {
+          "type": "textarea",
+          "id": "review_content",
+          "label": "Review Content",
+          "default": "Very satisfied with this product. Highly recommended!"
+        },
+        {
+          "type": "text",
+          "id": "review_author",
+          "label": "Customer Name",
+          "default": "Happy Customer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews Carousel",
+      "category": "Reviews"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* 引入Bayon字体 */
+@import url('https://fonts.googleapis.com/css2?family=Bayon&display=swap');
+
+.testimonial-carousel-section * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.testimonial-carousel-section {
+  padding: 20px 0;
+  background: #ffffff;
+  overflow: hidden;
+  width: 100%;
+}
+.testimonial-container {
+  width: 100%;
+  margin: 0;
+}
+.testimonial-header {
+  text-align: {{ section.settings.title_align }};
+  margin-bottom: 25px;
+  padding: 0 20px;
+}
+.testimonial-main-title {
+  font-family: 'Bayon', sans-serif;
+  font-size: {{ section.settings.title_size }}px;
+  font-weight: normal;
+  color: #111;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.testimonial-sub-title {
+  font-size: {{ section.settings.subtitle_size }}px;
+  color: #666;
+}
+.testimonial-scroll-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+.testimonial-slide-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scroll {{ section.settings.scroll_speed }}s linear infinite {{ section.settings.scroll_dir }};
+}
+.testimonial-slide-track:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.testimonial-card {
+  width: 540px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding: 14px;
+  overflow: hidden;
+}
+.testimonial-card-image-wrap {
+  flex: 0 0 180px;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: auto 0;
+}
+.testimonial-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.testimonial-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 18px;
+  padding-top: 4px;
+}
+.testimonial-stars {
+  font-size: 16px;
+  color: {{ section.settings.star_color }};
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.testimonial-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 8px;
+}
+.testimonial-card-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 10px;
+}
+.testimonial-author {
+  font-size: 13px;
+  color: #777;
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .testimonial-carousel-section{
+    padding: 15px 0;
+  }
+  .testimonial-header{
+    padding: 0 15px;
+    margin-bottom: 20px;
+  }
+  .testimonial-card {
+    width: 300px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+  }
+  .testimonial-card-image-wrap {
+    width: 100%;
+    height: 180px;
+    margin: 0;
+  }
+  .testimonial-slide-track {
+    gap: 14px;
+  }
+  .testimonial-card-body {
+    padding-left: 0;
+    padding-top: 12px;
+  }
+}
+</style>
+
+<div class="testimonial-carousel-section">
+  <div class="testimonial-container">
+    <div class="testimonial-header">
+      <h2 class="testimonial-main-title">{{ section.settings.main_title }}</h2>
+      <p class="testimonial-sub-title">{{ section.settings.sub_title }}</p>
+    </div>
+
+    <div class="testimonial-scroll-wrapper">
+      <div class="testimonial-slide-track">
+        {% for block in section.blocks %}
+        <div class="testimonial-card">
+          <div class="testimonial-card-image-wrap">
+            {% if block.settings.review_image != blank %}
+            <img src="{{ block.settings.review_image | img_url: 'master' }}" alt="Review" class="testimonial-card-img">
+            {% endif %}
+          </div>
+          <div class="testimonial-card-body">
+            <h4 class="testimonial-card-title">{{ block.settings.review_title }}</h4>
+            <div class="testimonial-stars">
+              {% for i in (1..block.settings.review_stars) %}★{% endfor %}
+            </div>
+            <p class="testimonial-card-text">{{ block.settings.review_content }}</p>
+            <div class="testimonial-author">— {{ block.settings.review_author }}</div>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% for block in section.blocks %}
+        <div class="testimonial-card">
+          <div class="testimonial-card-image-wrap">
+            {% if block.settings.review_image != blank %}
+            <img src="{{ block.settings.review_image | img_url: 'master' }}" alt="Review" class="testimonial-card-img">
+            {% endif %}
+          </div>
+          <div class="testimonial-card-body">
+            <h4 class="testimonial-card-title">{{ block.settings.review_title }}</h4>
+            <div class="testimonial-stars">
+              {% for i in (1..block.settings.review_stars) %}★{% endfor %}
+            </div>
+            <p class="testimonial-card-text">{{ block.settings.review_content }}</p>
+            <div class="testimonial-author">— {{ block.settings.review_author }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

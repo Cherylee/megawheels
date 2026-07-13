@@ -1,0 +1,866 @@
+{%- assign youtube_videos = section.blocks | where: 'type', 'youtube_video' -%}
+{%- assign youtube_shorts = section.blocks | where: 'type', 'youtube_short' -%}
+
+<style>
+  /* 强制消除 Shopify 父级可能注入的上下外边距（这会导致上下出现白边） */
+  #shopify-section-{{ section.id }} {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* 针对 Shopify Dawn 和常见现代主题的 Section 包装器进行强制清除 */
+  .section-{{ section.id }}-padding {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .rider-testimonials-{{ section.id }} {
+    background-color: var(--bg-color);
+    padding: 64px 0;
+    color: var(--text-color);
+    /* 继承 Shopify 主题的无衬线字体，或强制使用自定字体 */
+    font-family: var(--font-body-family, inherit);
+    overflow: hidden;
+    
+    /* 强制突破 Shopify 主题默认的安全宽度限制，确保背景色能覆盖整个屏幕边缘 (100vw) */
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    box-sizing: border-box;
+  }
+  
+  .rt-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1600px;
+  }
+  
+  {% if section.settings.full_width %}
+  .rt-container {
+    padding: 0 4%;
+  }
+  {% else %}
+  .rt-container {
+    padding: 0 16px;
+  }
+  {% endif %}
+
+  .rt-header-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    gap: 32px;
+  }
+  @media (min-width: 768px) {
+    .rt-header-row {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+
+  .rt-header-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rt-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    color: var(--text-color);
+  }
+  @media (min-width: 768px) { 
+    .rt-title { font-size: 4rem; } 
+  }
+  
+  .rt-title-accent {
+    position: relative;
+    display: inline-block;
+    padding: 2px 12px;
+    white-space: nowrap;
+    transform: skewX(-12deg);
+    background-color: var(--accent-color, #fff);
+    color: var(--bg-color); /* 使得红色标签内文字与背景有对比度，若想保持黑色也可直接设为 #000 */
+  }
+  .rt-title-accent span { 
+    position: relative; 
+    z-index: 10; 
+    transform: skewX(12deg);
+    display: inline-block;
+  }
+  .rt-title-accent::after {
+    display: none;
+  }
+
+  .rt-tabs {
+    display: flex;
+    width: fit-content;
+    border: 1px solid var(--border-color);
+  }
+  .rt-tab-btn {
+    padding: 16px 32px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+  }
+  .rt-tab-btn.active {
+    background-color: var(--tab-bg);
+    color: var(--tab-text);
+  }
+  .rt-tab-btn:not(.active) {
+    background-color: transparent;
+    color: var(--text-color);
+  }
+  @media (hover: hover) {
+    .rt-tab-btn:not(.active):hover {
+      background-color: var(--border-color);
+    }
+  }
+
+  /* 轮播导航按钮 */
+  .rt-nav-arrows {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .rt-nav-arrows--mobile {
+    justify-content: center;
+    margin-top: 32px;
+  }
+  @media (min-width: 768px) {
+    .rt-nav-arrows--mobile {
+      display: none;
+    }
+  }
+  .rt-nav-arrows--desktop {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .rt-nav-arrows--desktop {
+      display: flex;
+      margin-bottom: 8px; /* 对齐 Tab 底部 */
+    }
+  }
+
+  .rt-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--arrow-bg);
+    background: transparent;
+    color: var(--arrow-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    fill: currentColor;
+  }
+  .rt-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .rt-nav-btn.rt-next-btn {
+    background-color: var(--arrow-bg);
+    color: var(--arrow-icon);
+    border-color: var(--arrow-bg);
+  }
+  
+  @media (hover: hover) {
+    .rt-nav-btn:hover {
+      background: var(--arrow-bg);
+      color: var(--arrow-icon);
+    }
+    .rt-nav-btn.rt-next-btn:hover {
+      opacity: 0.8;
+    }
+  }
+
+  /* Carousel 内容 / 动画切换 */
+  .rt-content { 
+    display: none; 
+    animation: rtFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+  }
+  .rt-content.active { 
+    display: block; 
+  }
+  
+  @keyframes rtFadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* 轮播轨道配置 */
+  .rt-carousel-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    padding-top: 10px;
+    padding-bottom: 20px; /* 防止 Hover 效果被 overflow 截断 */
+    margin: -10px -16px -20px -16px; /* 负边距抵消外围 padding，让滑动边缘消失在屏幕外 */
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  {% if section.settings.full_width %}
+    .rt-carousel-track {
+      margin-left: -4%;
+      margin-right: -4%;
+      padding-left: 4%;
+      padding-right: 4%;
+    }
+  {% endif %}
+
+  .rt-carousel-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .rt-carousel-track > * {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+
+  /* 轮播卡片宽度适配 */
+  /* 移动端适配：一个视频居中显示，留出一小点边缘 */
+  .rt-carousel-track--videos > * { flex-basis: 90%; }
+  .rt-carousel-track--shorts > * { flex-basis: 75%; }
+  
+  @media (min-width: 480px) {
+    .rt-carousel-track--shorts > * { flex-basis: 50%; }
+  }
+
+  /* 桌面端适配：常规视频排3个，Shorts排5个 */
+  @media (min-width: 768px) {
+    .rt-carousel-track > * { scroll-snap-align: start; }
+    .rt-carousel-track--videos > * { flex-basis: calc((100% - 48px) / 3); }
+    .rt-carousel-track--shorts > * { flex-basis: calc((100% - 96px) / 5); }
+  }
+
+  @media (min-width: 1200px) {
+    .rt-carousel-track--videos > * { flex-basis: calc((100% - 72px) / 4); }
+    .rt-carousel-track--shorts > * { flex-basis: calc((100% - 120px) / 6); }
+  }
+
+  /* Video Card Styling */
+  .rt-card {
+    background-color: var(--card-bg);
+    padding: 12px;
+    border: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+    height: 100%;
+    cursor: pointer;
+  }
+  @media (hover: hover) {
+    .rt-card:hover { transform: translateY(-8px); }
+  }
+  
+  .rt-card-thumb {
+    position: relative;
+    background: #000;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .rt-card-thumb--video { aspect-ratio: 16 / 9; }
+  .rt-card-thumb--short { aspect-ratio: 9 / 16; }
+
+  .rt-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: all 0.5s ease;
+  }
+  @media (hover: hover) {
+    .rt-card:hover .rt-card-img { opacity: 1; transform: scale(1.08); }
+  }
+
+  .rt-card-thumb iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 20;
+    background: #000;
+  }
+  
+  .rt-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 56px;
+    height: 56px;
+    background-color: var(--accent-color, #fff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .rt-play-btn svg { 
+    width: 24px; 
+    height: 24px; 
+    fill: var(--bg-color, #000); 
+    margin-left: 4px; 
+  }
+  @media (hover: hover) {
+    .rt-card:hover .rt-play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .rt-card-info { flex-grow: 1; display: flex; flex-direction: column; }
+  .rt-card-date {
+    color: var(--text-color);
+    opacity: 0.6;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .rt-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--text-color);
+    transition: color 0.2s ease;
+  }
+  @media (hover: hover) {
+    .rt-card:hover .rt-card-title { color: var(--accent-color, #fff); }
+  }
+
+  .rt-card-author {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--card-border);
+  }
+  .rt-author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    background-color: rgba(128, 128, 128, 0.2);
+  }
+  .rt-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .rt-author-name {
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-style: italic;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    color: var(--text-color);
+  }
+  @media (hover: hover) {
+    .rt-card:hover .rt-author-name { opacity: 1; }
+  }
+</style>
+
+{%- assign text_color_alpha_20 = section.settings.text_color | color_modify: 'alpha', 0.2 -%}
+{%- assign text_color_alpha_05 = section.settings.text_color | color_modify: 'alpha', 0.05 -%}
+
+<div class="rider-testimonials-{{ section.id }}" id="rider-testimonials-{{ section.id }}" style="--bg-color: {{ section.settings.bg_color }}; --text-color: {{ section.settings.text_color }}; --accent-color: {{ section.settings.accent_color | default: '#fff' }}; --card-bg: {{ section.settings.card_bg_color }}; --border-color: {{ text_color_alpha_20 }}; --card-border: {{ text_color_alpha_05 }}; --tab-bg: {{ section.settings.tab_bg_color | default: section.settings.text_color }}; --tab-text: {{ section.settings.tab_text_color | default: section.settings.bg_color }}; --arrow-bg: {{ section.settings.arrow_bg_color | default: section.settings.text_color }}; --arrow-icon: {{ section.settings.arrow_icon_color | default: section.settings.bg_color }};">
+  <div class="rt-container">
+    
+    <!-- 头部和Tab切换 / 桌面端按键 -->
+    <div class="rt-header-row">
+      <div class="rt-header-content">
+        <h2 class="rt-title">
+          {{ section.settings.heading }} 
+          <span class="rt-title-accent"><span>{{ section.settings.heading_accent }}</span></span>
+        </h2>
+        
+        <div class="rt-tabs">
+          <button class="rt-tab-btn active" data-target="rt-video-tab-{{ section.id }}">
+            {{ section.settings.tab_1_label }}
+          </button>
+          <button class="rt-tab-btn" data-target="rt-short-tab-{{ section.id }}">
+            {{ section.settings.tab_2_label }}
+          </button>
+        </div>
+      </div>
+
+      <!-- 桌面端轮播控制 -->
+      <div class="rt-nav-arrows rt-nav-arrows--desktop">
+        <button class="rt-nav-btn rt-prev-btn" data-dir="prev" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <button class="rt-nav-btn rt-next-btn" data-dir="next" aria-label="Next">
+          <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- YouTube Videos Tab 内容区 -->
+    <div id="rt-video-tab-{{ section.id }}" class="rt-content active">
+      <div class="rt-carousel-track rt-carousel-track--videos">
+        {%- for block in youtube_videos -%}
+          <div class="rt-card" {{ block.shopify_attributes }}>
+            <div role="button" tabindex="0" data-video-url="{{ block.settings.video_url | escape }}" class="rt-card-thumb rt-card-thumb--video">
+              {%- if block.settings.thumbnail != blank -%}
+                {{ block.settings.thumbnail | image_url: width: 800 | image_tag: loading: 'lazy', class: 'rt-card-img', alt: block.settings.title }}
+              {%- else -%}
+                <img class="rt-card-img rt-auto-thumb" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-video-url="{{ block.settings.video_url | escape }}" alt="Video Thumbnail" />
+              {%- endif -%}
+              <div class="rt-play-btn">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="rt-card-info">
+              <div class="rt-card-date">{{ block.settings.date }}</div>
+              <h3 class="rt-card-title {% if block.settings.title == blank %}rt-auto-fetch-title{% endif %}">
+                {%- if block.settings.title != blank -%}{{ block.settings.title }}{%- else -%}Loading...{%- endif -%}
+              </h3>
+            </div>
+            <div class="rt-card-author">
+              <div class="rt-author-avatar">
+                {%- if block.settings.author_avatar != blank -%}
+                  {{ block.settings.author_avatar | image_url: width: 100 | image_tag: loading: 'lazy', alt: block.settings.author_name }}
+                {%- else -%}
+                  <img class="rt-auto-fetch-avatar rt-auto-fetch-avatar--long" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Avatar" />
+                {%- endif -%}
+              </div>
+              <span class="rt-author-name {% if block.settings.author_name == blank %}rt-auto-fetch-author{% endif %}">
+                {%- if block.settings.author_name != blank -%}{{ block.settings.author_name }}{%- else -%}Loading...{%- endif -%}
+              </span>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- YouTube Shorts Tab 内容区 -->
+    <div id="rt-short-tab-{{ section.id }}" class="rt-content">
+      <div class="rt-carousel-track rt-carousel-track--shorts">
+        {%- for block in youtube_shorts -%}
+          <div class="rt-card" {{ block.shopify_attributes }}>
+            <div role="button" tabindex="0" data-video-url="{{ block.settings.video_url | escape }}" class="rt-card-thumb rt-card-thumb--short">
+              {%- if block.settings.thumbnail != blank -%}
+                {{ block.settings.thumbnail | image_url: width: 600 | image_tag: loading: 'lazy', class: 'rt-card-img', alt: block.settings.title }}
+              {%- else -%}
+                <img class="rt-card-img rt-auto-thumb" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-video-url="{{ block.settings.video_url | escape }}" alt="Video Thumbnail" />
+              {%- endif -%}
+              <div class="rt-play-btn">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="rt-card-info">
+              <div class="rt-card-date">{{ block.settings.date }}</div>
+              <h3 class="rt-card-title {% if block.settings.title == blank %}rt-auto-fetch-title{% endif %}">
+                {%- if block.settings.title != blank -%}{{ block.settings.title }}{%- else -%}Loading...{%- endif -%}
+              </h3>
+            </div>
+            <div class="rt-card-author">
+              <div class="rt-author-avatar">
+                {%- if block.settings.author_avatar != blank -%}
+                  {{ block.settings.author_avatar | image_url: width: 100 | image_tag: loading: 'lazy', alt: block.settings.author_name }}
+                {%- else -%}
+                  <img class="rt-auto-fetch-avatar rt-auto-fetch-avatar--short" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Avatar" />
+                {%- endif -%}
+              </div>
+              <span class="rt-author-name {% if block.settings.author_name == blank %}rt-auto-fetch-author{% endif %}">
+                {%- if block.settings.author_name != blank -%}{{ block.settings.author_name }}{%- else -%}Loading...{%- endif -%}
+              </span>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- 移动端轮播控制 -->
+    <div class="rt-nav-arrows rt-nav-arrows--mobile">
+      <button class="rt-nav-btn rt-prev-btn" data-dir="prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+      <button class="rt-nav-btn rt-next-btn" data-dir="next" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const section = document.getElementById('rider-testimonials-{{ section.id }}');
+    if (!section) return;
+
+    // 1. Tab 切换逻辑
+    const tabs = section.querySelectorAll('.rt-tab-btn');
+    const contents = section.querySelectorAll('.rt-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        const targetId = tab.getAttribute('data-target');
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+
+    // 2. 轮播控制逻辑
+    const navBtns = section.querySelectorAll('.rt-nav-btn');
+    navBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const dir = this.getAttribute('data-dir');
+        
+        // 找到当前处于 active 状态的轨道
+        const activeTrack = section.querySelector('.rt-content.active .rt-carousel-track');
+        if (!activeTrack) return;
+        
+        // 获取单个卡片的宽度以及 gap (24px)
+        const firstCard = activeTrack.firstElementChild;
+        if (!firstCard) return;
+
+        const scrollAmount = firstCard.offsetWidth + 24;
+        
+        activeTrack.scrollBy({
+          left: dir === 'next' ? scrollAmount : -scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // 辅助解析 YTB ID 的函数
+    function getYouTubeID(url) {
+      if (!url) return null;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : null;
+    }
+
+    // 3. 自动抓取 YouTube 封面图逻辑
+    // 如果商家没有上传自定义图片，则自动解析 URL 获取 YouTube 默认封面
+    section.querySelectorAll('.rt-auto-thumb').forEach(img => {
+      const url = img.getAttribute('data-video-url');
+      const videoId = getYouTubeID(url);
+      if (videoId) {
+        // 使用 hqdefault.jpg 而不是 maxresdefault 能够保证绝大多数视频(哪怕清晰度不高)都有图可用
+        img.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      }
+    });
+
+    // 4. 原位直接播放逻辑 (Inline Play)
+    // 多视频可同时点击、不跳转外网
+    section.querySelectorAll('.rt-card-thumb').forEach(thumb => {
+      thumb.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // 已经在播放中就拦截
+        if (this.querySelector('iframe')) return;
+
+        const url = this.getAttribute('data-video-url');
+        const videoId = getYouTubeID(url);
+        
+        if (videoId) {
+          // 清空原有的图片和播放按钮
+          this.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        } else if(url) {
+          // 如果连接非常奇葩解析失败，退化为在新标签页安全打开
+          window.open(url, '_blank');
+        }
+      });
+    });
+
+    // 5. 自动抓取 YouTube 作者信息和头像
+    const fetchCache = {};
+
+    function fetchYouTubeInfo(url) {
+      const videoId = getYouTubeID(url);
+      const normalizedUrl = videoId ? `https://www.youtube.com/watch?v=${videoId}` : url;
+      
+      if(fetchCache[normalizedUrl]) return fetchCache[normalizedUrl];
+      
+      const ytOembed = `https://www.youtube.com/oembed?url=${encodeURIComponent(normalizedUrl)}&format=json`;
+      const noEmbed = `https://noembed.com/embed?url=${encodeURIComponent(normalizedUrl)}`;
+      
+      fetchCache[normalizedUrl] = fetch(ytOembed)
+        .then(res => {
+          if (!res.ok) throw new Error('YouTube oEmbed API failed');
+          return res.json();
+        })
+        .catch(err => {
+          console.warn('Native YT fetch failed, trying noembed:', err);
+          return fetch(noEmbed)
+            .then(res => res.json())
+            .then(data => {
+              if (data && data.error) throw new Error(data.error);
+              return data;
+            });
+        })
+        .catch(err => {
+          console.error('All YT fetch methods failed:', err);
+          // 彻底降级：即使失败也返回空对象防止页面报错
+          return { error: true };
+        });
+        
+      return fetchCache[normalizedUrl];
+    }
+
+    section.querySelectorAll('.rt-card').forEach(card => {
+      // url attribute is on the thumb child, not the root card
+      const thumb = card.querySelector('.rt-card-thumb');
+      if (!thumb) return;
+      const url = thumb.getAttribute('data-video-url');
+      if (!url) return;
+
+      const titleEl = card.querySelector('.rt-auto-fetch-title');
+      const authorEl = card.querySelector('.rt-auto-fetch-author');
+      const avatarEl = card.querySelector('.rt-auto-fetch-avatar');
+
+      if (titleEl || authorEl || avatarEl) {
+        fetchYouTubeInfo(url).then(data => {
+          console.log('Fetched YT Data for:', url, data); // Debugging info
+          if (!data || data.error || !data.title) {
+            console.warn('Invalid YT data, applying fallback for:', url);
+            if(titleEl) titleEl.textContent = 'Video';
+            if(authorEl) authorEl.textContent = 'YouTube User';
+            return;
+          }
+          
+          if (titleEl) titleEl.textContent = data.title;
+          if (authorEl) authorEl.textContent = data.author_name || 'YouTube User';
+          
+          if (avatarEl) {
+            let identifier = data.author_name;
+            if (data.author_url) {
+              const parts = data.author_url.split('/');
+              identifier = parts[parts.length - 1]; // gets channel ID or handle
+            }
+            
+            // 独立的备选头像 URL，通过前端 JS 在主头像加载失败时切换，防止以前的特殊字符打断 URL 参数
+            const fallbackSrc = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(data.author_name)}&backgroundColor=333333&textColor=ffffff`;
+            
+            avatarEl.onerror = function() {
+              if (this.getAttribute('data-error-handled') !== 'true') {
+                this.setAttribute('data-error-handled', 'true');
+                this.src = fallbackSrc;
+              }
+            };
+            
+            // 尝试通过第三方开源聚合器获取油管头像，如果失败会触发上面的 onerror 继续显示纯色首字母头像
+            avatarEl.src = `https://unavatar.io/youtube/${identifier}?fallback=false`;
+          }
+        }).catch(err => console.log('YT info fetch error', err));
+      }
+    });
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Video Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Make section full width (全屏通栏)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Hear from"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading Accent (Red Tag)",
+      "default": "Our Riders"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_label",
+      "label": "Tab 1 Label",
+      "default": "YouTube video"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_label",
+      "label": "Tab 2 Label",
+      "default": "YouTube short video"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text & Border Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#151515"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg_color",
+      "label": "Tab Active Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tab_text_color",
+      "label": "Tab Active Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_icon_color",
+      "label": "Arrow Icon Color",
+      "default": "#1a1a1a"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "youtube_video",
+      "name": "YouTube Video",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Video Thumbnail (16:9)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Video Title (Clear to Auto-fetch)"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "2026/03/17"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name (Clear to Auto-fetch)"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_avatar",
+          "label": "Author Avatar (Clear to Auto-fetch)"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "YouTube Video URL"
+        }
+      ]
+    },
+    {
+      "type": "youtube_short",
+      "name": "YouTube Short",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Shorts Thumbnail (9:16)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Video Title (Clear to Auto-fetch)"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "2026/03/17"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name (Clear to Auto-fetch)"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_avatar",
+          "label": "Author Avatar (Clear to Auto-fetch)"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "YouTube Short URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Testimonials",
+      "blocks": [
+        { "type": "youtube_video" },
+        { "type": "youtube_video" },
+        { "type": "youtube_video" },
+        { "type": "youtube_video" },
+        { "type": "youtube_short" },
+        { "type": "youtube_short" },
+        { "type": "youtube_short" }
+      ]
+    }
+  ]
+}
+{% endschema %}

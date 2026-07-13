@@ -1,0 +1,843 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "judge_me_reviews_preview_badge_dTmtKi": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "aftership_product_reviews_product_page_star_widget_D6xGtE": {
+          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_star_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}",
+            "block_alignment": "flex-start",
+            "star_and_font_size": 20
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_second_di3bfn": {
+          "type": "price_second",
+          "settings": {
+            "show_currency_code": false
+          }
+        },
+        "discount_code_Wx3ECn": {
+          "type": "discount_code",
+          "settings": {
+            "default_checked": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "offer_tU3Kf6": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "icon_width": 20,
+            "title": "$53 Off Code",
+            "content": "<p>Save $53 at checkout with code <strong>A6LECODC</strong></p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "collapsible_text_RxNj6t": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Fast, Free Shipping",
+            "content": "<p>The order will be typically shiped within<strong>1-2 business days</strong>. Delivery takes<strong>2-7 business days</strong>. Shipping times are estimates and may vary due to external factors.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_xFH64X": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-money",
+            "icon_width": 20,
+            "title": "Secured Payments",
+            "content": "<p>We accept paypal, credit cards and payment by instalments as payment methods.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_CWAgEQ": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-building",
+            "icon_width": 20,
+            "title": "One-year Warranty",
+            "content": "<p>All electric scooters, electric bikes and electric dirt bikes of <a href=\"https://megawheels.com/\" target=\"_blank\" title=\"MEGAWHEELS electric scooters\">MEGAWHEELS</a> are covered by our manufacturer's 1-year all-inclusive warranty for all manufacturing defects to the original owner.</p>",
+            "page": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "judge_me_reviews_preview_badge_dTmtKi",
+        "aftership_product_reviews_product_page_star_widget_D6xGtE",
+        "badges",
+        "price_second_di3bfn",
+        "discount_code_Wx3ECn",
+        "price",
+        "offer_tU3Kf6",
+        "description",
+        "quantity_selector",
+        "buy_buttons",
+        "collapsible_text_RxNj6t",
+        "collapsible_text_xFH64X",
+        "collapsible_text_CWAgEQ",
+        "payment_terms"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_reviews_B8D46N": {
+      "type": "video-reviews",
+      "blocks": {
+        "youtube_video_xGdN8H": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "EHg-M2jvfdw",
+            "video_title": "MEGAWHEELS A6L ECO- The BEST Electric Scooter UNDER $300 !",
+            "date": "2024/9/22",
+            "author_name": "Jon Reyes",
+            "author_avatar": "shopify://shop_images/YTB-Jon_Reyes.jpg"
+          }
+        },
+        "youtube_video_KmyELP": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "ZUXrps5YkJc",
+            "video_title": "🚀 MEGAWHEELS A6L ECO Electric Scooter Review",
+            "date": "2025/2/19",
+            "author_name": "Boxium Reviews",
+            "author_avatar": "shopify://shop_images/YTB-Boxium_Reviews.jpg"
+          }
+        },
+        "youtube_video_REVndq": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "Zdwojzj1IAk",
+            "video_title": "Megawheels A6L ECO Electric Scooter - Full Review",
+            "date": "2024/7/23",
+            "author_name": "Brian Unboxed",
+            "author_avatar": "shopify://shop_images/YTB-Brian_Unboxed.jpg"
+          }
+        },
+        "youtube_video_AAUr3E": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "b1aJAaCUyxQ",
+            "video_title": "MEGAWHEELS A6L Eco E-Scooter Review: A Good Choice As Daily Commuter",
+            "date": "2024/7/29",
+            "author_name": "gizmochina",
+            "author_avatar": "shopify://shop_images/YTB-gizmochina.jpg"
+          }
+        },
+        "youtube_video_3JBYLb": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "0fV5cMDUxc0",
+            "video_title": "Megawheels A6L ECO Electric Scooter! A Complete Review!!",
+            "date": "2024/7/24",
+            "author_name": "Monkey Wrench Mike",
+            "author_avatar": "shopify://shop_images/YTB-Monkey_Wrench_Mike.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "youtube_video_xGdN8H",
+        "youtube_video_KmyELP",
+        "youtube_video_REVndq",
+        "youtube_video_AAUr3E",
+        "youtube_video_3JBYLb"
+      ],
+      "name": "视频展示轮播",
+      "settings": {
+        "title": "A6L ECO Review By Our Riders",
+        "subtitle": "Watch our latest videos",
+        "section_bg": "#ffffff",
+        "section_padding": 20,
+        "items_per_row": 4,
+        "title_color": "#111111",
+        "title_size": 36,
+        "subtitle_color": "#6b7280",
+        "subtitle_size": 16,
+        "video_title_color": "#111111",
+        "video_title_size": 16,
+        "author_color": "#111111",
+        "author_size": 14,
+        "date_color": "#6b7280",
+        "date_size": 12,
+        "arrow_color": "#111111",
+        "arrow_bg": "#ffffff",
+        "arrow_size": 36,
+        "arrow_font_size": 18,
+        "youtube_tab_text": "YouTube",
+        "short_tab_text": "Short Video"
+      }
+    },
+    "slideshow_8jjDxA": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RFrkza": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1900x868-01.jpg",
+            "content_max_width": 1000,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "Foldable 10\" city commuting electric scooter with about 19miles range and smart APP control function. Have more fun with it to go to school, work or short-distance travel.",
+            "title": "A6L ECO E-SCOOTER",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 10,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RFrkza"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_tdLkPV": {
+      "type": "slideshow",
+      "blocks": {
+        "image_npP3dC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-02.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "The upgraded 350W motor provides enhanced power, enabling the scooter to reach a speed of up to 15.5MPH, and up to 15% of climbing ability.",
+            "title": "350W Upgraded Brushless Motor",
+            "heading_tag": "h3",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_npP3dC"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_PwdQQr": {
+      "type": "slideshow",
+      "blocks": {
+        "image_hhDzAc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-03-01.jpg",
+            "content_max_width": 560,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "Featuring a 10.2Ah battery, this electric scooter supports up to 19 miles of range per fully charge, ideal for daily commuting and short trips.",
+            "title": "10.2Ah Lithium Battery",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_hhDzAc"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_CtfQ6x": {
+      "type": "slideshow",
+      "blocks": {
+        "image_XEFRLT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-04.jpg",
+            "content_max_width": 500,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "Elastic rubber inflatable tires provide excellent shock absorption, offering a smoother and more comfortable riding experience.",
+            "title": "10\" Inflatable Rubber Tires",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_XEFRLT"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_ctUjDT": {
+      "type": "slideshow",
+      "blocks": {
+        "image_cXJ4me": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-05-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "Dual brake system with drum brake and electronic brake, enabling quick and safe braking in dangerous situations.",
+            "title": "Safety Dual Brake System",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cXJ4me"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_KDVBzb": {
+      "type": "slideshow",
+      "blocks": {
+        "image_4mnqeT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-07.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "Pressing and holding the throttle in a fixed position for 5 seconds activates cruise control mode, allowing the scooter to maintain a constant speed when riding.",
+            "title": "Cruise Control Mode",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#3e3d3d",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_4mnqeT"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_7hUL4y": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RXDBFc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-06-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "Equipped with headlight and taillight that automatically activate in dark conditions, providing illumination and visibility and keep safe.",
+            "title": "Headlight and Taillight Combination",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#3e3d3d",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 5,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RXDBFc"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_VwAbDf": {
+      "type": "slideshow",
+      "blocks": {
+        "image_wVrfMG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-08-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "You can activate parking  mode on the app. If the scooter is moved after locking, it will trigger an alarm with taillight rapid flashing for anti-theft protection.",
+            "title": "Anti-theft Electronic Lock",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#3e3d3d",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 5,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_wVrfMG"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_yG63a3": {
+      "type": "slideshow",
+      "blocks": {
+        "image_xkxhJx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-09-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "The scooter supports self-diagnosis through the APP, allowing our support team to assist you more effectively.",
+            "title": "Smart Fault Diagnosis",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#3e3d3d",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 5,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_xkxhJx"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_YMiXej": {
+      "type": "slideshow",
+      "blocks": {
+        "image_cpkRkG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A6L-ECO-electric-scooter-1900-10-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#3e3d3d",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 5,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cpkRkG"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "specification_table_V9fxRr": {
+      "type": "specification-table",
+      "blocks": {
+        "row_HkPYwM": {
+          "type": "row",
+          "settings": {
+            "heading": "Tire size",
+            "value": "<p>10 inch</p>"
+          }
+        },
+        "row_CWiV4g": {
+          "type": "row",
+          "settings": {
+            "heading": "Motor",
+            "value": "<p>350W</p>"
+          }
+        },
+        "row_wfbqJA": {
+          "type": "row",
+          "settings": {
+            "heading": "Speed mode",
+            "value": "<p>3 speed modes</p>"
+          }
+        },
+        "row_LkpRh7": {
+          "type": "row",
+          "settings": {
+            "heading": "Max Speed",
+            "value": "<p>15.5 Mph</p>"
+          }
+        },
+        "row_a4nrn4": {
+          "type": "row",
+          "settings": {
+            "heading": "Battery",
+            "value": "<p>10.2Ah</p>"
+          }
+        },
+        "row_Kjkwrb": {
+          "type": "row",
+          "settings": {
+            "heading": "Light system",
+            "value": "<p>Front LED Lights, Rear Brake Lights, Side light</p>"
+          }
+        },
+        "row_tTD4zN": {
+          "type": "row",
+          "settings": {
+            "heading": "Brake type",
+            "value": "<p>Drum Brake+ Electric Brake</p>"
+          }
+        },
+        "row_geYNtN": {
+          "type": "row",
+          "settings": {
+            "heading": "APP function",
+            "value": "<p>Yes</p>"
+          }
+        },
+        "row_Nwxakf": {
+          "type": "row",
+          "settings": {
+            "heading": "Mileage",
+            "value": "<p>19 Miles</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_HkPYwM",
+        "row_CWiV4g",
+        "row_wfbqJA",
+        "row_LkpRh7",
+        "row_a4nrn4",
+        "row_Kjkwrb",
+        "row_tTD4zN",
+        "row_geYNtN",
+        "row_Nwxakf"
+      ],
+      "name": "Specification table",
+      "settings": {
+        "full_width": false,
+        "subheading": "",
+        "title": "A6L ECO",
+        "content": "<p>The A6L ECO electric socoter offers 19 miles range and 15.5mph max speed, is perfect for daily commuting in city.</p>",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "17750448253a00aa7c": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_U86pHU": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
+        "aftership_product_reviews_product_page_main_widget_dEQDnd": {
+          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_main_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_U86pHU",
+        "aftership_product_reviews_product_page_main_widget_dEQDnd"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 4,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_reviews_B8D46N",
+    "slideshow_8jjDxA",
+    "slideshow_tdLkPV",
+    "slideshow_PwdQQr",
+    "slideshow_CtfQ6x",
+    "slideshow_ctUjDT",
+    "slideshow_KDVBzb",
+    "slideshow_7hUL4y",
+    "slideshow_VwAbDf",
+    "slideshow_yG63a3",
+    "slideshow_YMiXej",
+    "specification_table_V9fxRr",
+    "17750448253a00aa7c",
+    "related-products"
+  ]
+}

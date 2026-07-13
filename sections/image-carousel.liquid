@@ -1,0 +1,145 @@
+{% comment %}
+三行全屏真无缝自动轮播 - 高级自定义版
+左对齐预留边距 | 样式可后台设置 | 紧凑布局
+{% endcomment %}
+
+<style>
+.tuttio-carousel-section {
+  width: 100vw !important;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  overflow: hidden;
+  padding: 20px 0;
+  background: {{ section.settings.bg_color }};
+}
+
+.tuttio-carousel__header {
+  text-align: {{ section.settings.title_align }};
+  margin-bottom: 15px;
+  padding: 0 40px; /* 左右统一预留边距，左对齐不贴边 */
+}
+
+.tuttio-carousel__title {
+  font-size: {{ section.settings.title_size }}px;
+  color: {{ section.settings.title_color }};
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.tuttio-carousel__subtitle {
+  font-size: {{ section.settings.sub_size }}px;
+  color: {{ section.settings.sub_color }};
+  margin: 0;
+}
+
+.tuttio-carousel-row {
+  width: 100%;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.tuttio-carousel-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.tuttio-carousel-track img {
+  height: 300px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.tuttio-carousel-row:hover .tuttio-carousel-track {
+  animation-play-state: paused;
+}
+
+@media (max-width:768px){
+  .tuttio-carousel-track img { height: 140px; }
+  .tuttio-carousel__title { font-size: {{ section.settings.title_size_mobile | default: 28 }}px !important; }
+  .tuttio-carousel__subtitle { font-size: {{ section.settings.sub_size_mobile | default: 16 }}px !important; }
+  .tuttio-carousel__header { padding: 0 20px; }
+}
+</style>
+
+<section class="tuttio-carousel-section">
+  <div class="tuttio-carousel__header">
+    {% if section.settings.title != blank %}
+      <h2 class="tuttio-carousel__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="tuttio-carousel__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  {% assign row1 = section.blocks | where: 'type', 'row1' %}
+  {% assign row2 = section.blocks | where: 'type', 'row2' %}
+  {% assign row3 = section.blocks | where: 'type', 'row3' %}
+
+  <div class="tuttio-carousel-row">
+    <div class="tuttio-carousel-track scroll-left" style="animation-duration: {{ section.settings.s1 | default: 35 }}s;">
+      {% for block in row1 %}{% if block.settings.img %}<img src="{{ block.settings.img | image_url }}" alt="">{% endif %}{% endfor %}
+      {% for block in row1 %}{% if block.settings.img %}<img src="{{ block.settings.img | image_url }}" alt="">{% endif %}{% endfor %}
+    </div>
+  </div>
+
+  <div class="tuttio-carousel-row">
+    <div class="tuttio-carousel-track scroll-right" style="animation-duration: {{ section.settings.s2 | default: 35 }}s;">
+      {% for block in row2 %}{% if block.settings.img %}<img src="{{ block.settings.img | image_url }}" alt="">{% endif %}{% endfor %}
+      {% for block in row2 %}{% if block.settings.img %}<img src="{{ block.settings.img | image_url }}" alt="">{% endif %}{% endfor %}
+    </div>
+  </div>
+
+  <div class="tuttio-carousel-row">
+    <div class="tuttio-carousel-track scroll-left" style="animation-duration: {{ section.settings.s3 | default: 35 }}s;">
+      {% for block in row3 %}{% if block.settings.img %}<img src="{{ block.settings.img | image_url }}" alt="">{% endif %}{% endfor %}
+      {% for block in row3 %}{% if block.settings.img %}<img src="{{ block.settings.img | image_url }}" alt="">{% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.scroll-left { animation-name: scrollLoopLeft; }
+.scroll-right { animation-name: scrollLoopRight; }
+
+@keyframes scrollLoopLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scrollLoopRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+</style>
+
+{% schema %}
+{
+  "name": "三行无缝全屏轮播",
+  "settings": [
+    { "type": "text", "id": "title", "label": "主标题", "default": "Ride with Tuttio" },
+    { "type": "text", "id": "subtitle", "label": "副标题", "default": "Every ride tells a different story" },
+    { "type": "color", "id": "bg_color", "label": "模块背景颜色", "default": "#ffffff" },
+    { "type": "select", "id": "title_align", "label": "标题对齐方式", "options": [{"value":"left","label":"左对齐"},{"value":"center","label":"居中"},{"value":"right","label":"右对齐"}], "default": "center" },
+    { "type": "number", "id": "title_size", "label": "主标题字体大小（电脑）", "default": 40 },
+    { "type": "color", "id": "title_color", "label": "主标题颜色", "default": "#111111" },
+    { "type": "number", "id": "sub_size", "label": "副标题字体大小（电脑）", "default": 17 },
+    { "type": "color", "id": "sub_color", "label": "副标题颜色", "default": "#555555" },
+    { "type": "number", "id": "title_size_mobile", "label": "主标题字体大小（手机）", "default": 28 },
+    { "type": "number", "id": "sub_size_mobile", "label": "副标题字体大小（手机）", "default": 16 },
+    { "type": "number", "id": "s1", "label": "第一行滚动速度", "default": 35 },
+    { "type": "number", "id": "s2", "label": "第二行滚动速度", "default": 35 },
+    { "type": "number", "id": "s3", "label": "第三行滚动速度", "default": 35 }
+  ],
+  "blocks": [
+    { "type": "row1", "name": "➕ 第一行图片", "limit": 30, "settings": [{ "type": "image_picker", "id": "img", "label": "图片" }] },
+    { "type": "row2", "name": "➕ 第二行图片", "limit": 30, "settings": [{ "type": "image_picker", "id": "img", "label": "图片" }] },
+    { "type": "row3", "name": "➕ 第三行图片", "limit": 30, "settings": [{ "type": "image_picker", "id": "img", "label": "图片" }] }
+  ],
+  "presets": [{ "name": "三行无缝全屏轮播", "category": "Image" }]
+}
+{% endschema %}

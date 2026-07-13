@@ -1,0 +1,1160 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "inventory_RTwr7f": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "low_inventory_threshold": 0
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "judge_me_reviews_preview_badge_FhkUez": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_second_EPiFGf": {
+          "type": "price_second",
+          "settings": {
+            "show_currency_code": false
+          }
+        },
+        "discount_code_mENfiR": {
+          "type": "discount_code",
+          "settings": {
+            "default_checked": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "offer_hYVLwN": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "icon_width": 20,
+            "title": "$200 Off Code",
+            "content": "<p>Save $200 at checkout with code <strong>D2PRO200</strong></p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "collapsible_text_UcVKja": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Fast, Free Shipping",
+            "content": "<p>The order will be typically shiped within<strong>1-2 business days</strong>. Delivery takes<strong>2-7 business days</strong>. Shipping times are estimates and may vary due to external factors.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_WWDjer": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-money",
+            "icon_width": 20,
+            "title": "Secured Payments",
+            "content": "<p>We accept paypal, credit cards and payment by instalments as payment methods.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_8VfGYK": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-building",
+            "icon_width": 20,
+            "title": "One-year Warranty",
+            "content": "<p>All electric scooters, electric bikes and electric dirt bikes of <a href=\"https://megawheels.com/\" target=\"_blank\" title=\"MEGAWHEELS electric scooters\">MEGAWHEELS</a> are covered by our manufacturer's 1-year all-inclusive warranty for all manufacturing defects to the original owner.</p>",
+            "page": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        }
+      },
+      "block_order": [
+        "inventory_RTwr7f",
+        "title",
+        "judge_me_reviews_preview_badge_FhkUez",
+        "badges",
+        "price_second_EPiFGf",
+        "discount_code_mENfiR",
+        "price",
+        "offer_hYVLwN",
+        "description",
+        "quantity_selector",
+        "buy_buttons",
+        "collapsible_text_UcVKja",
+        "collapsible_text_WWDjer",
+        "collapsible_text_8VfGYK",
+        "payment_terms",
+        "variant_picker"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_reviews_DjzjJN": {
+      "type": "video-reviews",
+      "blocks": {
+        "youtube_video_KdBKUd": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "El8LmBT1zNA",
+            "video_title": "NEW MegaWheels D2 Pro 6000W Electric Dirt Bike Review",
+            "date": "2026/6/7",
+            "author_name": "Pat Outdoors",
+            "author_avatar": "shopify://shop_images/YTB-Pat_Outdoors.jpg"
+          }
+        },
+        "youtube_video_FfN8Ya": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "Mu2KZaAIifw",
+            "video_title": "Is It Over For Yozma? // Megawheels D2 Pro",
+            "date": "2026/4/25",
+            "author_name": "ScootSki",
+            "author_avatar": "shopify://shop_images/YTB-ScootSki.jpg"
+          }
+        },
+        "youtube_video_hFMezL": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "q2oQW4CQXoU",
+            "video_title": "Megawheel D2 Pro: Don't Make These Mistakes During Assembly!",
+            "date": "2026/5/15",
+            "author_name": "Fire and Ice Outdoor Gear",
+            "author_avatar": "shopify://shop_images/YTB-Fire-and-Ice-Outdoor-Gear.jpg"
+          }
+        },
+        "youtube_video_fhHUHa": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "WRnXit89hdE",
+            "video_title": "Reviewing The New Megawheels D2 Pro!",
+            "date": "2026/4/22",
+            "author_name": "Jordan Reviews",
+            "author_avatar": "shopify://shop_images/YTB-Jordan-Reviews.jpg"
+          }
+        },
+        "youtube_video_yw46zF": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "SfIkgHCGl34",
+            "video_title": "MegaWheels D2 Pro 6000W Nature Traveling Machine",
+            "date": "2026/5/31",
+            "author_name": "Not Your Average Trucker",
+            "author_avatar": "shopify://shop_images/YTB-Not_Your_Average_Trucker.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "youtube_video_KdBKUd",
+        "youtube_video_FfN8Ya",
+        "youtube_video_hFMezL",
+        "youtube_video_fhHUHa",
+        "youtube_video_yw46zF"
+      ],
+      "name": "视频展示轮播",
+      "settings": {
+        "title": "D2 Pro Review By Our Riders",
+        "subtitle": "Watch our latest videos",
+        "section_bg": "#ffffff",
+        "section_padding": 20,
+        "items_per_row": 4,
+        "title_color": "#111111",
+        "title_size": 36,
+        "subtitle_color": "#6b7280",
+        "subtitle_size": 16,
+        "video_title_color": "#111111",
+        "video_title_size": 16,
+        "author_color": "#111111",
+        "author_size": 14,
+        "date_color": "#6b7280",
+        "date_size": 12,
+        "arrow_color": "#111111",
+        "arrow_bg": "#ffffff",
+        "arrow_size": 36,
+        "arrow_font_size": 18,
+        "youtube_tab_text": "YouTube",
+        "short_tab_text": "Short Video"
+      }
+    },
+    "image_with_text_overlay_fEiz4z": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_kCmewE": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_aHGzpX": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_DM7CJE": {
+          "type": "richtext",
+          "settings": {
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_kCmewE",
+        "heading_aHGzpX",
+        "richtext_DM7CJE"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-1920x800-01_51564861-fa16-4e9a-b76b-05338f1a03c6.jpg",
+        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1300x1500-01.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "image_with_text_overlay_EqcBKL": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_FfCizT": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_8JUb7m": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_NAtcA7": {
+          "type": "richtext",
+          "settings": {
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_FfCizT",
+        "heading_8JUb7m",
+        "richtext_NAtcA7"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-1920x800-02_2a3ce9a0-89c6-40a0-b688-7e4690d5a4fb.jpg",
+        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1300x1500-02.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "image_with_text_overlay_HfNLyE": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_cxFp4q": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_7bGnPL": {
+          "type": "heading",
+          "settings": {
+            "text": "6000W PEAK POWER, BUILT TO BREAK LIMITS",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_7Bpi9p": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>With a 6000W peak output system, D2 Pro deliversexplosive acceleration the moment you twist the throttle.Built for riders who demand more than just speed - butcontrol at the edge of performance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_cxFp4q",
+        "heading_7bGnPL",
+        "richtext_7Bpi9p"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-1920x800-03.jpg",
+        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1300x1500-03-1.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "image_with_text_pro_ftRKxz": {
+      "type": "image-with-text-pro",
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "left",
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1600x1600-01.jpg",
+        "subtitle": "17/14\" LARGER WHEELS",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "AGGRESSIVE GRIP",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 40,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "Equipped with 70/100-17 front and 90/100-14 rear off-road tires, D2 Pro maximizes traction across loose dirt, steep climbs, and technical terrain.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 16,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_pro_xkxKRW": {
+      "type": "image-with-text-pro",
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "right",
+        "padding_top": 0,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1600x1600-02.jpg",
+        "subtitle": "UP TO 60 MILES RANGE",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "STAY OUT LONGER",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 40,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "With up to 60 MILES of riding range from a 60V 30Ah battery, D2 Pro supports longer trail riding sessions and outdoor exploration.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 16,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_overlay_fPqQtp": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_QRxmXt": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_xEF37m": {
+          "type": "heading",
+          "settings": {
+            "text": "226 Nm TORQUE, CLIMB ANYTHING",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_3GLcg4": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>With 226 Nm of wheel torque, D2 Pro powers through steep climbs, loose dirt, and technical terrain without hesitation - delivering relentless pulling force where it matters most.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QRxmXt",
+        "heading_xEF37m",
+        "richtext_3GLcg4"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-1920x800-04.jpg",
+        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1300x1500-04-1.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "image_with_text_pro_9KRRGy": {
+      "type": "image-with-text-pro",
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "left",
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1600x1600-03.jpg",
+        "subtitle": "LCD SMART DISPLAY",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "3-SPEED ADJUSTMENT",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 40,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "The D2 Pro's professional dashboard provides complete riding data. Fault diagnosis helps quickly identify issues, ensuring races and training go smoothly.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 16,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_pro_HPNzYc": {
+      "type": "image-with-text-pro",
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "right",
+        "padding_top": 0,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1600x1600-04.jpg",
+        "subtitle": "50mph Max Speed",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "PRECISION CONTROL AT HIGH SPEED",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 40,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "Advanced riding modes and throttle tuning allow precise power delivery when riding fast, aggressive, and technical lines.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 16,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_pro_WWkLtn": {
+      "type": "image-with-text-pro",
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "left",
+        "padding_top": 0,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1600x1600-05.jpg",
+        "subtitle": "OVERSIZED BRAKING SYSTEM",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "STOP ON COMMAND",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 40,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "Equipped with oversized hydraulic disc brakes (220mm front / 203mm rear), D2 Pro delivers powerful and immediate stopping under aggressive riding.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 16,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_overlay_E7Vjd6": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_QQ3dAW": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_DdCRQt": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_AfGTRK": {
+          "type": "richtext",
+          "settings": {
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QQ3dAW",
+        "heading_DdCRQt",
+        "richtext_AfGTRK"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-1920x800-05.jpg",
+        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1300x1500-05.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "image_with_text_pro_UPtNfy": {
+      "type": "image-with-text-pro",
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "right",
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1600x1600-06.jpg",
+        "subtitle": "REINFORCED STRUCTURE",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "RIDE THROUGH ANYTHING",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 40,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "Built with a reinforced frame and IP65 protection, The D2 Pro is ready for mud, dust and extreme off-road environments.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 16,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_pro_Ta4F6X": {
+      "type": "image-with-text-pro",
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "left",
+        "padding_top": 0,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1600x1600-07.jpg",
+        "subtitle": "PERFORMANCE GEOMETRY",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "BUILT TO ATTACK TRAILS",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 40,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "Designed with an aggressive riding stance and performance-focused geometry, The D2 Pro electric dirt bike is built for speed, control, and terrain domination.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 16,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_pro_JwbjpE": {
+      "type": "image-with-text-pro",
+      "name": "Image with Text Pro",
+      "settings": {
+        "bg_color": "#000000",
+        "inner_bg_color": "#000000",
+        "container_radius": 16,
+        "image_radius": 24,
+        "layout": "right",
+        "padding_top": 0,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1600x1600-08.jpg",
+        "subtitle": "270mm CLEARANCE",
+        "subtitle_color": "#ff0000",
+        "subtitle_font": "var(--font-heading-family)",
+        "subtitle_size_pc": 24,
+        "subtitle_size_mb": 16,
+        "subtitle_weight": "700",
+        "title": "OWN THE TERRAIN",
+        "title_color": "#ffffff",
+        "title_font": "BAYON",
+        "title_size_pc": 40,
+        "title_size_mb": 24,
+        "title_weight": "400",
+        "text": "With up to 270mm ground clearance and long suspension travel, D2 Pro is built for technical riding — from rocky trails to steep climbs and unpredictable terrain.",
+        "text_color": "#cccccc",
+        "text_font": "var(--font-body-family)",
+        "text_size_pc": 20,
+        "text_size_mb": 16,
+        "text_weight": "400"
+      }
+    },
+    "image_with_text_overlay_TTVcCY": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_qyB4qa": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_WDcKEz": {
+          "type": "heading",
+          "settings": {
+            "text": "BUILT FOR STABILITY UNDER POWER",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_ttxxEd": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>At 145 LBS, the structure is engineered to handle higherpower output, delivering stability and confidencewhen riding aggressively.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_qyB4qa",
+        "heading_WDcKEz",
+        "richtext_ttxxEd"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-1920x800-06.jpg",
+        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-PRO-electric-dirt-bike-1300x1500-06-1.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "specification_table_V9fxRr": {
+      "type": "specification-table",
+      "blocks": {
+        "row_wy94ey": {
+          "type": "row",
+          "settings": {
+            "heading": "Tire",
+            "value": "<p>17\" front/ 14\" rear off-road tires<br/></p>"
+          }
+        },
+        "row_apzBKP": {
+          "type": "row",
+          "settings": {
+            "heading": "Speed mode",
+            "value": "<p>3 speed modes</p>"
+          }
+        },
+        "row_LkpRh7": {
+          "type": "row",
+          "settings": {
+            "heading": "Max Speed",
+            "value": "<p>25mph/38mph/50mph</p>"
+          }
+        },
+        "row_CWiV4g": {
+          "type": "row",
+          "settings": {
+            "heading": "Rated motor power",
+            "value": "<p>2000W</p>"
+          }
+        },
+        "row_7N4zjn": {
+          "type": "row",
+          "settings": {
+            "heading": "Peak motor",
+            "value": "<p>6000W</p>"
+          }
+        },
+        "row_a4nrn4": {
+          "type": "row",
+          "settings": {
+            "heading": "Torque",
+            "value": "<p>226Nm</p>"
+          }
+        },
+        "row_Bt9PVJ": {
+          "type": "row",
+          "settings": {
+            "heading": "Gradeability",
+            "value": "<p>35°</p>"
+          }
+        },
+        "row_PXVdbr": {
+          "type": "row",
+          "settings": {
+            "heading": "Maximum Load",
+            "value": "<p>265 lbs</p>"
+          }
+        },
+        "row_HkPYwM": {
+          "type": "row",
+          "settings": {
+            "heading": "Battery",
+            "value": "<p>60V 30AH</p>"
+          }
+        },
+        "row_Kjkwrb": {
+          "type": "row",
+          "settings": {
+            "heading": "Mileage",
+            "value": "<p>60 Miles</p>"
+          }
+        },
+        "row_BnkzcA": {
+          "type": "row",
+          "settings": {
+            "heading": "Suspension",
+            "value": "<p>Hydraulic front fork and nitrogen rear shock absorber</p>"
+          }
+        },
+        "row_Dm4Hyn": {
+          "type": "row",
+          "settings": {
+            "heading": "Brake system",
+            "value": "<p>Dual hydraulic disc brake</p>"
+          }
+        },
+        "row_63qnTW": {
+          "type": "row",
+          "settings": {
+            "heading": "Charger",
+            "value": "<p>67.2V 5A</p>"
+          }
+        },
+        "row_brDJeg": {
+          "type": "row",
+          "settings": {
+            "heading": "Charging time",
+            "value": "<p>7 hours</p>"
+          }
+        },
+        "row_AQ7d6W": {
+          "type": "row",
+          "settings": {
+            "heading": "Waterproof standard",
+            "value": "<p>IP65</p>"
+          }
+        },
+        "row_9UFP73": {
+          "type": "row",
+          "settings": {
+            "heading": "Frame material",
+            "value": "<p>Carbon steel</p>"
+          }
+        },
+        "row_bFqjpf": {
+          "type": "row",
+          "settings": {
+            "heading": "Product weight",
+            "value": "<p>145 lbs</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_wy94ey",
+        "row_apzBKP",
+        "row_LkpRh7",
+        "row_CWiV4g",
+        "row_7N4zjn",
+        "row_a4nrn4",
+        "row_Bt9PVJ",
+        "row_PXVdbr",
+        "row_HkPYwM",
+        "row_Kjkwrb",
+        "row_BnkzcA",
+        "row_Dm4Hyn",
+        "row_63qnTW",
+        "row_brDJeg",
+        "row_AQ7d6W",
+        "row_9UFP73",
+        "row_bFqjpf"
+      ],
+      "name": "Specification table",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "D2 PRO Dirt Bike",
+        "content": "<p>Go Harder. Ride Smarter. Top-Tier Off-Road Experience for Enthusiasts.</p><p>Meet D2 Pro - top-tier off-road experience for enthusiasts and performance seekers aged 12-16. And 6000W peak power motor with 50mph top speed delivers real professional off-road capability.</p>",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "background": "#000000",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "#1a1a1a",
+        "chart_text_color": "#ffffff",
+        "chart_true_false_color": ""
+      }
+    },
+    "faq_qz8G34": {
+      "type": "faq",
+      "blocks": {
+        "item_HnNczG": {
+          "type": "item",
+          "settings": {
+            "title": "What electric dirt bikes does Megawheels Dirt Bike offer?",
+            "content": "<p>Megawheels D2 Series offers three electric dirt bike models: the D2 Lite,D2 and D2 Pro.<br/>The D2 Lite is an ideal entry-level electric dirt bike, featuring 14\"/12\" wheels, a 3000 W peak mid-drive motor, and a 48V/23.4 Ah battery, delivering a top speed of 38 MPH.<br/>The D2 is the high-performance upgrade, equipped with a 3550W peak mid-drive motor, 48V/26Ah battery, 14\"/12\"wheels, and a top speed of 40 MPH.<br/>The D2 Pro is the flagship model, equipped with a 6000W peak mid-drive motor, 60V/30Ah battery, 17\"/14\" wheels, and a top speed of 50 MPH.<br/>All models come with full hydraulic brakes, dual shock absorption, and three speed modes.<br/><br/></p>"
+          }
+        },
+        "item_6qeMDm": {
+          "type": "item",
+          "settings": {
+            "title": "What is the top speed and range of the Megawheels D2 Pro electric dirt bike?",
+            "content": "<p>At its top speed of 50mph, the estimated riding time is about 44 minutes, with a range of approximately 18 miles.</p>"
+          }
+        },
+        "item_AFNcar": {
+          "type": "item",
+          "settings": {
+            "title": "Why does Megawheels D2 Series Dirt Bike use a mid-drive motor instead of a hub motor?",
+            "content": "<p>A mid-drive motor offers several key advantages over a hub motor:<br/>- Better handling with a more balanced center of gravity.<br/>- Stronger low-speed torque for climbing and acceleration.<br/>- Better heat dissipation for consistent performance.<br/>- Easier to push when the battery is out.<br/>- Lighter wheels for improved agility and easier maintenance.</p>"
+          }
+        },
+        "item_n6a4Kq": {
+          "type": "item",
+          "settings": {
+            "title": "Which Megawheels  electric dirt bike is right for me— D2 or D2 Pro?",
+            "content": "<p>The D2 is ideal for beginners, while the D2 Pro is recommended for riders with prior electric dirt bike experience.</p>"
+          }
+        },
+        "item_CgUFEx": {
+          "type": "item",
+          "settings": {
+            "title": "How long does it take to charge a Megawheels D2 Pro electric dirt bike?",
+            "content": "<p>7 hours</p>"
+          }
+        },
+        "item_NqdXWk": {
+          "type": "item",
+          "settings": {
+            "title": "Is the Megawheels electric dirt bike street legal?",
+            "content": "<p>Subject to local regulations. Riders who meet the applicable legal requirements and documentation can ride on public roads where permitted.</p>"
+          }
+        },
+        "item_gwDj6F": {
+          "type": "item",
+          "settings": {
+            "title": "What age is the Megawheeels D2 pro electric dirt bike suitable for?",
+            "content": "<p>Suitable for riders aged 13+.</p>"
+          }
+        },
+        "item_JBBKAw": {
+          "type": "item",
+          "settings": {
+            "title": "What warranty does Megawheels offer on its electric dirt bikes?",
+            "content": "<p>Megawheels D2 Series electric dirt bikes supports a 30‑day return and refund policy. For returns due to non‑quality issues, customers are required to pay the round‑trip shipping costs. In addition, it comes with a 1‑year warranty.</p>"
+          }
+        },
+        "item_BEKBJ7": {
+          "type": "item",
+          "settings": {
+            "title": "Does Megawheels offer free shipping on electric dirt bikes?",
+            "content": "<p>Yes, free shipping is offered on all Megawheels electric dirt bikes.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_HnNczG",
+        "item_6qeMDm",
+        "item_AFNcar",
+        "item_n6a4Kq",
+        "item_CgUFEx",
+        "item_NqdXWk",
+        "item_gwDj6F",
+        "item_JBBKAw",
+        "item_BEKBJ7"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "<p>Read the following FAQs to learn more about Megawheels dirt bike.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "media_with_text_3Pm6cW": {
+      "type": "media-with-text",
+      "blocks": {
+        "video_zjUEiE": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://www.youtube.com/watch?v=igwOPiLGlEY",
+            "autoplay": false,
+            "media_width": 55,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Assembly instructions",
+            "title": "How to Assemble",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#ff0000",
+            "title_font_size": 40,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "video_zjUEiE"
+      ],
+      "disabled": true,
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#e6e6e6",
+        "section_padding_top": 0,
+        "section_padding_bottom": 0,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "1775186647ebcebdfd": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_UpxQTq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_UpxQTq"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 4,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_reviews_DjzjJN",
+    "image_with_text_overlay_fEiz4z",
+    "image_with_text_overlay_EqcBKL",
+    "image_with_text_overlay_HfNLyE",
+    "image_with_text_pro_ftRKxz",
+    "image_with_text_pro_xkxKRW",
+    "image_with_text_overlay_fPqQtp",
+    "image_with_text_pro_9KRRGy",
+    "image_with_text_pro_HPNzYc",
+    "image_with_text_pro_WWkLtn",
+    "image_with_text_overlay_E7Vjd6",
+    "image_with_text_pro_UPtNfy",
+    "image_with_text_pro_Ta4F6X",
+    "image_with_text_pro_JwbjpE",
+    "image_with_text_overlay_TTVcCY",
+    "specification_table_V9fxRr",
+    "faq_qz8G34",
+    "media_with_text_3Pm6cW",
+    "1775186647ebcebdfd",
+    "related-products"
+  ]
+}

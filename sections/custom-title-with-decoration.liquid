@@ -1,0 +1,138 @@
+{% comment %}
+  Section: Custom Title with Decoration
+  Purpose: Display a title with a custom underline/decoration image
+{% endcomment %}
+
+<style>
+  .title-decoration-wrapper {
+    text-align: {{ section.settings.text_align }};
+    margin: {{ section.settings.margin_top }}px 0 {{ section.settings.margin_bottom }}px;
+  }
+
+  .custom-title {
+    font-family: {{ section.settings.font_family }};
+    font-size: {{ section.settings.font_size }}px;
+    font-weight: {{ section.settings.font_weight }};
+    color: {{ section.settings.text_color }};
+    line-height: 1.2;
+    display: inline-block; /* 让下划线只跟随文字宽度 */
+    position: relative;
+  }
+
+  .title-decoration-underline {
+    position: absolute;
+    bottom: -{{ section.settings.decoration_offset }}px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 767px) {
+    .custom-title {
+      font-size: {{ section.settings.font_size | times: 0.75 }}px;
+    }
+  }
+</style>
+
+<div class="title-decoration-wrapper">
+  <h2 class="custom-title">
+    {{ section.settings.title_text | replace: section.settings.highlight_word, '<span class="highlight-word">' | replace: '</span>', '</span><img src="' | append: section.settings.decoration_image | append: '" alt="" class="title-decoration-underline">' }}
+  </h2>
+</div>
+
+{% schema %}
+{
+  "name": "带装饰线的标题",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "标题文字",
+      "default": "Discover the world of YOZMA"
+    },
+    {
+      "type": "text",
+      "id": "highlight_word",
+      "label": "需要加下划线的单词",
+      "default": "YOZMA"
+    },
+    {
+      "type": "image_picker",
+      "id": "decoration_image",
+      "label": "装饰线图片（如红色笔触）"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "文字对齐方式",
+      "options": [
+        {"value": "left", "label": "左对齐"},
+        {"value": "center", "label": "居中"},
+        {"value": "right", "label": "右对齐"}
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "文字颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "字重",
+      "options": [
+        {"value": "400", "label": "常规"},
+        {"value": "700", "label": "加粗"}
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "字体大小 (px)",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "decoration_offset",
+      "label": "装饰线偏移量 (px)",
+      "info": "控制装饰线距离文字底部的距离",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "模块上边距 (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "模块下边距 (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "带装饰线的标题",
+      "category": "自定义模块"
+    }
+  ]
+}
+{% endschema %}

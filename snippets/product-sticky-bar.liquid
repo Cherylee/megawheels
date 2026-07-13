@@ -1,0 +1,256 @@
+{%- comment -%}
+  ----------------------------------------------------------------------------------------------------------------------
+  PRODUCT STICKY BAR (加购-底部固定栏)
+  ----------------------------------------------------------------------------------------------------------------------
+
+  Renders a fixed bar at the bottom of the product page with the price, an "Add to cart" button (which reuses the main
+  product form, like snippets/buy-buttons.liquid) and a custom "Buy now" button that builds a cart permalink to send the
+  customer straight to checkout with the currently selected variant and quantity.
+
+  Behaviour:
+  * On desktop the bar is always pinned to the bottom and never hides.
+  * On mobile (H5) it hides while the in-page buy buttons block is on screen, and shows again once it has scrolled past.
+
+  ********************************************
+  Supported variables
+  ********************************************
+
+  * product: the product to render
+  * product_form_id: the ID of the main product form
+{%- endcomment -%}
+
+{%- assign sticky_variant = product.selected_or_first_available_variant -%}
+{%- assign atc_label = 'product.general.add_to_cart_button' | t -%}
+
+{%- comment -%}折扣预览：当 body 上有 discount-applied 类时（由折扣码块切换）展示折后价/划线现价/节省金额{%- endcomment -%}
+{%- assign sb_discount_dollars = product.metafields.custom.discount_money_count.value -%}
+{%- assign sb_has_discount = false -%}
+{%- if sb_discount_dollars != blank and sb_discount_dollars > 0 -%}
+  {%- assign sb_has_discount = true -%}
+  {%- comment -%}金额(money)字段的 .value 在数值运算中即为分，无需乘 100{%- endcomment -%}
+  {%- assign sb_save_cents = sb_discount_dollars | times: 1 -%}
+  {%- assign sb_discounted_cents = sticky_variant.price | minus: sb_save_cents -%}
+{%- endif -%}
+
+<style>
+  .product-sticky-bar {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 30;
+    background: rgb(var(--background));
+    border-top: 1px solid rgb(var(--text-color) / 0.1);
+    box-shadow: 0 -4px 20px rgb(0 0 0 / 0.08);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .product-sticky-bar.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .product-sticky-bar__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem var(--container-gutter);
+  }
+
+  .product-sticky-bar__price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: var(--text-lg);
+    font-weight: bold;
+  }
+
+  .product-sticky-bar__current {
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.35s ease, font-size 0.35s ease;
+  }
+
+  .product-sticky-bar__current::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 56%;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s ease 0.12s;
+  }
+
+  .product-sticky-bar__discounted {
+    order: -1;
+    white-space: nowrap;
+  }
+
+  .product-sticky-bar__discounted,
+  .product-sticky-bar__saving {
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, max-width 0.35s ease, padding 0.35s ease;
+  }
+
+  .product-sticky-bar__saving {
+    order: 1;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(var(--text-color));
+    background: rgb(var(--button-background-secondary));
+    border-radius: 60px;
+  }
+
+  .discount-applied .product-sticky-bar__price--has-discount .product-sticky-bar__current {
+    font-size: var(--text-sm);
+    color: rgb(var(--text-color) / 0.5);
+  }
+
+  .discount-applied .product-sticky-bar__price--has-discount .product-sticky-bar__current::after {
+    transform: scaleX(1);
+  }
+
+  .discount-applied .product-sticky-bar__price--has-discount .product-sticky-bar__discounted {
+    opacity: 1;
+    max-width: 10rem;
+  }
+
+  .discount-applied .product-sticky-bar__price--has-discount .product-sticky-bar__saving {
+    opacity: 1;
+    max-width: 12rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .product-sticky-bar__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .product-sticky-bar__add {
+    display: block;
+  }
+
+  .product-sticky-bar__add .button,
+  .product-sticky-bar__buy-now {
+    width: 100%;
+  }
+
+  /* 两个按钮的相关颜色统一为黑色 */
+  .product-sticky-bar__add .button {
+    --button-outline-color: 0 0 0;
+    --button-text-color: 0 0 0;
+  }
+
+  .product-sticky-bar__buy-now {
+    --button-background: 0 0 0;
+    --button-text-color: 255 255 255;
+    --button-outline-color: 0 0 0;
+  }
+
+  @media screen and (min-width: 700px) {
+    .product-sticky-bar__inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      max-width: var(--container-max-width);
+      margin-inline: auto;
+    }
+
+    .product-sticky-bar__price {
+      justify-content: flex-start;
+    }
+
+    /* PC 端折扣态：折后价与划线现价在上排，Saving 金额在下方 */
+    .discount-applied .product-sticky-bar__price--has-discount {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-areas:
+        'discounted current'
+        'saving saving';
+      column-gap: 0.5rem;
+      row-gap: 0.25rem;
+      justify-content: start;
+      align-items: baseline;
+    }
+
+    .discount-applied .product-sticky-bar__price--has-discount .product-sticky-bar__discounted {
+      grid-area: discounted;
+    }
+
+    .discount-applied .product-sticky-bar__price--has-discount .product-sticky-bar__current {
+      grid-area: current;
+    }
+
+    .discount-applied .product-sticky-bar__price--has-discount .product-sticky-bar__saving {
+      grid-area: saving;
+      justify-self: start;
+    }
+
+    .product-sticky-bar__actions {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 1rem;
+    }
+
+    .product-sticky-bar__add,
+    .product-sticky-bar__buy-now {
+      width: auto;
+    }
+
+    .product-sticky-bar__add .button,
+    .product-sticky-bar__buy-now {
+      min-width: 12rem;
+    }
+  }
+</style>
+
+<product-sticky-bar form="{{ product_form_id }}" class="product-sticky-bar">
+  <product-rerender id="{{ product_form_id }}-custom-sticky-bar" observe-form="{{ product_form_id }}">
+    <div class="product-sticky-bar__inner">
+      <div class="product-sticky-bar__price{% if sb_has_discount %} product-sticky-bar__price--has-discount{% endif %}">
+        {%- if sb_has_discount -%}
+          <span class="product-sticky-bar__discounted">{{ sb_discounted_cents | money }}</span>
+        {%- endif -%}
+
+        <span class="product-sticky-bar__current">{{ sticky_variant.price | money }}</span>
+
+        {%- if sb_has_discount -%}
+          <span class="product-sticky-bar__saving">Save {{ sb_save_cents | money }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="product-sticky-bar__actions">
+        <buy-buttons
+          template="{{ product.template_suffix }}"
+          form="{{ product_form_id }}"
+          class="product-sticky-bar__add"
+        >
+          {%- render 'button',
+            type: 'submit',
+            content: atc_label,
+            form: product_form_id,
+            style: 'outline',
+            stretch: true
+          -%}
+        </buy-buttons>
+
+        <button type="button" class="button product-sticky-bar__buy-now" data-sticky-buy-now>
+          {{- 'Buy Now' -}}
+        </button>
+      </div>
+    </div>
+  </product-rerender>
+</product-sticky-bar>

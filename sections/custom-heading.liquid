@@ -1,0 +1,202 @@
+{%- style -%}
+  /* 加载自定义字体 */
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.subheading_font | font_face: font_display: 'swap' }}
+
+  .custom-title-wrapper-{{ section.id }} {
+    text-align: {{ section.settings.text_alignment }};
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    /* X轴与Y轴同时微调偏移 */
+    transform: translate({{ section.settings.offset_x }}px, {{ section.settings.offset_y }}px);
+    position: relative;
+    z-index: 10;
+  }
+
+  .custom-title-wrapper-{{ section.id }} .main-title {
+    font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: {{ section.settings.heading_font.weight }};
+    font-style: {{ section.settings.heading_font.style }};
+    color: {{ section.settings.heading_color }};
+    margin-top: 0;
+    margin-bottom: {{ section.settings.title_spacing }}px;
+    line-height: 1.2;
+  }
+
+  .custom-title-wrapper-{{ section.id }} .sub-title {
+    font-family: {{ section.settings.subheading_font.family }}, {{ section.settings.subheading_font.fallback_families }};
+    font-size: {{ section.settings.subheading_size }}px;
+    font-weight: {{ section.settings.subheading_font.weight }};
+    font-style: {{ section.settings.subheading_font.style }};
+    color: {{ section.settings.subheading_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* 移动端响应式调整 */
+  @media screen and (max-width: 768px) {
+    .custom-title-wrapper-{{ section.id }} {
+      transform: translate({{ section.settings.offset_x | divided_by: 2 }}px, {{ section.settings.offset_y | divided_by: 2 }}px);
+    }
+    .custom-title-wrapper-{{ section.id }} .main-title {
+      font-size: {{ section.settings.heading_size | times: 0.75 | round }}px;
+    }
+    .custom-title-wrapper-{{ section.id }} .sub-title {
+      font-size: {{ section.settings.subheading_size | times: 0.85 | round }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-title-wrapper-{{ section.id }}">
+  {%- if section.settings.heading_text != blank -%}
+    <h2 class="main-title">{{ section.settings.heading_text | escape }}</h2>
+  {%- endif -%}
+  
+  {%- if section.settings.subheading_text != blank -%}
+    <div class="sub-title">{{ section.settings.subheading_text | escape }}</div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "独立通用标题",
+  "settings": [
+    {
+      "type": "header",
+      "content": "排版设置"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "文字对齐基础方式",
+      "options": [
+        { "value": "left", "label": "居左" },
+        { "value": "center", "label": "居中" },
+        { "value": "right", "label": "居右" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "number",
+      "id": "offset_x",
+      "label": "水平微调距离 (单位:像素，正数向右，负数向左)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "offset_y",
+      "label": "垂直微调距离 (单位:像素，正数向下，负数向上)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "大标题设置"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "大标题文字",
+      "default": "这里是大标题"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "大标题字体",
+      "default": "work_sans_n6"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "大标题字号 (桌面端)",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "大标题颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "二级标题设置"
+    },
+    {
+      "type": "text",
+      "id": "subheading_text",
+      "label": "二级标题文字",
+      "default": "这里是二级标题或副标题说明"
+    },
+    {
+      "type": "font_picker",
+      "id": "subheading_font",
+      "label": "二级标题字体",
+      "default": "work_sans_n4"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "二级标题字号 (桌面端)",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "二级标题颜色",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "间距设置"
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "主副标题之间的间距",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "顶部外边距 (占位空间)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "底部外边距 (占位空间)",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "独立通用标题",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

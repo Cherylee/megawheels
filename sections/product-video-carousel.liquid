@@ -1,0 +1,918 @@
+{% comment %}
+  Shopify Section: High-Performance Product Video Carousel
+  Author: Shopify Architecture Master (Google AI Studio Build)
+  Version: 1.1.5 (Fixed opacity step error)
+  Description: Custom product showcase with video-on-hover capabilities and paintbrush style CTA buttons.
+  File placement: sections/product-video-carousel.liquid
+{% endcomment %}
+
+{{ 'section-product-video-carousel.css' | stylesheet_tag: preload: true }}
+
+<div class="product-video-carousel-section section-{{ section.id }}" style="--accent-color: {{ section.settings.accent_color }};">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="section-header text-center">
+        {%- if section.settings.title != blank -%}
+          <h2 class="h1 uppercase tracking-tight" style="color: {{ section.settings.text_color_title }}; font-size: {{ section.settings.font_size_title }}px; text-align: {{ section.settings.text_align_title }};">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="section-subtitle" style="color: {{ section.settings.text_color_subtitle }}; font-size: {{ section.settings.font_size_subtitle }}px; text-align: {{ section.settings.text_align_subtitle }};">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="carousel-container-outer">
+      <div class="carousel-track-wrapper" id="CarouselWrapper-{{ section.id }}">
+        <div class="carousel-track-grid grid-3-col" id="CarouselTrack-{{ section.id }}">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'product' -%}
+              <div class="carousel-item-card" data-card-link="{{ block.settings.shop_now_link }}" {{ block.shopify_attributes }}>
+                <!-- Distinctive top bar -->
+                <div class="card-edge-bar"></div>
+
+                <!-- Product Info Header -->
+                <div class="card-info-header">
+                  <h3 class="product-card-title" style="color: {{ section.settings.text_color_product_title }}; font-size: {{ section.settings.font_size_product_title }}px; text-align: {{ section.settings.text_align_product_title }};">{{ block.settings.title | escape }}</h3>
+                  {%- if block.settings.tagline != blank -%}
+                    <p class="product-card-tagline" style="color: {{ section.settings.text_color_product_subtitle }}; font-size: {{ section.settings.font_size_product_subtitle }}px; text-align: {{ section.settings.text_align_product_subtitle }};">{{ block.settings.tagline | escape }}</p>
+                  {%- endif -%}
+                </div>
+
+                <!-- Image and Video Container -->
+                <div class="media-container" data-video-url="{{ block.settings.hover_video_url }}">
+                  <div class="image-wrapper">
+                    {%- if block.settings.product_image != blank -%}
+                      {{ block.settings.product_image | image_url: width: 600 | image_tag: 
+                        loading: 'lazy', 
+                        class: 'product-media-image',
+                        alt: block.settings.title 
+                      }}
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg product-media-image' }}
+                    {%- endif -%}
+                  </div>
+
+                  <!-- Hover Video overlay -->
+                  <div class="video-wrapper-overlay">
+                    {%- if block.settings.hover_video_url != blank -%}
+                      {%- assign video_url = block.settings.hover_video_url -%}
+                      {%- if video_url contains 'youtube.com' or video_url contains 'youtu.be' -%}
+                        {%- assign yt_id = video_url | split: 'v=' | last | split: '&' | first -%}
+                        {%- if video_url contains 'youtu.be' -%}
+                          {%- assign yt_id = video_url | split: '/' | last | split: '?' | first -%}
+                        {%- endif -%}
+                        <iframe 
+                          class="product-media-video yt-iframe" 
+                          src="https://www.youtube.com/embed/{{ yt_id }}?enablejsapi=1&mute=1&controls=0&loop=1&playlist={{ yt_id }}&modestbranding=1&rel=0&showinfo=0" 
+                          frameborder="0" 
+                          allow="autoplay; encrypted-media" 
+                          style="pointer-events: none; width: 100%; height: 100%;"
+                        ></iframe>
+                      {%- else -%}
+                        <video 
+                          class="product-media-video native-video" 
+                          loop 
+                          muted 
+                          playsinline 
+                          preload="auto"
+                          crossorigin="anonymous"
+                          src="{{ video_url }}"
+                        ></video>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </div>
+                </div>
+                
+                <!-- Bottom Content Group (CTAs + Selling Points) -->
+                <div class="bottom-content-group">
+                  <!-- CTA Buttons block -->
+                  <div class="card-actions-wrapper">
+                    <!-- Shop Now Brush CTA -->
+                    <a href="{{ block.settings.shop_now_link | default: '#' }}" class="brush-btn shop-now-btn">
+                      {%- if section.settings.shop_now_bg != blank -%}
+                        <div class="brush-bg" style="background-image: url('{{ section.settings.shop_now_bg | image_url: width: 400 }}'); opacity: {{ section.settings.shop_now_opacity }};"></div>
+                      {%- else -%}
+                        <!-- Inline Default Distressed Brush SVG -->
+                        <svg class="brush-bg-svg" viewBox="0 0 200 60" preserveAspectRatio="none">
+                          <path d="M 5 28 C 15 12, 35 15, 60 8 C 85 1, 115 12, 145 5 C 175 -2, 190 10, 195 18 C 198 25, 203 38, 192 48 C 181 58, 160 52, 130 55 C 100 58, 70 54, 45 58 C 20 62, 5 45, 2 38 C -1 31, -5 44, 5 28 Z" fill="{{ section.settings.shop_now_color }}" fill-opacity="{{ section.settings.shop_now_opacity }}" />
+                        </svg>
+                      {%- endif -%}
+                      <span class="btn-text shop-now-text" style="color: {{ section.settings.shop_now_text_color }}; font-size: {{ section.settings.shop_now_font_size }}px;">{{ block.settings.shop_now_text | default: 'Shop Now' }}</span>
+                    </a>
+
+                    <!-- Add To Cart Brush CTA -->
+                    <a href="{{ block.settings.add_to_cart_link | default: '#' }}" class="brush-btn add-to-cart-btn">
+                      {%- if section.settings.add_to_cart_bg != blank -%}
+                        <div class="brush-bg" style="background-image: url('{{ section.settings.add_to_cart_bg | image_url: width: 400 }}'); opacity: {{ section.settings.add_to_cart_opacity }};"></div>
+                      {%- else -%}
+                        <!-- Inline Default Light Textured Brush SVG -->
+                        <svg class="brush-bg-svg" viewBox="0 0 200 60" preserveAspectRatio="none">
+                          <path d="M 2 25 C 12 10, 45 12, 75 10 C 105 8, 135 14, 165 6 C 185 0, 194 8, 198 16 C 202 24, 197 38, 192 45 C 187 52, 172 48, 142 52 C 112 56, 82 50, 52 54 C 22 58, 8 46, 4 38 C 0 30, -8 40, 2 25 Z" fill="{{ section.settings.add_to_cart_color }}" fill-opacity="{{ section.settings.add_to_cart_opacity }}" />
+                        </svg>
+                      {%- endif -%}
+                      <span class="btn-text add-to-cart-text" style="color: {{ section.settings.add_to_cart_text_color }}; font-size: {{ section.settings.add_to_cart_font_size }}px;">{{ block.settings.add_to_cart_text | default: 'Add To Cart' }}</span>
+                    </a>
+                  </div>
+
+                  <!-- Three Icon Selling Points -->
+                  <div class="card-selling-points">
+                    <!-- Point 1 -->
+                    <div class="selling-point-slot">
+                      <div class="selling-icon">
+                        {%- if block.settings.custom_icon_1 != blank -%}
+                          {{ block.settings.custom_icon_1 | image_url: width: 80 | image_tag: class: 'custom-round-icon' }}
+                        {%- else -%}
+                          {%- case block.settings.icon_1 -%}
+                            {%- when 'motor' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                            {%- when 'torque' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            {%- when 'speedometer' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                            {%- when 'battery' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+                          {%- endcase -%}
+                        {%- endif -%}
+                      </div>
+                      <span class="selling-value" style="color: {{ section.settings.text_color_point_value }}; font-size: {{ section.settings.font_size_point_value }}px; text-align: {{ section.settings.text_align_point_value }};">{{ block.settings.value_1 }}</span>
+                      <span class="selling-label" style="color: {{ section.settings.text_color_point_label }}; font-size: {{ section.settings.font_size_point_label }}px; text-align: {{ section.settings.text_align_point_label }};">{{ block.settings.label_1 }}</span>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="selling-point-slot border-lateral">
+                      <div class="selling-icon">
+                        {%- if block.settings.custom_icon_2 != blank -%}
+                          {{ block.settings.custom_icon_2 | image_url: width: 80 | image_tag: class: 'custom-round-icon' }}
+                        {%- else -%}
+                          {%- case block.settings.icon_2 -%}
+                            {%- when 'motor' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                            {%- when 'torque' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            {%- when 'speedometer' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                            {%- when 'battery' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+                          {%- endcase -%}
+                        {%- endif -%}
+                      </div>
+                      <span class="selling-value" style="color: {{ section.settings.text_color_point_value }}; font-size: {{ section.settings.font_size_point_value }}px; text-align: {{ section.settings.text_align_point_value }};">{{ block.settings.value_2 }}</span>
+                      <span class="selling-label" style="color: {{ section.settings.text_color_point_label }}; font-size: {{ section.settings.font_size_point_label }}px; text-align: {{ section.settings.text_align_point_label }};">{{ block.settings.label_2 }}</span>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="selling-point-slot">
+                      <div class="selling-icon">
+                        {%- if block.settings.custom_icon_3 != blank -%}
+                          {{ block.settings.custom_icon_3 | image_url: width: 80 | image_tag: class: 'custom-round-icon' }}
+                        {%- else -%}
+                          {%- case block.settings.icon_3 -%}
+                            {%- when 'motor' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                            {%- when 'torque' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            {%- when 'speedometer' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                            {%- when 'battery' -%}
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+                          {%- endcase -%}
+                        {%- endif -%}
+                      </div>
+                      <span class="selling-value" style="color: {{ section.settings.text_color_point_value }}; font-size: {{ section.settings.font_size_point_value }}px; text-align: {{ section.settings.text_align_point_value }};">{{ block.settings.value_3 }}</span>
+                      <span class="selling-label" style="color: {{ section.settings.text_color_point_label }}; font-size: {{ section.settings.font_size_point_label }}px; text-align: {{ section.settings.text_align_point_label }};">{{ block.settings.label_3 }}</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- Navigation Arrows (Lower right as shown in reference) -->
+      {%- if section.blocks.size > 3 -%}
+        <div class="carousel-control-navigation">
+          <button class="nav-arrow nav-arrow-prev" aria-label="Previous slide"
+            {% if section.settings.nav_prev_image != blank %}
+            style="background-image: url('{{ section.settings.nav_prev_image | image_url: width: 100 }}'); border: none; background-color: transparent;"
+            {% endif %}
+          >
+            {% if section.settings.nav_prev_image == blank %}
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            {% endif %}
+          </button>
+          <button class="nav-arrow nav-arrow-next" aria-label="Next slide"
+            {% if section.settings.nav_next_image != blank %}
+            style="background-image: url('{{ section.settings.nav_next_image | image_url: width: 100 }}'); border: none; background-color: transparent;"
+            {% endif %}
+          >
+             {% if section.settings.nav_next_image == blank %}
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+             {% endif %}
+          </button>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* --------------------------------------------------------------------------
+     CSS Variables & Core Layout Styling
+     -------------------------------------------------------------------------- */
+  .product-video-carousel-section {
+    padding: 60px 0;
+    background-color: {{ section.settings.bg_color }};
+    font-family: inherit;
+    --card-bg: {{ section.settings.card_bg }};
+  }
+  .product-video-carousel-section .page-width {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  .section-subtitle {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .carousel-item-card {
+    position: relative;
+    background-color: {{ section.settings.card_bg }};
+    {% if section.settings.card_bg_image != blank %}
+    background-image: url('{{ section.settings.card_bg_image | img_url: 'master' }}');
+    background-size: cover;
+    background-position: center;
+    {% endif %}
+    border: none;
+    border-radius: 0;
+    padding: 24px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: 9 / 16;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+  .carousel-item-card:hover {
+    transform: translateY(-4px);
+  }
+  .card-edge-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background-color: #000;
+    z-index: 20;
+  }
+  .card-info-header {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 12px;
+  }
+  .product-card-title {
+    font-size: 28px;
+    font-weight: 900;
+    font-style: italic;
+    margin: 8px 0 0 0;
+    text-transform: capitalize;
+    letter-spacing: -0.5px;
+    color: #1e293b;
+  }
+  .product-card-tagline {
+    font-size: 13px;
+    color: #1e293b;
+    margin: 4px 0 0 0;
+    font-weight: 500;
+  }
+  
+  /* Media container & Hover Playback logic */
+  .media-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: transparent;
+    border-radius: 0;
+    margin: 0;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .image-wrapper, .video-wrapper-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-wrapper-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .image-wrapper {
+    transition: all 0.5s ease;
+  }
+  .product-media-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .placeholder-svg.product-media-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+  .product-media-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bottom-content-group {
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  /* Distressed Button Brush Styling */
+  .card-actions-wrapper {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .brush-btn {
+    position: relative;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    overflow: visible;
+  }
+  .brush-bg, .brush-bg-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.2s ease;
+  }
+  .brush-btn:hover .brush-bg,
+  .brush-btn:hover .brush-bg-svg {
+    transform: scale(1.04);
+  }
+  .btn-text {
+    position: relative;
+    z-index: 2;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+
+  /* Three Selling Points Stack */
+  .card-selling-points {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 15px;
+    margin-top: 8px;
+  }
+  .selling-point-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .border-lateral {
+    border-left: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+  }
+  .selling-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    color: var(--accent-color, #e11d48);
+  }
+  .custom-round-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+  .selling-value {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+  }
+  .selling-label {
+    font-size: 9px;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* Carousel Track and slides structure */
+  .carousel-container-outer {
+    position: relative;
+    margin-top: 30px;
+  }
+  .carousel-track-wrapper {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  .carousel-track-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel-track-grid {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+  }
+
+  /* Desktop: 3 columns */
+  @media screen and (min-width: 768px) {
+    .carousel-item-card {
+      flex: 0 0 calc(33.333% - 13.333px);
+    }
+  }
+
+  /* Mobile: 1 column */
+  @media screen and (max-width: 767px) {
+    .carousel-item-card {
+      flex: 0 0 100%;
+      padding: 16px;
+    }
+    .product-card-title {
+      font-size: 22px;
+    }
+    .card-actions-wrapper {
+      margin: 12px 0;
+    }
+  }
+
+  /* Navigation Arrows */
+  .carousel-control-navigation {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 15px;
+    padding-right: 8px;
+  }
+  .nav-arrow {
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    width: 48px; height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1e293b;
+    transition: all 0.2s ease;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .nav-arrow:hover {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+  }
+</style>
+
+<script>
+  function initProductVideoCarousels() {
+    const section = document.querySelector('.section-{{ section.id }}');
+    if (!section) return;
+
+    // Make the whole card clickable -> navigate to the product link
+    const cards = section.querySelectorAll('.carousel-item-card');
+    cards.forEach(card => {
+      const cardLink = card.getAttribute('data-card-link');
+      if (!cardLink) return;
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(e) {
+        // Let inner links/buttons keep their own behavior
+        if (e.target.closest('a, button')) return;
+        window.location.href = cardLink;
+      });
+    });
+
+    const mediaContainers = section.querySelectorAll('.media-container');
+    mediaContainers.forEach(container => {
+      const videoWrapper = container.querySelector('.video-wrapper-overlay');
+      const imgWrapper = container.querySelector('.image-wrapper');
+      const nativeVideo = container.querySelector('.native-video');
+      const ytIframe = container.querySelector('.yt-iframe');
+      if (!videoWrapper) return;
+
+      const handleEnter = () => {
+        videoWrapper.style.opacity = '1';
+        videoWrapper.style.visibility = 'visible';
+        imgWrapper.style.opacity = '0.5';
+        imgWrapper.style.transform = 'scale(0.95)';
+        imgWrapper.style.filter = 'blur(4px)';
+        if (nativeVideo) {
+          nativeVideo.preload = 'auto';
+          const playPromise = nativeVideo.play();
+          if (playPromise !== undefined) playPromise.catch(err => {});
+        } else if (ytIframe) {
+          ytIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        }
+      };
+
+      const handleLeave = () => {
+        if (nativeVideo) { nativeVideo.pause(); nativeVideo.currentTime = 0; }
+        else if (ytIframe) ytIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        videoWrapper.style.opacity = '0';
+        videoWrapper.style.visibility = 'hidden';
+        imgWrapper.style.opacity = '1.0';
+        imgWrapper.style.transform = 'scale(1)';
+        imgWrapper.style.filter = 'none';
+      };
+
+      container.addEventListener('mouseenter', handleEnter);
+      container.addEventListener('mouseleave', handleLeave);
+      container.addEventListener('touchstart', function(e) {
+        if (videoWrapper.style.opacity === '0' || !videoWrapper.style.opacity) {
+          e.preventDefault(); handleEnter();
+        } else handleLeave();
+      }, { passive: true });
+    });
+
+    const track = section.querySelector('#CarouselTrack-{{ section.id }}');
+    const wrapper = section.querySelector('#CarouselWrapper-{{ section.id }}');
+    const nextBtn = section.querySelector('.nav-arrow-next');
+    const prevBtn = section.querySelector('.nav-arrow-prev');
+
+    if (track && wrapper && nextBtn && prevBtn) {
+      nextBtn.addEventListener('click', () => {
+        const itemWidth = track.querySelector('.carousel-item-card').offsetWidth + 20;
+        wrapper.scrollBy({ left: itemWidth, behavior: 'smooth' });
+      });
+      prevBtn.addEventListener('click', () => {
+        const itemWidth = track.querySelector('.carousel-item-card').offsetWidth + 20;
+        wrapper.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProductVideoCarousels);
+  } else {
+    initProductVideoCarousels();
+  }
+
+  if (window.Shopify && window.Shopify.designMode) {
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.detail.sectionId === '{{ section.id }}') initProductVideoCarousels();
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product Video Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Electric Off-Road Dirt Bikes"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Tagline",
+      "default": "Built for speeds. Crafted for high octane thrills."
+    },
+    {
+      "type": "header",
+      "content": "Brush Stroke Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "shop_now_bg",
+      "label": "Shop Now Brush Backdrop (Optional)"
+    },
+    {
+      "type": "color",
+      "id": "shop_now_color",
+      "label": "Shop Now Default Paint",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "shop_now_text_color",
+      "label": "Shop Now Label Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "shop_now_font_size",
+      "label": "Shop Now Button Font Size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "shop_now_opacity",
+      "label": "Shop Now Background Opacity",
+      "min": 0.1,
+      "max": 1,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "image_picker",
+      "id": "add_to_cart_bg",
+      "label": "Add To Cart Brush Backdrop (Optional)"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_color",
+      "label": "Add To Cart Default Paint",
+      "default": "#e2e8f0"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_text_color",
+      "label": "Add To Cart Label Color",
+      "default": "#1e293b"
+    },
+    {
+      "type": "range",
+      "id": "add_to_cart_font_size",
+      "label": "Add To Cart Button Font Size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "add_to_cart_opacity",
+      "label": "Add To Cart Background Opacity",
+      "min": 0.1,
+      "max": 1,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Color Schemes"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#f8fafc"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_bg_image",
+      "label": "Card Background Pattern/Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "nav_prev_image",
+      "label": "Previous Navigation Arrow Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "nav_next_image",
+      "label": "Next Navigation Arrow Image"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Selling Point Icon Color",
+      "default": "#ef4444"
+    },
+    {
+      "type": "header",
+      "content": "Text Styling"
+    },
+    { "type": "color", "id": "text_color_title", "label": "Section Title Color", "default": "#1e293b" },
+    { "type": "range", "id": "font_size_title", "min": 24, "max": 72, "step": 1, "unit": "px", "label": "Section Title Size", "default": 48 },
+    { "type": "select", "id": "text_align_title", "label": "Section Title Align", "options": [{"value": "left", "label": "Left"}, {"value": "center", "label": "Center"}, {"value": "right", "label": "Right"}], "default": "center" },
+    { "type": "color", "id": "text_color_subtitle", "label": "Section Subtitle Color", "default": "#64748b" },
+    { "type": "range", "id": "font_size_subtitle", "min": 10, "max": 36, "step": 1, "unit": "px", "label": "Section Subtitle Size", "default": 16 },
+    { "type": "select", "id": "text_align_subtitle", "label": "Section Subtitle Align", "options": [{"value": "left", "label": "Left"}, {"value": "center", "label": "Center"}, {"value": "right", "label": "Right"}], "default": "center" },
+    { "type": "color", "id": "text_color_product_title", "label": "Product Title Color", "default": "#1e293b" },
+    { "type": "range", "id": "font_size_product_title", "min": 16, "max": 60, "step": 1, "unit": "px", "label": "Product Title Size", "default": 28 },
+    { "type": "select", "id": "text_align_product_title", "label": "Product Title Align", "options": [{"value": "left", "label": "Left"}, {"value": "center", "label": "Center"}, {"value": "right", "label": "Right"}], "default": "center" },
+    { "type": "color", "id": "text_color_product_subtitle", "label": "Product Subtitle Color", "default": "#1e293b" },
+    { "type": "range", "id": "font_size_product_subtitle", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Product Subtitle Size", "default": 13 },
+    { "type": "select", "id": "text_align_product_subtitle", "label": "Product Subtitle Align", "options": [{"value": "left", "label": "Left"}, {"value": "center", "label": "Center"}, {"value": "right", "label": "Right"}], "default": "center" },
+    { "type": "color", "id": "text_color_point_value", "label": "Point Value Color", "default": "#0f172a" },
+    { "type": "range", "id": "font_size_point_value", "min": 10, "max": 36, "step": 1, "unit": "px", "label": "Point Value Size", "default": 14 },
+    { "type": "color", "id": "text_color_point_label", "label": "Point Label Color", "default": "#64748b" },
+    { "type": "range", "id": "font_size_point_label", "min": 8, "max": 24, "step": 1, "unit": "px", "label": "Point Label Size", "default": 11 }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Featured Product",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product Title",
+          "default": "IN 10 Pro"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Product Description",
+          "default": "High-Performance Electric Mini Dirt Bike"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image backdrop"
+        },
+        {
+          "type": "text",
+          "id": "hover_video_url",
+          "label": "Autoplay Loop Video URL (.mp4 file)",
+          "info": "Upload video to Shopify: Content -> Files, copy video URL and paste here.",
+          "default": "https://player.vimeo.com/external/434045526.sd.mp4?s=c27d3e3ca9e5adb23b20e50ef20117a5c87a22ef"
+        },
+        {
+          "type": "url",
+          "id": "shop_now_link",
+          "label": "Shop Now Button URL"
+        },
+        {
+          "type": "text",
+          "id": "shop_now_text",
+          "label": "Shop Now Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "add_to_cart_link",
+          "label": "Add To Cart URL / Buy Button Action"
+        },
+        {
+          "type": "text",
+          "id": "add_to_cart_text",
+          "label": "Add To Cart Button Text",
+          "default": "Add To Cart"
+        },
+        {
+          "type": "header",
+          "content": "Key Selling Point #1"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_1",
+          "label": "Custom Image Icon (overrides standard)"
+        },
+        {
+          "type": "select",
+          "id": "icon_1",
+          "label": "Select Icon #1",
+          "options": [
+            { "value": "motor", "label": "Motor / Rotor" },
+            { "value": "torque", "label": "Chassis Torque" },
+            { "value": "speedometer", "label": "Speedometer Dial" },
+            { "value": "battery", "label": "Battery Pack" }
+          ],
+          "default": "motor"
+        },
+        {
+          "type": "text",
+          "id": "value_1",
+          "label": "Highlight Value #1",
+          "default": "5500W"
+        },
+        {
+          "type": "text",
+          "id": "label_1",
+          "label": "Sub-Text Label #1",
+          "default": "Motor"
+        },
+        {
+          "type": "header",
+          "content": "Key Selling Point #2"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_2",
+          "label": "Custom Image Icon (overrides standard)"
+        },
+        {
+          "type": "select",
+          "id": "icon_2",
+          "label": "Select Icon #2",
+          "options": [
+            { "value": "motor", "label": "Motor / Rotor" },
+            { "value": "torque", "label": "Chassis Torque" },
+            { "value": "speedometer", "label": "Speedometer Dial" },
+            { "value": "battery", "label": "Battery Pack" }
+          ],
+          "default": "torque"
+        },
+        {
+          "type": "text",
+          "id": "value_2",
+          "label": "Highlight Value #2",
+          "default": "220N.M"
+        },
+        {
+          "type": "text",
+          "id": "label_2",
+          "label": "Sub-Text Label #2",
+          "default": "Torque"
+        },
+        {
+          "type": "header",
+          "content": "Key Selling Point #3"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_3",
+          "label": "Custom Image Icon (overrides standard)"
+        },
+        {
+          "type": "select",
+          "id": "icon_3",
+          "label": "Select Icon #3",
+          "options": [
+            { "value": "motor", "label": "Motor / Rotor" },
+            { "value": "torque", "label": "Chassis Torque" },
+            { "value": "speedometer", "label": "Speedometer Dial" },
+            { "value": "battery", "label": "Battery Pack" }
+          ],
+          "default": "speedometer"
+        },
+        {
+          "type": "text",
+          "id": "value_3",
+          "label": "Highlight Value #3",
+          "default": "50Mph"
+        },
+        {
+          "type": "text",
+          "id": "label_3",
+          "label": "Sub-Text Label #3",
+          "default": "Top Speed"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Video Showcase",
+      "category": "Product",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ]
+}
+{% endschema %}

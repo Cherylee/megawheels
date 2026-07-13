@@ -1,0 +1,587 @@
+{% comment %}==================== 模块设置 ==================== {% endcomment %}
+{% schema %}
+{
+  "name": "视频展示轮播",
+  "settings": [
+    {
+      "type": "header",
+      "content": "模块基础设置"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "模块主标题",
+      "default": "Hear from Our Riders"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "模块副标题",
+      "default": "Watch our latest videos"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "模块背景颜色",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "模块上下内边距（越小越紧凑）",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "items_per_row",
+      "label": "一行显示视频数量（桌面端）",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+
+    {
+      "type": "header",
+      "content": "文字样式设置"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "主标题颜色",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "主标题大小",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "副标题颜色",
+      "default": "#6b7280"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "副标题大小",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "video_title_color",
+      "label": "视频标题颜色",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "video_title_size",
+      "label": "视频标题大小",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "author_color",
+      "label": "发布者名称颜色",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "author_size",
+      "label": "发布者名称大小",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "date_color",
+      "label": "发布日期颜色",
+      "default": "#6b7280"
+    },
+    {
+      "type": "range",
+      "id": "date_size",
+      "label": "发布日期大小",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "default": 12
+    },
+
+    {
+      "type": "header",
+      "content": "轮播箭头设置"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "箭头颜色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg",
+      "label": "箭头背景色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "label": "箭头大小",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "arrow_font_size",
+      "label": "箭头图标大小",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "default": 18
+    },
+
+    {
+      "type": "header",
+      "content": "标签设置"
+    },
+    {
+      "type": "text",
+      "id": "youtube_tab_text",
+      "label": "YouTube 标签文字",
+      "default": "YouTube"
+    },
+    {
+      "type": "text",
+      "id": "short_tab_text",
+      "label": "Short Video 标签文字",
+      "default": "Short Video"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "youtube_video",
+      "name": "YouTube 视频（横屏16:9）",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_id",
+          "label": "YouTube 视频 ID"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_thumbnail",
+          "label": "自定义视频封面（可选）"
+        },
+        {
+          "type": "text",
+          "id": "video_title",
+          "label": "视频标题"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "发布日期"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "发布人名称"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_avatar",
+          "label": "发布人头像"
+        }
+      ]
+    },
+    {
+      "type": "short_video",
+      "name": "YouTube Short（竖屏9:16）",
+      "settings": [
+        {
+          "type": "text",
+          "id": "short_url",
+          "label": "YouTube Short 链接",
+          "default": "https://www.youtube.com/shorts/xxxxxx"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_thumbnail",
+          "label": "自定义视频封面（可选）"
+        },
+        {
+          "type": "text",
+          "id": "video_title",
+          "label": "视频标题"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "发布日期"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "发布人名称"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_avatar",
+          "label": "发布人头像"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "视频展示轮播",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% assign items_per_row = section.settings.items_per_row | default: 4 %}
+{% assign item_width = 100.0 | divided_by: items_per_row | minus: 1 %}
+
+{% comment %} 引入 BAYON 字体 {% endcomment %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bayon&display=swap" rel="stylesheet">
+
+<style>
+  .video-review-section {
+    padding: {{ section.settings.section_padding }}px 15px;
+    background: {{ section.settings.section_bg }};
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .video-review-section .section-title {
+    text-align: center;
+    font-family: 'Bayon', sans-serif;
+    font-size: {{ section.settings.title_size }}px;
+    font-weight: normal;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 6px;
+  }
+  .video-review-section .section-subtitle {
+    text-align: center;
+    font-size: {{ section.settings.subtitle_size }}px;
+    color: {{ section.settings.subtitle_color }};
+    margin: 0 0 16px;
+  }
+  .tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .tab-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #9ca3af;
+    padding: 8px 0;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  .tab-button.active {
+    color: #f97316;
+  }
+  .tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #f97316;
+  }
+  .carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  .carousel-container {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 6px;
+  }
+  .carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+  .video-card {
+    flex: 0 0 {{ item_width }}%;
+    min-width: 240px;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .video-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+  .video-thumbnail.horizontal {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    cursor: pointer;
+  }
+  .video-thumbnail.vertical {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #000;
+    cursor: pointer;
+  }
+  .video-thumbnail iframe,
+  .video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 50px;
+    height: 50px;
+    background-color: #f97316;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+  .video-card:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  .play-button::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid #ffffff;
+  }
+  .video-info {
+    padding: 14px;
+  }
+  .video-title {
+    font-size: {{ section.settings.video_title_size }}px;
+    font-weight: 500;
+    color: {{ section.settings.video_title_color }};
+    margin: 0 0 8px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .video-title:hover {
+    text-decoration: underline;
+  }
+  .video-date {
+    font-size: {{ section.settings.date_size }}px;
+    color: {{ section.settings.date_color }};
+    margin: 0 0 10px;
+  }
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .author-name {
+    font-size: {{ section.settings.author_size }}px;
+    color: {{ section.settings.author_color }};
+    font-weight: 500;
+  }
+
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: {{ section.settings.arrow_size }}px;
+    height: {{ section.settings.arrow_size }}px;
+    background: {{ section.settings.arrow_bg }};
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: {{ section.settings.arrow_font_size }}px;
+    color: {{ section.settings.arrow_color }};
+  }
+  .carousel-prev { left: 6px; }
+  .carousel-next { right: 6px; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  @media (max-width: 1024px) { .video-card { flex: 0 0 33%; } }
+  @media (max-width: 768px) { .video-card { flex: 0 0 50%; } }
+  @media (max-width: 480px) { .video-card { flex: 0 0 100%; } }
+</style>
+
+<section class="video-review-section">
+  <h2 class="section-title">{{ section.settings.title }}</h2>
+  {% if section.settings.subtitle != blank %}
+    <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+  {% endif %}
+
+  <div class="tabs-container">
+    <button class="tab-button active" data-tab="youtube">
+      {{ section.settings.youtube_tab_text }}
+    </button>
+    <button class="tab-button" data-tab="short">
+      {{ section.settings.short_tab_text }}
+    </button>
+  </div>
+
+  <div class="tab-content active" id="youtube-tab">
+    <div class="carousel-wrapper">
+      <button class="carousel-nav carousel-prev" onclick="scrollCarousel('youtube-carousel', -1)">‹</button>
+      <div class="carousel-container" id="youtube-carousel">
+        {% for block in section.blocks %}
+          {% if block.type == 'youtube_video' %}
+            <div class="video-card">
+              <div class="video-thumbnail horizontal" onclick="playInlineVideo(this, '{{ block.settings.video_id | escape }}')">
+                {% if block.settings.custom_thumbnail %}
+                  <img src="{{ block.settings.custom_thumbnail | image_url }}" alt="">
+                {% else %}
+                  <img src="https://img.youtube.com/vi/{{ block.settings.video_id | escape }}/hqdefault.jpg" alt="">
+                {% endif %}
+                <div class="play-button"></div>
+              </div>
+              <div class="video-info">
+                <a href="https://www.youtube.com/watch?v={{ block.settings.video_id | escape }}" target="_blank" class="video-title">
+                  {{ block.settings.video_title | escape }}
+                </a>
+                <p class="video-date">{{ block.settings.date | escape }}</p>
+                <div class="author">
+                  {% if block.settings.author_avatar %}
+                    <img src="{{ block.settings.author_avatar | image_url: width: 100 }}" class="author-avatar">
+                  {% endif %}
+                  <span class="author-name">{{ block.settings.author_name | escape }}</span>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <button class="carousel-nav carousel-next" onclick="scrollCarousel('youtube-carousel', 1)">›</button>
+    </div>
+  </div>
+
+  <div class="tab-content" id="short-tab">
+    <div class="carousel-wrapper">
+      <button class="carousel-nav carousel-prev" onclick="scrollCarousel('short-carousel', -1)">‹</button>
+      <div class="carousel-container" id="short-carousel">
+        {% for block in section.blocks %}
+          {% if block.type == 'short_video' %}
+            {% assign short_url = block.settings.short_url %}
+            {% assign short_id = '' %}
+            {% if short_url contains '/shorts/' %}
+              {% assign short_id = short_url | split: '/shorts/' | last | split: '?' | first %}
+            {% elsif short_url contains 'youtu.be/' %}
+              {% assign short_id = short_url | split: 'youtu.be/' | last | split: '?' | first %}
+            {% endif %}
+            <div class="video-card">
+              <div class="video-thumbnail vertical" onclick="playInlineShort(this, '{{ short_id | escape }}')">
+                {% if block.settings.custom_thumbnail %}
+                  <img src="{{ block.settings.custom_thumbnail | image_url }}" alt="">
+                {% elsif short_id != '' %}
+                  <img src="https://img.youtube.com/vi/{{ short_id | escape }}/hqdefault.jpg" alt="">
+                {% endif %}
+                <div class="play-button"></div>
+              </div>
+              <div class="video-info">
+                {% if short_id != '' %}
+                  <a href="https://www.youtube.com/shorts/{{ short_id | escape }}" target="_blank" class="video-title">
+                    {{ block.settings.video_title | escape }}
+                  </a>
+                {% else %}
+                  <div class="video-title">{{ block.settings.video_title | escape }}</div>
+                {% endif %}
+                <p class="video-date">{{ block.settings.date | escape }}</p>
+                <div class="author">
+                  {% if block.settings.author_avatar %}
+                    <img src="{{ block.settings.author_avatar | image_url: width: 100 }}" class="author-avatar">
+                  {% endif %}
+                  <span class="author-name">{{ block.settings.author_name | escape }}</span>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <button class="carousel-nav carousel-next" onclick="scrollCarousel('short-carousel', 1)">›</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.tab-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(`${tab}-tab`).classList.add('active');
+    });
+  });
+
+  function scrollCarousel(id, dir) {
+    const el = document.getElementById(id);
+    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' });
+  }
+
+  function playInlineVideo(thumbEl, videoId) {
+    if (!videoId) return;
+    thumbEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>`;
+  }
+
+  function playInlineShort(thumbEl, shortId) {
+    if (!shortId) return;
+    thumbEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${shortId}?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>`;
+  }
+</script>

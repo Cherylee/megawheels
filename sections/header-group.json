@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message_B6LQaC": {
+          "type": "message",
+          "settings": {
+            "text": "$200 OFF FOR D2 SERIES ELECTRIC DIRT BIKE",
+            "url": "shopify://collections/dirt-bikes"
+          }
+        },
+        "message": {
+          "type": "message",
+          "settings": {
+            "text": "FREE US DELIVERY IN 2-7 BUSINESS DAYS.",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "message_B6LQaC",
+        "message"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "navigation_mode": "scrolling",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "scrolling_speed": 20,
+        "text_size": "text-base",
+        "background": "#FFFFFF",
+        "background_gradient": "",
+        "text_color": "#00000000"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "enable_sticky": true,
+        "hide_on_scroll": false,
+        "logo": "shopify://shop_images/MEGAWHEELS-LOGO.png",
+        "logo_max_width": 150,
+        "logo_mobile_max_width": 110,
+        "menu": "main-menu-1",
+        "sidebar_menu": "",
+        "secondary_menu": "",
+        "menu_open_trigger": "hover",
+        "opening_from": "bottom",
+        "layout": "logo_left_navigation_center",
+        "show_social_media": false,
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": true,
+        "show_country_name": false,
+        "transparent_header_text_color": "#ffffff",
+        "transparent_logo": "shopify://shop_images/M_MEGAWHEELS_LOGO_-01.png",
+        "reduce_padding": true,
+        "background_opacity": 100,
+        "background_blur_radius": 0
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

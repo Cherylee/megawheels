@@ -1,0 +1,351 @@
+{% comment %}
+Impact主题 双栏卡片模块 | 卡片化+移动端全宽按钮+图标正常显示
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "双栏卡片信息模块",
+  "settings": [
+    {
+      "type": "header",
+      "content": "整体全局设置"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "模块顶部内边距(px)",
+      "min": 20,
+      "max": 120,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "模块底部内边距(px)",
+      "min": 20,
+      "max": 120,
+      "default": 50
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_img",
+      "label": "模块背景图片"
+    },
+    {
+      "type": "range",
+      "id": "bg_img_opacity",
+      "label": "背景图片透明度",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 90
+    },
+    {
+      "type": "color",
+      "id": "bg_overlay",
+      "label": "背景蒙版颜色",
+      "default": "rgba(249,249,249,0.92)"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "卡片背景色",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "分隔竖线颜色",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "图标颜色",
+      "default": "#222222"
+    },
+    {
+      "type": "header",
+      "content": "按钮设置（可上传图片 或 使用纯色）"
+    },
+    {
+      "type": "image_picker",
+      "id": "btn_bg_img",
+      "label": "按钮背景图片（优先使用）"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "按钮纯色背景（未传图时生效）",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "按钮文字颜色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "字体大小设置"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "标题字体大小(px)",
+      "min": 18,
+      "max": 40,
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size",
+      "label": "描述字体大小(px)",
+      "min": 12,
+      "max": 22,
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "icon_font_size",
+      "label": "图标大小(px)",
+      "min": 16,
+      "max": 36,
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "左侧内容配置"
+    },
+    {
+      "type": "text",
+      "id": "left_icon",
+      "label": "图标类名(Font Awesome 4.7)",
+      "default": "fa fa-user-plus"
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "左侧标题",
+      "default": "Join Our Family"
+    },
+    {
+      "type": "richtext",
+      "id": "left_desc",
+      "label": "左侧描述",
+      "default": "<p>Become a member today to enjoy exclusive discounts, early access to new products, and special giveaways all year long.</p>"
+    },
+    {
+      "type": "text",
+      "id": "left_btn_text",
+      "label": "左侧按钮文字",
+      "default": "Sign Up Now"
+    },
+    {
+      "type": "url",
+      "id": "left_btn_link",
+      "label": "左侧跳转链接"
+    },
+    {
+      "type": "header",
+      "content": "右侧内容配置"
+    },
+    {
+      "type": "text",
+      "id": "right_icon",
+      "label": "图标类名(Font Awesome 4.7)",
+      "default": "fa fa-envelope"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "右侧标题",
+      "default": "Need Help?"
+    },
+    {
+      "type": "richtext",
+      "id": "right_desc",
+      "label": "右侧描述",
+      "default": "<p>Our support team is ready to help you with any questions about orders, products, or returns. We’re here for you 24/7.</p>"
+    },
+    {
+      "type": "text",
+      "id": "right_btn_text",
+      "label": "右侧按钮文字",
+      "default": "Contact Support"
+    },
+    {
+      "type": "url",
+      "id": "right_btn_link",
+      "label": "右侧跳转链接"
+    }
+  ],
+  "presets": [
+    {
+      "name": "双栏卡片信息模块",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{{ 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css' | stylesheet_tag }}
+
+<style>
+.icon-banner-section {
+  position: relative;
+  padding: {{ section.settings.section_padding_top }}px 0 {{ section.settings.section_padding_bottom }}px;
+  width: 100%;
+}
+.bg-img-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: {{ section.settings.bg_img_opacity | divided_by: 100.0 }};
+  z-index: 0;
+}
+{% if section.settings.section_bg_img %}
+.bg-img-layer {
+  background-image: url({{ section.settings.section_bg_img | image_url }});
+}
+{% endif %}
+
+.icon-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: {{ section.settings.bg_overlay }};
+  z-index: 1;
+}
+.icon-banner-inner {
+  position: relative;
+  z-index: 2;
+}
+.icon-banner-wrap {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: stretch;
+}
+
+/* 卡片样式 */
+.icon-banner-col {
+  position: relative;
+  background: {{ section.settings.card_bg }};
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.banner-icon {
+  font-size: {{ section.settings.icon_font_size }}px;
+  color: {{ section.settings.icon_color }};
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.banner-title {
+  font-family: var(--font-heading-family);
+  font-size: {{ section.settings.title_font_size }}px;
+  font-weight: var(--font-heading-weight);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+}
+.banner-desc {
+  font-family: var(--font-body-family);
+  font-size: {{ section.settings.desc_font_size }}px;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* 按钮样式 */
+.banner-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.4rem;
+  {% if section.settings.btn_bg_img %}
+  background-image: url({{ section.settings.btn_bg_img | image_url }});
+  background-size: cover;
+  background-position: center;
+  {% else %}
+  background-color: {{ section.settings.btn_bg }};
+  {% endif %}
+  color: {{ section.settings.btn_text }};
+  border-radius: var(--button-radius, 8px);
+  font-family: var(--font-button-family);
+  font-size: var(--font-button-size, 1rem);
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.3s ease;
+  margin-top: 0.8rem;
+  border: none;
+  text-align: center;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .icon-banner-wrap {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .icon-banner-col {
+    padding: 2.2rem 1.8rem;
+  }
+  .banner-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+}
+</style>
+
+<section class="icon-banner-section">
+  <div class="bg-img-layer"></div>
+  <div class="icon-banner-overlay"></div>
+  <div class="icon-banner-inner">
+    <div class="icon-banner-wrap">
+      <!-- 左侧卡片 -->
+      <div class="icon-banner-col">
+        <h3 class="banner-title">
+          {% if section.settings.left_icon != blank %}
+            <i class="{{ section.settings.left_icon }} banner-icon"></i>
+          {% endif %}
+          {{ section.settings.left_title }}
+        </h3>
+        <div class="banner-desc">{{ section.settings.left_desc }}</div>
+        {% if section.settings.left_btn_link != blank and section.settings.left_btn_text != blank %}
+          <a href="{{ section.settings.left_btn_link }}" class="banner-btn">
+            {{ section.settings.left_btn_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- 右侧卡片 -->
+      <div class="icon-banner-col">
+        <h3 class="banner-title">
+          {% if section.settings.right_icon != blank %}
+            <i class="{{ section.settings.right_icon }} banner-icon"></i>
+          {% endif %}
+          {{ section.settings.right_title }}
+        </h3>
+        <div class="banner-desc">{{ section.settings.right_desc }}</div>
+        {% if section.settings.right_btn_link != blank and section.settings.right_btn_text != blank %}
+          <a href="{{ section.settings.right_btn_link }}" class="banner-btn">
+            {{ section.settings.right_btn_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

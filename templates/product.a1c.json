@@ -1,0 +1,811 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "judge_me_reviews_preview_badge_q4Wgj3": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "aftership_product_reviews_product_page_star_widget_iRzNf9": {
+          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_star_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}",
+            "block_alignment": "flex-start",
+            "star_and_font_size": 20
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_second_njacKi": {
+          "type": "price_second",
+          "settings": {
+            "show_currency_code": false
+          }
+        },
+        "discount_code_nXcAKi": {
+          "type": "discount_code",
+          "settings": {
+            "default_checked": true
+          }
+        },
+        "offer_V7F7ED": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "icon_width": 20,
+            "title": "$56 Off Code",
+            "content": "<p>Save $56 at checkout with code <strong>A1CDC2026</strong></p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "collapsible_text_QGMg84": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Fast, Free Shipping",
+            "content": "<p>The order will be typically shiped within<strong>1-2 business days</strong>. Delivery takes<strong>2-7 business days</strong>. Shipping times are estimates and may vary due to external factors.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_PkXYNj": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-money",
+            "icon_width": 20,
+            "title": "Secured Payments",
+            "content": "<p>We accept paypal, credit cards and payment by instalments as payment methods.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_7kfMyD": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "picto-building",
+            "icon_width": 20,
+            "title": "One-year Warranty",
+            "content": "<p>All electric scooters, electric bikes and electric dirt bikes of <a href=\"https://megawheels.com/\" target=\"_blank\" title=\"MEGAWHEELS electric scooters\">MEGAWHEELS</a> are covered by our manufacturer's 1-year all-inclusive warranty for all manufacturing defects to the original owner.</p>",
+            "page": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "judge_me_reviews_preview_badge_q4Wgj3",
+        "aftership_product_reviews_product_page_star_widget_iRzNf9",
+        "badges",
+        "price_second_njacKi",
+        "discount_code_nXcAKi",
+        "offer_V7F7ED",
+        "description",
+        "quantity_selector",
+        "buy_buttons",
+        "collapsible_text_QGMg84",
+        "collapsible_text_PkXYNj",
+        "collapsible_text_7kfMyD",
+        "payment_terms",
+        "separator",
+        "variant_picker"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_reviews_RggVbM": {
+      "type": "video-reviews",
+      "blocks": {
+        "youtube_video_U8yKCd": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "WGzXt8MNp1U",
+            "video_title": "Smooth Rides! MegaWheels Electric Scooter A1C Review",
+            "date": "2025/4/15",
+            "author_name": "DOUG and NIKI",
+            "author_avatar": "shopify://shop_images/YTB-DOUG_and_NIKI.jpg"
+          }
+        },
+        "youtube_video_khnJrd": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "ekiDvPTflBc",
+            "video_title": "Full Review: Megawheels A1C E-Scooter with App Control",
+            "date": "2025/4/15",
+            "author_name": "Review Central",
+            "author_avatar": "shopify://shop_images/YTB-Review_Central.jpg"
+          }
+        },
+        "youtube_video_EW8jtD": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "Dt6NTDlRpB8",
+            "video_title": "MEGAWHEELS A1C Electric Scooter with Suspension - Worth It?",
+            "date": "2025/9/16",
+            "author_name": "Adam’s Simple & Fast Reviews",
+            "author_avatar": "shopify://shop_images/YTB-Adam_s_Simple_Fast_Reviews.jpg"
+          }
+        },
+        "youtube_video_9cMq7n": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "-LVSPP4YPmc",
+            "video_title": "Mega Wheels A1C Electric Scooter: Powerful, Comfortable, and Smart",
+            "date": "2025/4/23",
+            "author_name": "00LvL",
+            "author_avatar": "shopify://shop_images/YTB-00LvL.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "youtube_video_U8yKCd",
+        "youtube_video_khnJrd",
+        "youtube_video_EW8jtD",
+        "youtube_video_9cMq7n"
+      ],
+      "name": "视频展示轮播",
+      "settings": {
+        "title": "A1C Review By Our Riders",
+        "subtitle": "Watch our latest videos",
+        "section_bg": "#ffffff",
+        "section_padding": 20,
+        "items_per_row": 4,
+        "title_color": "#111111",
+        "title_size": 36,
+        "subtitle_color": "#6b7280",
+        "subtitle_size": 16,
+        "video_title_color": "#111111",
+        "video_title_size": 16,
+        "author_color": "#111111",
+        "author_size": 14,
+        "date_color": "#6b7280",
+        "date_size": 12,
+        "arrow_color": "#111111",
+        "arrow_bg": "#ffffff",
+        "arrow_size": 36,
+        "arrow_font_size": 18,
+        "youtube_tab_text": "YouTube",
+        "short_tab_text": "Short Video"
+      }
+    },
+    "slideshow_8jjDxA": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RFrkza": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-1900x868-01.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "An affordable 8.5\" electric scooter with 25km/h max speed, 3 speed modes, 20km range, supports APP control and front suspension, which will promise a comfortable riding experience.",
+            "title": "A1C ELECTRIC SCOOTER",
+            "heading_tag": "h3",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 10,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RFrkza"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_tdLkPV": {
+      "type": "slideshow",
+      "blocks": {
+        "image_npP3dC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-1900x600.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#1a1a1a",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_npP3dC"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_PwdQQr": {
+      "type": "slideshow",
+      "blocks": {
+        "image_hhDzAc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-1900x868-02.jpg",
+            "content_max_width": 560,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-center sm:text-center",
+            "subheading": "With a large 7500mAh battery, the electric scooter has a range of 20km per charge. Don't worry about running out of power during the ride.",
+            "title": "36V, 7.5Ah Battery",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_hhDzAc"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_CtfQ6x": {
+      "type": "slideshow",
+      "blocks": {
+        "image_XEFRLT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-1900x868-03.jpg",
+            "content_max_width": 500,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "The motor is brushless, it is quiet while riding, supports 25km/h max speed and 100kg max loading ability.",
+            "title": "300W Brushless Motor",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_XEFRLT"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "slideshow_ctUjDT": {
+      "type": "slideshow",
+      "blocks": {
+        "image_cXJ4me": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-1900x868-04.jpg",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "The electric scooter carries a bright LED headlight, which can keep you safe when riding at night.",
+            "title": "Bright LED Headlight",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#1a1a1a",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cXJ4me"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "media_with_text_ykmLdb": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_k9p34Y": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-suspension-825x500.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "8.5\" Solid Tire and Front Suspension",
+            "content": "<p>No worry of puncture with the solid tire, and the dual front suspension offers a more comfortable riding experience.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_k9p34Y"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "media_with_text_XncfTd": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_aDYwFM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-brake-825x500.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "E-Brake & Drump Brake",
+            "content": "<p>The electric scooter packs dual brake system, electronic brake and drump brake on the two wheels.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#f0f0f0",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_aDYwFM"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "media_with_text_Etbwfj": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_Fyb7i6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-display-825x500.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "LCD Display",
+            "content": "<p>On the LCD display, we check the battery capacity, speed, speed mode it is at, front light status, etc.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#f0f0f0",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_Fyb7i6"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "full_width": false,
+        "alternate_media_position": true,
+        "spacing": "none"
+      }
+    },
+    "media_with_text_FMztdz": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_8KDXf4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/A1C-electric-scooter-folding-825x500.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Fast Folding Design",
+            "content": "<p>The electric scooter is foldable, it is very simple to fold and unfold the scooter when needed.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#f0f0f0",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_8KDXf4"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "specification_table_V9fxRr": {
+      "type": "specification-table",
+      "blocks": {
+        "row_HkPYwM": {
+          "type": "row",
+          "settings": {
+            "heading": "Tire size",
+            "value": "<p>8.5 inch</p>"
+          }
+        },
+        "row_CWiV4g": {
+          "type": "row",
+          "settings": {
+            "heading": "Motor",
+            "value": "<p>300W</p>"
+          }
+        },
+        "row_wfbqJA": {
+          "type": "row",
+          "settings": {
+            "heading": "Speed mode",
+            "value": "<p>3 speed modes</p>"
+          }
+        },
+        "row_LkpRh7": {
+          "type": "row",
+          "settings": {
+            "heading": "Max Speed",
+            "value": "<p>15.5 Mph</p>"
+          }
+        },
+        "row_a4nrn4": {
+          "type": "row",
+          "settings": {
+            "heading": "Battery",
+            "value": "<p>7.5Ah</p>"
+          }
+        },
+        "row_Kjkwrb": {
+          "type": "row",
+          "settings": {
+            "heading": "Suspension",
+            "value": "<p>Front suspension</p>"
+          }
+        },
+        "row_tTD4zN": {
+          "type": "row",
+          "settings": {
+            "heading": "Brake type",
+            "value": "<p>Drum Brake+ Electric Brake</p>"
+          }
+        },
+        "row_geYNtN": {
+          "type": "row",
+          "settings": {
+            "heading": "APP function",
+            "value": "<p>Yes</p>"
+          }
+        },
+        "row_Nwxakf": {
+          "type": "row",
+          "settings": {
+            "heading": "Product weight",
+            "value": "<p>13 kg</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_HkPYwM",
+        "row_CWiV4g",
+        "row_wfbqJA",
+        "row_LkpRh7",
+        "row_a4nrn4",
+        "row_Kjkwrb",
+        "row_tTD4zN",
+        "row_geYNtN",
+        "row_Nwxakf"
+      ],
+      "name": "Specification table",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "A1C",
+        "content": "<p>The A1C with 8.5\" solid tires, 7.5Ah battery, APP function and front suspension design is the most cost-effective smart electric scooter for commuters.</p>",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "1775044976d9b0a06d": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_jFhaGN": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
+        "aftership_product_reviews_product_page_main_widget_AbKinT": {
+          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_main_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_jFhaGN",
+        "aftership_product_reviews_product_page_main_widget_AbKinT"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 4,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_reviews_RggVbM",
+    "slideshow_8jjDxA",
+    "slideshow_tdLkPV",
+    "slideshow_PwdQQr",
+    "slideshow_CtfQ6x",
+    "slideshow_ctUjDT",
+    "media_with_text_ykmLdb",
+    "media_with_text_XncfTd",
+    "media_with_text_Etbwfj",
+    "media_with_text_FMztdz",
+    "specification_table_V9fxRr",
+    "1775044976d9b0a06d",
+    "related-products"
+  ]
+}

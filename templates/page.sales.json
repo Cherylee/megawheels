@@ -1,0 +1,371 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_KLb9jW": {
+      "type": "slideshow",
+      "blocks": {
+        "image_bK3bCw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2800_1000.jpg",
+            "mobile_image": "shopify://shop_images/1200_1600_d172128c-a6b3-4baf-af9b-1c9162873aab.png",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-start text-start",
+            "desktop_text_position": "sm:place-self-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "shopify://pages/sales",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_bK3bCw"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "scrolling_text_xzGRbB": {
+      "type": "scrolling-text",
+      "disabled": true,
+      "name": "Scrolling text",
+      "settings": {
+        "full_width": true,
+        "text": "D2 electric dirt bike $200 off code: D2DB2026",
+        "text_size": "small",
+        "text_style": "fill",
+        "scrolling_mode": "auto",
+        "scrolling_speed": 10,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#fc0000",
+        "text_gradient": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "100ch"
+      }
+    },
+    "featured_collection_wCBkyy": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "",
+        "products": [
+          "d2-electric-dirt-bike",
+          "d2-lite-electric-dirt-bike",
+          "d2-pro-electric-dirt-bike",
+          "eb01-electric-bike",
+          "e3-electric-scooter",
+          "a1c-electric-scooter",
+          "a6l-eco-electric-scooter",
+          "a6l-max-electric-scooter",
+          "c2-electric-scooter",
+          "e2-electric-scooter",
+          "m1-electric-scooter",
+          "s2-electric-scooter",
+          "l2-electric-luggage"
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 16,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "product_grid_wThJJM": {
+      "type": "product-grid",
+      "blocks": {
+        "product_item_aipwEt": {
+          "type": "product_item",
+          "settings": {
+            "product": "d2-lite-electric-dirt-bike",
+            "product_image": "shopify://shop_images/MEGAWHEELS-D2-Lite-electric-dirt-bike-250x250.jpg",
+            "product_title": "D2 Lite Electric Dirt Bike",
+            "product_specs": "3000W | 45 Miles | 38 Mph"
+          }
+        },
+        "product_item_iKVgqp": {
+          "type": "product_item",
+          "settings": {
+            "product": "d2-electric-dirt-bike",
+            "product_image": "shopify://shop_images/MEGAWHEELS-D2-dirt-bike-1080x1080-07.jpg",
+            "product_title": "D2 Electric Dirt Bike",
+            "product_specs": "3550W | 53 Miles | 40 Mph"
+          }
+        },
+        "product_item_eKqfhc": {
+          "type": "product_item",
+          "settings": {
+            "product": "d2-pro-electric-dirt-bike",
+            "product_image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-250x250.jpg",
+            "product_title": "D2 Pro Electric Dirt Bike",
+            "product_specs": "6000W | 60 Miles | 50 Mph"
+          }
+        }
+      },
+      "block_order": [
+        "product_item_aipwEt",
+        "product_item_iKVgqp",
+        "product_item_eKqfhc"
+      ],
+      "name": "iScooter 产品展示网格",
+      "settings": {
+        "bg_color": "#f0f0f0",
+        "section_padding_top": 20,
+        "section_padding_bottom": 20,
+        "grid_max_width": 1260,
+        "container_padding": 12,
+        "section_title": "Discover the E-Dirt Bike",
+        "section_subtitle": "Get the electric dirt bike below with $200 off coupon.",
+        "title_font_family": "Bayon",
+        "subtitle_font_family": "inherit",
+        "title_align": "left",
+        "title_font_size": 40,
+        "title_font_size_mobile": 24,
+        "title_color": "#1a1a1a",
+        "subtitle_font_size": 20,
+        "subtitle_color": "#1a1a1a",
+        "header_spacing": 18,
+        "grid_gap": 16,
+        "grid_gap_mobile": 12,
+        "card_radius": 8,
+        "sale_text_color": "#fc0000",
+        "btn_bg_color": "#222222",
+        "btn_text_color": "#fc0000",
+        "btn_hover_color": "#444444",
+        "prod_title_font": "inherit",
+        "prod_title_size": 16,
+        "prod_title_color": "#222222",
+        "prod_spec_font": "inherit",
+        "prod_spec_size": 13,
+        "prod_spec_color": "#666666",
+        "prod_price_font": "inherit",
+        "prod_price_size": 18,
+        "prod_price_color": "#ff0000",
+        "prod_tag_font": "inherit",
+        "prod_tag_size": 14,
+        "prod_tag_color": "#1a1a1a",
+        "banner_enable": true,
+        "banner_image": "shopify://shop_images/MEGAWHEELS-electric-dirt-bike-1920x868.jpg",
+        "banner_sale_text": "",
+        "banner_btn_text": "",
+        "banner_btn_link": ""
+      }
+    },
+    "featured_collection_VrJinE": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "collection": "dirt-bikes",
+        "products": [
+          "d2-lite-electric-dirt-bike",
+          "d2-electric-dirt-bike",
+          "d2-pro-electric-dirt-bike",
+          "zero-7-dirt-bike"
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 12,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Discover the e-dirt bike",
+        "content": "<p>Get the dirt bike below and save $200.</p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "#f0f0f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "featured_collection_Mmik4r": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "electric-scooters",
+        "products": [
+          "a6l-max-electric-scooter",
+          "a1c-electric-scooter",
+          "a6l-eco-electric-scooter",
+          "e2-electric-scooter",
+          "c2-electric-scooter",
+          "m1-electric-scooter",
+          "s2-electric-scooter",
+          "e3-electric-scooter"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 12,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Electric scooter up to $200 off",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#f0f0f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "17828871821c3919c0": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_pdagwx": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "product_reviews",
+            "products": [],
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 30,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1.33",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": false,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1600,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 4,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_pdagwx"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_qHPnRr": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_neXkRR": {
+          "type": "image",
+          "settings": {
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "D2 Lite",
+            "title": "Entry-Level Performance for Young Riders.",
+            "content": "<h4>$999.99</h4>",
+            "link_text": "Shop Now",
+            "link_url": "shopify://products/d2-lite-electric-dirt-bike",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 16,
+            "content_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "image_neXkRR"
+      ],
+      "disabled": true,
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#ffffff",
+        "section_padding_top": 5,
+        "section_padding_bottom": 10,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "small"
+      }
+    }
+  },
+  "order": [
+    "slideshow_KLb9jW",
+    "scrolling_text_xzGRbB",
+    "main",
+    "featured_collection_wCBkyy",
+    "product_grid_wThJJM",
+    "featured_collection_VrJinE",
+    "featured_collection_Mmik4r",
+    "17828871821c3919c0",
+    "media_with_text_qHPnRr"
+  ]
+}
