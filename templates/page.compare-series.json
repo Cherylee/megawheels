@@ -18,17 +18,8 @@
     "gallery": {
       "type": "product-thumbnail-gallery",
       "settings": {
-        "background_color": "#000000",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "side_padding": 20,
-        "max_width": 1200,
-        "gap": 8,
-        "gap_mobile": 6,
-        "image_aspect_ratio": "4/3",
-        "show_caption": true,
-        "caption_color": "#ffffff",
-        "caption_font_size": 14
+        "image": "shopify://shop_images/2800_1000.png",
+        "mobile_image": "shopify://shop_images/1200_1600_d172128c-a6b3-4baf-af9b-1c9162873aab.png"
       }
     },
     "comparison": {
@@ -93,20 +84,13 @@
         "product_2_handle": "d2-lite-electric-dirt-bike",
         "product_3_handle": "d2-pro-electric-dirt-bike",
         "button_text": "Shop Now",
-        "button_padding_y": 10,
-        "button_padding_x": 24,
         "button_font_size": 14,
         "button_border_radius": 20,
         "button_background": "#ff0000",
         "button_background_dark": "#cc0000",
         "button_text_color": "#ffffff",
-        "title_background": "#ff0000",
         "product_title_color": "#ffffff",
-        "product_title_font_size": 18,
-        "product_price_color": "#ff0000",
-        "product_price_font_size": 22,
-        "value_color": "#ffffff",
-        "value_font_size": 14
+        "product_title_font_size": 18
       }
     },
     "media_text": {
@@ -118,11 +102,11 @@
             "image": "shopify://shop_images/2.jpg",
             "media_width": 50,
             "media_position": "start",
-            "text_position": "place-self-center text-center",
+            "text_position": "place-self-start text-start",
             "icon": "none",
             "icon_width": 48,
             "subheading": "3213123123",
-            "title": "12312312",
+            "title": "",
             "content": "<p>12313131231234123131313131</p>",
             "link_text": "",
             "link_url": "",
@@ -132,12 +116,12 @@
             "text_gradient": "",
             "button_background": "#ff0000",
             "button_text_color": "#ffffff",
-            "subheading_font_size": 18,
-            "subheading_color": "#666666",
+            "subheading_font_size": 32,
+            "subheading_color": "#ED0000",
             "title_font_size": 32,
             "title_color": "#ffffff",
-            "content_font_size": 16,
-            "content_color": "#333333"
+            "content_font_size": 18,
+            "content_color": "#FFFFFF"
           }
         },
         "image_CfNhq4": {
@@ -146,11 +130,11 @@
             "image": "shopify://shop_images/2.jpg",
             "media_width": 50,
             "media_position": "end",
-            "text_position": "place-self-center text-center",
+            "text_position": "place-self-start-end text-end",
             "icon": "none",
             "icon_width": 48,
             "subheading": "345345345",
-            "title": "23423423424",
+            "title": "",
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "link_text": "",
             "link_url": "",
@@ -160,12 +144,12 @@
             "text_gradient": "",
             "button_background": "",
             "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#666666",
+            "subheading_font_size": 32,
+            "subheading_color": "#ED0000",
             "title_font_size": 32,
             "title_color": "#000000",
-            "content_font_size": 16,
-            "content_color": "#333333"
+            "content_font_size": 18,
+            "content_color": "#FFFFFF"
           }
         }
       },
@@ -238,9 +222,6 @@
     "dual_feature": {
       "type": "dual-column-feature",
       "settings": {
-        "gradient_direction": "135deg",
-        "gradient_color_1": "#0066cc",
-        "gradient_color_2": "#00aaff",
         "padding_top": 60,
         "padding_bottom": 60,
         "side_padding": 20,
@@ -255,12 +236,9 @@
         "image_height": 200,
         "image_height_mobile": 150,
         "image_border_radius": 8,
-        "image_text_gap": 16,
         "separator_width": 2,
         "separator_color": "#cccccc",
-        "left_title": "New Atlas",
         "left_description": "Use this text to share information about your brand with your customers.",
-        "right_title": "No Bull",
         "right_description": "Use this text to share information about your brand with your customers.",
         "title_font_size": 20,
         "title_color": "#000000",
@@ -334,7 +312,7 @@
         "review_dk8gU4": {
           "type": "review",
           "settings": {
-            "product_handle": "d2-lite-electric-dirt-bike",
+            "product_handle": "d2-pro-electric-dirt-bike",
             "review_text": "",
             "reviewer_name": ""
           }
@@ -342,7 +320,7 @@
         "review_QnLB34": {
           "type": "review",
           "settings": {
-            "product_handle": "d2-lite-electric-dirt-bike",
+            "product_handle": "d2-pro-electric-dirt-bike",
             "review_text": "",
             "reviewer_name": ""
           }
@@ -350,7 +328,7 @@
         "review_P6mDac": {
           "type": "review",
           "settings": {
-            "product_handle": "d2-lite-electric-dirt-bike",
+            "product_handle": "d2-pro-electric-dirt-bike",
             "review_text": "",
             "reviewer_name": ""
           }
@@ -387,10 +365,10 @@
         "max_width": 1400,
         "gap": 16,
         "gap_mobile": 8,
-        "columns": "4",
+        "columns": "5",
         "columns_tablet": "3",
         "columns_mobile": "2",
-        "title": "Customer Reviews",
+        "title": "",
         "title_font_size": 32,
         "title_color": "#ffffff",
         "title_alignment": "center",
