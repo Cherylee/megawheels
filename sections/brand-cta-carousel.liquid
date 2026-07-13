@@ -8,9 +8,9 @@
   }
 
   .brand-cta-carousel {
-    max-width: {{ section.settings.max_width }}px;
-    margin: 0 auto;
-    padding: 0 {{ section.settings.side_padding }}px;
+    width: 100%;
+    max-width: none;
+    padding: 0;
   }
 
   .brand-cta-carousel__track {
@@ -21,7 +21,7 @@
   }
 
   .brand-cta-carousel__item {
-    flex: 0 0 {{ section.settings.slide_width }}%;
+    flex: 0 0 100%;
     aspect-ratio: {{ section.settings.image_aspect_ratio }};
     overflow: hidden;
     border-radius: {{ section.settings.border_radius }}px;
@@ -101,7 +101,7 @@
     }
 
     .brand-cta-carousel__item {
-      flex: 0 0 {{ section.settings.slide_width_mobile }}%;
+      flex: 0 0 100%;
     }
 
     .brand-cta-carousel__arrow {
@@ -172,7 +172,7 @@
     var totalSlides = dots.length;
 
     function updateSlidePosition() {
-      var slideOffset = (slideWidth + gap) * currentIndex;
+      var slideOffset = track.offsetWidth * currentIndex;
       track.scrollTo({
         left: slideOffset,
         behavior: 'smooth'

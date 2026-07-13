@@ -1,226 +1,107 @@
+{%- comment -%}
+/**
+ * Page Hero Banner Section
+ * 纯图片 Banner，宽度 100%，高度自适应
+ * 移动端使用小尺寸图片，避免直接下载 PC 大图（优化 Lighthouse 评分）
+ * 未上传图片时显示灰色背景占位
+ */
+{%- endcomment -%}
+
 {%- render 'section-spacing-collapsing' -%}
 
 <style>
   #shopify-section-{{ section.id }} {
-    background-color: {{ section.settings.background_color }};
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-outer-spacing-block: 0;
+    background: #000000;
+    padding:20px;
   }
-
-  .product-thumbnail-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: {{ section.settings.gap }}px;
-    max-width: {{ section.settings.max_width }}px;
-    margin: 0 auto;
-    padding: 0 {{ section.settings.side_padding }}px;
-  }
-
-  .product-thumbnail-gallery__item {
-    aspect-ratio: {{ section.settings.image_aspect_ratio }};
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .product-thumbnail-gallery__item img {
+  #shopify-section-{{ section.id }} .hero-banner {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    max-width: 1240px;
+    line-height: 0; /* 去除图片底部间隙 */
+    aspect-ratio: 13 / 5;
+    background: #dddddd;
+    border-radius: 20px 20px 20px 20px;
+    overflow: hidden;
+    margin: 0 auto;
   }
-
-  .product-thumbnail-gallery__item:hover img {
-    transform: scale(1.05);
+  #shopify-section-{{ section.id }} .hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
-
-  .product-thumbnail-gallery__caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    padding: 12px;
-    color: {{ section.settings.caption_color }};
-    font-size: {{ section.settings.caption_font_size }}px;
-    {% if section.settings.show_caption %}opacity: 1;{% else %}opacity: 0;{% endif %}
-    transition: opacity 0.3s ease;
-  }
-
-  .product-thumbnail-gallery__item:hover .product-thumbnail-gallery__caption {
-    opacity: 1;
-  }
-
-  @media screen and (max-width: 768px) {
-    .product-thumbnail-gallery {
-      grid-template-columns: repeat(2, 1fr);
-      gap: {{ section.settings.gap_mobile }}px;
-      padding: 0 16px;
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .product-thumbnail-gallery {
-      grid-template-columns: 1fr;
-    }
+  #shopify-section-{{ section.id }} .hero-banner--placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 5;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 14px;
+    line-height: 1.4;
   }
 </style>
 
-<div {% render 'section-properties' %}>
-  <div class="product-thumbnail-gallery">
-    {%- for block in section.blocks -%}
-      <div class="product-thumbnail-gallery__item">
-        {%- if block.settings.image != blank -%}
-          {%- capture sizes -%}
-            (max-width: 480px) 100vw, (max-width: 768px) 50vw, calc((100vw - {{ section.settings.max_width }}px) / 3 + {{ section.settings.max_width }}px / 3)
-          {%- endcapture -%}
-          {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: sizes: sizes, widths: '200,300,400,500,600', class: 'product-thumbnail-gallery__image' -}}
-        {%- else -%}
-          {{- 'image' | placeholder_svg_tag: 'aspect-square placeholder' -}}
-        {%- endif -%}
-        {%- if block.settings.caption != blank -%}
-          <div class="product-thumbnail-gallery__caption">{{ block.settings.caption | escape }}</div>
-        {%- endif -%}
-      </div>
-    {%- endfor -%}
-  </div>
+<div class="hero-banner">
+  {%- if section.settings.image != blank -%}
+    {%- assign desktop_image = section.settings.image -%}
+    {%- assign mobile_image = section.settings.mobile_image | default: desktop_image -%}
+    <picture>
+      <!-- 移动端：最大 800px 宽度，避免下载 PC 大尺寸 -->
+      <source
+        media="(max-width: 699px)"
+        srcset="
+          {{ mobile_image | image_url: width: 400 }} 400w,
+          {{ mobile_image | image_url: width: 600 }} 600w,
+          {{ mobile_image | image_url: width: 800 }} 800w
+        "
+        sizes="100vw"
+        width="{{ mobile_image.width }}"
+        height="{{ mobile_image.height }}"
+      >
+      <!-- 桌面端 -->
+      {{ desktop_image | image_url: width: desktop_image.width | image_tag:
+        loading: 'eager',
+        fetchpriority: 'high',
+        sizes: '100vw',
+        widths: '600,800,1000,1200,1400,1600,1800,2000,2400',
+        alt: section.settings.image.alt | escape
+      }}
+    </picture>
+  {%- else -%}
+    <div class="hero-banner--placeholder">
+      No banner image selected
+    </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
 {
-  "name": "Product Thumbnail Gallery",
-  "class": "shopify-section--product-thumbnail-gallery",
+  "name": "Page Hero Banner",
+  "class": "shopify-section--page-hero-banner",
   "tag": "section",
   "disabled_on": {
-    "templates": ["password"]
+    "groups": ["header", "footer", "custom.overlay"]
   },
   "settings": [
     {
-      "type": "color",
-      "id": "background_color",
-      "label": "Section background",
-      "default": "#000000"
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner image",
+      "info": "Recommended 3200 x 1000px .jpg. Displays at 100% width with auto height."
     },
     {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Top padding",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "side_padding",
-      "label": "Side padding",
-      "min": 0,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "max_width",
-      "label": "Max width",
-      "min": 900,
-      "max": 1600,
-      "step": 50,
-      "unit": "px",
-      "default": 1200
-    },
-    {
-      "type": "range",
-      "id": "gap",
-      "label": "Image gap (desktop)",
-      "min": 0,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "gap_mobile",
-      "label": "Image gap (mobile)",
-      "min": 0,
-      "max": 20,
-      "step": 2,
-      "unit": "px",
-      "default": 6
-    },
-    {
-      "type": "text",
-      "id": "image_aspect_ratio",
-      "label": "Image aspect ratio",
-      "default": "4/3",
-      "info": "e.g., 4/3, 1/1, 16/9"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_caption",
-      "label": "Show caption on hover",
-      "default": true
-    },
-    {
-      "type": "color",
-      "id": "caption_color",
-      "label": "Caption color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "caption_font_size",
-      "label": "Caption font size",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "default": 14
-    }
-  ],
-  "blocks": [
-    {
-      "type": "image",
-      "name": "Thumbnail image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "caption",
-          "label": "Caption"
-        }
-      ]
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image (optional)",
+      "info": "If left empty, desktop image will be used. Upload a smaller file for faster mobile load."
     }
   ],
   "presets": [
     {
-      "name": "Product Thumbnail Gallery",
-      "category": "Media",
-      "blocks": [
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" }
-      ]
+      "name": "Page Hero Banner",
+      "category": "Banner"
     }
   ]
 }

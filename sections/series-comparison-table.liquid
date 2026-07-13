@@ -8,16 +8,16 @@
   #shopify-section-{{ section.id }} {
     padding-top: 20px;
     padding-bottom: 20px;
-    background: linear-gradient(0deg, #2b0101 0%, #000000 10%);
+    background: linear-gradient(0deg, #5c0909 -1%, #200505 5%, #000000 80%);
   }
 
   .series-comparison-table {
-    max-width: 1440px;
+    max-width: 1240px;
     margin: 0 auto;
-    background: #151414;
+    background: rgba(21,20,20,0.7);
     border-radius: 10px;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 20px 20px;
    }
 
   .series-comparison-table__header {
@@ -53,14 +53,11 @@
 
   .series-comparison-table__product-title-bg {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: {{ section.settings.title_background }};
-    clip-path: polygon(10% 0%, 90% 5%, 100% 100%, 0% 95%);
+    width: 100%;
+    height: 100%;
+    background: url('https://cdn.shopify.com/s/files/1/0593/5883/8992/files/huaban-5539078913.png?v=1783930065') no-repeat center center;
     z-index: 0;
+    background-size: 100% 100%;
   }
 
   .series-comparison-table__product-title {
@@ -72,18 +69,26 @@
     display: inline-block;
     z-index: 1;
     padding: 4px 16px;
+    max-width: 300px;
   }
 
   .series-comparison-table__product-price {
-    color: {{ section.settings.product_price_color }};
-    font-size: {{ section.settings.product_price_font_size }}px;
-    font-weight: 700;
+    font-weight: 800;
+    {% comment %} background: linear-gradient(45deg, #f10606, #fff); {% endcomment %}
+    background: linear-gradient(0deg, #f10606 40%, #ffffff 100%)!important;
+    -webkit-background-clip: text!important;
+    background-clip: text!important;
+    color: transparent;
     margin-bottom: {{ section.settings.price_button_gap }}px;
+    font-size:24px;
+    display: block;
+    width: fit-content;
+    margin:0 auto;
   }
 
   .series-comparison-table__product-button {
     display: inline-block;
-    padding: {{ section.settings.button_padding_y }}px {{ section.settings.button_padding_x }}px;
+    padding: 5px 28px;
     background: linear-gradient(180deg, {{ section.settings.button_background }} 0%, {{ section.settings.button_background_dark }} 100%);
     color: {{ section.settings.button_text_color }};
     font-size: {{ section.settings.button_font_size }}px;
@@ -91,7 +96,6 @@
     text-decoration: none;
     border-radius: {{ section.settings.button_border_radius }}px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(255,0,0,0.3);
     border: none;
     cursor: pointer;
   }
@@ -112,20 +116,20 @@
   }
 
   .series-comparison-table__label {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     padding: 10px;
     align-self: center;
     text-align: left;
-    background: linear-gradient(45deg, red, #fff);
+    background: linear-gradient(45deg, #f10606 20%, #ffc5c5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .series-comparison-table__value {
-    color: {{ section.settings.value_color }};
-    font-size: {{ section.settings.value_font_size }}px;
+    color: #ffffff;
+    font-size: 18px;
     padding: {{ section.settings.cell_padding }}px;
     text-align: center;
     align-self: center;
@@ -372,26 +376,6 @@
     },
     {
       "type": "range",
-      "id": "button_padding_y",
-      "label": "Button vertical padding",
-      "min": 8,
-      "max": 20,
-      "step": 2,
-      "unit": "px",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "button_padding_x",
-      "label": "Button horizontal padding",
-      "min": 16,
-      "max": 40,
-      "step": 4,
-      "unit": "px",
-      "default": 28
-    },
-    {
-      "type": "range",
       "id": "button_font_size",
       "label": "Button font size",
       "min": 12,
@@ -430,12 +414,6 @@
     },
     {
       "type": "color",
-      "id": "title_background",
-      "label": "Title background",
-      "default": "#ff0000"
-    },
-    {
-      "type": "color",
       "id": "product_title_color",
       "label": "Product title color",
       "default": "#ffffff"
@@ -449,38 +427,6 @@
       "step": 2,
       "unit": "px",
       "default": 20
-    },
-    {
-      "type": "color",
-      "id": "product_price_color",
-      "label": "Product price color",
-      "default": "#ff0000"
-    },
-    {
-      "type": "range",
-      "id": "product_price_font_size",
-      "label": "Product price font size",
-      "min": 20,
-      "max": 40,
-      "step": 2,
-      "unit": "px",
-      "default": 28
-    },
-    {
-      "type": "color",
-      "id": "value_color",
-      "label": "Parameter value color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "value_font_size",
-      "label": "Parameter value font size",
-      "min": 12,
-      "max": 18,
-      "step": 1,
-      "unit": "px",
-      "default": 14
     },
   ],
   "blocks": [
