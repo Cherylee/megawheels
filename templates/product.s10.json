@@ -27,14 +27,6 @@
           "type": "badges",
           "settings": {}
         },
-        "aftership_product_reviews_product_page_star_widget_Jjgiry": {
-          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_star_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
-          "settings": {
-            "product": "{{product}}",
-            "block_alignment": "flex-start",
-            "star_and_font_size": 20
-          }
-        },
         "price": {
           "type": "price",
           "settings": {
@@ -94,7 +86,6 @@
         "vendor",
         "title",
         "badges",
-        "aftership_product_reviews_product_page_star_widget_Jjgiry",
         "price",
         "rating",
         "payment_terms",
@@ -579,15 +570,6 @@
     },
     "17750442987ce02a00": {
       "type": "apps",
-      "blocks": {
-        "aftership_product_reviews_product_page_main_widget_T8HzQz": {
-          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_main_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "aftership_product_reviews_product_page_main_widget_T8HzQz"
-      ],
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,

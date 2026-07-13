@@ -22,15 +22,6 @@
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         },
-        "aftership_product_reviews_product_page_star_widget_jm4d93": {
-          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_star_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
-          "disabled": true,
-          "settings": {
-            "product": "{{product}}",
-            "block_alignment": "flex-start",
-            "star_and_font_size": 20
-          }
-        },
         "badges": {
           "type": "badges",
           "settings": {}
@@ -170,7 +161,6 @@
       "block_order": [
         "title",
         "judge_me_reviews_preview_badge_JUcPyD",
-        "aftership_product_reviews_product_page_star_widget_jm4d93",
         "badges",
         "price_second_T38RkA",
         "discount_code_RjnFCP",
@@ -730,16 +720,10 @@
             "show_shop_reviews": false,
             "empty_state": "empty_widget"
           }
-        },
-        "aftership_product_reviews_product_page_main_widget_miczzp": {
-          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_main_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
-          "disabled": true,
-          "settings": {}
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_tKT8U9",
-        "aftership_product_reviews_product_page_main_widget_miczzp"
+        "judge_me_reviews_review_widget_tKT8U9"
       ],
       "settings": {
         "full_width": true,

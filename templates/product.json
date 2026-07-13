@@ -146,16 +146,6 @@
     },
     "1775116563d98652ef": {
       "type": "apps",
-      "blocks": {
-        "aftership_product_reviews_product_page_main_widget_knxtfm": {
-          "type": "shopify://apps/aftership-product-reviews/blocks/product_page_main_widget/beb80d6c-6526-44ce-8946-4a762954ca6d",
-          "disabled": true,
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "aftership_product_reviews_product_page_main_widget_knxtfm"
-      ],
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
