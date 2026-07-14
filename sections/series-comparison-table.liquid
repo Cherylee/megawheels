@@ -137,13 +137,13 @@
     -webkit-background-clip: text!important;
     background-clip: text!important;
     color: transparent;
-    font-size: 32px;
+    font-size: {{ section.settings.price_font_size }}px;
     display: inline-block;
   }
 
   .series-comparison-table__product-compare-at-price {
-    font-size: 18px;
-    color: #999999;
+    font-size: {{ section.settings.compare_at_font_size }}px;
+    color: {{ section.settings.compare_at_color }};
     text-decoration: line-through;
     margin-left: 8px;
     display: inline-block;
@@ -188,7 +188,7 @@
   }
 
   .series-comparison-table__label {
-    font-size: 20px;
+    font-size: {{ section.settings.label_font_size }}px;
     font-weight: 800;
     padding: 10px;
     align-self: center;
@@ -200,8 +200,8 @@
   }
 
   .series-comparison-table__value {
-    color: #ffffff;
-    font-size: 20px;
+    color: {{ section.settings.value_color }};
+    font-size: {{ section.settings.value_font_size }}px;
     padding: {{ section.settings.cell_padding }}px;
     text-align: center;
     align-self: center;
@@ -592,6 +592,68 @@
       "step": 2,
       "unit": "px",
       "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Price",
+      "info": "Discount price and compare-at (original) price."
+    },
+    {
+      "type": "range",
+      "id": "price_font_size",
+      "label": "Discount price font size",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "compare_at_font_size",
+      "label": "Compare-at font size",
+      "min": 12,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "compare_at_color",
+      "label": "Compare-at color",
+      "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "Table Parameters",
+      "info": "Row labels and value cells."
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "label": "Label font size",
+      "min": 12,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "value_font_size",
+      "label": "Value font size",
+      "min": 12,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "Value color",
+      "default": "#ffffff"
     },
   ],
   "blocks": [

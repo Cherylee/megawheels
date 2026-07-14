@@ -48,10 +48,17 @@ CSS
       }
     }
 
-    /* 副标题样式 */
+    /* 副标题样式：渐变优先，回退纯色 */
     #block-{{ section.id }}-{{ block.id }} .subheading {
       font-size: {{ block.settings.subheading_font_size }}px;
-      color: {{ block.settings.subheading_color }};
+      {%- if block.settings.subheading_gradient != blank -%}
+        background: {{ block.settings.subheading_gradient }};
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      {%- else -%}
+        color: {{ block.settings.subheading_color }};
+      {%- endif -%}
     }
     /* 标题样式 */
     #block-{{ section.id }}-{{ block.id }} .h2 {
@@ -685,6 +692,12 @@ LIQUID
           "default": "#666666"
         },
         {
+          "type": "color_background",
+          "id": "subheading_gradient",
+          "label": "Subheading gradient",
+          "info": "Overrides solid color when set."
+        },
+        {
           "type": "range",
           "id": "title_font_size",
           "label": "Title font size",
@@ -1184,6 +1197,12 @@ LIQUID
           "id": "subheading_color",
           "label": "Subheading color",
           "default": "#666666"
+        },
+        {
+          "type": "color_background",
+          "id": "subheading_gradient",
+          "label": "Subheading gradient",
+          "info": "Overrides solid color when set."
         },
         {
           "type": "range",
