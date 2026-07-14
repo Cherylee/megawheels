@@ -292,12 +292,17 @@
         "full_width": true,
         "subheading": "",
         "title": "Megawheels FAQ",
-        "content": "<p>Find answers to common questions about our products and services.</p>",
+        "content": "",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
         "button_text": "",
         "button_url": "",
+        "intro_alignment": "left",
+        "intro_heading_font_size": 32,
+        "intro_heading_color": "#ffffff",
+        "intro_text_font_size": 16,
+        "intro_text_color": "#cccccc",
         "text_position": "center",
         "section_background": "",
         "section_gradient_color_1": "#5a0909",
@@ -348,6 +353,7 @@
           "type": "review",
           "settings": {
             "product_handle": "",
+            "image": "shopify://shop_images/MEGAWHEELS-D2-LITE-electric-dirt-bike-01_e045060e-a1ec-4768-8478-3143eff5a3e3.jpg",
             "star_rating": 4,
             "review_text": "不错！！！！！不错！！！！！不错！！！！！不错！！！！！不错！！！！！",
             "reviewer_name": "@用户2"
@@ -437,14 +443,14 @@
         "image_aspect_ratio": "4/3",
         "border_radius": 8,
         "card_padding": 16,
-        "card_background": "#1a1a1a",
+        "card_background": "#FFFFFF",
         "star_size": 16,
         "star_color": "#ffb303",
-        "review_text_color": "#cccccc",
-        "review_text_font_size": 14,
+        "review_text_color": "#171717",
+        "review_text_font_size": 12,
         "review_text_lines": 2,
-        "reviewer_color": "#888888",
-        "reviewer_font_size": 12
+        "reviewer_color": "#171717",
+        "reviewer_font_size": 14
       }
     }
   },
