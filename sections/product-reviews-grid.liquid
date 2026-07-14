@@ -84,6 +84,25 @@
     height: {{ section.settings.star_size }}px;
     fill: {{ section.settings.star_color }};
   }
+  .product-reviews-grid__star--empty {
+    fill: #ddd;
+  }
+  {%- comment -%} 半星效果：用 clip-path 裁剪右半部分为灰色 {%- endcomment -%}
+  .product-reviews-grid__star--half {
+    position: relative;
+    fill: #ddd;
+  }
+  .product-reviews-grid__star--half::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 50%;
+    background: {{ section.settings.star_color }};
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
+  }
 
   .product-reviews-grid__review-text {
     color: {{ section.settings.review_text_color | default: '#333333' }};
@@ -169,9 +188,18 @@
         {%- for block in section.blocks -%}
           {%- assign product = all_products[block.settings.product_handle] -%}
           {%- if product -%}
-            {%- comment -%} 星级可在 block 中配置，默认 5 星 {%- endcomment -%}
-            {%- assign star_count = block.settings.star_rating | default: 5 -%}
-            {%- assign empty_stars = 5 | minus: star_count -%}
+            {%- comment -%} 星级可在 block 中配置，支持 0.5 步进（如 4.5） {%- endcomment -%}
+            {%- assign rating = block.settings.star_rating | default: 5 | plus: 0 -%}
+            {%- assign full_stars = rating | floor -%}
+            {%- assign has_half_star = false -%}
+            {%- assign decimal_part = rating | minus: full_stars -%}
+            {%- if decimal_part >= 0.5 -%}
+              {%- assign has_half_star = true -%}
+            {%- endif -%}
+            {%- assign empty_stars = 5 | minus: full_stars -%}
+            {%- if has_half_star -%}
+              {%- assign empty_stars = empty_stars | minus: 1 -%}
+            {%- endif -%}
 
             {%- comment -%} 优先使用 block 配置的图片，回退到产品主图 {%- endcomment -%}
             {%- assign display_image = block.settings.image | default: product.featured_image -%}
@@ -190,13 +218,18 @@
                 {%- comment -%} 星级展示 {%- endcomment -%}
                 <div class="product-reviews-grid__rating">
                   <div class="product-reviews-grid__stars">
-                    {%- for i in (1..star_count) -%}
+                    {%- for i in (1..full_stars) -%}
                       <svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
                     {%- endfor -%}
+                    {%- if has_half_star -%}
+                      <svg class="product-reviews-grid__star product-reviews-grid__star--half" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    {%- endif -%}
                     {%- for i in (1..empty_stars) -%}
-                      <svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: #ddd;">
+                      <svg class="product-reviews-grid__star product-reviews-grid__star--empty" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
                     {%- endfor -%}
@@ -330,7 +363,7 @@
       "max": 1600,
       "step": 50,
       "unit": "px",
-      "default": 1400
+      "default": 1250
     },
     {
       "type": "range",
@@ -536,14 +569,24 @@
           "info": "Upload a custom image. If left empty, the product's featured image will be used."
         },
         {
-          "type": "range",
+          "type": "select",
           "id": "star_rating",
           "label": "Star rating",
-          "min": 1,
-          "max": 5,
-          "step": 1,
-          "default": 5,
-          "info": "Set how many stars to display for this review."
+          "options": [
+            { "value": "0", "label": "0" },
+            { "value": "0.5", "label": "0.5" },
+            { "value": "1", "label": "1" },
+            { "value": "1.5", "label": "1.5" },
+            { "value": "2", "label": "2" },
+            { "value": "2.5", "label": "2.5" },
+            { "value": "3", "label": "3" },
+            { "value": "3.5", "label": "3.5" },
+            { "value": "4", "label": "4" },
+            { "value": "4.5", "label": "4.5" },
+            { "value": "5", "label": "5" }
+          ],
+          "default": "5",
+          "info": "Set how many stars to display for this review. Supports half stars (e.g. 4.5)."
         },
         {
           "type": "text",
