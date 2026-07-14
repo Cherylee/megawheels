@@ -46,11 +46,8 @@
 
   .section-stack__main2 {
     width: 100%;
-    max-width: {{ section.settings.wrapper_max_width }}px;
-    margin-top: {{ section.settings.wrapper_margin_top }}px;
-    margin-bottom: {{ section.settings.wrapper_margin_bottom }}px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1440px;
+    margin: 28px auto;
     box-shadow: 0 90px 800px 10px rgba(255, 255, 255, 0.1);
     {%- comment -%} 背景：自定义渐变 > 纯色 > 默认 {%- endcomment -%}
     {%- if wrap_gradient_custom -%}
@@ -543,36 +540,6 @@
       "step": 2,
       "unit": "px",
       "default": 20
-    },
-    {
-      "type": "range",
-      "id": "wrapper_max_width",
-      "label": "Wrapper max width",
-      "min": 600,
-      "max": 1600,
-      "step": 40,
-      "unit": "px",
-      "default": 1240
-    },
-    {
-      "type": "range",
-      "id": "wrapper_margin_top",
-      "label": "Wrapper margin top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 28
-    },
-    {
-      "type": "range",
-      "id": "wrapper_margin_bottom",
-      "label": "Wrapper margin bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 28
     },
     {
       "type": "header",
