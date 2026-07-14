@@ -1,8 +1,29 @@
 {%- render 'section-spacing-collapsing' -%}
 
 <style>
+  {%- comment -%} Section 背景渐变：颜色1/2/3 全部设置才启用自定义渐变 {%- endcomment -%}
+  {%- liquid
+    assign sec_c1 = section.settings.section_gradient_color_1
+    assign sec_c2 = section.settings.section_gradient_color_2
+    assign sec_c3 = section.settings.section_gradient_color_3
+    assign sec_angle = section.settings.section_gradient_angle | default: '180'
+    assign sec_pos1 = section.settings.section_gradient_position_1 | default: '0'
+    assign sec_pos2 = section.settings.section_gradient_position_2 | default: '50'
+    assign sec_pos3 = section.settings.section_gradient_position_3 | default: '100'
+  -%}
+  {%- assign sec_gradient_custom = false -%}
+  {%- if sec_c1 != blank and sec_c2 != blank and sec_c3 != blank -%}
+    {%- assign sec_gradient_custom = true -%}
+  {%- endif -%}
+
   #shopify-section-{{ section.id }} {
-    background: linear-gradient(180deg,#000000,#005fd1);
+    {%- if sec_gradient_custom -%}
+      background: linear-gradient({{ sec_angle }}deg, {{ sec_c1 }} {{ sec_pos1 }}%, {{ sec_c2 }} {{ sec_pos2 }}%, {{ sec_c3 }} {{ sec_pos3 }}%);
+    {%- elsif section.settings.section_background != blank -%}
+      background: {{ section.settings.section_background }};
+    {%- else -%}
+      background: linear-gradient(180deg,#000000,#005fd1);
+    {%- endif -%}
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
     margin-bottom: {{ section.settings.margin_bottom }}px;
@@ -111,6 +132,63 @@
     "templates": ["password"]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "Section Background",
+      "info": "Custom gradient: set all 3 colors to enable. Leave empty to use the default blue gradient."
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Solid background color",
+      "info": "Used only if gradient colors are not set."
+    },
+    {
+      "type": "color",
+      "id": "section_gradient_color_1",
+      "label": "Gradient color 1",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "section_gradient_color_2",
+      "label": "Gradient color 2",
+      "default": "#005fd1"
+    },
+    {
+      "type": "color",
+      "id": "section_gradient_color_3",
+      "label": "Gradient color 3",
+      "default": "#005fd1"
+    },
+    {
+      "type": "text",
+      "id": "section_gradient_angle",
+      "label": "Gradient angle (deg)",
+      "default": "180",
+      "info": "e.g. 0, 90, 180, 270"
+    },
+    {
+      "type": "text",
+      "id": "section_gradient_position_1",
+      "label": "Gradient position 1 (%)",
+      "default": "0",
+      "info": "e.g. 0, 10"
+    },
+    {
+      "type": "text",
+      "id": "section_gradient_position_2",
+      "label": "Gradient position 2 (%)",
+      "default": "50",
+      "info": "e.g. 30, 50"
+    },
+    {
+      "type": "text",
+      "id": "section_gradient_position_3",
+      "label": "Gradient position 3 (%)",
+      "default": "100",
+      "info": "e.g. 80, 100"
+    },
     {
       "type": "range",
       "id": "padding_top",

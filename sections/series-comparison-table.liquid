@@ -12,6 +12,53 @@
 {%- assign product_2_title = section.settings.product_2_title | default: product_2.title -%}
 {%- assign product_3_title = section.settings.product_3_title | default: product_3.title -%}
 
+{%- comment -%} 折扣价计算：支持百分比(%)或固定金额 {%- endcomment -%}
+{%- assign discount_1 = section.settings.product_1_discount_price | strip -%}
+{%- assign discount_2 = section.settings.product_2_discount_price | strip -%}
+{%- assign discount_3 = section.settings.product_3_discount_price | strip -%}
+
+{%- comment -%} Product 1: 折扣价 & 原价 {%- endcomment -%}
+{%- assign p1_display_price = product_1.price -%}
+{%- assign p1_compare_price = product_1.compare_at_price -%}
+{%- if discount_1 != blank and product_1 -%}
+  {%- if discount_1 contains '%' -%}
+    {%- assign pct = discount_1 | remove: '%' | times: 1 -%}
+    {%- assign discount_amount = product_1.price | times: pct | divided_by: 100 -%}
+    {%- assign p1_display_price = product_1.price | minus: discount_amount -%}
+  {%- else -%}
+    {%- assign p1_display_price = discount_1 | times: 1 -%}
+  {%- endif -%}
+  {%- assign p1_compare_price = product_1.price -%}
+{%- endif -%}
+
+{%- comment -%} Product 2 {%- endcomment -%}
+{%- assign p2_display_price = product_2.price -%}
+{%- assign p2_compare_price = product_2.compare_at_price -%}
+{%- if discount_2 != blank and product_2 -%}
+  {%- if discount_2 contains '%' -%}
+    {%- assign pct = discount_2 | remove: '%' | times: 1 -%}
+    {%- assign discount_amount = product_2.price | times: pct | divided_by: 100 -%}
+    {%- assign p2_display_price = product_2.price | minus: discount_amount -%}
+  {%- else -%}
+    {%- assign p2_display_price = discount_2 | times: 1 -%}
+  {%- endif -%}
+  {%- assign p2_compare_price = product_2.price -%}
+{%- endif -%}
+
+{%- comment -%} Product 3 {%- endcomment -%}
+{%- assign p3_display_price = product_3.price -%}
+{%- assign p3_compare_price = product_3.compare_at_price -%}
+{%- if discount_3 != blank and product_3 -%}
+  {%- if discount_3 contains '%' -%}
+    {%- assign pct = discount_3 | remove: '%' | times: 1 -%}
+    {%- assign discount_amount = product_3.price | times: pct | divided_by: 100 -%}
+    {%- assign p3_display_price = product_3.price | minus: discount_amount -%}
+  {%- else -%}
+    {%- assign p3_display_price = discount_3 | times: 1 -%}
+  {%- endif -%}
+  {%- assign p3_compare_price = product_3.price -%}
+{%- endif -%}
+
 <style>
   #shopify-section-{{ section.id }} {
     padding-top: 20px;
@@ -86,17 +133,29 @@
 
   .series-comparison-table__product-price {
     font-weight: 800;
-    {% comment %} background: linear-gradient(45deg, #f10606, #fff); {% endcomment %}
     background: linear-gradient(0deg, #f10606 40%, #ffffff 100%)!important;
     -webkit-background-clip: text!important;
     background-clip: text!important;
     color: transparent;
+    font-size: 32px;
+    display: inline-block;
+  }
+
+  .series-comparison-table__product-compare-at-price {
+    font-size: 18px;
+    color: #999999;
+    text-decoration: line-through;
+    margin-left: 8px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .series-comparison-table__product-price-wrap {
     margin-bottom: {{ section.settings.price_button_gap }}px;
-    font-size:32px;
-    display: block;
-    width: fit-content;
-    margin:0 auto;
-    -webkit-text-stroke: 0.3px #000000;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
   }
 
   .series-comparison-table__product-button {
@@ -218,7 +277,12 @@
             {%- endif -%}
           </div>
           {%- if product_1 -%}
-            <div class="series-comparison-table__product-price">{{ product_1.price | money }}</div>
+            <div class="series-comparison-table__product-price-wrap">
+              <span class="series-comparison-table__product-price">{{ p1_display_price | money }}</span>
+              {%- if p1_compare_price > p1_display_price -%}
+                <span class="series-comparison-table__product-compare-at-price">{{ p1_compare_price | money }}</span>
+              {%- endif -%}
+            </div>
             <a href="{{ product_1.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
           {%- endif -%}
         </div>
@@ -239,7 +303,12 @@
             {%- endif -%}
           </div>
           {%- if product_2 -%}
-            <div class="series-comparison-table__product-price">{{ product_2.price | money }}</div>
+            <div class="series-comparison-table__product-price-wrap">
+              <span class="series-comparison-table__product-price">{{ p2_display_price | money }}</span>
+              {%- if p2_compare_price > p2_display_price -%}
+                <span class="series-comparison-table__product-compare-at-price">{{ p2_compare_price | money }}</span>
+              {%- endif -%}
+            </div>
             <a href="{{ product_2.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
           {%- endif -%}
         </div>
@@ -260,7 +329,12 @@
             {%- endif -%}
           </div>
           {%- if product_3 -%}
-            <div class="series-comparison-table__product-price">{{ product_3.price | money }}</div>
+            <div class="series-comparison-table__product-price-wrap">
+              <span class="series-comparison-table__product-price">{{ p3_display_price | money }}</span>
+              {%- if p3_compare_price > p3_display_price -%}
+                <span class="series-comparison-table__product-compare-at-price">{{ p3_compare_price | money }}</span>
+              {%- endif -%}
+            </div>
             <a href="{{ product_3.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
           {%- endif -%}
         </div>
@@ -440,6 +514,24 @@
       "id": "product_3_title",
       "label": "Product 3 custom title",
       "info": "Leave empty to use product's title"
+    },
+    {
+      "type": "text",
+      "id": "product_1_discount_price",
+      "label": "Product 1 discount price",
+      "info": "e.g. 20% for percentage off, or 699 for fixed price. Leave empty to use Shopify compare-at price."
+    },
+    {
+      "type": "text",
+      "id": "product_2_discount_price",
+      "label": "Product 2 discount price",
+      "info": "e.g. 20% for percentage off, or 699 for fixed price. Leave empty to use Shopify compare-at price."
+    },
+    {
+      "type": "text",
+      "id": "product_3_discount_price",
+      "label": "Product 3 discount price",
+      "info": "e.g. 20% for percentage off, or 699 for fixed price. Leave empty to use Shopify compare-at price."
     },
     {
       "type": "text",
