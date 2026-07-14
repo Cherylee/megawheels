@@ -15,9 +15,7 @@
     },
     "gallery": {
       "type": "product-thumbnail-gallery",
-      "settings": {
-        "mobile_image": "shopify://shop_images/1200_1600_d172128c-a6b3-4baf-af9b-1c9162873aab.png"
-      }
+      "settings": {}
     },
     "comparison": {
       "type": "series-comparison-table",
@@ -83,6 +81,9 @@
         "product_1_title": "D2 lite",
         "product_2_title": "D2",
         "product_3_title": "D2 pro",
+        "product_1_discount_price": "1099.99",
+        "product_2_discount_price": "999.99",
+        "product_3_discount_price": "1899.99",
         "button_text": "Shop Now",
         "button_font_size": 14,
         "button_border_radius": 20,
@@ -217,6 +218,14 @@
     "dual_feature": {
       "type": "dual-column-feature",
       "settings": {
+        "section_background": "",
+        "section_gradient_color_1": "#000000",
+        "section_gradient_color_2": "#005fd1",
+        "section_gradient_color_3": "#005fd1",
+        "section_gradient_angle": "180",
+        "section_gradient_position_1": "0",
+        "section_gradient_position_2": "50",
+        "section_gradient_position_3": "100",
         "padding_top": 60,
         "padding_bottom": 60,
         "side_padding": 20,
@@ -247,28 +256,28 @@
         "item_mwqh3i": {
           "type": "item",
           "settings": {
-            "title": "Question",
+            "title": "1.Question",
             "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
           }
         },
         "item_H4aL7L": {
           "type": "item",
           "settings": {
-            "title": "Question",
+            "title": "2.Question",
             "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
           }
         },
         "item_kT6Y8w": {
           "type": "item",
           "settings": {
-            "title": "Question",
+            "title": "3.Question",
             "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
           }
         },
         "item_cAjBfj": {
           "type": "item",
           "settings": {
-            "title": "Question",
+            "title": "4.Question",
             "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
           }
         }
@@ -290,6 +299,25 @@
         "button_text": "",
         "button_url": "",
         "text_position": "center",
+        "section_background": "",
+        "section_gradient_color_1": "#5a0909",
+        "section_gradient_color_2": "#200505",
+        "section_gradient_color_3": "#000000",
+        "section_gradient_angle": "0",
+        "section_gradient_position_1": "-1",
+        "section_gradient_position_2": "5",
+        "section_gradient_position_3": "80",
+        "wrapper_background": "",
+        "wrapper_gradient_color_1": "#271716",
+        "wrapper_gradient_color_2": "#1f1817",
+        "wrapper_gradient_color_3": "#151414",
+        "wrapper_gradient_angle": "0",
+        "wrapper_gradient_position_1": "0",
+        "wrapper_gradient_position_2": "10",
+        "wrapper_gradient_position_3": "80",
+        "wrapper_padding_vertical": 28,
+        "wrapper_padding_horizontal": 0,
+        "wrapper_border_radius": 20,
         "background": "#000000",
         "background_gradient": "",
         "text_color": "#ffffff",
@@ -298,16 +326,47 @@
         "button_background": "",
         "button_text_color": "",
         "accordion_background": "#111111",
-        "accordion_text_color": "#ffffff"
+        "accordion_text_color": "#ffffff",
+        "border_width": 0,
+        "border_color": "#ffffff"
       }
     },
     "reviews": {
       "type": "product-reviews-grid",
       "blocks": {
+        "review_GdUEkW": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "image": "shopify://shop_images/MEGAWHEELS-D2-LITE-electric-dirt-bike-03_e140aaf8-f0ed-4896-a6b3-419479852a96.jpg",
+            "star_rating": 5,
+            "review_text": "很好很好",
+            "reviewer_name": "@用户3"
+          }
+        },
+        "review_bTPJhc": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "star_rating": 4,
+            "review_text": "不错！！！！！不错！！！！！不错！！！！！不错！！！！！不错！！！！！",
+            "reviewer_name": "@用户2"
+          }
+        },
+        "review_EUHjNe": {
+          "type": "review",
+          "settings": {
+            "product_handle": "d2-pro-electric-dirt-bike",
+            "star_rating": 4,
+            "review_text": "我觉得很好",
+            "reviewer_name": "@用户1"
+          }
+        },
         "review_dk8gU4": {
           "type": "review",
           "settings": {
             "product_handle": "d2-pro-electric-dirt-bike",
+            "star_rating": 5,
             "review_text": "",
             "reviewer_name": ""
           }
@@ -316,6 +375,7 @@
           "type": "review",
           "settings": {
             "product_handle": "d2-pro-electric-dirt-bike",
+            "star_rating": 5,
             "review_text": "",
             "reviewer_name": ""
           }
@@ -324,6 +384,7 @@
           "type": "review",
           "settings": {
             "product_handle": "d2-pro-electric-dirt-bike",
+            "star_rating": 5,
             "review_text": "",
             "reviewer_name": ""
           }
@@ -332,6 +393,7 @@
           "type": "review",
           "settings": {
             "product_handle": "d2-electric-dirt-bike",
+            "star_rating": 5,
             "review_text": "",
             "reviewer_name": ""
           }
@@ -340,12 +402,16 @@
           "type": "review",
           "settings": {
             "product_handle": "d2-electric-dirt-bike",
+            "star_rating": 5,
             "review_text": "",
             "reviewer_name": ""
           }
         }
       },
       "block_order": [
+        "review_GdUEkW",
+        "review_bTPJhc",
+        "review_EUHjNe",
         "review_dk8gU4",
         "review_QnLB34",
         "review_P6mDac",
@@ -359,7 +425,7 @@
         "side_padding": 20,
         "max_width": 1400,
         "gap": 16,
-        "gap_mobile": 8,
+        "gap_mobile": 6,
         "columns": "5",
         "columns_tablet": "3",
         "columns_mobile": "2",
@@ -372,19 +438,13 @@
         "border_radius": 8,
         "card_padding": 16,
         "card_background": "#1a1a1a",
-        "product_title_color": "#ffffff",
-        "product_title_font_size": 14,
         "star_size": 16,
         "star_color": "#ffb303",
-        "review_count_color": "#aaaaaa",
-        "review_count_font_size": 12,
         "review_text_color": "#cccccc",
         "review_text_font_size": 14,
         "review_text_lines": 2,
         "reviewer_color": "#888888",
-        "reviewer_font_size": 12,
-        "price_color": "#ff0000",
-        "price_font_size": 18
+        "reviewer_font_size": 12
       }
     }
   },
