@@ -11,14 +11,11 @@
   "sections": {
     "hero": {
       "type": "page-hero-banner",
-      "settings": {
-        "image": "shopify://shop_images/2800_1000.jpg"
-      }
+      "settings": {}
     },
     "gallery": {
       "type": "product-thumbnail-gallery",
       "settings": {
-        "image": "shopify://shop_images/2800_1000.png",
         "mobile_image": "shopify://shop_images/1200_1600_d172128c-a6b3-4baf-af9b-1c9162873aab.png"
       }
     },
@@ -83,6 +80,9 @@
         "product_1_handle": "d2-electric-dirt-bike",
         "product_2_handle": "d2-lite-electric-dirt-bike",
         "product_3_handle": "d2-pro-electric-dirt-bike",
+        "product_1_title": "D2 lite",
+        "product_2_title": "D2",
+        "product_3_title": "D2 pro",
         "button_text": "Shop Now",
         "button_font_size": 14,
         "button_border_radius": 20,
@@ -99,7 +99,6 @@
         "media_block": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2.jpg",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-start text-start",
@@ -117,17 +116,16 @@
             "button_background": "#ff0000",
             "button_text_color": "#ffffff",
             "subheading_font_size": 32,
-            "subheading_color": "#ED0000",
+            "subheading_color": "#ed0000",
             "title_font_size": 32,
             "title_color": "#ffffff",
             "content_font_size": 18,
-            "content_color": "#FFFFFF"
+            "content_color": "#ffffff"
           }
         },
         "image_CfNhq4": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2.jpg",
             "media_width": 50,
             "media_position": "end",
             "text_position": "place-self-start-end text-end",
@@ -145,11 +143,11 @@
             "button_background": "",
             "button_text_color": "",
             "subheading_font_size": 32,
-            "subheading_color": "#ED0000",
+            "subheading_color": "#ed0000",
             "title_font_size": 32,
             "title_color": "#000000",
             "content_font_size": 18,
-            "content_color": "#FFFFFF"
+            "content_color": "#ffffff"
           }
         }
       },
@@ -172,21 +170,18 @@
         "slide_nb8UCB": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/2800_1000.jpg",
             "link": ""
           }
         },
         "slide_V9NrWM": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/5.png",
             "link": ""
           }
         },
         "slide_xDMTBL": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/2.jpg",
             "link": ""
           }
         }
