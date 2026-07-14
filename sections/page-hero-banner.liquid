@@ -49,8 +49,6 @@
           {{ mobile_image | image_url: width: 800 }} 800w
         "
         sizes="100vw"
-        width="{{ mobile_image.width }}"
-        height="{{ mobile_image.height }}"
       >
       <!-- 桌面端 -->
       {{ desktop_image | image_url: width: desktop_image.width | image_tag:

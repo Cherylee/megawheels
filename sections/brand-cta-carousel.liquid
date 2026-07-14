@@ -18,6 +18,7 @@
     overflow: hidden;
     scroll-behavior: smooth;
     gap: {{ section.settings.gap }}px;
+    border-radius: {{ section.settings.border_radius }}px;
   }
 
   .brand-cta-carousel__item {
@@ -30,7 +31,7 @@
   }
 
   .brand-cta-carousel__item:hover {
-    transform: scale(1.02);
+    {% comment %} transform: scale(1.02); {% endcomment %}
   }
 
   .brand-cta-carousel__item img {
@@ -77,6 +78,14 @@
     justify-content: center;
     transition: background-color 0.3s ease;
     z-index: 10;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .brand-cta-carousel__arrow img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
   }
 
   .brand-cta-carousel__arrow:hover {
@@ -114,15 +123,25 @@
   <div class="brand-cta-carousel">
     <div class="brand-cta-carousel__wrapper">
       {%- if section.settings.show_arrows and section.blocks.size > 1 -%}
+        {%- comment -%} 上一页按钮：优先使用上传图片，回退到默认 SVG {%- endcomment -%}
         <button class="brand-cta-carousel__arrow brand-cta-carousel__arrow--prev" aria-label="Previous slide" onclick="carouselPrev('{{ section.id }}')">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M15 18l-6-6 6-6"/>
-          </svg>
+          {%- if section.settings.arrow_prev_image != blank -%}
+            {{- section.settings.arrow_prev_image | image_url: width: 40 | image_tag: loading: 'lazy', alt: 'Previous' -}}
+          {%- else -%}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          {%- endif -%}
         </button>
+        {%- comment -%} 下一页按钮：优先使用上传图片，回退到默认 SVG {%- endcomment -%}
         <button class="brand-cta-carousel__arrow brand-cta-carousel__arrow--next" aria-label="Next slide" onclick="carouselNext('{{ section.id }}')">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M9 18l6-6-6-6"/>
-          </svg>
+          {%- if section.settings.arrow_next_image != blank -%}
+            {{- section.settings.arrow_next_image | image_url: width: 40 | image_tag: loading: 'lazy', alt: 'Next' -}}
+          {%- else -%}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          {%- endif -%}
         </button>
       {%- endif -%}
 
@@ -323,7 +342,7 @@
       "max": 20,
       "step": 2,
       "unit": "px",
-      "default": 8
+      "default": 20
     },
     {
       "type": "checkbox",
@@ -347,6 +366,18 @@
       "id": "show_arrows",
       "label": "Show navigation arrows",
       "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_prev_image",
+      "label": "Previous arrow icon",
+      "info": "Custom icon for the previous arrow. Leave empty to use the default chevron."
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_next_image",
+      "label": "Next arrow icon",
+      "info": "Custom icon for the next arrow. Leave empty to use the default chevron."
     },
     {
       "type": "checkbox",

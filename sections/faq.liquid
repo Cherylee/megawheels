@@ -3,14 +3,116 @@
 {%- assign text_position = section.settings.text_position -%}
 
 <style>
+  {%- comment -%} Section 背景渐变：颜色1/2/3 全部设置才启用自定义渐变 {%- endcomment -%}
+  {%- liquid
+    assign sec_c1 = section.settings.section_gradient_color_1
+    assign sec_c2 = section.settings.section_gradient_color_2
+    assign sec_c3 = section.settings.section_gradient_color_3
+    assign sec_angle = section.settings.section_gradient_angle | default: '0'
+    assign sec_pos1 = section.settings.section_gradient_position_1 | default: '-1'
+    assign sec_pos2 = section.settings.section_gradient_position_2 | default: '5'
+    assign sec_pos3 = section.settings.section_gradient_position_3 | default: '80'
+  -%}
+  {%- assign sec_gradient_custom = false -%}
+  {%- if sec_c1 != blank and sec_c2 != blank and sec_c3 != blank -%}
+    {%- assign sec_gradient_custom = true -%}
+  {%- endif -%}
+
+  {%- liquid
+    assign wrap_c1 = section.settings.wrapper_gradient_color_1
+    assign wrap_c2 = section.settings.wrapper_gradient_color_2
+    assign wrap_c3 = section.settings.wrapper_gradient_color_3
+    assign wrap_angle = section.settings.wrapper_gradient_angle | default: '0'
+    assign wrap_pos1 = section.settings.wrapper_gradient_position_1 | default: '0'
+    assign wrap_pos2 = section.settings.wrapper_gradient_position_2 | default: '10'
+    assign wrap_pos3 = section.settings.wrapper_gradient_position_3 | default: '80'
+  -%}
+  {%- assign wrap_gradient_custom = false -%}
+  {%- if wrap_c1 != blank and wrap_c2 != blank and wrap_c3 != blank -%}
+    {%- assign wrap_gradient_custom = true -%}
+  {%- endif -%}
+
   #shopify-section-{{ section.id }} {
     --section-stack-intro: {% if text_position == 'center' %}60%{% else %}50%{% endif %};
     --section-stack-main: {% if text_position == 'center' %}60%{% else %}50%{% endif %};
+    {%- if sec_gradient_custom -%}
+      background: linear-gradient({{ sec_angle }}deg, {{ sec_c1 }} {{ sec_pos1 }}%, {{ sec_c2 }} {{ sec_pos2 }}%, {{ sec_c3 }} {{ sec_pos3 }}%);
+    {%- elsif section.settings.section_background != blank -%}
+      background: {{ section.settings.section_background }};
+    {%- else -%}
+      background: linear-gradient(0deg, #5a0909 -1%, #200505 5%, #000000 80%);
+    {%- endif -%}
   }
+
+  .section-stack__main2 {
+    width: 100%;
+    max-width: 1440px;
+    margin: 28px auto;
+    box-shadow: 0 90px 800px 10px rgba(255, 255, 255, 0.1);
+    {%- comment -%} 背景：自定义渐变 > 纯色 > 默认 {%- endcomment -%}
+    {%- if wrap_gradient_custom -%}
+      background: linear-gradient({{ wrap_angle }}deg, {{ wrap_c1 }} {{ wrap_pos1 }}%, {{ wrap_c2 }} {{ wrap_pos2 }}%, {{ wrap_c3 }} {{ wrap_pos3 }}%);
+      padding: {{ section.settings.wrapper_padding_vertical }}px {{ section.settings.wrapper_padding_horizontal }}px;
+      border-radius: {{ section.settings.wrapper_border_radius }}px;
+    {%- elsif section.settings.wrapper_background != blank -%}
+      background: {{ section.settings.wrapper_background }};
+      padding: {{ section.settings.wrapper_padding_vertical }}px {{ section.settings.wrapper_padding_horizontal }}px;
+      border-radius: {{ section.settings.wrapper_border_radius }}px;
+    {%- else -%}
+      background: linear-gradient(0deg, #271716 0%, #1f1817 10%, #151414 80%);
+      padding: 28px 0px;
+      border-radius: 20px;
+    {%- endif -%}
+  }
+
+  .section-stack__main1 {
+    width: 100%;
+    max-width: 1440px;
+  }
+
+  .section-stack__main1_content {
+    background: none;
+    padding: 0px 24px;
+  }
+
+  {%- comment -%} 自定义下拉图标：隐藏默认 chevron，用上传图片替代 {%- endcomment -%}
+  {%- if section.settings.toggle_icon != blank -%}
+    #shopify-section-{{ section.id }} .accordion .circle-chevron svg {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .accordion .circle-chevron {
+      background-image: url({{ section.settings.toggle_icon | image_url: width: 48 }});
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    #shopify-section-{{ section.id }} .accordion[open] .circle-chevron {
+      background-image: url({{ section.settings.toggle_icon_open | default: section.settings.toggle_icon | image_url: width: 48 }});
+    }
+  {%- endif -%}
+
+  {%- comment -%} 问题下划线粗细：0=细线, 1-6=逐级加粗 {%- endcomment -%}
+  #shopify-section-{{ section.id }} .accordion-box .accordion {
+    border-block-end-width: {% if section.settings.border_width == 0 %}0.5{% else %}{{ section.settings.border_width }}{% endif %}px;
+    border-color: {{ section.settings.border_color }};
+  }
+
+  {%- comment -%} wrapper 配置了自定义背景时，覆盖默认值 {%- endcomment -%}
+  {%- if section.settings.wrapper_background != blank or wrap_gradient_custom -%}
+    #shopify-section-{{ section.id }} .section-stack__main2 {
+      padding: {{ section.settings.wrapper_padding_vertical }}px {{ section.settings.wrapper_padding_horizontal }}px;
+      border-radius: {{ section.settings.wrapper_border_radius }}px;
+      {%- if wrap_gradient_custom -%}
+        background: linear-gradient({{ wrap_angle }}deg, {{ wrap_c1 }} {{ wrap_pos1 }}%, {{ wrap_c2 }} {{ wrap_pos2 }}%, {{ wrap_c3 }} {{ wrap_pos3 }}%);
+      {%- else -%}
+        background: {{ section.settings.wrapper_background }};
+      {%- endif -%}
+    }
+  {%- endif -%}
 </style>
 
-<div {% render 'section-properties' %}>
-  <div class="section-stack {% if text_position != 'center' %}section-stack--horizontal{% else %}section-stack--center{% endif %} {% if text_position == 'end' %}section-stack--reverse{% endif %}">
+<div >
+  <div class="section-stack section-stack__main2 {% if text_position != 'center' %}section-stack--horizontal{% else %}section-stack--center{% endif %} {% if text_position == 'end' %}section-stack--reverse{% endif %}">
     {%- capture content -%}
       {%- if section.settings.subheading != blank -%}
         <p class="subheading">{{ section.settings.subheading | escape }}</p>
@@ -73,8 +175,8 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="section-stack__main" >
-        <div {% render 'surface', class: 'accordion-box rounded', background: section.settings.accordion_background, text_color: section.settings.accordion_text_color, background_fallback: 'bg-secondary' %}>
+      <div class="section-stack__main section-stack__main1" >
+        <div {% render 'surface', class: 'accordion-box rounded section-stack__main1_content', background: section.settings.accordion_background, text_color: section.settings.accordion_text_color, background_fallback: 'bg-secondary' %}>
           {%- for block in section.blocks -%}
             {%- if block.settings.title != blank and block.settings.content != blank -%}
               {%- capture accordion_content -%}
@@ -231,6 +333,167 @@
     },
     {
       "type": "header",
+      "content": "Section Background",
+      "info": "Custom gradient: set all 3 colors to enable. Leave empty to use the default dark gradient."
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Solid background color",
+      "info": "Used only if gradient colors are not set."
+    },
+    {
+      "type": "color",
+      "id": "section_gradient_color_1",
+      "label": "Gradient color 1",
+      "default": "#5a0909"
+    },
+    {
+      "type": "color",
+      "id": "section_gradient_color_2",
+      "label": "Gradient color 2",
+      "default": "#200505"
+    },
+    {
+      "type": "color",
+      "id": "section_gradient_color_3",
+      "label": "Gradient color 3",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "section_gradient_angle",
+      "label": "Gradient angle (deg)",
+      "default": "0",
+      "info": "e.g. 0, 90, 180, 270"
+    },
+    {
+      "type": "text",
+      "id": "section_gradient_position_1",
+      "label": "Gradient position 1 (%)",
+      "default": "-1",
+      "info": "e.g. -1, 0, 10"
+    },
+    {
+      "type": "text",
+      "id": "section_gradient_position_2",
+      "label": "Gradient position 2 (%)",
+      "default": "5",
+      "info": "e.g. 5, 30, 50"
+    },
+    {
+      "type": "text",
+      "id": "section_gradient_position_3",
+      "label": "Gradient position 3 (%)",
+      "default": "80",
+      "info": "e.g. 80, 90, 100"
+    },
+    {
+      "type": "header",
+      "content": "Wrapper Container",
+      "info": "Controls the inner wrapper (.section-stack__main2). Custom gradient: set all 3 colors to enable."
+    },
+    {
+      "type": "color",
+      "id": "wrapper_background",
+      "label": "Solid wrapper background",
+      "info": "Used only if gradient colors are not set."
+    },
+    {
+      "type": "color",
+      "id": "wrapper_gradient_color_1",
+      "label": "Wrapper gradient color 1",
+      "default": "#271716"
+    },
+    {
+      "type": "color",
+      "id": "wrapper_gradient_color_2",
+      "label": "Wrapper gradient color 2",
+      "default": "#1f1817"
+    },
+    {
+      "type": "color",
+      "id": "wrapper_gradient_color_3",
+      "label": "Wrapper gradient color 3",
+      "default": "#151414"
+    },
+    {
+      "type": "text",
+      "id": "wrapper_gradient_angle",
+      "label": "Wrapper gradient angle (deg)",
+      "default": "0",
+      "info": "e.g. 0, 90, 180, 270"
+    },
+    {
+      "type": "text",
+      "id": "wrapper_gradient_position_1",
+      "label": "Wrapper gradient position 1 (%)",
+      "default": "0",
+      "info": "e.g. 0, 10"
+    },
+    {
+      "type": "text",
+      "id": "wrapper_gradient_position_2",
+      "label": "Wrapper gradient position 2 (%)",
+      "default": "10",
+      "info": "e.g. 10, 30, 50"
+    },
+    {
+      "type": "text",
+      "id": "wrapper_gradient_position_3",
+      "label": "Wrapper gradient position 3 (%)",
+      "default": "80",
+      "info": "e.g. 80, 90, 100"
+    },
+    {
+      "type": "range",
+      "id": "wrapper_padding_vertical",
+      "label": "Wrapper padding (top/bottom)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "wrapper_padding_horizontal",
+      "label": "Wrapper padding (left/right)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "wrapper_border_radius",
+      "label": "Wrapper border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Accordion Toggle Icon",
+      "info": "Upload custom expand/collapse icons. Leave empty to use the default chevron."
+    },
+    {
+      "type": "image_picker",
+      "id": "toggle_icon",
+      "label": "Collapsed state icon",
+      "info": "24x24px .svg recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "toggle_icon_open",
+      "label": "Expanded state icon",
+      "info": "Optional. Falls back to collapsed icon if left empty."
+    },
+    {
+      "type": "header",
       "content": "Colors",
       "info": "Gradient replaces solid colors when set."
     },
@@ -278,6 +541,26 @@
       "type": "color",
       "id": "accordion_text_color",
       "label": "Accordion text"
+    },
+    {
+      "type": "header",
+      "content": "Accordion Border"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#ffffff"
     }
   ],
   "presets": [

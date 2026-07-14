@@ -22,12 +22,20 @@
   }
 
   .product-reviews-grid__items {
-    display: grid;
-    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    display: flex;
     gap: {{ section.settings.gap }}px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .product-reviews-grid__items::-webkit-scrollbar {
+    display: none;
   }
 
   .product-reviews-grid__item {
+    flex: 0 0 calc((100% - {{ section.settings.columns | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns }});
+    min-width: 220px;
     background-color: {{ section.settings.card_background }};
     border-radius: {{ section.settings.border_radius }}px;
     overflow: hidden;
@@ -59,16 +67,6 @@
     color: inherit;
   }
 
-  .product-reviews-grid__product-title {
-    color: {{ section.settings.product_title_color }};
-    font-size: {{ section.settings.product_title_font_size }}px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   .product-reviews-grid__rating {
     display: flex;
     align-items: center;
@@ -87,16 +85,11 @@
     fill: {{ section.settings.star_color }};
   }
 
-  .product-reviews-grid__review-count {
-    color: {{ section.settings.review_count_color }};
-    font-size: {{ section.settings.review_count_font_size }}px;
-  }
-
   .product-reviews-grid__review-text {
     color: {{ section.settings.review_text_color }};
     font-size: {{ section.settings.review_text_font_size }}px;
     line-height: 1.5;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
     display: -webkit-box;
     -webkit-line-clamp: {{ section.settings.review_text_lines }};
     -webkit-box-orient: vertical;
@@ -109,29 +102,53 @@
     font-style: italic;
   }
 
-  .product-reviews-grid__price {
-    color: {{ section.settings.price_color }};
-    font-size: {{ section.settings.price_font_size }}px;
-    font-weight: 600;
-    margin-top: 8px;
+  .product-reviews-grid__scroller {
+    position: relative;
+  }
+
+  .product-reviews-grid__scroll-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+  }
+  .product-reviews-grid__scroll-arrow:hover {
+    background-color: rgba(0,0,0,0.85);
+  }
+  .product-reviews-grid__scroll-arrow--visible {
+    display: flex;
   }
 
   @media screen and (max-width: 1024px) {
-    .product-reviews-grid__items {
-      grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+    .product-reviews-grid__item {
+      flex: 0 0 calc((100% - {{ section.settings.columns_tablet | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns_tablet }});
     }
   }
 
   @media screen and (max-width: 768px) {
+    .product-reviews-grid__item {
+      flex: 0 0 calc((100% - {{ section.settings.columns_mobile | minus: 1 | times: section.settings.gap_mobile }}px) / {{ section.settings.columns_mobile }});
+    }
     .product-reviews-grid__items {
-      grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
       gap: {{ section.settings.gap_mobile }}px;
     }
   }
 
   @media screen and (max-width: 480px) {
-    .product-reviews-grid__items {
-      grid-template-columns: 1fr;
+    .product-reviews-grid__item {
+      flex: 0 0 100%;
     }
   }
 </style>
@@ -142,60 +159,92 @@
       <h2 class="product-reviews-grid__title">{{ section.settings.title | escape }}</h2>
     {%- endif -%}
 
-    <div class="product-reviews-grid__items">
-      {%- for block in section.blocks -%}
-        {%- assign product = all_products[block.settings.product_handle] -%}
-        {%- if product -%}
-          {%- assign review_rating = product.metafields['app--4551725'].ratings.value.ratings | plus: 0 -%}
-          {%- assign review_count = product.metafields['app--4551725'].ratings.value.raters | plus: 0 -%}
-          {%- assign star_count = review_rating | floor -%}
-          {%- assign empty_stars = 5 | minus: star_count -%}
+    <div class="product-reviews-grid__scroller">
+      <div class="product-reviews-grid__items" id="reviews-track-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- assign product = all_products[block.settings.product_handle] -%}
+          {%- if product -%}
+            {%- comment -%} 星级可在 block 中配置，默认 5 星 {%- endcomment -%}
+            {%- assign star_count = block.settings.star_rating | default: 5 -%}
+            {%- assign empty_stars = 5 | minus: star_count -%}
 
-          <div class="product-reviews-grid__item">
-            <a href="{{ product.url }}" class="product-reviews-grid__product-link">
-              <div class="product-reviews-grid__image">
-                {{- product.featured_image | image_url: width: 400 | image_tag: sizes: '(max-width: 480px) 100%, (max-width: 768px) 50vw, 300px' -}}
-              </div>
-            </a>
+            {%- comment -%} 优先使用 block 配置的图片，回退到产品主图 {%- endcomment -%}
+            {%- assign display_image = block.settings.image | default: product.featured_image -%}
 
-            <div class="product-reviews-grid__content">
+            <div class="product-reviews-grid__item">
               <a href="{{ product.url }}" class="product-reviews-grid__product-link">
-                <div class="product-reviews-grid__product-title">{{ product.title }}</div>
-              </a>
-
-              <div class="product-reviews-grid__rating">
-                <div class="product-reviews-grid__stars">
-                  {%- for i in (1..star_count) -%}
-                    <svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                  {%- endfor -%}
-                  {%- for i in (1..empty_stars) -%}
-                    <svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: #ddd;">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                  {%- endfor -%}
+                <div class="product-reviews-grid__image">
+                  {{- display_image | image_url: width: 400 | image_tag: sizes: '(max-width: 480px) 100%, (max-width: 768px) 50vw, 300px', alt: product.title | escape -}}
                 </div>
-                {%- if review_count > 0 -%}
-                  <span class="product-reviews-grid__review-count">({{ review_count }})</span>
+              </a>
+  
+              <div class="product-reviews-grid__content">
+                {%- comment -%} 星级展示 {%- endcomment -%}
+                <div class="product-reviews-grid__rating">
+                  <div class="product-reviews-grid__stars">
+                    {%- for i in (1..star_count) -%}
+                      <svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    {%- endfor -%}
+                    {%- for i in (1..empty_stars) -%}
+                      <svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: #ddd;">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    {%- endfor -%}
+                  </div>
+                </div>
+  
+                {%- comment -%} 评论内容点击跳转产品详情页 {%- endcomment -%}
+                {%- if block.settings.review_text != blank -%}
+                  <a href="{{ product.url }}" class="product-reviews-grid__product-link">
+                    <p class="product-reviews-grid__review-text">{{ block.settings.review_text | escape }}</p>
+                  </a>
+                  {%- if block.settings.reviewer_name != blank -%}
+                    <p class="product-reviews-grid__reviewer">— {{ block.settings.reviewer_name | escape }}</p>
+                  {%- endif -%}
                 {%- endif -%}
               </div>
-
-              {%- if block.settings.review_text != blank -%}
-                <p class="product-reviews-grid__review-text">{{ block.settings.review_text | escape }}</p>
-                {%- if block.settings.reviewer_name != blank -%}
-                  <p class="product-reviews-grid__reviewer">— {{ block.settings.reviewer_name | escape }}</p>
-                {%- endif -%}
-              {%- endif -%}
-
-              <div class="product-reviews-grid__price">{{ product.price | money }}</div>
             </div>
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} 右箭头：内容溢出时才显示 {%- endcomment -%}
+      <button class="product-reviews-grid__scroll-arrow" id="reviews-arrow-{{ section.id }}" aria-label="Scroll right" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
     </div>
   </div>
 </div>
+
+<script>
+  (function() {
+    var sectionId = '{{ section.id }}';
+    var track = document.getElementById('reviews-track-' + sectionId);
+    var arrow = document.getElementById('reviews-arrow-' + sectionId);
+    if (!track || !arrow) return;
+
+    function checkOverflow() {
+      /* 内容宽度超过容器宽度时显示箭头 */
+      if (track.scrollWidth > track.clientWidth + 2) {
+        arrow.classList.add('product-reviews-grid__scroll-arrow--visible');
+      } else {
+        arrow.classList.remove('product-reviews-grid__scroll-arrow--visible');
+      }
+    }
+
+    arrow.addEventListener('click', function() {
+      var scrollAmount = track.querySelector('.product-reviews-grid__item').offsetWidth + {{ section.settings.gap }};
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
+  })();
+</script>
 
 {% schema %}
 {
@@ -381,22 +430,6 @@
       "default": "#1a1a1a"
     },
     {
-      "type": "color",
-      "id": "product_title_color",
-      "label": "Product title color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "product_title_font_size",
-      "label": "Product title font size",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "default": 14
-    },
-    {
       "type": "range",
       "id": "star_size",
       "label": "Star size",
@@ -411,22 +444,6 @@
       "id": "star_color",
       "label": "Star color",
       "default": "#FFB303"
-    },
-    {
-      "type": "color",
-      "id": "review_count_color",
-      "label": "Review count color",
-      "default": "#aaaaaa"
-    },
-    {
-      "type": "range",
-      "id": "review_count_font_size",
-      "label": "Review count font size",
-      "min": 10,
-      "max": 16,
-      "step": 1,
-      "unit": "px",
-      "default": 12
     },
     {
       "type": "color",
@@ -468,22 +485,6 @@
       "step": 1,
       "unit": "px",
       "default": 12
-    },
-    {
-      "type": "color",
-      "id": "price_color",
-      "label": "Price color",
-      "default": "#ff0000"
-    },
-    {
-      "type": "range",
-      "id": "price_font_size",
-      "label": "Price font size",
-      "min": 14,
-      "max": 24,
-      "step": 2,
-      "unit": "px",
-      "default": 18
     }
   ],
   "blocks": [
@@ -496,6 +497,22 @@
           "id": "product_handle",
           "label": "Product handle",
           "info": "Enter the product handle (slug)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product image",
+          "info": "Upload a custom image. If left empty, the product's featured image will be used."
+        },
+        {
+          "type": "range",
+          "id": "star_rating",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "info": "Set how many stars to display for this review."
         },
         {
           "type": "text",
