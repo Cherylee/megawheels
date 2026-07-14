@@ -26,7 +26,7 @@
     {%- assign discount_amount = product_1.price | times: pct | divided_by: 100 -%}
     {%- assign p1_display_price = product_1.price | minus: discount_amount -%}
   {%- else -%}
-    {%- assign p1_display_price = discount_1 | times: 1 -%}
+    {%- assign p1_display_price = discount_1 | times: 100 -%}
   {%- endif -%}
   {%- assign p1_compare_price = product_1.price -%}
 {%- endif -%}
@@ -40,7 +40,7 @@
     {%- assign discount_amount = product_2.price | times: pct | divided_by: 100 -%}
     {%- assign p2_display_price = product_2.price | minus: discount_amount -%}
   {%- else -%}
-    {%- assign p2_display_price = discount_2 | times: 1 -%}
+    {%- assign p2_display_price = discount_2 | times: 100 -%}
   {%- endif -%}
   {%- assign p2_compare_price = product_2.price -%}
 {%- endif -%}
@@ -54,7 +54,7 @@
     {%- assign discount_amount = product_3.price | times: pct | divided_by: 100 -%}
     {%- assign p3_display_price = product_3.price | minus: discount_amount -%}
   {%- else -%}
-    {%- assign p3_display_price = discount_3 | times: 1 -%}
+    {%- assign p3_display_price = discount_3 | times: 100 -%}
   {%- endif -%}
   {%- assign p3_compare_price = product_3.price -%}
 {%- endif -%}

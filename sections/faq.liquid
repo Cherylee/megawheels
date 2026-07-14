@@ -69,6 +69,24 @@
     width: 100%;
     max-width: 1440px;
   }
+  .section-stack__intro1 {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0px 24px;
+    text-align: {{ section.settings.intro_alignment }};
+  }
+  {%- comment -%} 标题 h2 字体大小 & 颜色 {%- endcomment -%}
+  #shopify-section-{{ section.id }} .section-stack__intro1 .h2 {
+    font-size: {{ section.settings.intro_heading_font_size }}px;
+    color: {{ section.settings.intro_heading_color }};
+    margin-bottom: 16px;
+  }
+  {%- comment -%} 副标题 / 文案字体大小 & 颜色 {%- endcomment -%}
+  #shopify-section-{{ section.id }} .section-stack__intro1 .subheading,
+  #shopify-section-{{ section.id }} .section-stack__intro1 .prose {
+    font-size: {{ section.settings.intro_text_font_size }}px;
+    color: {{ section.settings.intro_text_color }};
+  }
 
   .section-stack__main1_content {
     background: none;
@@ -157,10 +175,10 @@
     {%- endcapture -%}
 
     {%- if content != blank or subcontent != blank -%}
-      <div class="section-stack__intro">
+      <div class="section-stack__intro section-stack__intro1" >
         <div class="v-stack gap-10">
           {%- if content != blank -%}
-            <div class="prose {% if text_position == 'center' %}text-center{% endif %}">
+            <div class="prose">
               {{- content -}}
             </div>
           {%- endif -%}
@@ -310,6 +328,54 @@
       "type": "url",
       "id": "button_url",
       "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Intro Section",
+      "info": "Controls the heading (h2) and text (p) inside the left content area."
+    },
+    {
+      "type": "select",
+      "id": "intro_alignment",
+      "label": "Intro alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "intro_heading_font_size",
+      "label": "Heading font size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "intro_heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "intro_text_font_size",
+      "label": "Text font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "intro_text_color",
+      "label": "Text color",
+      "default": "#cccccc"
     },
     {
       "type": "select",
