@@ -17,17 +17,24 @@
     display: flex;
     overflow: hidden;
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
     gap: {{ section.settings.gap }}px;
     border-radius: {{ section.settings.border_radius }}px;
   }
 
   .brand-cta-carousel__item {
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% - {{ section.settings.gap }}px);
+    scroll-snap-align: start;
+    margin-right: {{ section.settings.gap }}px;
     aspect-ratio: {{ section.settings.image_aspect_ratio }};
     overflow: hidden;
     border-radius: {{ section.settings.border_radius }}px;
     cursor: pointer;
     transition: transform 0.3s ease;
+  }
+  .brand-cta-carousel__item:last-child {
+    margin-right: 0;
+    flex: 0 0 100%;
   }
 
   .brand-cta-carousel__item:hover {
@@ -108,12 +115,19 @@
     #shopify-section-{{ section.id }}{
       padding-top: {{ section.settings.mobile_padding_top | default: 0 }}px;
       padding-bottom: {{ section.settings.mobile_padding_bottom | default: 0 }}px;
-      .brand-cta-carousel__track {
-        gap: {{ section.settings.gap_mobile }}px;
-      }
 
       .brand-cta-carousel__item {
+        flex: 0 0 calc(100% - {{ section.settings.gap_mobile }}px);
+        margin-right: {{ section.settings.gap_mobile }}px;
+        aspect-ratio: auto;
+      }
+      .brand-cta-carousel__item:last-child {
+        margin-right: 0;
         flex: 0 0 100%;
+      }
+      .brand-cta-carousel__item img {
+        height: auto;
+        object-fit: none;
       }
       .brand-cta-carousel__arrow{
         width: {{ section.settings.mobile_arrow_size }}px;

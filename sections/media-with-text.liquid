@@ -48,6 +48,59 @@ CSS
       }
     }
 
+    {%- comment -%} 手机端平板保持PC图文并排布局（当 mobile_keep_desktop_layout 启用时）{%- endcomment -%}
+    @media screen and (max-width: 900px) {
+      {%- if section.settings.mobile_keep_desktop_layout -%}
+        #block-{{ section.id }}-{{ block.id }} {
+          {%- if section.settings.alternate_media_position -%}
+            {% assign modulo = forloop.index0 | modulo: 2 %}
+            {% if modulo == 0 %}
+              --media-with-text-item-grid-template: "media content" / minmax(0, {{ media_ratio }}fr) minmax(0, {{ content_ratio }}fr);
+            {%- else -%}
+              --media-with-text-item-grid-template: "content media" / minmax(0, {{ content_ratio }}fr) minmax(0, {{ media_ratio }}fr);
+            {%- endif -%}
+          {%- else -%}
+            {%- if block.settings.media_position == 'start' -%}
+              --media-with-text-item-grid-template: "media content" / minmax(0, {{ media_ratio }}fr) minmax(0, {{ content_ratio }}fr);
+            {%- else -%}
+              --media-with-text-item-grid-template: "content media" / minmax(0, {{ content_ratio }}fr) minmax(0, {{ media_ratio }}fr);
+            {%- endif -%}
+          {%- endif -%}
+        }
+        /* 并排模式下：媒体区域顶部对齐，不被拉伸 */
+        #block-{{ section.id }}-{{ block.id }} .media-with-text__media {
+          align-self: start;
+          overflow: visible;
+        }
+        /* 并排模式下：图片不裁切，宽度100%高度自适应 */
+        #block-{{ section.id }}-{{ block.id }} .media-with-text__media img,
+        #block-{{ section.id }}-{{ block.id }} .media-with-text__media > * {
+          width: 100% !important;
+          height: auto !important;
+          max-height: none !important;
+          object-fit: unset !important;
+          aspect-ratio: auto !important;
+        }
+        /* 并排模式下：图片与文案间距缩小 */
+        #block-{{ section.id }}-{{ block.id }} {
+          --media-with-text-gap: {{ section.settings.mobile_layout_gap }}px;
+        }
+        /* 并排模式下：文案缩小 */
+        #block-{{ section.id }}-{{ block.id }} .subheading {
+          font-size: {{ section.settings.mobile_layout_subheading_size }}px !important;
+          line-height: {{ section.settings.mobile_layout_line_height | default: 1.2 }} !important;
+        }
+        #block-{{ section.id }}-{{ block.id }} .h2 {
+          font-size: {{ section.settings.mobile_layout_title_size }}px !important;
+          line-height: {{ section.settings.mobile_layout_line_height | default: 1.2 }} !important;
+        }
+        #block-{{ section.id }}-{{ block.id }} .prose {
+          font-size: {{ section.settings.mobile_layout_text_size }}px !important;
+          line-height: {{ section.settings.mobile_layout_line_height | default: 1.2 }} !important;
+        }
+      {%- endif -%}
+    }
+
     /* 副标题样式：渐变优先，回退纯色 */
     #block-{{ section.id }}-{{ block.id }} .subheading {
       font-size: {{ block.settings.subheading_font_size }}px;
@@ -261,6 +314,62 @@ LIQUID
       "type": "header",
       "content": "Mobile Layout (≤749px)",
       "info": "Override padding, text size & alignment for phones."
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_keep_desktop_layout",
+      "label": "Keep desktop side-by-side layout",
+      "default": true,
+      "info": "When enabled, media and content remain side-by-side on mobile instead of stacking."
+    },
+    {
+      "type": "range",
+      "id": "mobile_layout_gap",
+      "label": "Gap between image & text (side-by-side)",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "mobile_layout_subheading_size",
+      "label": "Subheading size (side-by-side mode)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "mobile_layout_title_size",
+      "label": "Title size (side-by-side mode)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_layout_text_size",
+      "label": "Body size (side-by-side mode)",
+      "min": 9,
+      "max": 14,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_layout_line_height",
+      "label": "Text line height (side-by-side mode)",
+      "min": 1.0,
+      "max": 1.8,
+      "step": 0.1,
+      "default": 1.2
     },
     {
       "type": "range",

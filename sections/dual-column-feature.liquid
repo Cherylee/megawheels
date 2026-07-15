@@ -100,6 +100,11 @@
       height: {{ section.settings.image_height_mobile }}px;
     }
   }
+  @media screen and (min-width:750px) and (max-width:989px) {
+    .dual-column-feature__image {
+      height: {{ section.settings.image_height }}px;
+    }
+  }
 </style>
 
 <div {% render 'section-properties' %}>
