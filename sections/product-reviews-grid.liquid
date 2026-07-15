@@ -35,7 +35,7 @@
 
   .product-reviews-grid__item {
     flex: 0 0 calc((100% - {{ section.settings.columns | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns }});
-    min-width: 220px;
+    {% comment %} min-width: 220px; {% endcomment %}
     background-color: {{ section.settings.card_background | default: '#ffffff' }};
     border-radius: {{ section.settings.border_radius }}px;
     overflow: hidden;
@@ -149,12 +149,18 @@
     .product-reviews-grid__items {
       gap: {{ section.settings.gap_mobile }}px;
     }
-  }
-
-  @media screen and (max-width: 480px) {
-    .product-reviews-grid__item {
-      flex: 0 0 100%;
+    .product-reviews-grid{
+      padding:0;
     }
+    #shopify-section-{{ section.id }}{
+      padding-top: {{ section.settings.mobile_padding_top | default: 0 }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom | default: 0 }}px;
+      .product-reviews-grid__scroll-arrow{
+        width: {{ section.settings.mobile_arrow_size }}px;
+        height: {{ section.settings.mobile_arrow_size }}px;
+      } 
+    }
+    
   }
 </style>
 
@@ -379,11 +385,47 @@
       "type": "select",
       "id": "columns_mobile",
       "label": "Columns (mobile)",
+      "info": "720px 以下显示列数，至少 2 列",
       "options": [
-        { "value": "1", "label": "1" },
-        { "value": "2", "label": "2" }
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" }
       ],
       "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing (≤768px)",
+      "info": "Override section top/bottom padding on phones."
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile padding top",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_arrow_size",
+      "label": "Scroll arrow size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile padding bottom",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "text",

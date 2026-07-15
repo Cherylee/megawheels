@@ -71,6 +71,21 @@ CSS
       color: {{ block.settings.content_color }};
     }
   {%- endfor -%}
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding: {{ section.settings.mobile_padding_top }}px {{ section.settings.mobile_padding_right }}px {{ section.settings.mobile_padding_bottom }}px {{ section.settings.mobile_padding_left }}px;
+      .subheading,.prose{
+        font-size: {{ section.settings.mobile_text_size }}px;
+        text-align: {{ section.settings.mobile_text_align }};
+      }
+      .subheading{
+        font-size: {{ section.settings.mobile_subheading_size }}px;
+      }
+      .media-with-text__content{
+        padding: {{ section.settings.mobile_content_padding_top }}px {{ section.settings.mobile_content_padding_right }}px {{ section.settings.mobile_content_padding_bottom }}px {{ section.settings.mobile_content_padding_left }}px;
+      }
+    }
+  }
 </style>
 
 {%- comment -%}
@@ -241,6 +256,122 @@ LIQUID
         }
       ],
       "default": "small"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Layout (≤749px)",
+      "info": "Override padding, text size & alignment for phones."
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Section padding top",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_right",
+      "label": "Section padding right",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Section padding bottom",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_left",
+      "label": "Section padding left",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_subheading_size",
+      "label": "Subheading font size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "label": "Body text font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_align",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_padding_top",
+      "label": "Content padding top",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_padding_right",
+      "label": "Content padding right",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_padding_bottom",
+      "label": "Content padding bottom",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_padding_left",
+      "label": "Content padding left",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 10
     }
   ],
   "blocks": [

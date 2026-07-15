@@ -82,11 +82,11 @@
   .series-comparison-table__header {
     display: grid;
     grid-template-columns: 1fr repeat(3, 1fr);
-    gap: 10px;
+    gap: {{ section.settings.column_gap }}px;
     margin-bottom: {{ section.settings.header_body_gap }}px;
     padding-bottom: {{ section.settings.header_body_gap }}px;
   }
-
+  
   .series-comparison-table__header-cell {
     text-align: center;
   }
@@ -95,6 +95,10 @@
     aspect-ratio: {{ section.settings.product_image_aspect_ratio }};
     overflow: hidden;
     margin-bottom: {{ section.settings.image_title_gap }}px;
+    {%- comment -%} 产品图最大宽度限制，防止撑开列宽 {%- endcomment -%}
+    max-width: {{ section.settings.product_image_max_width }}px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .series-comparison-table__product-image img {
@@ -108,6 +112,8 @@
     position: relative;
     display: inline-block;
     margin-bottom: {{ section.settings.title_price_gap }}px;
+    width: {{ section.settings.title_bg_width }}px;
+    height: {{ section.settings.title_bg_height }}px;
   }
 
   .series-comparison-table__product-title-bg {
@@ -128,7 +134,8 @@
     display: inline-block;
     z-index: 1;
     padding: 4px 16px;
-    max-width: 300px;
+    width: 100%;
+    left: {{ section.settings.title_offset_x }}px;
   }
 
   .series-comparison-table__product-price {
@@ -145,7 +152,6 @@
     font-size: {{ section.settings.compare_at_font_size }}px;
     color: {{ section.settings.compare_at_color }};
     text-decoration: line-through;
-    margin-left: 8px;
     display: inline-block;
     vertical-align: middle;
   }
@@ -156,11 +162,12 @@
     align-items: baseline;
     justify-content: center;
     gap: 4px;
+    flex-wrap: wrap;
   }
 
   .series-comparison-table__product-button {
     display: inline-block;
-    padding: 5px 28px;
+    padding: 4px 16px;
     background: linear-gradient(180deg, {{ section.settings.button_background }} 0%, {{ section.settings.button_background_dark }} 100%);
     color: {{ section.settings.button_text_color }};
     font-size: {{ section.settings.button_font_size }}px;
@@ -180,7 +187,7 @@
   .series-comparison-table__body {
     display: grid;
     grid-template-columns: 1fr repeat(3, 1fr);
-    gap: {{ section.settings.row_gap }}px;
+    gap: {{ section.settings.column_gap }}px {{ section.settings.row_gap }}px;
   }
 
   .series-comparison-table__row {
@@ -207,52 +214,69 @@
     align-self: center;
   }
 
+  {%- comment -%} 手机/平板端：自适应缩小，保持四列并排，无滚动条 {%- endcomment -%}
   @media screen and (max-width: 900px) {
+    .series-comparison-table-sl {
+      padding: 0 {{ section.settings.mobile_outer_padding }}px;
+    }
+
+    .series-comparison-table {
+      padding: {{ section.settings.table_padding_mobile }}px;
+      border-radius: {{ section.settings.mobile_table_radius }}px;
+    }
+
     .series-comparison-table__header {
-      grid-template-columns: 1fr;
       gap: {{ section.settings.column_gap_mobile }}px;
+      margin-bottom: {{ section.settings.mobile_header_body_gap }}px;
+      padding-bottom: 0;
     }
 
     .series-comparison-table__body {
-      grid-template-columns: 1fr 1fr;
-      gap: {{ section.settings.row_gap_mobile }}px;
-    }
-
-    .series-comparison-table__row {
-      display: block;
-      border-bottom: 1px solid {{ section.settings.border_color }};
-      padding-bottom: {{ section.settings.row_gap_mobile }}px;
-      margin-bottom: {{ section.settings.row_gap_mobile }}px;
+      gap: {{ section.settings.column_gap_mobile }}px {{ section.settings.row_gap_mobile }}px;
     }
 
     .series-comparison-table__label {
-      grid-column: 1;
+      font-size: {{ section.settings.label_font_size_mobile }}px;
+      padding: 0;
     }
 
-    .series-comparison-table__value:nth-child(2) {
-      grid-column: 2;
+    .series-comparison-table__value {
+      font-size: {{ section.settings.value_font_size_mobile }}px;
+      padding: 0;
     }
 
-    .series-comparison-table__value:nth-child(3),
-    .series-comparison-table__value:nth-child(4) {
-      grid-column: span 2;
-      text-align: left;
-      padding-left: calc({{ section.settings.cell_padding }}px + 12px);
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .series-comparison-table {
-      padding: {{ section.settings.container_padding_mobile }}px;
+    .series-comparison-table__product-title{
+      font-size: {{ section.settings.mobile_title_size }}px;
+      padding: 2px 6px;
+      bottom:5px;
+      left:-5px;
     }
 
-    .series-comparison-table__body {
-      grid-template-columns: 1fr;
+    .series-comparison-table__product-price-wrap{
+      gap: 2px;
+      margin-bottom: 0px;
     }
 
-    .series-comparison-table__value:nth-child(3),
-    .series-comparison-table__value:nth-child(4) {
-      grid-column: 1;
+    .series-comparison-table__product-price{
+      font-size: {{ section.settings.mobile_price_size }}px;
+    }
+
+    .series-comparison-table__product-compare-at-price{
+      font-size: {{ section.settings.mobile_compare_at_size }}px;
+      position: relative;
+      top:-7px;
+      
+    }
+
+    .series-comparison-table__product-button{
+      font-size: {{ section.settings.mobile_button_size }}px;
+      padding: 3px 10px;
+    }
+    .series-comparison-table__product-title-wrap{
+      width: {{ section.settings.mobile_title_bg_width }}px;
+      height:22px;
+      text-align: center;
+      
     }
   }
 </style>
@@ -371,13 +395,13 @@
     },
     {
       "type": "range",
-      "id": "container_padding_mobile",
-      "label": "Container padding (mobile)",
-      "min": 10,
+      "id": "table_padding_mobile",
+      "label": "Table padding (mobile)",
+      "min": 0,
       "max": 30,
       "step": 5,
       "unit": "px",
-      "default": 15
+      "default": 10
     },
     {
       "type": "color",
@@ -389,11 +413,21 @@
       "type": "range",
       "id": "column_gap_mobile",
       "label": "Column gap (mobile)",
-      "min": 10,
+      "min": 5,
       "max": 30,
       "step": 5,
       "unit": "px",
-      "default": 20
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 4,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 10
     },
     {
       "type": "range",
@@ -411,6 +445,86 @@
       "label": "Row gap (mobile)",
       "min": 4,
       "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "mobile_title_size",
+      "label": "Product title font size (mobile)",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_price_size",
+      "label": "Discount price font size (mobile)",
+      "min": 8,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_compare_at_size",
+      "label": "Compare-at font size (mobile)",
+      "min": 6,
+      "max": 14,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_size",
+      "label": "Button font size (mobile)",
+      "min": 6,
+      "max": 14,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "mobile_title_bg_width",
+      "label": "Title background width (mobile)",
+      "min": 40,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "mobile_outer_padding",
+      "label": "Outer padding (mobile)",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_table_radius",
+      "label": "Table border radius (mobile)",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_header_body_gap",
+      "label": "Header body gap (mobile)",
+      "min": 4,
+      "max": 20,
       "step": 2,
       "unit": "px",
       "default": 8
@@ -443,6 +557,16 @@
     },
     {
       "type": "range",
+      "id": "product_image_max_width",
+      "label": "Product image max width",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 200
+    },
+    {
+      "type": "range",
       "id": "title_price_gap",
       "label": "Title price gap",
       "min": 5,
@@ -450,6 +574,36 @@
       "step": 5,
       "unit": "px",
       "default": 10
+    },
+    {
+      "type": "range",
+      "id": "title_bg_width",
+      "label": "Title background width",
+      "min": 60,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 145
+    },
+    {
+      "type": "range",
+      "id": "title_bg_height",
+      "label": "Title background height",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "title_offset_x",
+      "label": "Title horizontal offset",
+      "min": -30,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": -10
     },
     {
       "type": "range",
@@ -654,6 +808,31 @@
       "id": "value_color",
       "label": "Value color",
       "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Typography",
+      "info": "Font sizes for screens ≤ 900px. Keep smaller for readability."
+    },
+    {
+      "type": "range",
+      "id": "label_font_size_mobile",
+      "label": "Label font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "value_font_size_mobile",
+      "label": "Value font size (mobile)",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 8
     },
   ],
   "blocks": [

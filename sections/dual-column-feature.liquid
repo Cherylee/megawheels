@@ -50,6 +50,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 50%;
   }
 
   .dual-column-feature__image {
@@ -83,7 +84,11 @@
   @media screen and (max-width: 768px) {
     .dual-column-feature__card {
       grid-template-columns: 1fr;
+      flex-direction: column;
       gap: {{ section.settings.column_gap_mobile }}px;
+    }
+    .dual-column-feature__column {
+      width:100%;
     }
 
     .dual-column-feature__separator {

@@ -42,6 +42,7 @@
     {%- else -%}
       background: linear-gradient(0deg, #5a0909 -1%, #200505 5%, #000000 80%);
     {%- endif -%}
+    padding:0 40px;
   }
 
   .section-stack__main2 {
@@ -127,6 +128,41 @@
       {%- endif -%}
     }
   {%- endif -%}
+  @media screen and (max-width: 750px) {
+    #shopify-section-{{ section.id }}{
+      padding:0 20px;
+      .section-stack__main2{
+        padding: {{ section.settings.mobile_wrapper_padding_top }}px {{ section.settings.mobile_wrapper_padding_right }}px {{ section.settings.mobile_wrapper_padding_bottom }}px {{ section.settings.mobile_wrapper_padding_left }}px;
+      }
+      .section-stack{
+        gap: {{ section.settings.mobile_stack_gap }}px;
+      }
+      .accordion__toggle{
+        padding-block-end: {{ section.settings.mobile_accordion_padding }}px;
+        padding-block-start: {{ section.settings.mobile_accordion_padding }}px;
+      }
+      .section-stack__intro1 .h2{
+        font-size: {{ section.settings.mobile_heading_size }}px;
+      }
+      .accordion__toggle{
+        font-size: {{ section.settings.mobile_accordion_title_size }}px;
+      }
+      .prose{
+        font-size: {{ section.settings.mobile_text_size }}px;
+      }
+      .accordion__content{
+        margin-block-end: {{ section.settings.mobile_accordion_content_margin }}px;
+      }
+      .circle-chevron{
+        width: {{ section.settings.mobile_chevron_size }}px;
+        height: {{ section.settings.mobile_chevron_size }}px;
+      }
+      .section-stack__main1_content,.section-stack__intro1{
+        padding: {{ section.settings.mobile_content_padding_vertical }}px {{ section.settings.mobile_content_padding_horizontal }}px;
+      }
+    }
+  }
+  
 </style>
 
 <div >
@@ -627,6 +663,141 @@
       "id": "border_color",
       "label": "Border color",
       "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Layout (≤750px)",
+      "info": "Overrides for phone & small tablet screens."
+    },
+    {
+      "type": "range",
+      "id": "mobile_wrapper_padding_top",
+      "label": "Wrapper padding top",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mobile_wrapper_padding_right",
+      "label": "Wrapper padding right",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_wrapper_padding_bottom",
+      "label": "Wrapper padding bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_wrapper_padding_left",
+      "label": "Wrapper padding left",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_stack_gap",
+      "label": "Stack gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_accordion_padding",
+      "label": "Accordion toggle padding (top/bottom)",
+      "min": 4,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_chevron_size",
+      "label": "Chevron icon size",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_padding_vertical",
+      "label": "Content padding top/bottom",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_padding_horizontal",
+      "label": "Content padding left/right",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Heading font size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "mobile_accordion_title_size",
+      "label": "Accordion title font size",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "label": "Body / content font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_accordion_content_margin",
+      "label": "Accordion content bottom margin",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 10
     }
   ],
   "presets": [
