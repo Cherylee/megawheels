@@ -307,7 +307,7 @@
         "column_gap": 40,
         "column_gap_mobile": 20,
         "image_height": 200,
-        "image_height_mobile": 150,
+        "image_height_mobile": 50,
         "image_border_radius": 8,
         "separator_width": 2,
         "separator_color": "#cccccc",
