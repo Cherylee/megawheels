@@ -11,11 +11,15 @@
   "sections": {
     "hero": {
       "type": "page-hero-banner",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/baf8e6d113ccdde9b2254d9741393fb7.jpg"
+      }
     },
     "gallery": {
       "type": "product-thumbnail-gallery",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/D2__02.jpg"
+      }
     },
     "comparison": {
       "type": "series-comparison-table",
@@ -23,37 +27,82 @@
         "parameter_aFzH66": {
           "type": "parameter",
           "settings": {
-            "label": "454Power",
-            "value_1": "34534",
-            "value_2": "3453",
-            "value_3": "54"
+            "label": "Peak Power",
+            "value_1": "3000 W",
+            "value_2": "3550 W",
+            "value_3": "4800 W"
           }
         },
         "parameter_VD7GWn": {
           "type": "parameter",
           "settings": {
-            "label": "Peak Power1231",
-            "value_1": "213",
-            "value_2": "34234",
-            "value_3": "3424"
+            "label": "Battery Capacity",
+            "value_1": "48V23.4 Ah",
+            "value_2": "48V26 Ah",
+            "value_3": "60V30 Ah"
           }
         },
         "parameter_tNW7ff": {
           "type": "parameter",
           "settings": {
-            "label": "Peak Power",
-            "value_1": "23",
-            "value_2": "123",
-            "value_3": "23"
+            "label": "Torque",
+            "value_1": "180 Nm",
+            "value_2": "204 Nm",
+            "value_3": "226 Nm"
           }
         },
         "param_1": {
           "type": "parameter",
           "settings": {
-            "label": "Peak Power",
-            "value_1": "1231",
-            "value_2": "1231",
-            "value_3": "1231"
+            "label": "Max range",
+            "value_1": "24.85 Miles",
+            "value_2": "28 Miles",
+            "value_3": "34.2 Miles"
+          }
+        },
+        "parameter_PHdCJ6": {
+          "type": "parameter",
+          "settings": {
+            "label": "Top Speed",
+            "value_1": "37.28 MPH",
+            "value_2": "38 MPH",
+            "value_3": "50 MPH"
+          }
+        },
+        "parameter_9PCBaw": {
+          "type": "parameter",
+          "settings": {
+            "label": "Payload",
+            "value_1": "242.5 lbs (110kg)",
+            "value_2": "242.5 lbs (110kg)",
+            "value_3": "264.6 lbs (120kg)"
+          }
+        },
+        "parameter_AGQmn9": {
+          "type": "parameter",
+          "settings": {
+            "label": "Tire",
+            "value_1": "14\"/12\"",
+            "value_2": "14\"/12\"",
+            "value_3": "17\"/14\""
+          }
+        },
+        "parameter_6h8JAT": {
+          "type": "parameter",
+          "settings": {
+            "label": "Suitable Height",
+            "value_1": "3.94ft - 5.9ft",
+            "value_2": "3.94ft - 5.9ft",
+            "value_3": "4.7ft - 6.3ft"
+          }
+        },
+        "parameter_LEwEDU": {
+          "type": "parameter",
+          "settings": {
+            "label": "Charging Time",
+            "value_1": "6.5 Hours",
+            "value_2": "7 Hours",
+            "value_3": "7 Hours"
           }
         }
       },
@@ -61,7 +110,12 @@
         "parameter_aFzH66",
         "parameter_VD7GWn",
         "parameter_tNW7ff",
-        "param_1"
+        "param_1",
+        "parameter_PHdCJ6",
+        "parameter_9PCBaw",
+        "parameter_AGQmn9",
+        "parameter_6h8JAT",
+        "parameter_LEwEDU"
       ],
       "settings": {
         "section_background": "#000000",
@@ -75,14 +129,17 @@
         "image_title_gap": 15,
         "title_price_gap": 10,
         "price_button_gap": 10,
-        "product_1_handle": "d2-electric-dirt-bike",
-        "product_2_handle": "d2-lite-electric-dirt-bike",
+        "product_1_handle": "d2-lite-electric-dirt-bike",
+        "product_2_handle": "d2-electric-dirt-bike",
         "product_3_handle": "d2-pro-electric-dirt-bike",
+        "product_1_image": "shopify://shop_images/D2lint.png",
         "product_1_title": "D2 lite",
+        "product_2_image": "shopify://shop_images/D2.png",
         "product_2_title": "D2",
+        "product_3_image": "shopify://shop_images/pro.png",
         "product_3_title": "D2 pro",
-        "product_1_discount_price": "1099.99",
-        "product_2_discount_price": "999.99",
+        "product_1_discount_price": "999.99",
+        "product_2_discount_price": "1099.99",
         "product_3_discount_price": "1899.99",
         "button_text": "Shop Now",
         "button_font_size": 14,
@@ -91,7 +148,13 @@
         "button_background_dark": "#cc0000",
         "button_text_color": "#ffffff",
         "product_title_color": "#ffffff",
-        "product_title_font_size": 18
+        "product_title_font_size": 18,
+        "price_font_size": 32,
+        "compare_at_font_size": 18,
+        "compare_at_color": "#999999",
+        "label_font_size": 20,
+        "value_font_size": 20,
+        "value_color": "#ffffff"
       }
     },
     "media_text": {
@@ -100,14 +163,15 @@
         "media_block": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/1.jpg",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "3213123123",
+            "subheading": "Precision-tuned suspension for the toughest trailsConquer Terrain, Stay in Command",
             "title": "",
-            "content": "<p>12313131231234123131313131</p>",
+            "content": "<p>Engineered with a high-performance dual hydraulic suspension system and 226 N·m of torque, paired with responsive four-piston hydraulic disc brakes. Whether it's jagged rock gardens or high-speed whoops, D2 Pro keeps you planted, poised, and in absolute control.<br/></p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -118,6 +182,7 @@
             "button_text_color": "#ffffff",
             "subheading_font_size": 32,
             "subheading_color": "#ed0000",
+            "subheading_gradient": "",
             "title_font_size": 32,
             "title_color": "#ffffff",
             "content_font_size": 18,
@@ -127,14 +192,15 @@
         "image_CfNhq4": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/2_ff5579b4-b98d-4f6f-b4ff-a3a1ec26d2d8.jpg",
             "media_width": 50,
             "media_position": "end",
             "text_position": "place-self-start-end text-end",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "345345345",
+            "subheading": "Instant thrust, relentless accelerationTwist. Go. Dominate.",
             "title": "",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "content": "<p>The 4800W mid-drive motor delivers explosive power that propels you from zero to 50 MPH with surgical precision. Every twist of the throttle translates into immediate, linear response—giving you the confidence to hit jumps, carve corners, and own the trail like never before.<br/></p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -145,6 +211,7 @@
             "button_text_color": "",
             "subheading_font_size": 32,
             "subheading_color": "#ed0000",
+            "subheading_gradient": "",
             "title_font_size": 32,
             "title_color": "#000000",
             "content_font_size": 18,
@@ -171,18 +238,21 @@
         "slide_nb8UCB": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/1_3d70b460-417c-4e46-9059-4fafd5bc6860.jpg",
             "link": ""
           }
         },
         "slide_V9NrWM": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/3_2347196e-827c-4d0c-a520-158c899a6851.jpg",
             "link": ""
           }
         },
         "slide_xDMTBL": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/2_fff1b2a1-d5ac-4d7d-a651-4da73afb99b9.jpg",
             "link": ""
           }
         }
@@ -242,8 +312,10 @@
         "image_border_radius": 8,
         "separator_width": 2,
         "separator_color": "#cccccc",
-        "left_description": "Use this text to share information about your brand with your customers.",
-        "right_description": "Use this text to share information about your brand with your customers.",
+        "left_image": "shopify://shop_images/8746ec92d55d4dd9b34e5d1cc68f691b_6e16d1b7-935a-43d8-9294-189e8683cae5.png",
+        "left_description": "Megawheels D2 Series Brings Electric Dirt Bike Performance to Young Riders",
+        "right_image": "shopify://shop_images/a92e1ab5468c495b992908d2b04bf00a.png",
+        "right_description": "A high-performance electric dirt bike lineup for young riders, the Meegawheels D2 Series makes a strong\ncase for families comparing capability, price, and everyday usability.",
         "title_font_size": 20,
         "title_color": "#000000",
         "description_font_size": 14,
@@ -256,29 +328,64 @@
         "item_mwqh3i": {
           "type": "item",
           "settings": {
-            "title": "1.Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "1.What electric dirt bikes does Megawheels Dirt Bike offer?",
+            "content": "<p>Megawheels D2 Series offers three electric dirt bike models: the D2 Lite,D2 and D2 Pro.The D2 Lite is an ideal entry-level electric dirt bike, featuring 14\"/12\" wheels, a 3000 W peak mid-drive motor, and a 48V/23.4 Ah battery, delivering a top speed of 37.28 MPH.The D2 is the high-performance upgrade, equipped with a 3550W peak mid-drive motor, 48V/26Ah battery, 14\"/12\"wheels, and a top speed of 38 MPH.The D2 Pro is the flagship model, equipped with a 4800W peak mid-drive motor, 60V/30Ah battery, 17\"/14\" wheels, and a top speed of 50 MPH.All models come with full hydraulic brakes, dual shock absorption, and three speed modes.</p>"
           }
         },
         "item_H4aL7L": {
           "type": "item",
           "settings": {
-            "title": "2.Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "2.What is the top speed and range of the Megawheels D2 Pro electric dirt bike?",
+            "content": "<p>At its top speed of 80 km/h, the estimated riding time is about 44 minutes, with a range of approximately 29 km.</p>"
           }
         },
         "item_kT6Y8w": {
           "type": "item",
           "settings": {
-            "title": "3.Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "3.Why does Megawheels D2 Series Dirt Bike use a mid-drive motor instead of a hub motor?",
+            "content": "<p>A mid-drive motor offers several key advantages over a hub motor:- Better handling with a more balanced center of gravity. - Stronger low-speed torque for climbing and acceleration. - Better heat dissipation for consistent performance. - Easier to push when the battery is out. - Lighter wheels for improved agility and easier maintenance.</p>"
           }
         },
         "item_cAjBfj": {
           "type": "item",
           "settings": {
-            "title": "4.Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "4.Which Megawheels electric dirt bike is right for me— D2 or D2 Pro?",
+            "content": "<p>The D2 is ideal for beginners, while the D2 Pro is recommended for riders with prior electric dirt bike experience.</p>"
+          }
+        },
+        "item_Y9nR8g": {
+          "type": "item",
+          "settings": {
+            "title": "5.How long does it take to charge a Megawheels D2 Pro electric dirt bike?",
+            "content": "<p>7 hours</p>"
+          }
+        },
+        "item_x7nYLL": {
+          "type": "item",
+          "settings": {
+            "title": "6.Is the Megawheels electric dirt bike street legal?",
+            "content": "<p>Subject to local regulations. Riders who meet the applicable legal requirements and documentation can ride on public roads where permitted.</p>"
+          }
+        },
+        "item_KgFM3z": {
+          "type": "item",
+          "settings": {
+            "title": "7. What age is the Megawheeels D2 pro electric dirt bike suitable for?",
+            "content": "<p>Suitable for riders aged 13+.</p>"
+          }
+        },
+        "item_rdePUz": {
+          "type": "item",
+          "settings": {
+            "title": "8. What warranty does Megawheels offer on its electric dirt bikes?",
+            "content": "<p>Megawheels D2 Series electric dirt bikes supports a 30‑day return and refund policy. For returns due to non‑quality issues, customers are required to pay the round‑trip shipping costs. In addition, it comes with a 1‑year warranty.</p>"
+          }
+        },
+        "item_xzB8Wd": {
+          "type": "item",
+          "settings": {
+            "title": "9. Does Megawheels offer free shipping on electric dirt bikes?",
+            "content": "<p>Yes, free shipping is offered on all Megawheels electric dirt bikes.</p>"
           }
         }
       },
@@ -286,10 +393,15 @@
         "item_mwqh3i",
         "item_H4aL7L",
         "item_kT6Y8w",
-        "item_cAjBfj"
+        "item_cAjBfj",
+        "item_Y9nR8g",
+        "item_x7nYLL",
+        "item_KgFM3z",
+        "item_rdePUz",
+        "item_xzB8Wd"
       ],
       "custom_css": [
-        ".section-stack__main2{max-width: 1240px;}"
+        ".section-stack__main2 {max-width: 1240px;}"
       ],
       "settings": {
         "full_width": true,
@@ -345,75 +457,71 @@
         "review_GdUEkW": {
           "type": "review",
           "settings": {
-            "product_handle": "",
-            "image": "shopify://shop_images/MEGAWHEELS-D2-LITE-electric-dirt-bike-03_e140aaf8-f0ed-4896-a6b3-419479852a96.jpg",
+            "product_handle": "d2-lite-electric-dirt-bike",
+            "image": "shopify://shop_images/MEGAWHEELS-D2-Lite-electric-dirt-bike-800x800-6.jpg",
             "star_rating": 5,
-            "review_text": "很好很好",
-            "reviewer_name": "@用户3"
+            "review_text": "The D2 Lite e-dirt bike is in good shape and quality. It is a birthday gift for my son, and he loves it so much. We are plan to go cycling on the little hill near our home over the weekend, that will be fun.",
+            "reviewer_name": "Haris"
           }
         },
         "review_bTPJhc": {
           "type": "review",
           "settings": {
-            "product_handle": "",
-            "image": "shopify://shop_images/MEGAWHEELS-D2-LITE-electric-dirt-bike-01_e045060e-a1ec-4768-8478-3143eff5a3e3.jpg",
-            "star_rating": 4,
-            "review_text": "不错！！！！！不错！！！！！不错！！！！！不错！！！！！不错！！！！！",
-            "reviewer_name": "@用户2"
+            "product_handle": "d2-electric-dirt-bike",
+            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-review-600x600-02.jpg",
+            "star_rating": 5,
+            "review_text": "My 14 year old son has been begging for a dirt bike for a year, but I didn't want to deal with gas, oil, and the crazy noise. This electric one is the perfect compromise. It's incredibly intuitive - just twist the throttle and go.It's not so fast that it's terrifying, but it definitely moves. Perfect for building confidence. The brakes are very responsive, which gives me peace of mind. Overall, a great, reliable purchase for anyone trying to get into trail riding without breaking the bank.",
+            "reviewer_name": "Nicole Lin"
           }
         },
         "review_EUHjNe": {
           "type": "review",
           "settings": {
-            "product_handle": "d2-pro-electric-dirt-bike",
-            "star_rating": 4,
-            "review_text": "我觉得很好",
-            "reviewer_name": "@用户1"
+            "product_handle": "d2-electric-dirt-bike",
+            "image": "shopify://shop_images/Megawheels-D2-electric-dirt-bike-review-iscootct.jpg",
+            "star_rating": 5,
+            "review_text": "I have owned many electric bicycles and gas motorcycles but have been seeing a lot of people riding these electric dirt bikes. So of course I have been wanting to try one. All I can say is the thing rips and is a blast to ride around town. This is NOT a toy. It is a mini motorcycle.Top speed according to my GPS was 38 mph. I think that is pretty good. Lighter riders might be able to get the full advertised 40 mph. Based on the geometry of the bike and the small knobby tires I don't think you really want to go faster than that.Assembly was not difficult. If you have never put one of these together just take your time. Watch all the online videos and be careful of the bike's weight. It is deceiving because it is so small.The only negatives that I could point out is that the display is a little small and I would have liked a rear reflector or light.I recommend the Megawheels D2. If you are big or tall I would opt for the D2 Pro model. Otherwise it is a great little bike. So far it seems to be high quality and very durable. I have add it assembled for one day and rode 6 miles as hard and fast as I could.",
+            "reviewer_name": "iscootct"
           }
         },
         "review_dk8gU4": {
           "type": "review",
           "settings": {
-            "product_handle": "d2-pro-electric-dirt-bike",
+            "product_handle": "d2-electric-dirt-bike",
+            "image": "shopify://shop_images/Megawheels-D2-electric-dirt-bike-review-Caffeine.jpg",
             "star_rating": 5,
-            "review_text": "",
-            "reviewer_name": ""
+            "review_text": "I'm always a bit skeptical about electric dirt bikes in this price range, but this thing genuinely surprised me. The frame feels super sturdy, definitely high-carbon steel as advertised. Took it out to some local dirt trails behind our property after a light rainy day. The aggressive tires grabbed the mud perfectly, and we even splashed through a few shallow puddles- IPX6 waterproof rating seems to hold up great.Top speed is right in the sweet spot for a teen beginner. It's quiet, which our neighbors love, but doesn't sacrifice torque. For the price, the build quality is totally there.",
+            "reviewer_name": "Caffeine"
           }
         },
         "review_QnLB34": {
           "type": "review",
           "settings": {
             "product_handle": "d2-pro-electric-dirt-bike",
+            "image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-review-600x600-02.jpg",
             "star_rating": 5,
-            "review_text": "",
-            "reviewer_name": ""
+            "review_text": "The D2 Pro dirt bike is a monster! Its 6000W peak motor rockets to 50mph, and the 226N.m torque devours 35° hills. The 30AH battery gave me about 60 real-world miles on rugged trails—no gas stops! Durable, grippy, and smooth over bumps. At $1,999, it outperforms bikes twice the price. Perfect for adrenaline junkies craving freedom. Buy it—you won’t regret it!",
+            "reviewer_name": "Joby Chain"
           }
         },
         "review_P6mDac": {
           "type": "review",
           "settings": {
-            "product_handle": "d2-pro-electric-dirt-bike",
+            "product_handle": "d2-electric-dirt-bike",
+            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-review-600x600-03.jpg",
             "star_rating": 5,
-            "review_text": "",
-            "reviewer_name": ""
+            "review_text": "I was a bit nervous about getting a dirt bike for our 15-year-old, but this electric model turned out to be a great middle ground. It's not too fast, and the throttle is easy to control. He rides it on some light trails and our backyard. The frame is solid and the tires have good grip. The battery lasts longer than I expected; he gets over an hour of ride time easily. He put it together watching a video. It's quiet and he handles it responsibly.",
+            "reviewer_name": "Yotti"
           }
         },
         "review_Fn9zYF": {
           "type": "review",
           "settings": {
             "product_handle": "d2-electric-dirt-bike",
+            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-review-600x600-01.jpg",
             "star_rating": 5,
-            "review_text": "",
-            "reviewer_name": ""
-          }
-        },
-        "review_qtNn3x": {
-          "type": "review",
-          "settings": {
-            "product_handle": "d2-electric-dirt-bike",
-            "star_rating": 5,
-            "review_text": "",
-            "reviewer_name": ""
+            "review_text": "After weeks of reading horror stories about snapped frames, grinding motors, dead chargers, missing parts, fake battery claims, and ghosting customer service, I was nervous buying this electric dirt bike. But one month of daily riding has proven otherwise: the frame is rock solid with no cracks or flex even after jumping with my son (135 lbs) and me (235 lbs); the motor stays quiet and smooth with over 100 miles and still buttery power delivery; the battery life is real - I get 48-50 miles per charge (listed up to 53) and my son gets closer to 53, with none of that \"cut in half\" nonsense; everything came in the box with no missing parts or shipping damage, and the assembly instructions actually made sense; customer service answered my email on a Sunday within three hours with a helpful video solution. The only downside is the weight - about 147 lbs - which makes it tough for one person to lift into a truck, but that's because it's built solid, not from cheap plastic.",
+            "reviewer_name": "Anita"
           }
         }
       },
@@ -424,8 +532,7 @@
         "review_dk8gU4",
         "review_QnLB34",
         "review_P6mDac",
-        "review_Fn9zYF",
-        "review_qtNn3x"
+        "review_Fn9zYF"
       ],
       "settings": {
         "background_color": "#000000",
