@@ -12,13 +12,15 @@
     "hero": {
       "type": "page-hero-banner",
       "settings": {
-        "image": "shopify://shop_images/baf8e6d113ccdde9b2254d9741393fb7.jpg"
+        "image": "shopify://shop_images/baf8e6d113ccdde9b2254d9741393fb7.jpg",
+        "mobile_image": "shopify://shop_images/M__01.jpg"
       }
     },
     "gallery": {
       "type": "product-thumbnail-gallery",
       "settings": {
-        "image": "shopify://shop_images/D2__02.jpg"
+        "image": "shopify://shop_images/D2__02.jpg",
+        "mobile_image": "shopify://shop_images/M__02.jpg"
       }
     },
     "comparison": {
@@ -119,14 +121,28 @@
       ],
       "settings": {
         "section_background": "#000000",
+        "table_padding_mobile": 10,
         "border_color": "#ff0000",
         "column_gap_mobile": 20,
+        "column_gap": 10,
         "row_gap": 10,
         "row_gap_mobile": 8,
+        "mobile_title_size": 10,
+        "mobile_price_size": 12,
+        "mobile_compare_at_size": 8,
+        "mobile_button_size": 8,
+        "mobile_title_bg_width": 65,
+        "mobile_outer_padding": 10,
+        "mobile_table_radius": 10,
+        "mobile_header_body_gap": 8,
         "header_body_gap": 30,
         "product_image_aspect_ratio": "4/3",
         "image_title_gap": 15,
+        "product_image_max_width": 200,
         "title_price_gap": 10,
+        "title_bg_width": 145,
+        "title_bg_height": 45,
+        "title_offset_x": -10,
         "price_button_gap": 10,
         "product_1_handle": "d2-lite-electric-dirt-bike",
         "product_2_handle": "d2-electric-dirt-bike",
@@ -153,7 +169,9 @@
         "compare_at_color": "#999999",
         "label_font_size": 20,
         "value_font_size": 20,
-        "value_color": "#ffffff"
+        "value_color": "#ffffff",
+        "label_font_size_mobile": 10,
+        "value_font_size_mobile": 8
       }
     },
     "media_text": {
@@ -228,7 +246,18 @@
         "section_padding_bottom": 60,
         "full_width": false,
         "alternate_media_position": false,
-        "spacing": "small"
+        "spacing": "small",
+        "mobile_padding_top": 40,
+        "mobile_padding_right": 0,
+        "mobile_padding_bottom": 20,
+        "mobile_padding_left": 0,
+        "mobile_subheading_size": 18,
+        "mobile_text_size": 16,
+        "mobile_text_align": "left",
+        "mobile_content_padding_top": 0,
+        "mobile_content_padding_right": 10,
+        "mobile_content_padding_bottom": 0,
+        "mobile_content_padding_left": 10
       }
     },
     "carousel": {
@@ -238,6 +267,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/1_3d70b460-417c-4e46-9059-4fafd5bc6860.jpg",
+            "mobile_image": "shopify://shop_images/1_3c316a63-8102-4158-b0a7-73c75351ad97.jpg",
             "link": ""
           }
         },
@@ -245,6 +275,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/3_2347196e-827c-4d0c-a520-158c899a6851.jpg",
+            "mobile_image": "shopify://shop_images/3_88df19df-883f-415b-b482-e319b0f76194.jpg",
             "link": ""
           }
         },
@@ -252,6 +283,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/2_fff1b2a1-d5ac-4d7d-a651-4da73afb99b9.jpg",
+            "mobile_image": "shopify://shop_images/2_88b6d51f-e5cd-486e-af63-8330251ceaba.jpg",
             "link": ""
           }
         }
@@ -280,8 +312,16 @@
         "arrow_size": 40,
         "arrow_color": "#ffffff",
         "dot_size": 10,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_show_nav": true,
+        "mobile_nav_gap": 7,
+        "mobile_dot_size": 8,
         "dot_active_color": "#ff0000",
-        "dot_inactive_color": "#444444"
+        "dot_inactive_color": "#444444",
+        "mobile_arrow_size": 20,
+        "mobile_arrow_svg_size": 40,
+        "mobile_arrow_offset": 10
       }
     },
     "dual_feature": {
@@ -447,7 +487,20 @@
         "accordion_background": "#111111",
         "accordion_text_color": "#ffffff",
         "border_width": 0,
-        "border_color": "#ffffff"
+        "border_color": "#ffffff",
+        "mobile_wrapper_padding_top": 28,
+        "mobile_wrapper_padding_right": 0,
+        "mobile_wrapper_padding_bottom": 0,
+        "mobile_wrapper_padding_left": 0,
+        "mobile_stack_gap": 20,
+        "mobile_accordion_padding": 10,
+        "mobile_chevron_size": 20,
+        "mobile_content_padding_vertical": 0,
+        "mobile_content_padding_horizontal": 10,
+        "mobile_heading_size": 26,
+        "mobile_accordion_title_size": 12,
+        "mobile_text_size": 10,
+        "mobile_accordion_content_margin": 10
       }
     },
     "reviews": {
@@ -544,6 +597,9 @@
         "columns": "5",
         "columns_tablet": "3",
         "columns_mobile": "2",
+        "mobile_padding_top": 0,
+        "mobile_arrow_size": 22,
+        "mobile_padding_bottom": 0,
         "title": "",
         "title_font_size": 32,
         "title_color": "#ffffff",
