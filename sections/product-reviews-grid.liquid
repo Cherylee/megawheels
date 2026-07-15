@@ -23,6 +23,7 @@
 
   .product-reviews-grid__items {
     display: flex;
+    align-items: flex-start;
     gap: {{ section.settings.gap }}px;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -48,14 +49,14 @@
   }
 
   .product-reviews-grid__image {
-    aspect-ratio: {{ section.settings.image_aspect_ratio }};
+    {%- comment -%} 不设 aspect-ratio，图片按原始比例展示，不裁切 {%- endcomment -%}
     overflow: hidden;
   }
 
   .product-reviews-grid__image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
   }
 
   .product-reviews-grid__content {
@@ -90,10 +91,6 @@
     font-size: {{ section.settings.review_text_font_size }}px;
     line-height: 1.5;
     margin-bottom: 4px;
-    display: -webkit-box;
-    -webkit-line-clamp: {{ section.settings.review_text_lines }};
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .product-reviews-grid__reviewer {
@@ -185,7 +182,7 @@
             <div class="product-reviews-grid__item">
               <a href="{{ product.url }}" class="product-reviews-grid__product-link">
                 <div class="product-reviews-grid__image">
-                  {{- display_image | image_url: width: 400 | image_tag: sizes: '(max-width: 480px) 100%, (max-width: 768px) 50vw, 300px', alt: product.title | escape -}}
+                  {{- display_image | image_url: width: display_image.width | image_tag: sizes: '(max-width: 480px) 50vw, (max-width: 768px) 33vw, 300px', widths: '300,400,600,800,1000,1200', alt: product.title | escape -}}
                 </div>
               </a>
               
@@ -245,6 +242,10 @@
     var arrowNext = document.getElementById('reviews-arrow-next-' + sectionId);
     if (!track || !arrowPrev || !arrowNext) return;
 
+    var autoPlay = {{ section.settings.auto_play | default: true | json }};
+    var autoPlayInterval = {{ section.settings.auto_play_interval | default: 3000 }};
+    var autoPlayTimer = null;
+
     function getScrollAmount() {
       return track.querySelector('.product-reviews-grid__item').offsetWidth + {{ section.settings.gap }};
     }
@@ -269,17 +270,52 @@
       }
     }
 
+    function scrollNext() {
+      var maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 5) {
+        /* 已到最右 → 循环回到最左 */
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      }
+    }
+
+    function startAutoPlay() {
+      if (!autoPlay) return;
+      stopAutoPlay();
+      autoPlayTimer = setInterval(scrollNext, autoPlayInterval);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
     arrowPrev.addEventListener('click', function() {
       track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      stopAutoPlay();
+      startAutoPlay();
     });
 
     arrowNext.addEventListener('click', function() {
-      track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      scrollNext();
+      stopAutoPlay();
+      startAutoPlay();
     });
 
     track.addEventListener('scroll', checkOverflow);
+
+    /* 用户手动触摸滑动时暂停自动播放，松手后恢复 */
+    track.addEventListener('touchstart', stopAutoPlay);
+    track.addEventListener('touchend', function() {
+      setTimeout(startAutoPlay, 500);
+    });
+
     checkOverflow();
     window.addEventListener('resize', checkOverflow);
+    startAutoPlay();
   })();
 </script>
 
@@ -558,6 +594,27 @@
       "step": 1,
       "unit": "px",
       "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Auto-play",
+      "info": "Automatically scroll through reviews."
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_play",
+      "label": "Auto-play",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "auto_play_interval",
+      "label": "Auto-play interval",
+      "min": 1000,
+      "max": 8000,
+      "step": 500,
+      "unit": "ms",
+      "default": 3000
     }
   ],
   "blocks": [

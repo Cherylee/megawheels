@@ -66,7 +66,13 @@
     background: linear-gradient(0deg, #5a0909 -1%, #200505 5%, #000000 80%);
   }
   .series-comparison-table-sl{
+    position: relative;
+    .series-comparison-table-sl-1{
+      display: none;
+      width: {{ section.settings.mobile_sticky_label_width }}px;
+    }
   }
+  
 
   .series-comparison-table {
     max-width: 1240px;
@@ -194,7 +200,7 @@
     display: contents;
   }
 
-  .series-comparison-table__label {
+  .series-comparison-table__label>p{
     font-size: {{ section.settings.label_font_size }}px;
     font-weight: 800;
     padding: 10px;
@@ -214,35 +220,129 @@
     align-self: center;
   }
 
-  {%- comment -%} 手机/平板端：自适应缩小，保持四列并排，无滚动条 {%- endcomment -%}
-  @media screen and (max-width: 900px) {
+  {%- comment -%} 手机/平板端：sticky 第一列 + 横向滚动 {%- endcomment -%}
+  @media screen and (min-width:750px) and (max-width:989px) {
     .series-comparison-table-sl {
-      padding: 0 {{ section.settings.mobile_outer_padding }}px;
+      padding: 0 20px;
+      .series-comparison-table-sl-1{
+        display: none;
+      }
     }
-
+    .series-comparison-table__product-price{
+      font-size: 20px;
+    }
+    .series-comparison-table__product-compare-at-price{
+      font-size: 12px;
+      position: relative;
+      
+    }
+    .series-comparison-table__header{
+      margin-bottom: 0px;
+      padding-bottom: 20px;
+    }
+    .series-comparison-table__product-button{
+      font-size: 14px;
+      padding: 3px 12px;
+    }
+    .series-comparison-table__product-title-wrap{
+      width: 120px;
+      height:42px;
+      text-align: center;
+    }
+    .series-comparison-table__label>p{
+      font-size: 17px;
+      padding: 5px;
+    }
+    .series-comparison-table__value{
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 749px) {
+    .series-comparison-table-sl {
+      .series-comparison-table-sl-1{
+        padding-left: {{ section.settings.table_padding_mobile }}px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100px;
+        overflow: hidden;
+        display: none;
+        display: block;
+        scrollbar-width: none;
+        z-index: 3;
+      }
+      .series-comparison-table-sl-1 .series-comparison-table__scroll-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+    }
     .series-comparison-table {
       padding: {{ section.settings.table_padding_mobile }}px;
       border-radius: {{ section.settings.mobile_table_radius }}px;
     }
 
+    /* 滚动容器 */
+    .series-comparison-table-sl .series-comparison-table__scroll-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .series-comparison-table__header {
+      grid-template-columns: {{ section.settings.mobile_sticky_label_width }}px repeat(3, {{ section.settings.mobile_product_col_min }}px);
       gap: {{ section.settings.column_gap_mobile }}px;
       margin-bottom: {{ section.settings.mobile_header_body_gap }}px;
       padding-bottom: 0;
     }
 
-    .series-comparison-table__body {
-      gap: {{ section.settings.column_gap_mobile }}px {{ section.settings.row_gap_mobile }}px;
+    /* Header 第一列 sticky */
+    .series-comparison-table__header-cell--label {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      {% comment %} background: linear-gradient(0deg, #271716 0%, #1f1817 10%, #151414 80%); {% endcomment %}
     }
 
-    .series-comparison-table__label {
+    .series-comparison-table__body {
+      display: block;
+    }
+
+    /* Row 改为 display:grid（display:contents 不支持 sticky） */
+    .series-comparison-table__row {
+      display: grid;
+      grid-template-columns: {{ section.settings.mobile_sticky_label_width }}px repeat(3, {{ section.settings.mobile_product_col_min }}px);
+      gap: {{ section.settings.column_gap_mobile }}px;
+      margin-bottom: {{ section.settings.row_gap_mobile }}px;
+    }
+    .series-comparison-table__row:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Body 第一列 sticky */
+    .series-comparison-table__label{
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      padding: 0;
+    }
+    .series-comparison-table__label>p{
+      position: sticky;
+      left: 0;
+      z-index: 2;
       font-size: {{ section.settings.label_font_size_mobile }}px;
       padding: 0;
+      background: linear-gradient(45deg, #f10606 20%, #ffc5c5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .series-comparison-table__value {
       font-size: {{ section.settings.value_font_size_mobile }}px;
       padding: 0;
+    }
+
+    /* 隐藏底层重复标签（shadow 层会展示） */
+    .opcity-0 {
+      opacity: 0;
     }
 
     .series-comparison-table__product-title{
@@ -255,6 +355,7 @@
     .series-comparison-table__product-price-wrap{
       gap: 2px;
       margin-bottom: 0px;
+      flex-wrap: nowrap;
     }
 
     .series-comparison-table__product-price{
@@ -264,7 +365,6 @@
     .series-comparison-table__product-compare-at-price{
       font-size: {{ section.settings.mobile_compare_at_size }}px;
       position: relative;
-      top:-7px;
       
     }
 
@@ -283,8 +383,9 @@
 
 <div class="series-comparison-table-sl">
   <div class="series-comparison-table">
+    <div class="series-comparison-table__scroll-wrapper">
     <div class="series-comparison-table__header">
-        <div class="series-comparison-table__header-cell"></div>
+        <div class="series-comparison-table__header-cell series-comparison-table__header-cell--label"></div>
       {%- if product_1 or section.settings.product_1_image -%}
         <div class="series-comparison-table__header-cell">
           <div class="series-comparison-table__product-image">
@@ -368,12 +469,112 @@
     <div class="series-comparison-table__body">
       {%- for block in section.blocks -%}
         <div class="series-comparison-table__row">
-          <div class="series-comparison-table__label">{{ block.settings.label }}</div>
+          <div class="series-comparison-table__label opcity-0"><p>{{ block.settings.label }}</p></div>
           <div class="series-comparison-table__value">{{ block.settings.value_1 }}</div>
           <div class="series-comparison-table__value">{{ block.settings.value_2 }}</div>
           <div class="series-comparison-table__value">{{ block.settings.value_3 }}</div>
         </div>
       {%- endfor -%}
+    </div>
+    </div>
+  </div>
+  {% comment %} 为了实现固定列 {% endcomment %}
+   <div class="series-comparison-table-sl-1">
+    <div class="series-comparison-table series-comparison-table-1">
+      <div class="series-comparison-table__scroll-wrapper">
+      <div class="series-comparison-table__header">
+          <div class="series-comparison-table__header-cell series-comparison-table__header-cell--label "></div>
+        {%- if product_1 or section.settings.product_1_image -%}
+          <div class="series-comparison-table__header-cell opcity-0">
+            <div class="series-comparison-table__product-image">
+              {%- if product_1_image -%}
+                {{- product_1_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+              {%- endif -%}
+            </div>
+            <div class="series-comparison-table__product-title-wrap">
+              <div class="series-comparison-table__product-title-bg"></div>
+              {%- if product_1 -%}
+                <a href="{{ product_1.url }}" class="series-comparison-table__product-title">{{ product_1_title }}</a>
+              {%- else -%}
+                <span class="series-comparison-table__product-title">{{ product_1_title }}</span>
+              {%- endif -%}
+            </div>
+            {%- if product_1 -%}
+              <div class="series-comparison-table__product-price-wrap">
+                <span class="series-comparison-table__product-price">{{ p1_display_price | money }}</span>
+                {%- if p1_compare_price > p1_display_price -%}
+                  <span class="series-comparison-table__product-compare-at-price">{{ p1_compare_price | money }}</span>
+                {%- endif -%}
+              </div>
+              <a href="{{ product_1.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if product_2 or section.settings.product_2_image -%}
+          <div class="series-comparison-table__header-cell opcity-0">
+            <div class="series-comparison-table__product-image">
+              {%- if product_2_image -%}
+                {{- product_2_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+              {%- endif -%}
+            </div>
+            <div class="series-comparison-table__product-title-wrap">
+              <div class="series-comparison-table__product-title-bg"></div>
+              {%- if product_2 -%}
+                <a href="{{ product_2.url }}" class="series-comparison-table__product-title">{{ product_2_title }}</a>
+              {%- else -%}
+                <span class="series-comparison-table__product-title">{{ product_2_title }}</span>
+              {%- endif -%}
+            </div>
+            {%- if product_2 -%}
+              <div class="series-comparison-table__product-price-wrap">
+                <span class="series-comparison-table__product-price">{{ p2_display_price | money }}</span>
+                {%- if p2_compare_price > p2_display_price -%}
+                  <span class="series-comparison-table__product-compare-at-price">{{ p2_compare_price | money }}</span>
+                {%- endif -%}
+              </div>
+              <a href="{{ product_2.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if product_3 or section.settings.product_3_image -%}
+          <div class="series-comparison-table__header-cell opcity-0">
+            <div class="series-comparison-table__product-image">
+              {%- if product_3_image -%}
+                {{- product_3_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
+              {%- endif -%}
+            </div>
+            <div class="series-comparison-table__product-title-wrap">
+              <div class="series-comparison-table__product-title-bg"></div>
+              {%- if product_3 -%}
+                <a href="{{ product_3.url }}" class="series-comparison-table__product-title">{{ product_3_title }}</a>
+              {%- else -%}
+                <span class="series-comparison-table__product-title">{{ product_3_title }}</span>
+              {%- endif -%}
+            </div>
+            {%- if product_3 -%}
+              <div class="series-comparison-table__product-price-wrap">
+                <span class="series-comparison-table__product-price">{{ p3_display_price | money }}</span>
+                {%- if p3_compare_price > p3_display_price -%}
+                  <span class="series-comparison-table__product-compare-at-price">{{ p3_compare_price | money }}</span>
+                {%- endif -%}
+              </div>
+              <a href="{{ product_3.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="series-comparison-table__body">
+        {%- for block in section.blocks -%}
+          <div class="series-comparison-table__row">
+            <div class="series-comparison-table__label"><p>{{ block.settings.label }}</p></div>
+            <div class="series-comparison-table__value opcity-0">{{ block.settings.value_1 }}</div>
+            <div class="series-comparison-table__value opcity-0">{{ block.settings.value_2 }}</div>
+            <div class="series-comparison-table__value opcity-0">{{ block.settings.value_3 }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+      </div>
     </div>
   </div>
 </div>
@@ -418,6 +619,26 @@
       "step": 5,
       "unit": "px",
       "default": 5
+    },
+    {
+      "type": "range",
+      "id": "mobile_sticky_label_width",
+      "label": "Sticky label column width (mobile)",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "mobile_product_col_min",
+      "label": "Product column min width (mobile)",
+      "min": 80,
+      "max": 180,
+      "step": 10,
+      "unit": "px",
+      "default": 90
     },
     {
       "type": "range",
