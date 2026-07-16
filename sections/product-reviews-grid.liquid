@@ -16,7 +16,7 @@
   .product-reviews-grid__title {
     text-align: {{ section.settings.title_alignment }};
     color: {{ section.settings.title_color }};
-    font-size: {{ section.settings.title_font_size }}px;
+    font-size: {{ section.settings.title_font_size }};
     font-weight: 700;
     margin-bottom: {{ section.settings.title_margin_bottom }}px;
   }
@@ -95,18 +95,20 @@
     fill: {{ section.settings.star_color }};
   }
 
-  /* 核心修复：文字容器自适应，文字不设固定max-height限制 */
+  /* 核心修复：固定最大渲染行数，超出自动省略，容器自适应留白 */
   .product-reviews-grid__review-text {
     color: {{ section.settings.review_text_color | default: '#333333' }};
     font-size: {{ section.settings.review_text_font_size }}px;
     line-height: 1.5;
     margin-bottom: 4px;
-    /* 文字自动填满剩余空间，无高度上限 */
     flex: 1;
-    overflow: hidden;
     display: -webkit-box;
+    -webkit-line-clamp: {{ section.settings.review_text_max_lines }};
     -webkit-box-orient: vertical;
+    overflow: hidden;
     text-overflow: ellipsis;
+    /* 取消固定高度，依靠flex容器自动留白 */
+    height: auto;
   }
 
   .product-reviews-grid__reviewer {
@@ -177,7 +179,6 @@
         height: {{ section.settings.mobile_arrow_size }}px;
       } 
     }
-    
   }
 </style>
 
@@ -612,8 +613,8 @@
     {
       "type": "range",
       "id": "review_text_max_lines",
-      "label": "Max review text lines (truncate limit)",
-      "info": "仅当文字超过容器高度时截断，空间充足会完整展示全部文字",
+      "label": "Max review text lines",
+      "info": "超过此行数自动截断加省略号，不足则底部留白",
       "min": 4,
       "max": 12,
       "step": 1,

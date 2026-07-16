@@ -136,7 +136,6 @@
         "mobile_title_bg_width": 65,
         "mobile_outer_padding": 10,
         "mobile_table_radius": 10,
-        "mobile_header_body_gap": 8,
         "header_body_gap": 30,
         "product_image_aspect_ratio": "4/3",
         "image_title_gap": 15,
