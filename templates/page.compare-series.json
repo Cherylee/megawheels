@@ -356,6 +356,7 @@
         "column_gap_mobile": 20,
         "image_height": 200,
         "image_height_mobile": 50,
+        "image_height_tablet": 70,
         "image_border_radius": 8,
         "separator_width": 2,
         "separator_color": "#cccccc",
@@ -518,7 +519,7 @@
           "type": "review",
           "settings": {
             "product_handle": "d2-lite-electric-dirt-bike",
-            "image": "shopify://shop_images/MEGAWHEELS-D2-Lite-electric-dirt-bike-800x800-6.jpg",
+            "image": "shopify://shop_images/Megawheels-D2-Lite-electric-dirt-bike-review-600x600.jpg",
             "star_rating": 5,
             "review_text": "The D2 Lite e-dirt bike is in good shape and quality. It is a birthday gift for my son, and he loves it so much. We are plan to go cycling on the little hill near our home over the weekend, that will be fun.",
             "reviewer_name": "Haris"
@@ -538,7 +539,7 @@
           "type": "review",
           "settings": {
             "product_handle": "d2-electric-dirt-bike",
-            "image": "shopify://shop_images/Megawheels-D2-electric-dirt-bike-review-iscootct.jpg",
+            "image": "shopify://shop_images/Megawheels-D2-electric-dirt-bike-review-iscootct-600x600.jpg",
             "star_rating": 5,
             "review_text": "I have owned many electric bicycles and gas motorcycles but have been seeing a lot of people riding these electric dirt bikes. So of course I have been wanting to try one. All I can say is the thing rips and is a blast to ride around town. This is NOT a toy. It is a mini motorcycle.Top speed according to my GPS was 38 mph. I think that is pretty good. Lighter riders might be able to get the full advertised 40 mph. Based on the geometry of the bike and the small knobby tires I don't think you really want to go faster than that.Assembly was not difficult. If you have never put one of these together just take your time. Watch all the online videos and be careful of the bike's weight. It is deceiving because it is so small.The only negatives that I could point out is that the display is a little small and I would have liked a rear reflector or light.I recommend the Megawheels D2. If you are big or tall I would opt for the D2 Pro model. Otherwise it is a great little bike. So far it seems to be high quality and very durable. I have add it assembled for one day and rode 6 miles as hard and fast as I could.",
             "reviewer_name": "iscootct"
@@ -596,15 +597,18 @@
       ],
       "settings": {
         "background_color": "#000000",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "side_padding": 20,
-        "max_width": 1250,
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "side_padding": 10,
+        "max_width": 1600,
         "gap": 16,
         "gap_mobile": 6,
         "columns": "5",
         "columns_tablet": "3",
         "columns_mobile": "2",
+        "card_total_height": 420,
+        "card_total_height_tablet": 460,
+        "card_total_height_mobile": 400,
         "mobile_padding_top": 0,
         "mobile_arrow_size": 22,
         "mobile_padding_bottom": 0,
@@ -613,19 +617,90 @@
         "title_color": "#ffffff",
         "title_alignment": "center",
         "title_margin_bottom": 32,
-        "image_aspect_ratio": "4/3",
         "border_radius": 8,
-        "card_padding": 16,
+        "card_padding": 12,
         "card_background": "#ffffff",
         "star_size": 16,
         "star_color": "#ffb303",
         "review_text_color": "#171717",
         "review_text_font_size": 12,
-        "review_text_lines": 2,
+        "review_text_max_lines": 6,
         "reviewer_color": "#171717",
         "reviewer_font_size": 14,
         "auto_play": true,
         "auto_play_interval": 3000
+      }
+    },
+    "testimonial_carousel_nLe7FG": {
+      "type": "testimonial-carousel",
+      "blocks": {
+        "review_Ya8HKb": {
+          "type": "review",
+          "settings": {
+            "review_image": "shopify://shop_images/MEGAWHEELS-D2-Lite-electric-dirt-bike-800x800-6.jpg",
+            "review_title": "Great Product",
+            "review_stars": "5",
+            "review_content": "The D2 Lite e-dirt bike is in good shape and quality. It is a birthday gift for my son, and he loves it so much. We are plan to go cycling on the little hill near our home over the weekend, that will be fun.",
+            "review_author": "Haris"
+          }
+        },
+        "review_JY47w9": {
+          "type": "review",
+          "settings": {
+            "review_image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-review-600x600-02.jpg",
+            "review_title": "Great Product",
+            "review_stars": "5",
+            "review_content": "My 14 year old son has been begging for a dirt bike for a year, but I didn't want to deal with gas, oil, and the crazy noise. This electric one is the perfect compromise. It's incredibly intuitive - just twist the throttle and go.It's not so fast that it's terrifying, but it definitely moves. Perfect for building confidence. The brakes are very responsive, which gives me peace of mind. Overall, a great, reliable purchase for anyone trying to get into trail riding without breaking the bank.",
+            "review_author": "Nicole Lin"
+          }
+        },
+        "review_D7FBKT": {
+          "type": "review",
+          "settings": {
+            "review_image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-review-600x600-03.jpg",
+            "review_title": "Great Product",
+            "review_stars": "5",
+            "review_content": "I have owned many electric bicycles and gas motorcycles but have been seeing a lot of people riding these electric dirt bikes. So of course I have been wanting to try one. All I can say is the thing rips and is a blast to ride around town. This is NOT a toy. It is a mini motorcycle.Top speed according to my GPS was 38 mph. I think that is pretty good. Lighter riders might be able to get the full advertised 40 mph. Based on the geometry of the bike and the small knobby tires I don't think you really want to go faster than that.Assembly was not difficult. If you have never put one of these together just take your time. Watch all the online videos and be careful of the bike's weight. It is deceiving because it is so small.The only negatives that I could point out is that the display is a little small and I would have liked a rear reflector or light.I recommend the Megawheels D2. If you are big or tall I would opt for the D2 Pro model. Otherwise it is a great little bike. So far it seems to be high quality and very durable. I have add it assembled for one day and rode 6 miles as hard and fast as I could.",
+            "review_author": "iscootct"
+          }
+        },
+        "review_BwHaQ4": {
+          "type": "review",
+          "settings": {
+            "review_title": "Great Product",
+            "review_stars": "5",
+            "review_content": "Very satisfied with this product. Highly recommended!",
+            "review_author": "Happy Customer"
+          }
+        },
+        "review_mJzUnb": {
+          "type": "review",
+          "settings": {
+            "review_title": "Great Product",
+            "review_stars": "5",
+            "review_content": "Very satisfied with this product. Highly recommended!",
+            "review_author": "Happy Customer"
+          }
+        }
+      },
+      "block_order": [
+        "review_Ya8HKb",
+        "review_JY47w9",
+        "review_D7FBKT",
+        "review_BwHaQ4",
+        "review_mJzUnb"
+      ],
+      "disabled": true,
+      "name": "Customer Reviews Carousel",
+      "settings": {
+        "main_title": "What Our Customers Say",
+        "sub_title": "Real reviews from real customers",
+        "title_align": "left",
+        "title_size": 32,
+        "subtitle_size": 14,
+        "star_color": "#ff9529",
+        "scroll_speed": 60,
+        "scroll_dir": "normal"
       }
     }
   },
@@ -637,6 +712,7 @@
     "carousel",
     "dual_feature",
     "faq",
-    "reviews"
+    "reviews",
+    "testimonial_carousel_nLe7FG"
   ]
 }

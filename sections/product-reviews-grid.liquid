@@ -34,13 +34,16 @@
     display: none;
   }
 
+  /* 固定整张卡片总高度，所有卡片等高 */
   .product-reviews-grid__item {
     flex: 0 0 calc((100% - {{ section.settings.columns | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns }});
-    {% comment %} min-width: 220px; {% endcomment %}
     background-color: {{ section.settings.card_background | default: '#ffffff' }};
     border-radius: {{ section.settings.border_radius }}px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: {{ section.settings.card_total_height }}px;
   }
 
   .product-reviews-grid__item:hover {
@@ -48,9 +51,10 @@
     box-shadow: 0 12px 32px rgba(0,0,0,0.3);
   }
 
+  /* 图片自适应高度，不强制固定比例 */
   .product-reviews-grid__image {
-    {%- comment -%} 不设 aspect-ratio，图片按原始比例展示，不裁切 {%- endcomment -%}
     overflow: hidden;
+    flex-shrink: 0;
   }
 
   .product-reviews-grid__image img {
@@ -59,8 +63,12 @@
     display: block;
   }
 
+  /* 文字容器占满卡片剩余全部高度，图片越小文字区域越高 */
   .product-reviews-grid__content {
     padding: {{ section.settings.card_padding }}px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .product-reviews-grid__product-link {
@@ -73,6 +81,7 @@
     align-items: center;
     gap: 6px;
     margin-bottom: 8px;
+    flex-shrink: 0;
   }
 
   .product-reviews-grid__stars {
@@ -86,17 +95,27 @@
     fill: {{ section.settings.star_color }};
   }
 
+  /* 核心修复：取消固定line-clamp行数限制，改用容器高度自然截断 */
   .product-reviews-grid__review-text {
     color: {{ section.settings.review_text_color | default: '#333333' }};
     font-size: {{ section.settings.review_text_font_size }}px;
     line-height: 1.5;
     margin-bottom: 4px;
+    flex: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    /* 动态计算文字最大高度 = 行高 × 设置上限行数 */
+    max-height: calc(1.5em * {{ section.settings.review_text_max_lines }});
   }
 
   .product-reviews-grid__reviewer {
     color: {{ section.settings.reviewer_color | default: '#333333' }};
     font-size: {{ section.settings.reviewer_font_size }}px;
     font-weight: 700;
+    margin-bottom: 6px;
+    flex-shrink: 0;
   }
 
   .product-reviews-grid__scroller {
@@ -136,12 +155,14 @@
   @media screen and (max-width: 1024px) {
     .product-reviews-grid__item {
       flex: 0 0 calc((100% - {{ section.settings.columns_tablet | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns_tablet }});
+      height: {{ section.settings.card_total_height_tablet }}px;
     }
   }
 
   @media screen and (max-width: 768px) {
     .product-reviews-grid__item {
       flex: 0 0 calc((100% - {{ section.settings.columns_mobile | minus: 1 | times: section.settings.gap_mobile }}px) / {{ section.settings.columns_mobile }});
+      height: {{ section.settings.card_total_height_mobile }}px;
     }
     .product-reviews-grid__items {
       gap: {{ section.settings.gap_mobile }}px;
@@ -172,11 +193,8 @@
         {%- for block in section.blocks -%}
           {%- assign product = all_products[block.settings.product_handle] -%}
           {%- if product -%}
-            {%- comment -%} 星级可在 block 中配置，默认 5 星 {%- endcomment -%}
             {%- assign star_count = block.settings.star_rating | default: 5 -%}
             {%- assign empty_stars = 5 | minus: star_count -%}
-
-            {%- comment -%} 优先使用 block 配置的图片，回退到产品主图 {%- endcomment -%}
             {%- assign display_image = block.settings.image | default: product.featured_image -%}
 
             <div class="product-reviews-grid__item">
@@ -190,7 +208,6 @@
                 {%- if block.settings.reviewer_name != blank -%}
                   <p class="product-reviews-grid__reviewer">@{{ block.settings.reviewer_name | escape }}</p>
                 {%- endif -%}
-                {%- comment -%} 星级展示 {%- endcomment -%}
                 <div class="product-reviews-grid__rating">
                   <div class="product-reviews-grid__stars">
                     {%- for i in (1..star_count) -%}
@@ -206,12 +223,12 @@
                   </div>
                 </div>
   
-                {%- comment -%} 评论内容点击跳转产品详情页 {%- endcomment -%}
                 {%- if block.settings.review_text != blank -%}
                   <a href="{{ product.url }}" class="product-reviews-grid__product-link">
                     <p class="product-reviews-grid__review-text">{{ block.settings.review_text | escape }}</p>
                   </a>
-                  
+                {%- else -%}
+                  <p class="product-reviews-grid__review-text"></p>
                 {%- endif -%}
               </div>
             </div>
@@ -219,7 +236,6 @@
         {%- endfor -%}
       </div>
 
-      {%- comment -%} 左右箭头：内容溢出时才显示 {%- endcomment -%}
       <button class="product-reviews-grid__scroll-arrow product-reviews-grid__scroll-arrow--prev" id="reviews-arrow-prev-{{ section.id }}" aria-label="Scroll left" type="button">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M15 18l-6-6 6-6"/>
@@ -255,14 +271,12 @@
       var scrollLeft = track.scrollLeft;
       var maxScroll = track.scrollWidth - track.clientWidth;
 
-      /* 左箭头：已滚动超过 10px 时显示 */
       if (overflowRight && scrollLeft > 10) {
         arrowPrev.classList.add('product-reviews-grid__scroll-arrow--visible');
       } else {
         arrowPrev.classList.remove('product-reviews-grid__scroll-arrow--visible');
       }
 
-      /* 右箭头：未滚到最右时显示 */
       if (overflowRight && scrollLeft < maxScroll - 10) {
         arrowNext.classList.add('product-reviews-grid__scroll-arrow--visible');
       } else {
@@ -273,7 +287,6 @@
     function scrollNext() {
       var maxScroll = track.scrollWidth - track.clientWidth;
       if (track.scrollLeft >= maxScroll - 5) {
-        /* 已到最右 → 循环回到最左 */
         track.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
         track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
@@ -306,8 +319,6 @@
     });
 
     track.addEventListener('scroll', checkOverflow);
-
-    /* 用户手动触摸滑动时暂停自动播放，松手后恢复 */
     track.addEventListener('touchstart', stopAutoPlay);
     track.addEventListener('touchend', function() {
       setTimeout(startAutoPlay, 500);
@@ -430,6 +441,41 @@
     },
     {
       "type": "header",
+      "content": "Card Size Control",
+      "info": "Control fixed total height of entire review card"
+    },
+    {
+      "type": "range",
+      "id": "card_total_height",
+      "label": "Card total fixed height (Desktop)",
+      "min": 300,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "card_total_height_tablet",
+      "label": "Card total fixed height (Tablet)",
+      "min": 260,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 460
+    },
+    {
+      "type": "range",
+      "id": "card_total_height_mobile",
+      "label": "Card total fixed height (Mobile)",
+      "min": 220,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "header",
       "content": "Mobile Spacing (≤768px)",
       "info": "Override section top/bottom padding on phones."
     },
@@ -507,12 +553,6 @@
       "default": 32
     },
     {
-      "type": "text",
-      "id": "image_aspect_ratio",
-      "label": "Image aspect ratio",
-      "default": "4/3"
-    },
-    {
       "type": "range",
       "id": "border_radius",
       "label": "Card border radius",
@@ -525,7 +565,7 @@
     {
       "type": "range",
       "id": "card_padding",
-      "label": "Card padding",
+      "label": "Card inner content padding",
       "min": 8,
       "max": 24,
       "step": 4,
@@ -572,12 +612,13 @@
     },
     {
       "type": "range",
-      "id": "review_text_lines",
-      "label": "Review text lines",
-      "min": 1,
-      "max": 4,
+      "id": "review_text_max_lines",
+      "label": "Max review text lines (upper limit)",
+      "info": "文字区域有空余空间时自动展示更多，最多限制此行数高度",
+      "min": 4,
+      "max": 12,
       "step": 1,
-      "default": 2
+      "default": 6
     },
     {
       "type": "color",
@@ -631,8 +672,8 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Product image",
-          "info": "Upload a custom image. If left empty, the product's featured image will be used."
+          "label": "Custom product image",
+          "info": "Upload custom image, fallback to product featured image"
         },
         {
           "type": "range",
@@ -642,19 +683,19 @@
           "max": 5,
           "step": 1,
           "default": 5,
-          "info": "Set how many stars to display for this review."
+          "info": "Set star count for this review"
         },
         {
           "type": "text",
           "id": "review_text",
-          "label": "Review text",
-          "info": "Optional custom review text"
+          "label": "Review text content",
+          "info": "Customer review copy"
         },
         {
           "type": "text",
           "id": "reviewer_name",
-          "label": "Reviewer name",
-          "info": "Optional reviewer name"
+          "label": "Reviewer username",
+          "info": "Display @username above stars"
         }
       ]
     }
