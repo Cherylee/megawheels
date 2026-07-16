@@ -102,7 +102,7 @@
   }
   @media screen and (min-width:750px) and (max-width:989px) {
     .dual-column-feature__image {
-      height: {{ section.settings.image_height }}px;
+      height: {{ section.settings.image_height_tablet }}px;
     }
   }
 </style>
@@ -320,6 +320,16 @@
       "step": 10,
       "unit": "px",
       "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_height_tablet",
+      "label": "Image height (tablet)",
+      "min": 10,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 70
     },
     {
       "type": "range",

@@ -259,17 +259,19 @@
   }
   @media screen and (max-width: 749px) {
     .series-comparison-table-sl {
+      position: relative;
       .series-comparison-table-sl-1{
         padding-left: {{ section.settings.table_padding_mobile }}px;
         position: absolute;
         left: 0;
         top: 0;
-        width: 100px;
+        width: {{ section.settings.mobile_sticky_label_width }}px;
         overflow: hidden;
-        display: none;
         display: block;
         scrollbar-width: none;
         z-index: 3;
+        background: linear-gradient(0deg, #271716 0%, #1f1817 10%, #151414 80%);
+        border-radius: {{ section.settings.mobile_table_radius }}px 0 0 {{ section.settings.mobile_table_radius }}px;
       }
       .series-comparison-table-sl-1 .series-comparison-table__scroll-wrapper::-webkit-scrollbar {
         display: none;
