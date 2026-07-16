@@ -85,10 +85,10 @@ CSS
         #block-{{ section.id }}-{{ block.id }} {
           --media-with-text-gap: {{ section.settings.mobile_layout_gap }}px;
         }
-        /* 并排模式下：文案垂直对齐方式 */
+        /* 并排模式下：文案对齐方式（block 级配置） */
         #block-{{ section.id }}-{{ block.id }} .media-with-text__content {
-          align-self: {{ section.settings.mobile_layout_text_align }} !important;
-          text-align: center;
+          align-self: {{ block.settings.mobile_text_align | default: 'flex-start' }} !important;
+          text-align: {{ block.settings.mobile_text_horizontal_align | default: 'center' }} !important;
         }
         /* 并排模式下：文案缩小 */
         #block-{{ section.id }}-{{ block.id }} .subheading {
@@ -375,18 +375,6 @@ LIQUID
       "max": 1.8,
       "step": 0.1,
       "default": 1.2
-    },
-    {
-      "type": "select",
-      "id": "mobile_layout_text_align",
-      "label": "Text alignment (side-by-side mode)",
-      "options": [
-        { "value": "flex-start", "label": "Top" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "Bottom" }
-      ],
-      "default": "flex-start",
-      "info": "Vertical alignment of the text block when side-by-side layout is enabled on mobile."
     },
     {
       "type": "range",
@@ -985,6 +973,33 @@ LIQUID
           "id": "content_color",
           "label": "Content color",
           "default": "#333333"
+        },
+        {
+          "type": "header",
+          "content": "Mobile side-by-side alignment"
+        },
+        {
+          "type": "select",
+          "id": "mobile_text_align",
+          "label": "Text vertical alignment",
+          "options": [
+            { "value": "flex-start", "label": "Top" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Bottom" }
+          ],
+          "default": "flex-start",
+          "info": "Only takes effect when section setting 'Keep desktop side-by-side layout' is enabled on mobile."
+        },
+        {
+          "type": "select",
+          "id": "mobile_text_horizontal_align",
+          "label": "Text horizontal alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
         }
       ]
     },
