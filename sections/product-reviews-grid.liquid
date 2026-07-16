@@ -95,19 +95,18 @@
     fill: {{ section.settings.star_color }};
   }
 
-  /* 核心修复：取消固定line-clamp行数限制，改用容器高度自然截断 */
+  /* 核心修复：文字容器自适应，文字不设固定max-height限制 */
   .product-reviews-grid__review-text {
     color: {{ section.settings.review_text_color | default: '#333333' }};
     font-size: {{ section.settings.review_text_font_size }}px;
     line-height: 1.5;
     margin-bottom: 4px;
+    /* 文字自动填满剩余空间，无高度上限 */
     flex: 1;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-    /* 动态计算文字最大高度 = 行高 × 设置上限行数 */
-    max-height: calc(1.5em * {{ section.settings.review_text_max_lines }});
   }
 
   .product-reviews-grid__reviewer {
@@ -613,8 +612,8 @@
     {
       "type": "range",
       "id": "review_text_max_lines",
-      "label": "Max review text lines (upper limit)",
-      "info": "文字区域有空余空间时自动展示更多，最多限制此行数高度",
+      "label": "Max review text lines (truncate limit)",
+      "info": "仅当文字超过容器高度时截断，空间充足会完整展示全部文字",
       "min": 4,
       "max": 12,
       "step": 1,
