@@ -85,6 +85,11 @@ CSS
         #block-{{ section.id }}-{{ block.id }} {
           --media-with-text-gap: {{ section.settings.mobile_layout_gap }}px;
         }
+        /* 并排模式下：文案垂直对齐方式 */
+        #block-{{ section.id }}-{{ block.id }} .media-with-text__content {
+          align-self: {{ section.settings.mobile_layout_text_align }} !important;
+          text-align: center;
+        }
         /* 并排模式下：文案缩小 */
         #block-{{ section.id }}-{{ block.id }} .subheading {
           font-size: {{ section.settings.mobile_layout_subheading_size }}px !important;
@@ -370,6 +375,18 @@ LIQUID
       "max": 1.8,
       "step": 0.1,
       "default": 1.2
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout_text_align",
+      "label": "Text alignment (side-by-side mode)",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
+      ],
+      "default": "flex-start",
+      "info": "Vertical alignment of the text block when side-by-side layout is enabled on mobile."
     },
     {
       "type": "range",
