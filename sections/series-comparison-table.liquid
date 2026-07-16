@@ -67,10 +67,6 @@
   }
   .series-comparison-table-sl{
     position: relative;
-    .series-comparison-table-sl-1{
-      display: none;
-      width: {{ section.settings.mobile_sticky_label_width }}px;
-    }
   }
   
 
@@ -224,9 +220,6 @@
   @media screen and (min-width:750px) and (max-width:989px) {
     .series-comparison-table-sl {
       padding: 0 20px;
-      .series-comparison-table-sl-1{
-        display: none;
-      }
     }
     .series-comparison-table__product-price{
       font-size: 20px;
@@ -259,23 +252,7 @@
   }
   @media screen and (max-width: 749px) {
     .series-comparison-table-sl {
-      position: relative;
-      .series-comparison-table-sl-1{
-        padding-left: {{ section.settings.table_padding_mobile }}px;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: {{ section.settings.mobile_sticky_label_width }}px;
-        overflow: hidden;
-        display: block;
-        scrollbar-width: none;
-        z-index: 3;
-        background: linear-gradient(0deg, #271716 0%, #1f1817 10%, #151414 80%);
-        border-radius: {{ section.settings.mobile_table_radius }}px 0 0 {{ section.settings.mobile_table_radius }}px;
-      }
-      .series-comparison-table-sl-1 .series-comparison-table__scroll-wrapper::-webkit-scrollbar {
-        display: none;
-      }
+      padding: 0 {{ section.settings.mobile_outer_padding }}px;
     }
     .series-comparison-table {
       padding: {{ section.settings.table_padding_mobile }}px;
@@ -295,12 +272,17 @@
       padding-bottom: 0;
     }
 
-    /* Header 第一列 sticky */
+    /* Header 第一列 sticky：透明容器，背景由内部 p 承担，避免与表格渐变冲突 */
     .series-comparison-table__header-cell--label {
       position: sticky;
       left: 0;
       z-index: 3;
-      {% comment %} background: linear-gradient(0deg, #271716 0%, #1f1817 10%, #151414 80%); {% endcomment %}
+      background: transparent;
+      transition: background-color 0.25s ease;
+    }
+    /* 滚动后：纯色加深黑，遮住后面内容 */
+    .series-comparison-table__header-cell--label.is-scrolled {
+      background-color: #0a0a0a;
     }
 
     .series-comparison-table__body {
@@ -312,25 +294,41 @@
       display: grid;
       grid-template-columns: {{ section.settings.mobile_sticky_label_width }}px repeat(3, {{ section.settings.mobile_product_col_min }}px);
       gap: {{ section.settings.column_gap_mobile }}px;
-      margin-bottom: {{ section.settings.row_gap_mobile }}px;
+      margin-bottom: 0px;
     }
     .series-comparison-table__row:last-child {
       margin-bottom: 0;
     }
 
-    /* Body 第一列 sticky */
-    .series-comparison-table__label{
+    /* Body 第一列 sticky：透明容器，背景由内部 p 承担（避免与卡片渐变背景冲突） */
+    .series-comparison-table__label {
       position: sticky;
       left: 0;
       z-index: 2;
       padding: 0;
+      background: transparent;
+      transition: background-color 0.25s ease;
     }
-    .series-comparison-table__label>p{
-      position: sticky;
-      left: 0;
-      z-index: 2;
+    /* 滚动后：纯色加深黑，遮住后面内容 */
+    .series-comparison-table__label.is-scrolled {
+      background-color: #0a0a0a;
+    }
+    .series-comparison-table__label.is-scrolled > p {
+      background: transparent;
+    }
+    .series-comparison-table__label::before {
+      content: none;
+    }
+    .series-comparison-table__label > p {
+      position: relative;
+      z-index: 1;
       font-size: {{ section.settings.label_font_size_mobile }}px;
-      padding: 0;
+      padding: 4px 6px;
+      border-radius: 4px;
+      {% comment %} background: linear-gradient(0deg, #271716 0%, #1f1817 10%, #151414 80%); {% endcomment %}
+    }
+    .series-comparison-table__label > p > span {
+      display: inline-block;
       background: linear-gradient(45deg, #f10606 20%, #ffc5c5 100%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -340,11 +338,6 @@
     .series-comparison-table__value {
       font-size: {{ section.settings.value_font_size_mobile }}px;
       padding: 0;
-    }
-
-    /* 隐藏底层重复标签（shadow 层会展示） */
-    .opcity-0 {
-      opacity: 0;
     }
 
     .series-comparison-table__product-title{
@@ -367,7 +360,7 @@
     .series-comparison-table__product-compare-at-price{
       font-size: {{ section.settings.mobile_compare_at_size }}px;
       position: relative;
-      
+
     }
 
     .series-comparison-table__product-button{
@@ -378,10 +371,38 @@
       width: {{ section.settings.mobile_title_bg_width }}px;
       height:22px;
       text-align: center;
-      
+
     }
   }
 </style>
+
+<script>
+  (function() {
+    function init() {
+      // 手机端：第一列背景随滚动状态切换（默认透明，滚动后纯色加深黑）
+      document.querySelectorAll('.series-comparison-table__scroll-wrapper').forEach(function(wrapper) {
+        const table = wrapper.closest('.series-comparison-table-sl');
+        if (!table) return;
+        const labels = table.querySelectorAll('.series-comparison-table__label');
+        const headerLabel = table.querySelector('.series-comparison-table__header-cell--label');
+        if (!labels.length && !headerLabel) return;
+
+        function syncBg() {
+          const scrolled = wrapper.scrollLeft > 5;
+          labels.forEach(function(el) { el.classList.toggle('is-scrolled', scrolled); });
+          if (headerLabel) headerLabel.classList.toggle('is-scrolled', scrolled);
+        }
+        wrapper.addEventListener('scroll', syncBg, { passive: true });
+        syncBg();
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
 
 <div class="series-comparison-table-sl">
   <div class="series-comparison-table">
@@ -471,112 +492,13 @@
     <div class="series-comparison-table__body">
       {%- for block in section.blocks -%}
         <div class="series-comparison-table__row">
-          <div class="series-comparison-table__label opcity-0"><p>{{ block.settings.label }}</p></div>
+          <div class="series-comparison-table__label"><p><span>{{ block.settings.label }}</span></p></div>
           <div class="series-comparison-table__value">{{ block.settings.value_1 }}</div>
           <div class="series-comparison-table__value">{{ block.settings.value_2 }}</div>
           <div class="series-comparison-table__value">{{ block.settings.value_3 }}</div>
         </div>
       {%- endfor -%}
     </div>
-    </div>
-  </div>
-  {% comment %} 为了实现固定列 {% endcomment %}
-   <div class="series-comparison-table-sl-1">
-    <div class="series-comparison-table series-comparison-table-1">
-      <div class="series-comparison-table__scroll-wrapper">
-      <div class="series-comparison-table__header">
-          <div class="series-comparison-table__header-cell series-comparison-table__header-cell--label "></div>
-        {%- if product_1 or section.settings.product_1_image -%}
-          <div class="series-comparison-table__header-cell opcity-0">
-            <div class="series-comparison-table__product-image">
-              {%- if product_1_image -%}
-                {{- product_1_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
-              {%- endif -%}
-            </div>
-            <div class="series-comparison-table__product-title-wrap">
-              <div class="series-comparison-table__product-title-bg"></div>
-              {%- if product_1 -%}
-                <a href="{{ product_1.url }}" class="series-comparison-table__product-title">{{ product_1_title }}</a>
-              {%- else -%}
-                <span class="series-comparison-table__product-title">{{ product_1_title }}</span>
-              {%- endif -%}
-            </div>
-            {%- if product_1 -%}
-              <div class="series-comparison-table__product-price-wrap">
-                <span class="series-comparison-table__product-price">{{ p1_display_price | money }}</span>
-                {%- if p1_compare_price > p1_display_price -%}
-                  <span class="series-comparison-table__product-compare-at-price">{{ p1_compare_price | money }}</span>
-                {%- endif -%}
-              </div>
-              <a href="{{ product_1.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-        {%- if product_2 or section.settings.product_2_image -%}
-          <div class="series-comparison-table__header-cell opcity-0">
-            <div class="series-comparison-table__product-image">
-              {%- if product_2_image -%}
-                {{- product_2_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
-              {%- endif -%}
-            </div>
-            <div class="series-comparison-table__product-title-wrap">
-              <div class="series-comparison-table__product-title-bg"></div>
-              {%- if product_2 -%}
-                <a href="{{ product_2.url }}" class="series-comparison-table__product-title">{{ product_2_title }}</a>
-              {%- else -%}
-                <span class="series-comparison-table__product-title">{{ product_2_title }}</span>
-              {%- endif -%}
-            </div>
-            {%- if product_2 -%}
-              <div class="series-comparison-table__product-price-wrap">
-                <span class="series-comparison-table__product-price">{{ p2_display_price | money }}</span>
-                {%- if p2_compare_price > p2_display_price -%}
-                  <span class="series-comparison-table__product-compare-at-price">{{ p2_compare_price | money }}</span>
-                {%- endif -%}
-              </div>
-              <a href="{{ product_2.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-        {%- if product_3 or section.settings.product_3_image -%}
-          <div class="series-comparison-table__header-cell opcity-0">
-            <div class="series-comparison-table__product-image">
-              {%- if product_3_image -%}
-                {{- product_3_image | image_url: width: 400 | image_tag: sizes: '(max-width: 768px) 100%, 300px' -}}
-              {%- endif -%}
-            </div>
-            <div class="series-comparison-table__product-title-wrap">
-              <div class="series-comparison-table__product-title-bg"></div>
-              {%- if product_3 -%}
-                <a href="{{ product_3.url }}" class="series-comparison-table__product-title">{{ product_3_title }}</a>
-              {%- else -%}
-                <span class="series-comparison-table__product-title">{{ product_3_title }}</span>
-              {%- endif -%}
-            </div>
-            {%- if product_3 -%}
-              <div class="series-comparison-table__product-price-wrap">
-                <span class="series-comparison-table__product-price">{{ p3_display_price | money }}</span>
-                {%- if p3_compare_price > p3_display_price -%}
-                  <span class="series-comparison-table__product-compare-at-price">{{ p3_compare_price | money }}</span>
-                {%- endif -%}
-              </div>
-              <a href="{{ product_3.url }}" class="series-comparison-table__product-button">{{ section.settings.button_text }}</a>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-      </div>
-
-      <div class="series-comparison-table__body">
-        {%- for block in section.blocks -%}
-          <div class="series-comparison-table__row">
-            <div class="series-comparison-table__label"><p>{{ block.settings.label }}</p></div>
-            <div class="series-comparison-table__value opcity-0">{{ block.settings.value_1 }}</div>
-            <div class="series-comparison-table__value opcity-0">{{ block.settings.value_2 }}</div>
-            <div class="series-comparison-table__value opcity-0">{{ block.settings.value_3 }}</div>
-          </div>
-        {%- endfor -%}
-      </div>
-      </div>
     </div>
   </div>
 </div>
@@ -746,11 +668,11 @@
       "type": "range",
       "id": "mobile_header_body_gap",
       "label": "Header body gap (mobile)",
-      "min": 4,
+      "min": 0,
       "max": 20,
       "step": 2,
       "unit": "px",
-      "default": 8
+      "default": 0
     },
     {
       "type": "range",
