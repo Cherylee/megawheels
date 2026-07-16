@@ -88,9 +88,13 @@ CSS
         /* 并排模式下：文案对齐方式（block 级配置） */
         #block-{{ section.id }}-{{ block.id }} .media-with-text__content {
           align-self: {{ block.settings.mobile_text_align | default: 'flex-start' }} !important;
-          text-align: {{ block.settings.mobile_text_horizontal_align | default: 'center' }} !important;
         }
-        /* 并排模式下：文案缩小 */
+        /* 并排模式下：文案缩小 + 水平对齐跟随 media_position */
+        #block-{{ section.id }}-{{ block.id }} .subheading,
+        #block-{{ section.id }}-{{ block.id }} .h2,
+        #block-{{ section.id }}-{{ block.id }} .prose {
+          text-align: {%- if block.settings.media_position == 'start' -%}left{%- else -%}right{%- endif -%} !important;
+        }
         #block-{{ section.id }}-{{ block.id }} .subheading {
           font-size: {{ section.settings.mobile_layout_subheading_size }}px !important;
           line-height: {{ section.settings.mobile_layout_line_height | default: 1.2 }} !important;
@@ -988,18 +992,7 @@ LIQUID
             { "value": "flex-end", "label": "Bottom" }
           ],
           "default": "flex-start",
-          "info": "Only takes effect when section setting 'Keep desktop side-by-side layout' is enabled on mobile."
-        },
-        {
-          "type": "select",
-          "id": "mobile_text_horizontal_align",
-          "label": "Text horizontal alignment",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ],
-          "default": "center"
+          "info": "Only takes effect when section setting 'Keep desktop side-by-side layout' is enabled on mobile. Horizontal alignment follows the media position automatically."
         }
       ]
     },
