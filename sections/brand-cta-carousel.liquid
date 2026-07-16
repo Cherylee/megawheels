@@ -116,18 +116,31 @@
       padding-top: {{ section.settings.mobile_padding_top | default: 0 }}px;
       padding-bottom: {{ section.settings.mobile_padding_bottom | default: 0 }}px;
 
+      {%- if section.settings.mobile_show_arrows == false -%}
+      .brand-cta-carousel__arrow {
+        display: none;
+      }
+      {%- endif -%}
+
       .brand-cta-carousel__item {
         flex: 0 0 calc(100% - {{ section.settings.gap_mobile }}px);
         margin-right: {{ section.settings.gap_mobile }}px;
         aspect-ratio: auto;
+        height: auto;
+        overflow: visible;
+        align-self: flex-start;
       }
       .brand-cta-carousel__item:last-child {
         margin-right: 0;
         flex: 0 0 100%;
       }
+      .brand-cta-carousel__item picture,
       .brand-cta-carousel__item img {
+        display: block;
+        width: 100%;
         height: auto;
-        object-fit: none;
+        object-fit: unset;
+        max-width: 100%;
       }
       .brand-cta-carousel__arrow{
         width: {{ section.settings.mobile_arrow_size }}px;
@@ -500,6 +513,13 @@
       "type": "checkbox",
       "id": "mobile_show_nav",
       "label": "Show navigation dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_show_arrows",
+      "label": "Show arrow buttons",
+      "info": "Only takes effect on phones (≤768px).",
       "default": true
     },
     {

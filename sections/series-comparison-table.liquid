@@ -268,7 +268,7 @@
     .series-comparison-table__header {
       grid-template-columns: {{ section.settings.mobile_sticky_label_width }}px repeat(3, {{ section.settings.mobile_product_col_min }}px);
       gap: {{ section.settings.column_gap_mobile }}px;
-      margin-bottom: {{ section.settings.mobile_header_body_gap }}px;
+      margin-bottom: 0px;
       padding-bottom: 0;
     }
 
@@ -663,16 +663,6 @@
       "step": 2,
       "unit": "px",
       "default": 10
-    },
-    {
-      "type": "range",
-      "id": "mobile_header_body_gap",
-      "label": "Header body gap (mobile)",
-      "min": 0,
-      "max": 20,
-      "step": 2,
-      "unit": "px",
-      "default": 0
     },
     {
       "type": "range",
