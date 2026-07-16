@@ -124,6 +124,8 @@
         "table_padding_mobile": 10,
         "border_color": "#ff0000",
         "column_gap_mobile": 20,
+        "mobile_sticky_label_width": 70,
+        "mobile_product_col_min": 90,
         "column_gap": 10,
         "row_gap": 10,
         "row_gap_mobile": 8,
@@ -247,6 +249,12 @@
         "full_width": false,
         "alternate_media_position": false,
         "spacing": "small",
+        "mobile_keep_desktop_layout": true,
+        "mobile_layout_gap": 8,
+        "mobile_layout_subheading_size": 11,
+        "mobile_layout_title_size": 14,
+        "mobile_layout_text_size": 10,
+        "mobile_layout_line_height": 1.2,
         "mobile_padding_top": 40,
         "mobile_padding_right": 0,
         "mobile_padding_bottom": 20,
@@ -615,7 +623,9 @@
         "review_text_font_size": 12,
         "review_text_lines": 2,
         "reviewer_color": "#171717",
-        "reviewer_font_size": 14
+        "reviewer_font_size": 14,
+        "auto_play": true,
+        "auto_play_interval": 3000
       }
     }
   },
