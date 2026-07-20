@@ -27,6 +27,12 @@
 -%}
 
 <style>
+  #shopify-section-{{ section.id }} {
+    {%- if section.settings.background_color != blank -%}
+      background-color: {{ section.settings.background_color }};
+    {%- endif -%}
+  }
+
   #shopify-section-{{ section.id }} .product-media-banner {
     max-width: {{ section.settings.max_width }}px;
     margin: 0 auto;
@@ -229,6 +235,12 @@
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave empty for no background."
     },
     {
       "type": "range",
