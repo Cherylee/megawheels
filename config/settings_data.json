@@ -9,12 +9,12 @@
  */
 {
   "current": {
-    "page_width": 1800,
+    "page_width": 1660,
     "section_vertical_spacing": "xsmall",
     "section_boxed_horizontal_spacing": "xsmall",
     "button_border_radius": 60,
     "input_border_radius": 8,
-    "block_border_radius": 24,
+    "block_border_radius": 12,
     "block_shadow_opacity": 5,
     "block_shadow_vertical_offset": 18,
     "icon_stroke_width": 2,
@@ -24,7 +24,7 @@
     "text_color": "#1a1a1a",
     "header_background": "#0a0a0a",
     "header_text_color": "#ffffff",
-    "footer_background": "#0a0a0a",
+    "footer_background": "#0A0A0A",
     "footer_text_color": "#ffffff",
     "dialog_background": "#f0f0f0",
     "primary_button_background": "#fc0000",
@@ -51,6 +51,7 @@
     "product_sticky_atc_bar": true,
     "cart_type": "drawer",
     "cart_icon": "shopping_basket",
+    "cart_show_free_shipping_threshold": false,
     "social_facebook": "https://www.facebook.com/megawheels.escooter",
     "social_instagram": "https://www.instagram.com/megawheelsofficial/",
     "social_youtube": "https://www.youtube.com/c/Megawheels",
@@ -67,11 +68,6 @@
       },
       "2539598332178966696": {
         "type": "shopify://apps/xcotton-post-purchase-guard/blocks/insurance/6531bb8b-340c-42d4-b5da-1734c7a2c524",
-        "disabled": false,
-        "settings": {}
-      },
-      "7872257831342662540": {
-        "type": "shopify://apps/worry-free-purchase/blocks/index/c61a403d-127f-4a83-aa2d-dd891cc35fd1",
         "disabled": false,
         "settings": {}
       },

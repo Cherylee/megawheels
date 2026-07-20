@@ -290,7 +290,7 @@
             "header_text_color": "#000000",
             "text_color": "#000000",
             "card_color": "#f9f9f9",
-            "stars_color": "",
+            "stars_color": "#FF0000",
             "arrows_color": "#000000",
             "transition_speed": 4,
             "header_text": "Customers are saying",
@@ -335,10 +335,12 @@
             "button_text_color": "",
             "subheading_font_size": 18,
             "subheading_color": "#666666",
+            "subheading_gradient": "",
             "title_font_size": 32,
             "title_color": "#000000",
             "content_font_size": 16,
-            "content_color": "#333333"
+            "content_color": "#333333",
+            "mobile_text_align": "flex-start"
           }
         }
       },
@@ -353,7 +355,24 @@
         "section_padding_bottom": 10,
         "full_width": false,
         "alternate_media_position": false,
-        "spacing": "small"
+        "spacing": "small",
+        "mobile_keep_desktop_layout": false,
+        "mobile_layout_gap": 8,
+        "mobile_layout_subheading_size": 11,
+        "mobile_layout_title_size": 14,
+        "mobile_layout_text_size": 10,
+        "mobile_layout_line_height": 1.2,
+        "mobile_padding_top": 40,
+        "mobile_padding_right": 0,
+        "mobile_padding_bottom": 20,
+        "mobile_padding_left": 0,
+        "mobile_subheading_size": 18,
+        "mobile_text_size": 16,
+        "mobile_text_align": "left",
+        "mobile_content_padding_top": 0,
+        "mobile_content_padding_right": 10,
+        "mobile_content_padding_bottom": 0,
+        "mobile_content_padding_left": 10
       }
     }
   },

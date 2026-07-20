@@ -36,10 +36,9 @@
         },
         "image_janpKy": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-5760x2700-052802_b7099810-40e6-446a-802a-790af4cfa876.jpg",
-            "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-2400x3200-052802.jpg",
+            "image": "shopify://shop_images/baf8e6d113ccdde9b2254d9741393fb7.jpg",
+            "mobile_image": "shopify://shop_images/M__01.jpg",
             "content_max_width": 780,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -47,7 +46,7 @@
             "title": "",
             "heading_tag": "h0",
             "button_text": "",
-            "button_link": "shopify://products/d2-electric-dirt-bike",
+            "button_link": "shopify://pages/d2-dirt-bike",
             "text_color": "#ffffff",
             "button_background": "#ffffff",
             "button_text_color": "#000000",
@@ -434,7 +433,7 @@
           "type": "heading",
           "settings": {
             "text": "MEGAWHEELS D2 Series Dirt Bike",
-            "heading_tag": "h1"
+            "heading_tag": "h2"
           }
         }
       },
@@ -446,8 +445,8 @@
       "settings": {
         "full_width": false,
         "allow_transparent_header": true,
-        "autoplay": false,
-        "video_size": "auto",
+        "autoplay": true,
+        "video_size": "md",
         "video": "shopify://files/videos/MEGAWHEELS-D2-Series-electric-dirt-bike-without- copy-54M-01.mp4",
         "external_video_url": "",
         "poster": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-video-1920x800.jpg",

@@ -1,805 +1,1067 @@
-{%- render 'section-spacing-collapsing' -%}
-
+{%- render'section-spacing-collapsing' -%}
 <style>
-  #shopify-section-{{ section.id }} {
-    background-color: {{ section.settings.background_color }};
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
-  }
+#shopify-section-{{ section.id }} {
+background-color: {{ section.settings.background_color }};
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+}
 
-  .product-reviews-grid {
-    max-width: {{ section.settings.max_width }}px;
-    margin: 0 auto;
-    padding: 0 {{ section.settings.side_padding }}px;
-  }
+.product-reviews-grid {
+max-width: {{ section.settings.max_width }}px;
+margin: 0 auto;
+padding: 0 {{ section.settings.side_padding }}px;
+}
 
-  .product-reviews-grid__title {
-    text-align: {{ section.settings.title_alignment }};
-    color: {{ section.settings.title_color }};
-    font-size: {{ section.settings.title_font_size }}px;
-    font-weight: 700;
-    margin-bottom: {{ section.settings.title_margin_bottom }}px;
-  }
+.product-reviews-grid__title {
+text-align: {{ section.settings.title_alignment }};
+color: {{ section.settings.title_color }};
+font-size: {{ section.settings.title_font_size }}px;
+font-weight: 700;
+margin-bottom: {{ section.settings.title_margin_bottom }}px;
+}
 
-  .product-reviews-grid__items {
-    display: flex;
-    align-items: flex-start;
-    gap: {{ section.settings.gap }}px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+.product-reviews-grid__items {
+display: flex;
+align-items: flex-start;
+gap: {{ section.settings.gap }}px;
+overflow-x: auto;
+scroll-behavior: smooth;
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+.product-reviews-grid__items::-webkit-scrollbar {
+display: none;
+}
 
-  .product-reviews-grid__items::-webkit-scrollbar {
-    display: none;
-  }
+.product-reviews-grid__item {
+flex: 0 0 calc((100% - {{ section.settings.columns | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns }});
+background-color: {{ section.settings.card_background | default: '#ffffff' }};
+border-radius: {{ section.settings.border_radius }}px;
+overflow: hidden;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* 卡片整体弹性布局，强制所有卡片等高 */
+display: flex;
+flex-direction: column;
+height: 100%;
+}
 
-  .product-reviews-grid__item {
-    flex: 0 0 calc((100% - {{ section.settings.columns | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns }});
-    background-color: {{ section.settings.card_background | default: '#ffffff' }};
-    border-radius: {{ section.settings.border_radius }}px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: {{ section.settings.card_total_height }}px;
-  }
+.product-reviews-grid__item:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
 
-  .product-reviews-grid__item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-  }
+.product-reviews-grid__image {
+/* 图片固定比例，统一图片高度，消除图片高度差 */
+overflow: hidden;
+aspect-ratio: {{ section.settings.image_aspect_ratio }};
+width: 100%;
+flex-shrink: 0;
+}
 
-  .product-reviews-grid__image {
-    overflow: hidden;
-    flex-shrink: 0;
-  }
+.product-reviews-grid__image img {
+width: 100%;
+height: 100%;
+display: block;
+object-fit: cover;
+}
 
-  .product-reviews-grid__image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+.product-reviews-grid__content {
+padding: {{ section.settings.card_padding }}px;
+/* 核心：固定文字区域最小高度，短评论自动留白，所有文字框尺寸统一 */
+min-height: {{ section.settings.review_area_min_height }}px;
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+}
 
-  .product-reviews-grid__content {
-    padding: {{ section.settings.card_padding }}px;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-  }
+.product-reviews-grid__product-link {
+text-decoration: none;
+color: inherit;
+}
 
-  .product-reviews-grid__product-link {
-    text-decoration: none;
-    color: inherit;
-  }
+.product-reviews-grid__rating {
+display: flex;
+align-items: center;
+gap: 6px;
+margin-bottom: 8px;
+flex-shrink: 0;
+}
 
-  .product-reviews-grid__rating {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 8px;
-    flex-shrink: 0;
-  }
+.product-reviews-grid__stars {
+display: flex;
+gap: 2px;
+}
 
-  .product-reviews-grid__stars {
-    display: flex;
-    gap: 2px;
-  }
+.product-reviews-grid__star {
+width: {{ section.settings.star_size }}px;
+height: {{ section.settings.star_size }}px;
+fill: {{ section.settings.star_color }};
+}
 
-  .product-reviews-grid__star {
-    width: {{ section.settings.star_size }}px;
-    height: {{ section.settings.star_size }}px;
-    fill: {{ section.settings.star_color }};
-  }
+.product-reviews-grid__review-text {
+color: {{ section.settings.review_text_color | default: '#333333' }};
+font-size: {{ section.settings.review_text_font_size }}px;
+line-height: 1.5;
+margin-bottom: 4px;
+/* 多行文字截断，超出省略 */
+display: -webkit-box;
+-webkit-line-clamp: {{ section.settings.review_text_lines }};
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+flex: 1;
+}
 
-  .product-reviews-grid__reviewer {
-    color: {{ section.settings.reviewer_color | default: '#333333' }};
-    font-size: {{ section.settings.reviewer_font_size }}px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    flex-shrink: 0;
-  }
+.product-reviews-grid__reviewer {
+color: {{ section.settings.reviewer_color | default: '#333333' }};
+font-size: {{ section.settings.reviewer_font_size }}px;
+font-weight: 700;
+margin-bottom: 6px;
+flex-shrink: 0;
+}
 
-  /* 固定文字框高度，所有评价文字区域一致 */
-  .product-reviews-grid__text-box {
-    height: {{ section.settings.review_text_box_height }}px;
-    max-height: {{ section.settings.review_text_box_height }}px;
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
-  }
+.product-reviews-grid__scroller {
+position: relative;
+}
 
-  /* 文字内容容器，底部留出安全空白 */
-  .product-reviews-grid__review-text {
-    color: {{ section.settings.review_text_color | default: '#333333' }};
-    font-size: {{ section.settings.review_text_font_size }}px;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 999;
-    text-overflow: ellipsis;
-    height: 100%;
-  }
+.product-reviews-grid__scroll-arrow {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background-color: rgba(0,0,0,0.6);
+color: #fff;
+border: none;
+cursor: pointer;
+display: none;
+align-items: center;
+justify-content: center;
+z-index: 10;
+transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+.product-reviews-grid__scroll-arrow:hover {
+background-color: rgba(0,0,0,0.85);
+}
+.product-reviews-grid__scroll-arrow--visible {
+display: flex;
+}
+.product-reviews-grid__scroll-arrow--prev {
+left: 0;
+}
+.product-reviews-grid__scroll-arrow--next {
+right: 0;
+}
 
-  /* 当文字超出时，用渐变遮罩压住最后一行，避免贴边 */
-  .product-reviews-grid__text-box::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 16px;
-    background: linear-gradient(to top, {{ section.settings.card_background | default: '#ffffff' }}, transparent);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
+@media screen and (max-width: 1024px) {
+.product-reviews-grid__item {
+flex: 0 0 calc((100% - {{ section.settings.columns_tablet | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns_tablet }});
+}
+}
 
-  .product-reviews-grid__text-box.is-overflowing::after {
-    opacity: 1;
-  }
+@media screen and (max-width: 768px) {
+.product-reviews-grid__item {
+flex: 0 0 calc((100% - {{ section.settings.columns_mobile | minus: 1 | times: section.settings.gap_mobile }}px) / {{ section.settings.columns_mobile }});
+}
+.product-reviews-grid__items {
+gap: {{ section.settings.gap_mobile }}px;
+}
+.product-reviews-grid{
+padding:0;
+}
+#shopify-section-{{ section.id }}{
+padding-top: {{ section.settings.mobile_padding_top | default: 0 }}px;
+padding-bottom: {{ section.settings.mobile_padding_bottom | default: 0 }}px;
+.product-reviews-grid__scroll-arrow{
+width: {{ section.settings.mobile_arrow_size }}px;
+height: {{ section.settings.mobile_arrow_size }}px;
+}
+}
 
-  .product-reviews-grid__scroller {
-    position: relative;
-  }
+}
+</style><div {% render 'section-properties' %}>
+<div class="product-reviews-grid">
+{%- if section.settings.title != blank -%}
+<h2 class="product-reviews-grid__title">{{ section.settings.title | escape }}</h2>
+{%- endif -%}    <div class="product-reviews-grid__scroller">
+<div class="product-reviews-grid__items" id="reviews-track-{{ section.id }}">
+{%- for block in section.blocks -%}
+{%- assign product = all_products[block.settings.product_handle] -%}
+{%- if product -%}
+{%- comment -%} 星级可在 block 中配置，默认 5 星 {%- endcomment -%}
+{%- assign star_count = block.settings.star_rating | default: 5 -%}
+{%- assign empty_stars = 5 | minus: star_count -%}
+{%- comment -%} 优先使用 block 配置的图片，回退到产品主图 {%- endcomment -%}
 
-  .product-reviews-grid__scroll-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba(0,0,0,0.6);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
-  }
-
-  .product-reviews-grid__scroll-arrow:hover {
-    background-color: rgba(0,0,0,0.85);
-  }
-
-  .product-reviews-grid__scroll-arrow--visible {
-    display: flex;
-  }
-
-  .product-reviews-grid__scroll-arrow--prev {
-    left: 0;
-  }
-
-  .product-reviews-grid__scroll-arrow--next {
-    right: 0;
-  }
-
-  @media screen and (max-width: 1024px) {
-    .product-reviews-grid__item {
-      flex: 0 0 calc((100% - {{ section.settings.columns_tablet | minus: 1 | times: section.settings.gap }}px) / {{ section.settings.columns_tablet }});
-      height: {{ section.settings.card_total_height_tablet }}px;
-    }
-
-    .product-reviews-grid__text-box {
-      height: {{ section.settings.review_text_box_height_tablet }}px;
-      max-height: {{ section.settings.review_text_box_height_tablet }}px;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .product-reviews-grid__item {
-      flex: 0 0 calc((100% - {{ section.settings.columns_mobile | minus: 1 | times: section.settings.gap_mobile }}px) / {{ section.settings.columns_mobile }});
-      height: {{ section.settings.card_total_height_mobile }}px;
-    }
-
-    .product-reviews-grid__items {
-      gap: {{ section.settings.gap_mobile }}px;
-    }
-
-    .product-reviews-grid {
-      padding: 0;
-    }
-
-    #shopify-section-{{ section.id }} {
-      padding-top: {{ section.settings.mobile_padding_top | default: 0 }}px;
-      padding-bottom: {{ section.settings.mobile_padding_bottom | default: 0 }}px;
-    }
-
-    #shopify-section-{{ section.id }} .product-reviews-grid__scroll-arrow {
-      width: {{ section.settings.mobile_arrow_size }}px;
-      height: {{ section.settings.mobile_arrow_size }}px;
-    }
-
-    .product-reviews-grid__text-box {
-      height: {{ section.settings.review_text_box_height_mobile }}px;
-      max-height: {{ section.settings.review_text_box_height_mobile }}px;
-    }
-  }
-</style>
-
-<div {% render 'section-properties' %}>
-  <div class="product-reviews-grid">
-    {%- if section.settings.title != blank -%}
-      <h2 class="product-reviews-grid__title">{{ section.settings.title | escape }}</h2>
-    {%- endif -%}
-
-    <div class="product-reviews-grid__scroller">
-      <div class="product-reviews-grid__items" id="reviews-track-{{ section.id }}">
-        {%- for block in section.blocks -%}
-          {%- assign product = all_products[block.settings.product_handle] -%}
-          {%- if product -%}
-            {%- assign star_count = block.settings.star_rating | default: 5 -%}
-            {%- assign empty_stars = 5 | minus: star_count -%}
-            {%- assign display_image = block.settings.image | default: product.featured_image -%}
+{%- assign display_image = block.settings.image | default: product.featured_image -%}
 
             <div class="product-reviews-grid__item">
-              <a href="{{ product.url }}" class="product-reviews-grid__product-link">
-                <div class="product-reviews-grid__image">
-                  {{- display_image | image_url: width: display_image.width | image_tag: sizes: '(max-width: 480px) 50vw, (max-width: 768px) 33vw, 300px', widths: '300,400,600,800,1000,1200', alt: product.title | escape -}}
-                </div>
-              </a>
-
-              <div class="product-reviews-grid__content">
-                {%- if block.settings.reviewer_name != blank -%}
-                  <p class="product-reviews-grid__reviewer">@{{ block.settings.reviewer_name | escape }}</p>
-                {%- endif -%}
-
-                <div class="product-reviews-grid__rating">
-                  <div class="product-reviews-grid__stars">
-                    {%- for i in (1..star_count) -%}
-                      <svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                    {%- endfor -%}
-                    {%- for i in (1..empty_stars) -%}
-                      <svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: #ddd;">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                    {%- endfor -%}
-                  </div>
-                </div>
-
-                {%- if block.settings.review_text != blank -%}
-                  <div class="product-reviews-grid__text-box">
-                    <a href="{{ product.url }}" class="product-reviews-grid__product-link">
-                      <p class="product-reviews-grid__review-text">{{ block.settings.review_text | escape }}</p>
-                    </a>
-                  </div>
-                {%- else -%}
-                  <div class="product-reviews-grid__text-box">
-                    <p class="product-reviews-grid__review-text"></p>
-                  </div>
-                {%- endif -%}
-              </div>
-            </div>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-
-      <button class="product-reviews-grid__scroll-arrow product-reviews-grid__scroll-arrow--prev" id="reviews-arrow-prev-{{ section.id }}" aria-label="Scroll left" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M15 18l-6-6 6-6"/>
-        </svg>
-      </button>
-      <button class="product-reviews-grid__scroll-arrow product-reviews-grid__scroll-arrow--next" id="reviews-arrow-next-{{ section.id }}" aria-label="Scroll right" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 18l6-6-6-6"/>
-        </svg>
-      </button>
-    </div>
-  </div>
+<a href="{{ product.url }}" class="product-reviews-grid__product-link">
+<div class="product-reviews-grid__image">
+{{- display_image | image_url: width: display_image.width | image_tag: sizes: '(max-width: 480px) 50vw, (max-width: 768px) 33vw, 300px', widths: '300,400,600,800,1000,1200', alt: product.title | escape -}}
 </div>
+</a>
+              <div class="product-reviews-grid__content">
+{%- if block.settings.reviewer_name != blank -%}
+<p class="product-reviews-grid__reviewer">@{{ block.settings.reviewer_name | escape }}</p>
+{%- endif -%}
+{%- comment -%} 星级展示 {%- endcomment -%}
+<div class="product-reviews-grid__rating">
+<div class="product-reviews-grid__stars">
+{%- for i in (1..star_count) -%}
+<svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+</svg>
+{%- endfor -%}
+{%- for i in (1..empty_stars) -%}
+<svg class="product-reviews-grid__star" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: #ddd;">
+<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+</svg>
+{%- endfor -%}
+</div>
+</div>
+{%- comment -%} 评论内容点击跳转产品详情页 {%- endcomment -%}
 
-<script>
-  (function() {
-    var sectionId = '{{ section.id }}';
-    var track = document.getElementById('reviews-track-' + sectionId);
-    var arrowPrev = document.getElementById('reviews-arrow-prev-' + sectionId);
-    var arrowNext = document.getElementById('reviews-arrow-next-' + sectionId);
-    if (!track || !arrowPrev || !arrowNext) return;
+{%- if block.settings.review_text != blank -%}
 
-    var autoPlay = {{ section.settings.auto_play | default: true | json }};
-    var autoPlayInterval = {{ section.settings.auto_play_interval | default: 3000 }};
-    var autoPlayTimer = null;
+                    <p class="product-reviews-grid__review-text">{{ block.settings.review_text | escape }}</p>
+</a>
+{%- endif -%}
 
-    function getScrollAmount() {
-      return track.querySelector('.product-reviews-grid__item').offsetWidth + {{ section.settings.gap }};
-    }
+              </div>
+</div>
+{%- endif -%}
+{%- endfor -%}
+</div>
+{%- comment -%} 左右箭头：内容溢出时才显示 {%- endcomment -%}
+<button class="product-reviews-grid__scroll-arrow product-reviews-grid__scroll-arrow--prev" id="reviews-arrow-prev-{{ section.id }}" aria-label="Scroll left" type="button">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M15 18l-6-6 6-6"/>
+</svg>
+</button>
+<button class="product-reviews-grid__scroll-arrow product-reviews-grid__scroll-arrow--next" id="reviews-arrow-next-{{ section.id }}" aria-label="Scroll right" type="button">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M9 18l6-6-6-6"/>
+</svg>
+</button></svg></button></svg></button>
 
-    function checkOverflow() {
-      var overflowRight = track.scrollWidth > track.clientWidth + 2;
-      var scrollLeft = track.scrollLeft;
-      var maxScroll = track.scrollWidth - track.clientWidth;
+    </div>  </div>
+</div><script>
+(function() {
+var sectionId = '{{ section.id }}';
+var track = document.getElementById('reviews-track-' + sectionId);
+var arrowPrev = document.getElementById('reviews-arrow-prev-' + sectionId);
+var arrowNext = document.getElementById('reviews-arrow-next-' + sectionId);
+if (!track || !arrowPrev || !arrowNext) return;
 
-      if (overflowRight && scrollLeft > 10) {
-        arrowPrev.classList.add('product-reviews-grid__scroll-arrow--visible');
-      } else {
-        arrowPrev.classList.remove('product-reviews-grid__scroll-arrow--visible');
-      }
+var autoPlay = {{ section.settings.auto_play | default: true | json }};
+var autoPlayInterval = {{ section.settings.auto_play_interval | default: 3000 }};
+var autoPlayTimer = null;
 
-      if (overflowRight && scrollLeft < maxScroll - 10) {
-        arrowNext.classList.add('product-reviews-grid__scroll-arrow--visible');
-      } else {
-        arrowNext.classList.remove('product-reviews-grid__scroll-arrow--visible');
-      }
-    }
-
-    function scrollNext() {
-      var maxScroll = track.scrollWidth - track.clientWidth;
-      if (track.scrollLeft >= maxScroll - 5) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-      }
-    }
-
-    function startAutoPlay() {
-      if (!autoPlay) return;
-      stopAutoPlay();
-      autoPlayTimer = setInterval(scrollNext, autoPlayInterval);
-    }
-
-    function stopAutoPlay() {
-      if (autoPlayTimer) {
-        clearInterval(autoPlayTimer);
-        autoPlayTimer = null;
-      }
-    }
-
-    arrowPrev.addEventListener('click', function() {
-      track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-      stopAutoPlay();
-      startAutoPlay();
-    });
-
-    arrowNext.addEventListener('click', function() {
-      scrollNext();
-      stopAutoPlay();
-      startAutoPlay();
-    });
-
-    track.addEventListener('scroll', checkOverflow);
-    track.addEventListener('touchstart', stopAutoPlay);
-    track.addEventListener('touchend', function() {
-      setTimeout(startAutoPlay, 500);
-    });
-
-    checkOverflow();
-    window.addEventListener('resize', checkOverflow);
-    startAutoPlay();
-
-    /* 判断文字是否超出，超出时显示底部渐变遮罩 */
-    function initTextBoxes() {
-      document.querySelectorAll('.product-reviews-grid__text-box').forEach(function(box) {
-        var text = box.querySelector('.product-reviews-grid__review-text');
-        if (text && text.scrollHeight > box.clientHeight) {
-          box.classList.add('is-overflowing');
-        } else {
-          box.classList.remove('is-overflowing');
-        }
-      });
-    }
-
-    window.addEventListener('load', initTextBoxes);
-    window.addEventListener('resize', initTextBoxes);
-    setTimeout(initTextBoxes, 100);
-  })();
-</script>
-
-{% schema %}
-{
-  "name": "Product Reviews Grid",
-  "class": "shopify-section--product-reviews-grid",
-  "tag": "section",
-  "disabled_on": {
-    "templates": ["password"]
-  },
-  "settings": [
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Section background",
-      "default": "#000000"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Top padding",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "side_padding",
-      "label": "Side padding",
-      "min": 0,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "max_width",
-      "label": "Max width",
-      "min": 900,
-      "max": 1600,
-      "step": 50,
-      "unit": "px",
-      "default": 1400
-    },
-    {
-      "type": "range",
-      "id": "gap",
-      "label": "Gap (desktop)",
-      "min": 0,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "gap_mobile",
-      "label": "Gap (mobile)",
-      "min": 0,
-      "max": 20,
-      "step": 2,
-      "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "select",
-      "id": "columns",
-      "label": "Columns (desktop)",
-      "options": [
-        { "value": "2", "label": "2" },
-        { "value": "3", "label": "3" },
-        { "value": "4", "label": "4" },
-        { "value": "5", "label": "5" },
-        { "value": "6", "label": "6" }
-      ],
-      "default": "5"
-    },
-    {
-      "type": "select",
-      "id": "columns_tablet",
-      "label": "Columns (tablet)",
-      "options": [
-        { "value": "2", "label": "2" },
-        { "value": "3", "label": "3" }
-      ],
-      "default": "3"
-    },
-    {
-      "type": "select",
-      "id": "columns_mobile",
-      "label": "Columns (mobile)",
-      "info": "720px 以下显示列数，至少 2 列",
-      "options": [
-        { "value": "2", "label": "2" },
-        { "value": "3", "label": "3" }
-      ],
-      "default": "2"
-    },
-    {
-      "type": "header",
-      "content": "Card Size Control",
-      "info": "Control fixed total height of entire review card"
-    },
-    {
-      "type": "range",
-      "id": "card_total_height",
-      "label": "Card total fixed height (Desktop)",
-      "min": 300,
-      "max": 700,
-      "step": 10,
-      "unit": "px",
-      "default": 480
-    },
-    {
-      "type": "range",
-      "id": "card_total_height_tablet",
-      "label": "Card total fixed height (Tablet)",
-      "min": 260,
-      "max": 600,
-      "step": 10,
-      "unit": "px",
-      "default": 440
-    },
-    {
-      "type": "range",
-      "id": "card_total_height_mobile",
-      "label": "Card total fixed height (Mobile)",
-      "min": 220,
-      "max": 500,
-      "step": 10,
-      "unit": "px",
-      "default": 380
-    },
-    {
-      "type": "header",
-      "content": "Review Text Box",
-      "info": "Fixed text box height for consistent card layout"
-    },
-    {
-      "type": "range",
-      "id": "review_text_box_height",
-      "label": "Review text box fixed height (Desktop)",
-      "min": 80,
-      "max": 220,
-      "step": 10,
-      "unit": "px",
-      "default": 160
-    },
-    {
-      "type": "range",
-      "id": "review_text_box_height_tablet",
-      "label": "Review text box fixed height (Tablet)",
-      "min": 80,
-      "max": 200,
-      "step": 10,
-      "unit": "px",
-      "default": 140
-    },
-    {
-      "type": "range",
-      "id": "review_text_box_height_mobile",
-      "label": "Review text box fixed height (Mobile)",
-      "min": 70,
-      "max": 180,
-      "step": 10,
-      "unit": "px",
-      "default": 120
-    },
-    {
-      "type": "header",
-      "content": "Mobile Spacing (≤768px)",
-      "info": "Override section top/bottom padding on phones."
-    },
-    {
-      "type": "range",
-      "id": "mobile_padding_top",
-      "label": "Mobile padding top",
-      "min": 0,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "mobile_arrow_size",
-      "label": "Scroll arrow size (mobile)",
-      "min": 16,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "default": 22
-    },
-    {
-      "type": "range",
-      "id": "mobile_padding_bottom",
-      "label": "Mobile padding bottom",
-      "min": 0,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section title",
-      "default": "Customer Reviews"
-    },
-    {
-      "type": "range",
-      "id": "title_font_size",
-      "label": "Title font size",
-      "min": 20,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "default": 32
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Title color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "select",
-      "id": "title_alignment",
-      "label": "Title alignment",
-      "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "range",
-      "id": "title_margin_bottom",
-      "label": "Title margin bottom",
-      "min": 16,
-      "max": 60,
-      "step": 4,
-      "unit": "px",
-      "default": 32
-    },
-    {
-      "type": "range",
-      "id": "border_radius",
-      "label": "Card border radius",
-      "min": 0,
-      "max": 20,
-      "step": 2,
-      "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "card_padding",
-      "label": "Card inner content padding",
-      "min": 8,
-      "max": 24,
-      "step": 4,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "color",
-      "id": "card_background",
-      "label": "Card background",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "star_size",
-      "label": "Star size",
-      "min": 12,
-      "max": 24,
-      "step": 2,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "color",
-      "id": "star_color",
-      "label": "Star color",
-      "default": "#FFB303"
-    },
-    {
-      "type": "color",
-      "id": "review_text_color",
-      "label": "Review text color",
-      "default": "#333333"
-    },
-    {
-      "type": "range",
-      "id": "review_text_font_size",
-      "label": "Review text font size",
-      "min": 12,
-      "max": 18,
-      "step": 1,
-      "unit": "px",
-      "default": 14
-    },
-    {
-      "type": "color",
-      "id": "reviewer_color",
-      "label": "Reviewer name color",
-      "default": "#333333"
-    },
-    {
-      "type": "range",
-      "id": "reviewer_font_size",
-      "label": "Reviewer font size",
-      "min": 10,
-      "max": 16,
-      "step": 1,
-      "unit": "px",
-      "default": 12
-    },
-    {
-      "type": "header",
-      "content": "Auto-play",
-      "info": "Automatically scroll through reviews."
-    },
-    {
-      "type": "checkbox",
-      "id": "auto_play",
-      "label": "Auto-play",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "auto_play_interval",
-      "label": "Auto-play interval",
-      "min": 1000,
-      "max": 8000,
-      "step": 500,
-      "unit": "ms",
-      "default": 3000
-    }
-  ],
-  "blocks": [
-    {
-      "type": "review",
-      "name": "Product Review",
-      "settings": [
-        {
-          "type": "text",
-          "id": "product_handle",
-          "label": "Product handle",
-          "info": "Enter the product handle (slug)"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Custom product image",
-          "info": "Upload custom image, fallback to product featured image"
-        },
-        {
-          "type": "range",
-          "id": "star_rating",
-          "label": "Star rating",
-          "min": 1,
-          "max": 5,
-          "step": 1,
-          "default": 5,
-          "info": "Set star count for this review"
-        },
-        {
-          "type": "text",
-          "id": "review_text",
-          "label": "Review text content",
-          "info": "Customer review copy"
-        },
-        {
-          "type": "text",
-          "id": "reviewer_name",
-          "label": "Reviewer username",
-          "info": "Display @username above stars"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Reviews Grid",
-      "category": "Products",
-      "blocks": [
-        { "type": "review" },
-        { "type": "review" },
-        { "type": "review" },
-        { "type": "review" },
-        { "type": "review" },
-        { "type": "review" }
-      ]
-    }
-  ]
+function getScrollAmount() {
+return track.querySelector('.product-reviews-grid__item').offsetWidth + {{ section.settings.gap }};
 }
+
+function checkOverflow() {
+var overflowRight = track.scrollWidth > track.clientWidth + 2;
+var scrollLeft = track.scrollLeft;
+var maxScroll = track.scrollWidth - track.clientWidth;
+
+/* 左箭头：已滚动超过 10px 时显示 */
+if (overflowRight && scrollLeft > 10) {
+arrowPrev.classList.add('product-reviews-grid__scroll-arrow--visible');
+} else {
+arrowPrev.classList.remove('product-reviews-grid__scroll-arrow--visible');
+}
+
+/* 右箭头：未滚到最右时显示 */
+if (overflowRight && scrollLeft < maxScroll - 10) {
+arrowNext.classList.add('product-reviews-grid__scroll-arrow--visible');
+} else {
+arrowNext.classList.remove('product-reviews-grid__scroll-arrow--visible');
+}
+}
+
+function scrollNext() {
+var maxScroll = track.scrollWidth - track.clientWidth;
+if (track.scrollLeft >= maxScroll - 5) {
+/* 已到最右 → 循环回到最左 */
+track.scrollTo({ left: 0, behavior: 'smooth' });
+} else {
+track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+}
+}
+
+function startAutoPlay() {
+if (!autoPlay) return;
+stopAutoPlay();
+autoPlayTimer = setInterval(scrollNext, autoPlayInterval);
+}
+
+function stopAutoPlay() {
+if (autoPlayTimer) {
+clearInterval(autoPlayTimer);
+autoPlayTimer = null;
+}
+}
+
+arrowPrev.addEventListener('click', function() {
+track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+stopAutoPlay();
+startAutoPlay();
+});
+
+arrowNext.addEventListener('click', function() {
+scrollNext();
+stopAutoPlay();
+startAutoPlay();
+});
+
+track.addEventListener('scroll', checkOverflow);
+
+/* 用户手动触摸滑动时暂停自动播放，松手后恢复 */
+track.addEventListener('touchstart', stopAutoPlay);
+track.addEventListener('touchend', function() {
+setTimeout(startAutoPlay, 500);
+});
+
+checkOverflow();
+window.addEventListener('resize', checkOverflow);
+startAutoPlay();
+})();
+</script>
+{% schema %}
+
+{
+
+"name": "Product Reviews Grid",
+
+"class": "shopify-section--product-reviews-grid",
+
+"tag": "section",
+
+"disabled_on": {
+
+"templates": ["password"]
+
+},
+
+"settings": [
+
+{
+
+"type": "color",
+
+"id": "background_color",
+
+"label": "Section background",
+
+"default": "#000000"
+
+},
+
+{
+
+"type": "range",
+
+"id": "padding_top",
+
+"label": "Top padding",
+
+"min": 0,
+
+"max": 100,
+
+"step": 5,
+
+"unit": "px",
+
+"default": 40
+
+},
+
+{
+
+"type": "range",
+
+"id": "padding_bottom",
+
+"label": "Bottom padding",
+
+"min": 0,
+
+"max": 100,
+
+"step": 5,
+
+"unit": "px",
+
+"default": 40
+
+},
+
+{
+
+"type": "range",
+
+"id": "side_padding",
+
+"label": "Side padding",
+
+"min": 0,
+
+"max": 60,
+
+"step": 5,
+
+"unit": "px",
+
+"default": 20
+
+},
+
+{
+
+"type": "range",
+
+"id": "max_width",
+
+"label": "Max width",
+
+"min": 900,
+
+"max": 1600,
+
+"step": 50,
+
+"unit": "px",
+
+"default": 1400
+
+},
+
+{
+
+"type": "range",
+
+"id": "gap",
+
+"label": "Gap (desktop)",
+
+"min": 0,
+
+"max": 30,
+
+"step": 2,
+
+"unit": "px",
+
+"default": 16
+
+},
+
+{
+
+"type": "range",
+
+"id": "gap_mobile",
+
+"label": "Gap (mobile)",
+
+"min": 0,
+
+"max": 20,
+
+"step": 2,
+
+"unit": "px",
+
+"default": 8
+
+},
+
+{
+
+"type": "select",
+
+"id": "columns",
+
+"label": "Columns (desktop)",
+
+"options": [
+
+{ "value": "2", "label": "2" },
+
+{ "value": "3", "label": "3" },
+
+{ "value": "4", "label": "4" },
+
+{ "value": "5", "label": "5" },
+
+{ "value": "6", "label": "6" }
+
+],
+
+"default": "5"
+
+},
+
+{
+
+"type": "select",
+
+"id": "columns_tablet",
+
+"label": "Columns (tablet)",
+
+"options": [
+
+{ "value": "2", "label": "2" },
+
+{ "value": "3", "label": "3" }
+
+],
+
+"default": "3"
+
+},
+
+{
+
+"type": "select",
+
+"id": "columns_mobile",
+
+"label": "Columns (mobile)",
+
+"info": "720px 以下显示列数，至少 2 列",
+
+"options": [
+
+{ "value": "2", "label": "2" },
+
+{ "value": "3", "label": "3" }
+
+],
+
+"default": "2"
+
+},
+
+{
+
+"type": "header",
+
+"content": "Mobile Spacing (≤768px)",
+
+"info": "Override section top/bottom padding on phones."
+
+},
+
+{
+
+"type": "range",
+
+"id": "mobile_padding_top",
+
+"label": "Mobile padding top",
+
+"min": 0,
+
+"max": 60,
+
+"step": 5,
+
+"unit": "px",
+
+"default": 0
+
+},
+
+{
+
+"type": "range",
+
+"id": "mobile_arrow_size",
+
+"label": "Scroll arrow size (mobile)",
+
+"min": 16,
+
+"max": 48,
+
+"step": 2,
+
+"unit": "px",
+
+"default": 22
+
+},
+
+{
+
+"type": "range",
+
+"id": "mobile_padding_bottom",
+
+"label": "Mobile padding bottom",
+
+"min": 0,
+
+"max": 60,
+
+"step": 5,
+
+"unit": "px",
+
+"default": 0
+
+},
+
+{
+
+"type": "text",
+
+"id": "title",
+
+"label": "Section title",
+
+"default": "Customer Reviews"
+
+},
+
+{
+
+"type": "range",
+
+"id": "title_font_size",
+
+"label": "Title font size",
+
+"min": 20,
+
+"max": 48,
+
+"step": 2,
+
+"unit": "px",
+
+"default": 32
+
+},
+
+{
+
+"type": "color",
+
+"id": "title_color",
+
+"label": "Title color",
+
+"default": "#ffffff"
+
+},
+
+{
+
+"type": "select",
+
+"id": "title_alignment",
+
+"label": "Title alignment",
+
+"options": [
+
+{ "value": "left", "label": "Left" },
+
+{ "value": "center", "label": "Center" },
+
+{ "value": "right", "label": "Right" }
+
+],
+
+"default": "center"
+
+},
+
+{
+
+"type": "range",
+
+"id": "title_margin_bottom",
+
+"label": "Title margin bottom",
+
+"min": 16,
+
+"max": 60,
+
+"step": 4,
+
+"unit": "px",
+
+"default": 32
+
+},
+
+{
+
+"type": "text",
+
+"id": "image_aspect_ratio",
+
+"label": "Image aspect ratio",
+
+"default": "4/3"
+
+},
+
+{
+
+"type": "range",
+
+"id": "border_radius",
+
+"label": "Card border radius",
+
+"min": 0,
+
+"max": 20,
+
+"step": 2,
+
+"unit": "px",
+
+"default": 8
+
+},
+
+{
+
+"type": "range",
+
+"id": "card_padding",
+
+"label": "Card padding",
+
+"min": 8,
+
+"max": 24,
+
+"step": 4,
+
+"unit": "px",
+
+"default": 16
+
+},
+
+{
+
+"type": "color",
+
+"id": "card_background",
+
+"label": "Card background",
+
+"default": "#ffffff"
+
+},
+
+{
+
+"type": "range",
+
+"id": "star_size",
+
+"label": "Star size",
+
+"min": 12,
+
+"max": 24,
+
+"step": 2,
+
+"unit": "px",
+
+"default": 16
+
+},
+
+{
+
+"type": "color",
+
+"id": "star_color",
+
+"label": "Star color",
+
+"default": "#FFB303"
+
+},
+
+{
+
+"type": "color",
+
+"id": "review_text_color",
+
+"label": "Review text color",
+
+"default": "#333333"
+
+},
+
+{
+
+"type": "range",
+
+"id": "review_text_font_size",
+
+"label": "Review text font size",
+
+"min": 12,
+
+"max": 18,
+
+"step": 1,
+
+"unit": "px",
+
+"default": 14
+
+},
+
+{
+
+"type": "range",
+
+"id": "review_text_lines",
+
+"label": "Review text lines (truncate)",
+
+"min": 1,
+
+"max": 8,
+
+"step": 1,
+
+"default": 3
+
+},
+
+{
+
+"type": "range",
+
+"id": "review_area_min_height",
+
+"label": "Review text box fixed height",
+
+"info": "固定评论文字区域高度，所有卡片文字框统一大小",
+
+"min": 100,
+
+"max": 220,
+
+"step": 10,
+
+"unit": "px",
+
+"default": 160
+
+},
+
+{
+
+"type": "color",
+
+"id": "reviewer_color",
+
+"label": "Reviewer name color",
+
+"default": "#333333"
+
+},
+
+{
+
+"type": "range",
+
+"id": "reviewer_font_size",
+
+"label": "Reviewer font size",
+
+"min": 10,
+
+"max": 16,
+
+"step": 1,
+
+"unit": "px",
+
+"default": 12
+
+},
+
+{
+
+"type": "header",
+
+"content": "Auto-play",
+
+"info": "Automatically scroll through reviews."
+
+},
+
+{
+
+"type": "checkbox",
+
+"id": "auto_play",
+
+"label": "Auto-play",
+
+"default": true
+
+},
+
+{
+
+"type": "range",
+
+"id": "auto_play_interval",
+
+"label": "Auto-play interval",
+
+"min": 1000,
+
+"max": 8000,
+
+"step": 500,
+
+"unit": "ms",
+
+"default": 3000
+
+}
+
+],
+
+"blocks": [
+
+{
+
+"type": "review",
+
+"name": "Product Review",
+
+"settings": [
+
+{
+
+"type": "text",
+
+"id": "product_handle",
+
+"label": "Product handle",
+
+"info": "Enter the product handle (slug)"
+
+},
+
+{
+
+"type": "image_picker",
+
+"id": "image",
+
+"label": "Product image",
+
+"info": "Upload a custom image. If left empty, the product's featured image will be used."
+
+},
+
+{
+
+"type": "range",
+
+"id": "star_rating",
+
+"label": "Star rating",
+
+"min": 1,
+
+"max": 5,
+
+"step": 1,
+
+"default": 5,
+
+"info": "Set how many stars to display for this review."
+
+},
+
+{
+
+"type": "text",
+
+"id": "review_text",
+
+"label": "Review text",
+
+"info": "Optional custom review text"
+
+},
+
+{
+
+"type": "text",
+
+"id": "reviewer_name",
+
+"label": "Reviewer name",
+
+"info": "Optional reviewer name"
+
+}
+
+]
+
+}
+
+],
+
+"presets": [
+
+{
+
+"name": "Product Reviews Grid",
+
+"category": "Products",
+
+"blocks": [
+
+{ "type": "review" },
+
+{ "type": "review" },
+
+{ "type": "review" },
+
+{ "type": "review" },
+
+{ "type": "review" },
+
+{ "type": "review" }
+
+]
+
+}
+
+]
+
+}
+
 {% endschema %}

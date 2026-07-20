@@ -184,7 +184,7 @@
             "image": "shopify://shop_images/1.jpg",
             "media_width": 50,
             "media_position": "start",
-            "text_position": "place-self-start text-start",
+            "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
             "subheading": "Precision-tuned suspension for the toughest trailsConquer Terrain, Stay in Command",
@@ -204,7 +204,8 @@
             "title_font_size": 32,
             "title_color": "#ffffff",
             "content_font_size": 18,
-            "content_color": "#ffffff"
+            "content_color": "#ffffff",
+            "mobile_text_align": "flex-start"
           }
         },
         "image_CfNhq4": {
@@ -213,7 +214,7 @@
             "image": "shopify://shop_images/2_ff5579b4-b98d-4f6f-b4ff-a3a1ec26d2d8.jpg",
             "media_width": 50,
             "media_position": "end",
-            "text_position": "place-self-start-end text-end",
+            "text_position": "place-self-center-end text-end",
             "icon": "none",
             "icon_width": 48,
             "subheading": "Instant thrust, relentless accelerationTwist. Go. Dominate.",
@@ -233,7 +234,8 @@
             "title_font_size": 32,
             "title_color": "#000000",
             "content_font_size": 18,
-            "content_color": "#ffffff"
+            "content_color": "#ffffff",
+            "mobile_text_align": "flex-start"
           }
         }
       },
@@ -243,8 +245,8 @@
       ],
       "settings": {
         "section_background": "#000000",
-        "section_padding_top": 60,
-        "section_padding_bottom": 60,
+        "section_padding_top": 20,
+        "section_padding_bottom": 20,
         "full_width": false,
         "alternate_media_position": false,
         "spacing": "small",
@@ -322,6 +324,7 @@
         "mobile_padding_top": 0,
         "mobile_padding_bottom": 0,
         "mobile_show_nav": true,
+        "mobile_show_arrows": false,
         "mobile_nav_gap": 7,
         "mobile_dot_size": 8,
         "dot_active_color": "#ff0000",
@@ -548,7 +551,7 @@
           "type": "review",
           "settings": {
             "product_handle": "d2-electric-dirt-bike",
-            "image": "shopify://shop_images/Megawheels-D2-electric-dirt-bike-review-Caffeine.jpg",
+            "image": "shopify://shop_images/Megawheels-D2-electric-dirt-bike-review-Caffeine-600x600.jpg",
             "star_rating": 5,
             "review_text": "I'm always a bit skeptical about electric dirt bikes in this price range, but this thing genuinely surprised me. The frame feels super sturdy, definitely high-carbon steel as advertised. Took it out to some local dirt trails behind our property after a light rainy day. The aggressive tires grabbed the mud perfectly, and we even splashed through a few shallow puddles- IPX6 waterproof rating seems to hold up great.Top speed is right in the sweet spot for a teen beginner. It's quiet, which our neighbors love, but doesn't sacrifice torque. For the price, the build quality is totally there.",
             "reviewer_name": "Caffeine"
@@ -603,11 +606,8 @@
         "gap": 16,
         "gap_mobile": 6,
         "columns": "5",
-        "columns_tablet": "3",
+        "columns_tablet": "2",
         "columns_mobile": "2",
-        "card_total_height": 420,
-        "card_total_height_tablet": 420,
-        "card_total_height_mobile": 380,
         "mobile_padding_top": 0,
         "mobile_arrow_size": 22,
         "mobile_padding_bottom": 0,
@@ -616,6 +616,7 @@
         "title_color": "#ffffff",
         "title_alignment": "center",
         "title_margin_bottom": 32,
+        "image_aspect_ratio": "",
         "border_radius": 8,
         "card_padding": 12,
         "card_background": "#ffffff",
@@ -623,7 +624,8 @@
         "star_color": "#ffb303",
         "review_text_color": "#171717",
         "review_text_font_size": 12,
-        "review_text_max_lines": 6,
+        "review_text_lines": 6,
+        "review_area_min_height": 170,
         "reviewer_color": "#171717",
         "reviewer_font_size": 14,
         "auto_play": true,

@@ -72,7 +72,9 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
   }
 </style>
 {% endif %}
-  </head>
+  
+{% include 'stack-discounts-script' %}
+</head>
 
   <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
     {%- render 'shadow-dom-templates' -%}

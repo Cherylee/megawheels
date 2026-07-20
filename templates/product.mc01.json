@@ -277,6 +277,7 @@
         "youtube_video_FmNC4r",
         "youtube_video_GcirGx"
       ],
+      "disabled": true,
       "name": "视频展示轮播",
       "settings": {
         "title": "D2 Review By Our Riders",
@@ -302,150 +303,236 @@
         "short_tab_text": "Short Video"
       }
     },
-    "image_with_text_overlay_fEiz4z": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_kCmewE": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
-        },
-        "heading_aHGzpX": {
-          "type": "heading",
-          "settings": {
-            "text": "D2 Electric Dirt Bike",
-            "heading_tag": "h2"
-          }
-        },
-        "richtext_DM7CJE": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Features 3550W max power and 150 FT-LBS max torque, it offers enhanced performance for riders ready to level up.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_kCmewE",
-        "heading_aHGzpX",
-        "richtext_DM7CJE"
-      ],
-      "name": "Image with text overlay",
+    "page_hero_banner_RjYFEh": {
+      "type": "page-hero-banner",
+      "name": "Page Hero Banner",
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1920x800-01-1.jpg",
-        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1300x1500-01.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-start sm:text-start",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-3840x2160-01.jpg",
+        "mobile_image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-2160x3840-01.jpg"
       }
     },
-    "image_with_text_overlay_fPqQtp": {
-      "type": "image-with-text-overlay",
+    "custom_heading_XjJCrC": {
+      "type": "custom-heading",
+      "name": "独立通用标题",
+      "settings": {
+        "text_alignment": "center",
+        "offset_x": 0,
+        "offset_y": 0,
+        "heading_text": "",
+        "heading_font": "work_sans_n6",
+        "heading_size": 40,
+        "heading_color": "#000000",
+        "subheading_text": "",
+        "subheading_font": "work_sans_n4",
+        "subheading_size": 16,
+        "subheading_color": "#666666",
+        "title_spacing": 10,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "video_BQHRRz": {
+      "type": "video",
       "blocks": {
-        "subheading_QRxmXt": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
+        "play_L3z6nd": {
+          "type": "play",
+          "settings": {}
         },
-        "heading_xEF37m": {
+        "heading_pN8brp": {
           "type": "heading",
           "settings": {
             "text": "",
             "heading_tag": "h1"
           }
-        },
-        "richtext_3GLcg4": {
-          "type": "richtext",
-          "settings": {
-            "content": ""
-          }
         }
       },
       "block_order": [
-        "subheading_QRxmXt",
-        "heading_xEF37m",
-        "richtext_3GLcg4"
+        "play_L3z6nd",
+        "heading_pN8brp"
       ],
-      "name": "Image with text overlay",
+      "name": "Video",
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1920x800-02.jpg",
-        "mobile_image": "shopify://shop_images/D2-electric-scooter-1300x1500-02-3.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "autoplay": true,
+        "video_size": "lg",
+        "video": "shopify://files/videos/MC01基础款展示视频 没有logo.mp4",
+        "external_video_url": "",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
     },
-    "image_with_text_overlay_EqcBKL": {
-      "type": "image-with-text-overlay",
+    "series_comparison_table_Hbh884": {
+      "type": "series-comparison-table",
       "blocks": {
-        "subheading_FfCizT": {
-          "type": "subheading",
+        "parameter_NC6efV": {
+          "type": "parameter",
           "settings": {
-            "text": ""
+            "label": "Peak Power",
+            "value_1": "3000 W",
+            "value_2": "3550 W",
+            "value_3": ""
           }
         },
-        "heading_8JUb7m": {
-          "type": "heading",
+        "parameter_wEB9fB": {
+          "type": "parameter",
           "settings": {
-            "text": "3550W MAX POWER",
-            "heading_tag": "h2"
+            "label": "Battery Capacity",
+            "value_1": "48V23.4Ah",
+            "value_2": "48V26 Ah",
+            "value_3": "60V30 Ah"
           }
         },
-        "richtext_NAtcA7": {
-          "type": "richtext",
+        "parameter_njMGp7": {
+          "type": "parameter",
           "settings": {
-            "content": "<p>With 3550W peak motor output, D2 delivers stronger acceleration for riders ready to move beyond backyard riding into real trail exploration.</p>"
+            "label": "Torque",
+            "value_1": "180 Nm",
+            "value_2": "204 Nm",
+            "value_3": "226 Nm"
+          }
+        },
+        "parameter_nL9NQn": {
+          "type": "parameter",
+          "settings": {
+            "label": "Max range",
+            "value_1": "24.85 Miles",
+            "value_2": "28 Miles",
+            "value_3": "34.2 Miles"
+          }
+        },
+        "parameter_VbXwiW": {
+          "type": "parameter",
+          "settings": {
+            "label": "Top Speed",
+            "value_1": "37.28 MPH",
+            "value_2": "38 MPH",
+            "value_3": "50 MPH"
+          }
+        },
+        "parameter_jPQaaB": {
+          "type": "parameter",
+          "settings": {
+            "label": "Payload",
+            "value_1": "242.5 lbs (110kg)",
+            "value_2": "242.5 lbs (110kg)",
+            "value_3": "264.6 lbs (120kg)"
+          }
+        },
+        "parameter_riAFjX": {
+          "type": "parameter",
+          "settings": {
+            "label": "Tire",
+            "value_1": "14\"/12\"",
+            "value_2": "14\"/12\"",
+            "value_3": "17\"/14\""
+          }
+        },
+        "parameter_XTkQtQ": {
+          "type": "parameter",
+          "settings": {
+            "label": "Suitable Height",
+            "value_1": "3.94ft-5.9ft",
+            "value_2": "3.94ft-5.9ft",
+            "value_3": "4.7ft-6.3ft"
+          }
+        },
+        "parameter_cCNTiG": {
+          "type": "parameter",
+          "settings": {
+            "label": "Charging Time",
+            "value_1": "6.5 Hours",
+            "value_2": "7 Hours",
+            "value_3": "7 Hours"
           }
         }
       },
       "block_order": [
-        "subheading_FfCizT",
-        "heading_8JUb7m",
-        "richtext_NAtcA7"
+        "parameter_NC6efV",
+        "parameter_wEB9fB",
+        "parameter_njMGp7",
+        "parameter_nL9NQn",
+        "parameter_VbXwiW",
+        "parameter_jPQaaB",
+        "parameter_riAFjX",
+        "parameter_XTkQtQ",
+        "parameter_cCNTiG"
       ],
-      "name": "Image with text overlay",
+      "name": "Series Comparison Table",
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1920x800-03-1.jpg",
-        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1300x1500-03-1.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-start sm:text-start",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "section_background": "#000000",
+        "table_padding_mobile": 10,
+        "border_color": "#9544D7",
+        "column_gap_mobile": 5,
+        "mobile_sticky_label_width": 70,
+        "mobile_product_col_min": 90,
+        "column_gap": 4,
+        "row_gap": 4,
+        "row_gap_mobile": 6,
+        "mobile_title_size": 12,
+        "mobile_price_size": 12,
+        "mobile_compare_at_size": 8,
+        "mobile_button_size": 8,
+        "mobile_title_bg_width": 65,
+        "mobile_outer_padding": 10,
+        "mobile_table_radius": 10,
+        "header_body_gap": 20,
+        "product_image_aspect_ratio": "1/1",
+        "image_title_gap": 15,
+        "product_image_max_width": 200,
+        "title_price_gap": 5,
+        "title_bg_width": 140,
+        "title_bg_height": 40,
+        "title_offset_x": -4,
+        "price_button_gap": 5,
+        "product_1_handle": "",
+        "product_2_handle": "",
+        "product_3_handle": "",
+        "product_1_image": "shopify://shop_images/dc0a0581cb17f1179c87de5dc5386c0e.png",
+        "product_1_title": "MC01",
+        "product_2_image": "shopify://shop_images/dc0a0581cb17f1179c87de5dc5386c0e.png",
+        "product_2_title": "MC01 Pro",
+        "product_3_image": "shopify://shop_images/dc0a0581cb17f1179c87de5dc5386c0e.png",
+        "product_3_title": "MC02",
+        "product_1_discount_price": "999.99",
+        "product_2_discount_price": "1699.99",
+        "product_3_discount_price": "",
+        "button_text": "Shop Now",
+        "button_font_size": 16,
+        "button_border_radius": 20,
+        "button_background": "#ff0000",
+        "button_background_dark": "#cc0000",
+        "button_text_color": "#ffffff",
+        "product_title_color": "#ffffff",
+        "product_title_font_size": 18,
+        "price_font_size": 20,
+        "compare_at_font_size": 16,
+        "compare_at_color": "#999999",
+        "label_font_size": 18,
+        "value_font_size": 16,
+        "value_color": "#ffffff",
+        "label_font_size_mobile": 10,
+        "value_font_size_mobile": 8
       }
     },
     "media_with_text_nfDdtd": {
       "type": "media-with-text",
       "blocks": {
-        "image_XbBdKR": {
-          "type": "image",
+        "video_j9fBwG": {
+          "type": "video",
           "settings": {
-            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1200x720-01.jpg",
+            "video": "shopify://files/videos/电机.mp4",
+            "external_video_url": "",
+            "autoplay": true,
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "204NM TORQUE",
-            "title": "RIDE THROUGH ANYTHING",
-            "content": "<p>204Nm torque delivers consistent pulling power across trails, slopes, and loose terrain - keeping you moving forward.</p>",
+            "subheading": "",
+            "title": "4800W MONSTER OUTPUT. APEX POWER DENSITY.",
+            "content": "<p>An absolute beast engineered for the relentless pursuit of speed. Boasting a massive 4800W peak output with class-leading power density, the MC01 Pro alters the laws of traction. It delivers instantaneous, aggressive high-voltage energy that pulls hard out of corners and leaves the competition behind.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -454,28 +541,61 @@
             "text_gradient": "",
             "button_background": "",
             "button_text_color": "",
-            "subheading_font_size": 24,
-            "subheading_color": "#fc0000",
+            "subheading_font_size": 18,
+            "subheading_color": "#ffffff",
             "subheading_gradient": "",
-            "title_font_size": 42,
-            "title_color": "#ffffff",
-            "content_font_size": 20,
-            "content_color": "#ffffff",
-            "mobile_text_align": "flex-start"
+            "title_font_size": 32,
+            "title_color": "#9544d7",
+            "content_font_size": 16,
+            "content_color": "#ffffff"
           }
         },
-        "image_nVjYri": {
-          "type": "image",
+        "video_8KXXpb": {
+          "type": "video",
           "settings": {
-            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1200x720-02.jpg",
+            "video": "shopify://files/videos/防滑.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": true,
             "media_width": 50,
-            "media_position": "end",
+            "media_position": "start",
+            "text_position": "place-self-center-end text-end",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "COMPETITION-GRADE HIGH-REBOUND PRO SADDLE.",
+            "content": "<p>Maximum support where it counts. Inspired by the Surge Pro, the Pro seat is meticulously redesigned to be wider, flatter, and thicker. Packed with premium high-rebound foam and covered in a heavy-duty, anti-slip grained technical leather, it ensures ultimate pelvic cushioning during rough landings and superior grip, keeping the rider firmly anchored under brutal acceleration.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "subheading_gradient": "",
+            "title_font_size": 32,
+            "title_color": "#9544d7",
+            "content_font_size": 16,
+            "content_color": "#ffffff"
+          }
+        },
+        "video_Ley9dg": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/环绕.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": true,
+            "media_width": 50,
+            "media_position": "start",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "Up to 53 Miles Range",
-            "title": "Stay Out Longer",
-            "content": "<p>With up to 53 miles of riding range from a 48V 26Ah battery, D2 supports longer trail riding sessions and outdoor exploration.</p>",
+            "subheading": "",
+            "title": "PIONEERING AOTOS AVANT-GARDE DESIGN LANGUAGE.",
+            "content": "<p>Industrial art meets elite performance. The MC01 Pro redefines the aesthetic benchmark by stripping away the unnecessary. Showcasing the signature AOTOS avant-garde industrial aesthetic, its sharp geometric armor and hyper-minimalist profile fuse modern sophistication with raw, mechanical heritage.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -484,20 +604,53 @@
             "text_gradient": "",
             "button_background": "",
             "button_text_color": "",
-            "subheading_font_size": 24,
-            "subheading_color": "#fc0000",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
             "subheading_gradient": "",
-            "title_font_size": 42,
-            "title_color": "#ffffff",
-            "content_font_size": 20,
-            "content_color": "#ffffff",
-            "mobile_text_align": "flex-start"
+            "title_font_size": 32,
+            "title_color": "#9544d7",
+            "content_font_size": 16,
+            "content_color": "#ffffff"
+          }
+        },
+        "video_YUQLwJ": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/显示器.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": true,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-end text-end",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "INTEGRATED STATUS MONITOR & ACTIVE CODES.",
+            "content": "<p>Under racing stress, data is ammunition. Backed by a high-definition status display and real-time diagnostic fault-code alerts, the onboard CPU actively monitors all core electronic networks simultaneously, securing system-level safety when pushing the machine to its absolute threshold.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "subheading_gradient": "",
+            "title_font_size": 32,
+            "title_color": "#9544d7",
+            "content_font_size": 16,
+            "content_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "image_XbBdKR",
-        "image_nVjYri"
+        "video_j9fBwG",
+        "video_8KXXpb",
+        "video_Ley9dg",
+        "video_YUQLwJ"
       ],
       "name": "Media with text",
       "settings": {
@@ -538,14 +691,14 @@
         "heading_DdCRQt": {
           "type": "heading",
           "settings": {
-            "text": "Larger wheels aggressive grip",
+            "text": "226Nm PEAK TORQUE. CRUSH ANY SLOPE.",
             "heading_tag": "h2"
           }
         },
         "richtext_AfGTRK": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Equipped with 60/100-14 front and 80/100-12 rear off-road tires, D2 maximizes traction across loose dirt, steep climbs and technical terrain.</p>"
+            "content": "<p>Dominate the vertical. With a brutal 226Nm of peak wheel torque, the MC01 Pro provides unparalleled low-end climbing authority. It sustains absolute traction across loose shale and steep forest walls, effortlessly converting electrical energy into pure hill-climbing dominance.</p>"
           }
         }
       },
@@ -556,12 +709,11 @@
       ],
       "name": "Image with text overlay",
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
+        "full_width": false,
+        "allow_transparent_header": true,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1920x800-04.jpg",
-        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1300x1500-04.jpg",
+        "image": "shopify://shop_images/336e02a9003dd9954490ee09367c3bee.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
@@ -569,8 +721,172 @@
         "overlay_opacity": 0
       }
     },
+    "media_with_text_aXCG8m": {
+      "type": "media-with-text",
+      "blocks": {
+        "video_zH37wL": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/电机.mp4",
+            "external_video_url": "",
+            "autoplay": true,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "4800W MONSTER OUTPUT. APEX POWER DENSITY.",
+            "content": "<p>An absolute beast engineered for the relentless pursuit of speed. Boasting a massive 4800W peak output with class-leading power density, the MC01 Pro alters the laws of traction. It delivers instantaneous, aggressive high-voltage energy that pulls hard out of corners and leaves the competition behind.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#ffffff",
+            "subheading_gradient": "",
+            "title_font_size": 32,
+            "title_color": "#9544d7",
+            "content_font_size": 16,
+            "content_color": "#ffffff"
+          }
+        },
+        "video_nAfPkr": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/防滑.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": true,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-end text-end",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "COMPETITION-GRADE HIGH-REBOUND PRO SADDLE.",
+            "content": "<p>Maximum support where it counts. Inspired by the Surge Pro, the Pro seat is meticulously redesigned to be wider, flatter, and thicker. Packed with premium high-rebound foam and covered in a heavy-duty, anti-slip grained technical leather, it ensures ultimate pelvic cushioning during rough landings and superior grip, keeping the rider firmly anchored under brutal acceleration.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "subheading_gradient": "",
+            "title_font_size": 32,
+            "title_color": "#9544d7",
+            "content_font_size": 16,
+            "content_color": "#ffffff"
+          }
+        },
+        "video_nmHz4E": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/环绕.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": true,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "PIONEERING AOTOS AVANT-GARDE DESIGN LANGUAGE.",
+            "content": "<p>Industrial art meets elite performance. The MC01 Pro redefines the aesthetic benchmark by stripping away the unnecessary. Showcasing the signature AOTOS avant-garde industrial aesthetic, its sharp geometric armor and hyper-minimalist profile fuse modern sophistication with raw, mechanical heritage.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "subheading_gradient": "",
+            "title_font_size": 32,
+            "title_color": "#9544d7",
+            "content_font_size": 16,
+            "content_color": "#ffffff"
+          }
+        },
+        "video_Rkeg8Q": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/显示器.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": true,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-end text-end",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "INTEGRATED STATUS MONITOR & ACTIVE CODES.",
+            "content": "<p>Under racing stress, data is ammunition. Backed by a high-definition status display and real-time diagnostic fault-code alerts, the onboard CPU actively monitors all core electronic networks simultaneously, securing system-level safety when pushing the machine to its absolute threshold.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 18,
+            "subheading_color": "#666666",
+            "subheading_gradient": "",
+            "title_font_size": 32,
+            "title_color": "#9544d7",
+            "content_font_size": 16,
+            "content_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "video_zH37wL",
+        "video_nAfPkr",
+        "video_nmHz4E",
+        "video_Rkeg8Q"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "section_background": "#000000",
+        "section_padding_top": 0,
+        "section_padding_bottom": 0,
+        "full_width": true,
+        "alternate_media_position": true,
+        "spacing": "none",
+        "mobile_keep_desktop_layout": false,
+        "mobile_layout_gap": 8,
+        "mobile_layout_subheading_size": 11,
+        "mobile_layout_title_size": 14,
+        "mobile_layout_text_size": 10,
+        "mobile_layout_line_height": 1.2,
+        "mobile_padding_top": 40,
+        "mobile_padding_right": 0,
+        "mobile_padding_bottom": 20,
+        "mobile_padding_left": 0,
+        "mobile_subheading_size": 18,
+        "mobile_text_size": 16,
+        "mobile_text_align": "left",
+        "mobile_content_padding_top": 0,
+        "mobile_content_padding_right": 10,
+        "mobile_content_padding_bottom": 0,
+        "mobile_content_padding_left": 10
+      }
+    },
     "video_with_text_AXLDy3": {
       "type": "video-with-text",
+      "disabled": true,
       "name": "文字+视频模块（双比例+字体选择含Bayon）",
       "settings": {
         "section_bg": "#000000",
@@ -605,6 +921,7 @@
     },
     "video_with_text_H7hrkw": {
       "type": "video-with-text",
+      "disabled": true,
       "name": "文字+视频模块（双比例+字体选择含Bayon）",
       "settings": {
         "section_bg": "#000000",
@@ -635,175 +952,6 @@
         "video_ratio": "16-9",
         "video_border_radius": 0,
         "mobile_video_margin_top": 15
-      }
-    },
-    "media_with_text_GLycPY": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_MTNGBz": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-display-1600x1280.jpg",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "3 Ridding Modes",
-            "title": "Tuned Control Ride with Precision",
-            "content": "<p>Optimized throttle mapping and riding modes provide smoother control across trails and changing terrain.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 24,
-            "subheading_color": "#fc0000",
-            "subheading_gradient": "",
-            "title_font_size": 42,
-            "title_color": "#ffffff",
-            "content_font_size": 20,
-            "content_color": "#ffffff",
-            "mobile_text_align": "flex-start"
-          }
-        },
-        "image_9MXMRE": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-waterproof-1600x1280.jpg",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "Reinforced Structure",
-            "title": "Ride Through Anything",
-            "content": "<p>Built with a reinforced frame and IP65 protection, D2 dirt bike is ready for mud, dust, and extreme off-road environments.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 24,
-            "subheading_color": "#fc0000",
-            "subheading_gradient": "",
-            "title_font_size": 42,
-            "title_color": "#ffffff",
-            "content_font_size": 20,
-            "content_color": "#ffffff",
-            "mobile_text_align": "flex-start"
-          }
-        },
-        "image_3pFXg7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-geometry-1600x1280.jpg",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "Performance Geometry",
-            "title": "Built to Attack Trails",
-            "content": "<p>Designed with an aggressive riding stance and performance-focused geometry, D2 is built for speed, control, and terrain domination.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 24,
-            "subheading_color": "#fc0000",
-            "subheading_gradient": "",
-            "title_font_size": 42,
-            "title_color": "#ffffff",
-            "content_font_size": 20,
-            "content_color": "#ffffff",
-            "mobile_text_align": "flex-start"
-          }
-        }
-      },
-      "block_order": [
-        "image_MTNGBz",
-        "image_9MXMRE",
-        "image_3pFXg7"
-      ],
-      "name": "Media with text",
-      "settings": {
-        "section_background": "#000000",
-        "section_padding_top": 0,
-        "section_padding_bottom": 5,
-        "full_width": true,
-        "alternate_media_position": false,
-        "spacing": "none",
-        "mobile_keep_desktop_layout": false,
-        "mobile_layout_gap": 8,
-        "mobile_layout_subheading_size": 11,
-        "mobile_layout_title_size": 14,
-        "mobile_layout_text_size": 10,
-        "mobile_layout_line_height": 1.2,
-        "mobile_padding_top": 40,
-        "mobile_padding_right": 0,
-        "mobile_padding_bottom": 20,
-        "mobile_padding_left": 0,
-        "mobile_subheading_size": 18,
-        "mobile_text_size": 16,
-        "mobile_text_align": "left",
-        "mobile_content_padding_top": 0,
-        "mobile_content_padding_right": 10,
-        "mobile_content_padding_bottom": 0,
-        "mobile_content_padding_left": 10
-      }
-    },
-    "image_with_text_overlay_TTVcCY": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_qyB4qa": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
-        },
-        "heading_WDcKEz": {
-          "type": "heading",
-          "settings": {
-            "text": "Build for stability under power",
-            "heading_tag": "h2"
-          }
-        },
-        "richtext_ttxxEd": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>At 130lbs, the structure is engineered to handle higher power output, delivering stability and confidence when riding agressively.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_qyB4qa",
-        "heading_WDcKEz",
-        "richtext_ttxxEd"
-      ],
-      "name": "Image with text overlay",
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1920x800-06.jpg",
-        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-1300x1500-06.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-start sm:text-start",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
       }
     },
     "specification_table_V9fxRr": {
@@ -972,6 +1120,156 @@
         "chart_true_false_color": ""
       }
     },
+    "series_comparison_table_GcmTwG": {
+      "type": "series-comparison-table",
+      "blocks": {
+        "parameter_eJdFMF": {
+          "type": "parameter",
+          "settings": {
+            "label": "Peak Power",
+            "value_1": "3000 W",
+            "value_2": "3550 W",
+            "value_3": "4800 W"
+          }
+        },
+        "parameter_Y94pTi": {
+          "type": "parameter",
+          "settings": {
+            "label": "Battery Capacity",
+            "value_1": "48V23.4Ah",
+            "value_2": "48V26 Ah",
+            "value_3": "60V30 Ah"
+          }
+        },
+        "parameter_7EHYdB": {
+          "type": "parameter",
+          "settings": {
+            "label": "Torque",
+            "value_1": "180 Nm",
+            "value_2": "204 Nm",
+            "value_3": "226 Nm"
+          }
+        },
+        "parameter_9nhd6w": {
+          "type": "parameter",
+          "settings": {
+            "label": "Max range",
+            "value_1": "24.85 Miles",
+            "value_2": "28 Miles",
+            "value_3": "34.2 Miles"
+          }
+        },
+        "parameter_GRrcDT": {
+          "type": "parameter",
+          "settings": {
+            "label": "Top Speed",
+            "value_1": "37.28 MPH",
+            "value_2": "38 MPH",
+            "value_3": "50 MPH"
+          }
+        },
+        "parameter_mjtPaD": {
+          "type": "parameter",
+          "settings": {
+            "label": "Payload",
+            "value_1": "242.5 lbs (110kg)",
+            "value_2": "242.5 lbs (110kg)",
+            "value_3": "264.6 lbs (120kg)"
+          }
+        },
+        "parameter_cmaYT6": {
+          "type": "parameter",
+          "settings": {
+            "label": "Tire",
+            "value_1": "14\"/12\"",
+            "value_2": "14\"/12\"",
+            "value_3": "17\"/14\""
+          }
+        },
+        "parameter_8AEMrd": {
+          "type": "parameter",
+          "settings": {
+            "label": "Suitable Height",
+            "value_1": "3.94ft-5.9ft",
+            "value_2": "3.94ft-5.9ft",
+            "value_3": "4.7ft-6.3ft"
+          }
+        },
+        "parameter_dRtYKd": {
+          "type": "parameter",
+          "settings": {
+            "label": "Charging Time",
+            "value_1": "6.5 Hours",
+            "value_2": "7 Hours",
+            "value_3": "7 Hours"
+          }
+        }
+      },
+      "block_order": [
+        "parameter_eJdFMF",
+        "parameter_Y94pTi",
+        "parameter_7EHYdB",
+        "parameter_9nhd6w",
+        "parameter_GRrcDT",
+        "parameter_mjtPaD",
+        "parameter_cmaYT6",
+        "parameter_8AEMrd",
+        "parameter_dRtYKd"
+      ],
+      "name": "Series Comparison Table",
+      "settings": {
+        "section_background": "#000000",
+        "table_padding_mobile": 10,
+        "border_color": "#ff0000",
+        "column_gap_mobile": 5,
+        "mobile_sticky_label_width": 70,
+        "mobile_product_col_min": 90,
+        "column_gap": 10,
+        "row_gap": 10,
+        "row_gap_mobile": 8,
+        "mobile_title_size": 10,
+        "mobile_price_size": 12,
+        "mobile_compare_at_size": 8,
+        "mobile_button_size": 8,
+        "mobile_title_bg_width": 65,
+        "mobile_outer_padding": 10,
+        "mobile_table_radius": 10,
+        "header_body_gap": 30,
+        "product_image_aspect_ratio": "1/1",
+        "image_title_gap": 15,
+        "product_image_max_width": 200,
+        "title_price_gap": 10,
+        "title_bg_width": 145,
+        "title_bg_height": 45,
+        "title_offset_x": -10,
+        "price_button_gap": 10,
+        "product_1_handle": "mc01-electric-dirt-bike",
+        "product_2_handle": "mc01-pro-electric-dirt-bike",
+        "product_3_handle": "",
+        "product_1_title": "MC01",
+        "product_2_title": "MC01 Pro",
+        "product_3_title": "",
+        "product_1_discount_price": "",
+        "product_2_discount_price": "",
+        "product_3_discount_price": "",
+        "button_text": "Shop Now",
+        "button_font_size": 14,
+        "button_border_radius": 20,
+        "button_background": "#ff0000",
+        "button_background_dark": "#cc0000",
+        "button_text_color": "#ffffff",
+        "product_title_color": "#ffffff",
+        "product_title_font_size": 20,
+        "price_font_size": 32,
+        "compare_at_font_size": 18,
+        "compare_at_color": "#999999",
+        "label_font_size": 20,
+        "value_font_size": 20,
+        "value_color": "#ffffff",
+        "label_font_size_mobile": 10,
+        "value_font_size_mobile": 8
+      }
+    },
     "faq_gND4cN": {
       "type": "faq",
       "blocks": {
@@ -1065,7 +1363,7 @@
         "intro_heading_font_size": 32,
         "intro_heading_color": "#ffffff",
         "intro_text_font_size": 16,
-        "intro_text_color": "#FFFFFF",
+        "intro_text_color": "#ffffff",
         "text_position": "center",
         "section_background": "",
         "section_gradient_color_1": "#5a0909",
@@ -1088,13 +1386,13 @@
         "wrapper_border_radius": 20,
         "background": "",
         "background_gradient": "",
-        "text_color": "#FFFFFF",
-        "heading_color": "#FFFFFF",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
         "accordion_background": "",
-        "accordion_text_color": "#FFFFFF",
+        "accordion_text_color": "#ffffff",
         "border_width": 0,
         "border_color": "#ffffff",
         "mobile_wrapper_padding_top": 28,
@@ -1260,16 +1558,17 @@
   "order": [
     "main",
     "video_reviews_npRnwP",
-    "image_with_text_overlay_fEiz4z",
-    "image_with_text_overlay_fPqQtp",
-    "image_with_text_overlay_EqcBKL",
+    "page_hero_banner_RjYFEh",
+    "custom_heading_XjJCrC",
+    "video_BQHRRz",
+    "series_comparison_table_Hbh884",
     "media_with_text_nfDdtd",
     "image_with_text_overlay_E7Vjd6",
+    "media_with_text_aXCG8m",
     "video_with_text_AXLDy3",
     "video_with_text_H7hrkw",
-    "media_with_text_GLycPY",
-    "image_with_text_overlay_TTVcCY",
     "specification_table_V9fxRr",
+    "series_comparison_table_GcmTwG",
     "faq_gND4cN",
     "178254800403c25569",
     "related-products",

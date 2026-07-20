@@ -14,7 +14,10 @@
       "blocks": {
         "totals": {
           "type": "totals",
-          "settings": {}
+          "settings": {
+            "show_order_weight": false,
+            "show_shipping_text": true
+          }
         },
         "cart_note": {
           "type": "cart_note",
@@ -30,10 +33,50 @@
         "cart_note",
         "checkout_button"
       ],
-      "settings": {}
+      "settings": {
+        "allow_discount_application": true,
+        "show_shipping_estimator": true,
+        "show_payment_icons": true
+      }
+    },
+    "custom_html_YmPRPz": {
+      "type": "custom-html",
+      "disabled": true,
+      "name": "Custom HTML",
+      "settings": {
+        "full_width": false,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": false,
+        "html": "<div style=\"margin-top:20px;\">\n  <p style=\"margin:0 0 8px 0;font-size:14px;\">We accept</p>\n  <img src=\"https://cdn.shopify.com/s/files/1/0593/5883/8992/files/payment-icons.png?v=1784344301\" alt=\"payment methods\" style=\"width:100%;max-width:420px;display:block;\">\n</div>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "1784268544b25a06d9": {
+      "type": "apps",
+      "blocks": {
+        "discountyard_stack_discounts_cart_discount_field_yxeaNa": {
+          "type": "shopify://apps/discountyard-stack-discounts/blocks/cart-discount-field/019a8f0a-3054-7bcb-b9e0-f4f44542588f",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "discountyard_stack_discounts_cart_discount_field_yxeaNa"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "custom_html_YmPRPz",
+    "1784268544b25a06d9"
   ]
 }
