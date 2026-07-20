@@ -27,8 +27,10 @@
   }
 
   .product-specs-{{ section.id }} .ps-title {
+    font-family: var(--heading-font-family);
+    font-style: var(--heading-font-style);
+    font-weight: var(--heading-font-weight);
     font-size: 40px;
-    font-weight: 700;
     margin-bottom: 0px;
     position: relative;
     display: inline-block;
@@ -304,28 +306,34 @@
           {% assign spec_blocks = section.blocks | where: 'type', 'spec_item' %}
           {% assign spec_count = spec_blocks.size %}
           {% assign half_count = spec_count | plus: 1 | divided_by: 2 %}
+          {% assign first_col_end = half_count | minus: 1 %}
+          {% assign last_index = spec_count | minus: 1 %}
 
           <div class="ps-spec-column">
-            {% for i in (0..half_count) %}
-              {% assign block = spec_blocks[i] %}
-              {% if block %}
-                <div class="ps-list-item" {{ block.shopify_attributes }}>
-                  <div class="ps-list-label">{{ block.settings.label }}</div>
-                  <div class="ps-list-value">{{ block.settings.value }}</div>
-                </div>
-              {% endif %}
-            {% endfor %}
+            {% if first_col_end >= 0 %}
+              {% for i in (0..first_col_end) %}
+                {% assign block = spec_blocks[i] %}
+                {% if block %}
+                  <div class="ps-list-item" {{ block.shopify_attributes }}>
+                    <div class="ps-list-label">{{ block.settings.label }}</div>
+                    <div class="ps-list-value">{{ block.settings.value }}</div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
           </div>
           <div class="ps-spec-column">
-            {% for i in (half_count..spec_count) %}
-              {% assign block = spec_blocks[i] %}
-              {% if block %}
-                <div class="ps-list-item" {{ block.shopify_attributes }}>
-                  <div class="ps-list-label">{{ block.settings.label }}</div>
-                  <div class="ps-list-value">{{ block.settings.value }}</div>
-                </div>
-              {% endif %}
-            {% endfor %}
+            {% if half_count <= last_index %}
+              {% for i in (half_count..last_index) %}
+                {% assign block = spec_blocks[i] %}
+                {% if block %}
+                  <div class="ps-list-item" {{ block.shopify_attributes }}>
+                    <div class="ps-list-label">{{ block.settings.label }}</div>
+                    <div class="ps-list-value">{{ block.settings.value }}</div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
           </div>
         </div>
       </div>
@@ -336,32 +344,38 @@
           {% assign box_blocks = section.blocks | where: 'type', 'box_item' %}
           {% assign box_count = box_blocks.size %}
           {% assign half_box = box_count | plus: 1 | divided_by: 2 %}
+          {% assign first_box_end = half_box | minus: 1 %}
+          {% assign last_box_index = box_count | minus: 1 %}
 
           <div class="ps-box-column">
-            {% for i in (0..half_box) %}
-              {% assign block = box_blocks[i] %}
-              {% if block %}
-                <div class="ps-list-item" {{ block.shopify_attributes }}>
-                  <div class="ps-list-label">
-                    <span class="ps-list-icon">{{ block.settings.label_id }}</span>
-                    {{ block.settings.label }}
+            {% if first_box_end >= 0 %}
+              {% for i in (0..first_box_end) %}
+                {% assign block = box_blocks[i] %}
+                {% if block %}
+                  <div class="ps-list-item" {{ block.shopify_attributes }}>
+                    <div class="ps-list-label">
+                      <span class="ps-list-icon">{{ block.settings.label_id }}</span>
+                      {{ block.settings.label }}
+                    </div>
                   </div>
-                </div>
-              {% endif %}
-            {% endfor %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
           </div>
           <div class="ps-box-column">
-            {% for i in (half_box..box_count) %}
-              {% assign block = box_blocks[i] %}
-              {% if block %}
-                <div class="ps-list-item" {{ block.shopify_attributes }}>
-                  <div class="ps-list-label">
-                    <span class="ps-list-icon">{{ block.settings.label_id }}</span>
-                    {{ block.settings.label }}
+            {% if half_box <= last_box_index %}
+              {% for i in (half_box..last_box_index) %}
+                {% assign block = box_blocks[i] %}
+                {% if block %}
+                  <div class="ps-list-item" {{ block.shopify_attributes }}>
+                    <div class="ps-list-label">
+                      <span class="ps-list-icon">{{ block.settings.label_id }}</span>
+                      {{ block.settings.label }}
+                    </div>
                   </div>
-                </div>
-              {% endif %}
-            {% endfor %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
           </div>
         </div>
       </div>

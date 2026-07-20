@@ -1,8 +1,8 @@
 {%- style -%}
   .brand-story-{{ section.id }} {
     background-color: {{ section.settings.bg_color }};
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
     color: #ffffff;
     overflow: hidden;
   }
@@ -10,15 +10,16 @@
   .brand-story-{{ section.id }} .bs-container {
     max-width: calc(63.5vw + 60px);
     margin: 0 auto;
-    padding: 0 30px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
   }
 
   .brand-story-{{ section.id }} .bs-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 60px;
-    margin-bottom: 60px;
+    gap: {{ section.settings.header_gap }}px;
+    margin-bottom: {{ section.settings.header_margin_bottom }}px;
   }
 
   .brand-story-{{ section.id }} .bs-title-wrap {
@@ -26,13 +27,15 @@
   }
 
   .brand-story-{{ section.id }} .bs-title {
+    font-family: var(--heading-font-family);
+    font-style: var(--heading-font-style);
+    font-weight: var(--heading-font-weight);
     font-size: 40px;
-    font-weight: 700;
     line-height: 1.1;
     margin: 0;
     position: relative;
     display: inline-block;
-    color: #ffffff;
+    color: {{ section.settings.title_color }};
   }
 
   .brand-story-{{ section.id }} .bs-title::after {
@@ -54,7 +57,10 @@
   }
 
   .brand-story-{{ section.id }} .bs-description {
-    color: #999999;
+    font-family: var(--text-font-family);
+    font-style: var(--text-font-style);
+    font-weight: var(--text-font-weight);
+    color: {{ section.settings.description_color }};
     font-size: 16px;
     line-height: 1.6;
     max-width: 600px;
@@ -76,13 +82,17 @@
   /* 1200px Adaption */
   @media screen and (max-width: 1200px) {
     .brand-story-{{ section.id }} {
-      padding-top: calc(100 / 1200 * 100vw);
-      padding-bottom: calc(100 / 1200 * 100vw);
+      padding-top: calc({{ section.settings.padding_top }} / 1200 * 100vw);
+      padding-bottom: calc({{ section.settings.padding_bottom }} / 1200 * 100vw);
     }
-    .brand-story-{{ section.id }} .bs-container { padding: 0 calc(30 / 1200 * 100vw); max-width: none; }
+    .brand-story-{{ section.id }} .bs-container {
+      padding-left: calc({{ section.settings.padding_left }} / 1200 * 100vw);
+      padding-right: calc({{ section.settings.padding_right }} / 1200 * 100vw);
+      max-width: none;
+    }
     .brand-story-{{ section.id }} .bs-header {
-      gap: calc(80 / 1200 * 100vw);
-      margin-bottom: calc(80 / 1200 * 100vw);
+      gap: calc({{ section.settings.header_gap }} / 1200 * 100vw);
+      margin-bottom: calc({{ section.settings.header_margin_bottom }} / 1200 * 100vw);
     }
     .brand-story-{{ section.id }} .bs-title { font-size: calc(40 / 1200 * 100vw); }
     .brand-story-{{ section.id }} .bs-title::after {
@@ -99,14 +109,17 @@
   /* Mobile 768px Adaption */
   @media screen and (max-width: 768px) {
     .brand-story-{{ section.id }} {
-      padding-top: calc(80 / 750 * 100vw);
-      padding-bottom: calc(80 / 750 * 100vw);
+      padding-top: calc({{ section.settings.mobile_padding_top }} / 750 * 100vw);
+      padding-bottom: calc({{ section.settings.mobile_padding_bottom }} / 750 * 100vw);
     }
-    .brand-story-{{ section.id }} .bs-container { padding: 0 calc(40 / 750 * 100vw); }
+    .brand-story-{{ section.id }} .bs-container {
+      padding-left: calc({{ section.settings.mobile_padding_left }} / 750 * 100vw);
+      padding-right: calc({{ section.settings.mobile_padding_right }} / 750 * 100vw);
+    }
     .brand-story-{{ section.id }} .bs-header {
       flex-direction: column;
-      gap: calc(30 / 750 * 100vw);
-      margin-bottom: calc(60 / 750 * 100vw);
+      gap: calc({{ section.settings.mobile_header_gap }} / 750 * 100vw);
+      margin-bottom: calc({{ section.settings.mobile_header_margin_bottom }} / 750 * 100vw);
     }
     .brand-story-{{ section.id }} .bs-title-wrap,
     .brand-story-{{ section.id }} .bs-desc-wrap {
@@ -118,7 +131,7 @@
       width: calc(180 / 750 * 100vw);
       height: calc(8 / 750 * 100vw);
     }
-    .brand-story-{{ section.id }} .bs-description { font-size: calc(24 / 750 * 100vw); color: #999999; }
+    .brand-story-{{ section.id }} .bs-description { font-size: calc(24 / 750 * 100vw); }
     .brand-story-{{ section.id }} .bs-image-wrap {
       max-height: calc(700 / 750 * 100vw);
       border-radius: calc(16 / 750 * 100vw);
@@ -165,6 +178,18 @@
       "default": "Most bikes avoid excitement to stay safe. Flux X26 is engineered to manage excitement instead. Acceleration feels responsive, not jumpy. Handling feels lively, not nervous. You stay in control — even when you're having fun."
     },
     {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#999999"
+    },
+    {
       "type": "image_picker",
       "id": "image",
       "label": "Main Image"
@@ -174,6 +199,134 @@
       "id": "bg_color",
       "label": "Background Color",
       "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "header_gap",
+      "label": "Gap between title and description",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "header_margin_bottom",
+      "label": "Space below header",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_left",
+      "label": "Mobile left padding",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_right",
+      "label": "Mobile right padding",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_header_gap",
+      "label": "Mobile gap between title and description",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobile_header_margin_bottom",
+      "label": "Mobile space below header",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 60
     }
   ],
   "presets": [

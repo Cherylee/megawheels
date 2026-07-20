@@ -1,0 +1,619 @@
+{%- comment -%}
+  Image with title + subtitle overlay.
+  Image keeps natural aspect ratio (no crop / no stretch).
+  Title group is positioned with % relative to the image.
+{%- endcomment -%}
+
+{%- liquid
+  assign pos_x = section.settings.position_x | default: 5
+  assign pos_y = section.settings.position_y | default: 50
+
+  case section.settings.anchor_x
+    when 'center'
+      assign tx = '-50%'
+    when 'right'
+      assign tx = '-100%'
+    else
+      assign tx = '0%'
+  endcase
+
+  case section.settings.anchor_y
+    when 'center'
+      assign ty = '-50%'
+    when 'bottom'
+      assign ty = '-100%'
+    else
+      assign ty = '0%'
+  endcase
+
+  assign mobile_pos_x = section.settings.mobile_position_x | default: pos_x
+  assign mobile_pos_y = section.settings.mobile_position_y | default: pos_y
+
+  case section.settings.mobile_anchor_x
+    when 'center'
+      assign mobile_tx = '-50%'
+    when 'right'
+      assign mobile_tx = '-100%'
+    when 'left'
+      assign mobile_tx = '0%'
+    else
+      assign mobile_tx = tx
+  endcase
+
+  case section.settings.mobile_anchor_y
+    when 'center'
+      assign mobile_ty = '-50%'
+    when 'bottom'
+      assign mobile_ty = '-100%'
+    when 'top'
+      assign mobile_ty = '0%'
+    else
+      assign mobile_ty = ty
+  endcase
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    {%- if section.settings.background_color != blank -%}
+      background-color: {{ section.settings.background_color }};
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .image-with-titles {
+    max-width: {% if section.settings.full_width %}100%{% else %}{{ section.settings.max_width }}px{% endif %};
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .image-with-titles__media {
+    position: relative;
+    width: 100%;
+    {%- if section.settings.border_radius > 0 -%}
+      border-radius: {{ section.settings.border_radius }}px;
+      overflow: hidden;
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .image-with-titles__media img,
+  #shopify-section-{{ section.id }} .image-with-titles__placeholder {
+    width: 100%;
+    height: auto;
+    display: block;
+    {%- if section.settings.border_radius > 0 -%}
+      border-radius: {{ section.settings.border_radius }}px;
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .image-with-titles__placeholder {
+    aspect-ratio: 16 / 9;
+    background: #cfcfcf;
+  }
+
+  #shopify-section-{{ section.id }} .image-with-titles__caption {
+    position: absolute;
+    left: {{ pos_x }}%;
+    top: {{ pos_y }}%;
+    transform: translate({{ tx }}, {{ ty }});
+    max-width: {{ section.settings.caption_max_width }}%;
+    z-index: 1;
+    text-align: {{ section.settings.text_align }};
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .image-with-titles__title {
+    font-family: var(--heading-font-family);
+    font-style: var(--heading-font-style);
+    margin: 0 0 {{ section.settings.title_spacing }}px;
+    font-size: {{ section.settings.title_size }}px;
+    font-weight: {{ section.settings.title_weight }};
+    line-height: {{ section.settings.title_line_height }};
+    color: {{ section.settings.title_color }};
+  }
+
+  #shopify-section-{{ section.id }} .image-with-titles__subtitle {
+    margin: 0;
+    font-size: {{ section.settings.subtitle_size }}px;
+    font-weight: {{ section.settings.subtitle_weight }};
+    line-height: {{ section.settings.subtitle_line_height }};
+    color: {{ section.settings.subtitle_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .image-with-titles {
+      padding: {{ section.settings.mobile_padding_top }}px {{ section.settings.mobile_padding_right }}px {{ section.settings.mobile_padding_bottom }}px {{ section.settings.mobile_padding_left }}px;
+    }
+
+    #shopify-section-{{ section.id }} .image-with-titles__caption {
+      left: {{ mobile_pos_x }}%;
+      top: {{ mobile_pos_y }}%;
+      transform: translate({{ mobile_tx }}, {{ mobile_ty }});
+      max-width: {{ section.settings.mobile_caption_max_width }}%;
+      text-align: {{ section.settings.mobile_text_align }};
+    }
+
+    #shopify-section-{{ section.id }} .image-with-titles__title {
+      margin-bottom: {{ section.settings.mobile_title_spacing }}px;
+      font-size: {{ section.settings.mobile_title_size }}px;
+    }
+
+    #shopify-section-{{ section.id }} .image-with-titles__subtitle {
+      font-size: {{ section.settings.mobile_subtitle_size }}px;
+    }
+  }
+</style>
+
+{%- if section.settings.image != blank or section.settings.title != blank or section.settings.subtitle != blank -%}
+  <div class="image-with-titles">
+    <div class="image-with-titles__media">
+      {%- if section.settings.image != blank -%}
+        {%- assign image_alt = section.settings.image.alt | default: section.settings.title -%}
+        {{ section.settings.image
+          | image_url: width: section.settings.image.width
+          | image_tag:
+            widths: '400,600,800,1000,1200,1400,1600,1800,2000,2400',
+            sizes: '100vw',
+            loading: 'lazy',
+            alt: image_alt
+        }}
+      {%- else -%}
+        <svg class="image-with-titles__placeholder" viewBox="0 0 16 9" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder">
+          <rect width="16" height="9" fill="#cfcfcf"/>
+        </svg>
+      {%- endif -%}
+
+      {%- liquid
+        assign show_title = section.settings.show_title
+        assign show_subtitle = section.settings.show_subtitle
+        if show_title and section.settings.title == blank
+          assign show_title = false
+        endif
+        if show_subtitle and section.settings.subtitle == blank
+          assign show_subtitle = false
+        endif
+      -%}
+      {%- if show_title or show_subtitle -%}
+        <div class="image-with-titles__caption">
+          {%- if show_title -%}
+            <h2 class="image-with-titles__title">{{ section.settings.title | escape }}</h2>
+          {%- endif -%}
+          {%- if show_subtitle -%}
+            <p class="image-with-titles__subtitle">{{ section.settings.subtitle | escape | newline_to_br }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Image with titles",
+  "tag": "section",
+  "class": "shopify-section--image-with-titles",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Image keeps original ratio (no crop). Title + subtitle move as one group. Position uses % of the image. Vertical center tip: set Position Y = 50 and Vertical anchor = Center."
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Image border radius",
+      "info": "Default 0 = no rounded corners.",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Titles"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show main title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main title",
+      "default": "Dirt Bikes Dirt Bikes Dirt Bikes"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subtitle",
+      "label": "Show subtitle",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Dirt BikesDirt BikesDirt BikesDirt BikesDirt Bikes"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "caption_max_width",
+      "label": "Caption max width",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Main title style"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title font size",
+      "min": 12,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "text",
+      "id": "title_line_height",
+      "label": "Title line height",
+      "default": "1.2"
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "label": "Space between title and subtitle",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Subtitle style"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle font size",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "subtitle_weight",
+      "label": "Subtitle weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_line_height",
+      "label": "Subtitle line height",
+      "default": "1.5"
+    },
+    {
+      "type": "header",
+      "content": "Position (relative to image)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Position X/Y = anchor point on the image (0–100%). Anchor = which point of the title group sticks to that position. Vertical center: Position Y = 50 + Vertical anchor = Center. Dead center: X=50 Y=50 + both anchors Center. Default is left-center (X=5, Y=50, Left + Center)."
+    },
+    {
+      "type": "range",
+      "id": "position_x",
+      "label": "Position X",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "position_y",
+      "label": "Position Y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "select",
+      "id": "anchor_x",
+      "label": "Horizontal anchor",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "anchor_y",
+      "label": "Vertical anchor",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width (when not full width)",
+      "min": 600,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave empty for no background."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_position_x",
+      "label": "Mobile Position X",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "mobile_position_y",
+      "label": "Mobile Position Y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "select",
+      "id": "mobile_anchor_x",
+      "label": "Mobile horizontal anchor",
+      "options": [
+        { "value": "same", "label": "Same as desktop" },
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "same"
+    },
+    {
+      "type": "select",
+      "id": "mobile_anchor_y",
+      "label": "Mobile vertical anchor",
+      "options": [
+        { "value": "same", "label": "Same as desktop" },
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "same"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_align",
+      "label": "Mobile text align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "mobile_caption_max_width",
+      "label": "Mobile caption max width",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_title_size",
+      "label": "Mobile title size",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_subtitle_size",
+      "label": "Mobile subtitle size",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_title_spacing",
+      "label": "Mobile space between title and subtitle",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_left",
+      "label": "Mobile left padding",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_right",
+      "label": "Mobile right padding",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with titles"
+    }
+  ]
+}
+{% endschema %}
