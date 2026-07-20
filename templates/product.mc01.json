@@ -350,6 +350,7 @@
         "play_L3z6nd",
         "heading_pN8brp"
       ],
+      "disabled": true,
       "name": "Video",
       "settings": {
         "full_width": false,
@@ -361,6 +362,28 @@
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
+      }
+    },
+    "product_media_banner_wEaYQX": {
+      "type": "product-media-banner",
+      "name": "Product media banner",
+      "settings": {
+        "video": "shopify://files/videos/MC01基础款展示视频 没有logo.mp4",
+        "mp4_url": "",
+        "external_video_url": "",
+        "autoplay": true,
+        "show_controls": true,
+        "loop": false,
+        "max_width": 1220,
+        "border_radius": 0,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30,
+        "mobile_padding_left": 20,
+        "mobile_padding_right": 20
       }
     },
     "series_comparison_table_Hbh884": {
@@ -459,11 +482,12 @@
         "parameter_XTkQtQ",
         "parameter_cCNTiG"
       ],
+      "disabled": true,
       "name": "Series Comparison Table",
       "settings": {
         "section_background": "#000000",
         "table_padding_mobile": 10,
-        "border_color": "#9544D7",
+        "border_color": "#9544d7",
         "column_gap_mobile": 5,
         "mobile_sticky_label_width": 70,
         "mobile_product_col_min": 90,
@@ -514,6 +538,16 @@
         "value_color": "#ffffff",
         "label_font_size_mobile": 10,
         "value_font_size_mobile": 8
+      }
+    },
+    "brand_story_nCwggX": {
+      "type": "brand-story",
+      "name": "Brand Story",
+      "settings": {
+        "title": "226Nm PEAK TORQUE. CRUSH ANY SLOPE.",
+        "description": "Dominate the vertical. With a brutal 226Nm of peak wheel torque, the MC01 Pro provides unparalleled low-end climbing authority. It sustains absolute traction across loose shale and steep forest walls, effortlessly converting electrical energy into pure hill-climbing dominance.",
+        "image": "shopify://shop_images/336e02a9003dd9954490ee09367c3bee.jpg",
+        "bg_color": "#1a1a1a"
       }
     },
     "media_with_text_nfDdtd": {
@@ -679,46 +713,14 @@
         "mobile_content_padding_left": 10
       }
     },
-    "image_with_text_overlay_E7Vjd6": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_QQ3dAW": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
-        },
-        "heading_DdCRQt": {
-          "type": "heading",
-          "settings": {
-            "text": "226Nm PEAK TORQUE. CRUSH ANY SLOPE.",
-            "heading_tag": "h2"
-          }
-        },
-        "richtext_AfGTRK": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Dominate the vertical. With a brutal 226Nm of peak wheel torque, the MC01 Pro provides unparalleled low-end climbing authority. It sustains absolute traction across loose shale and steep forest walls, effortlessly converting electrical energy into pure hill-climbing dominance.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_QQ3dAW",
-        "heading_DdCRQt",
-        "richtext_AfGTRK"
-      ],
-      "name": "Image with text overlay",
+    "brand_story_Wg9PTn": {
+      "type": "brand-story",
+      "name": "Brand Story",
       "settings": {
-        "full_width": false,
-        "allow_transparent_header": true,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/336e02a9003dd9954490ee09367c3bee.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "title": "Playful by choice. Predictable by design.",
+        "description": "Most bikes avoid excitement to stay safe. Flux X26 is engineered to manage excitement instead. Acceleration feels responsive, not jumpy. Handling feels lively, not nervous. You stay in control — even when you're having fun.",
+        "image": "shopify://shop_images/f87e432365a53d96096ed76673bab060.jpg",
+        "bg_color": "#1a1a1a"
       }
     },
     "media_with_text_aXCG8m": {
@@ -884,76 +886,6 @@
         "mobile_content_padding_left": 10
       }
     },
-    "video_with_text_AXLDy3": {
-      "type": "video-with-text",
-      "disabled": true,
-      "name": "文字+视频模块（双比例+字体选择含Bayon）",
-      "settings": {
-        "section_bg": "#000000",
-        "section_padding_top": 10,
-        "section_padding_bottom": 0,
-        "desktop_layout": "text-right",
-        "mobile_order": "text-top",
-        "text_bg": "#000000",
-        "text_padding": 40,
-        "text_align": "left",
-        "subtitle": "220mm Hydraulic Brakes",
-        "subtitle_color": "#ff0000",
-        "subtitle_size": 26,
-        "subtitle_margin_bottom": 10,
-        "subtitle_font": "'Bayon', sans-serif",
-        "subtitle_font_weight": "500",
-        "title": "Ride with Confidence",
-        "title_color": "#ffffff",
-        "title_size": 40,
-        "title_margin_bottom": 20,
-        "title_font": "'Bayon', sans-serif",
-        "title_font_weight": "500",
-        "description": "Equipped with hydraulic disc brakes (220mm front / 203mm rear), D2 ensures stable stopping during faster trail riding and outdoor exploration.",
-        "description_color": "#ccc",
-        "description_size": 18,
-        "description_line_height": 1.6,
-        "video_url": "https://cdn.shopify.com/videos/c/o/v/a40e1b85a9e345f28685ab19b0c72ea2.mp4",
-        "video_ratio": "16-9",
-        "video_border_radius": 0,
-        "mobile_video_margin_top": 15
-      }
-    },
-    "video_with_text_H7hrkw": {
-      "type": "video-with-text",
-      "disabled": true,
-      "name": "文字+视频模块（双比例+字体选择含Bayon）",
-      "settings": {
-        "section_bg": "#000000",
-        "section_padding_top": 0,
-        "section_padding_bottom": 0,
-        "desktop_layout": "text-left",
-        "mobile_order": "text-top",
-        "text_bg": "#000000",
-        "text_padding": 40,
-        "text_align": "left",
-        "subtitle": "240mm Clearance",
-        "subtitle_color": "#ff0000",
-        "subtitle_size": 24,
-        "subtitle_margin_bottom": 10,
-        "subtitle_font": "inherit",
-        "subtitle_font_weight": "700",
-        "title": "Go Beyond Flat Ground",
-        "title_color": "#ffffff",
-        "title_size": 48,
-        "title_margin_bottom": 20,
-        "title_font": "'Bayon', sans-serif",
-        "title_font_weight": "500",
-        "description": "With up to 260mm ground clearance and long suspen 240mm ground clearance allows riders to move from simple terrain to more complex trails with confidence.",
-        "description_color": "#ccc",
-        "description_size": 18,
-        "description_line_height": 1.6,
-        "video_url": "https://cdn.shopify.com/videos/c/o/v/af2b62d4b7044404a514abe63658b544.mp4",
-        "video_ratio": "16-9",
-        "video_border_radius": 0,
-        "mobile_video_margin_top": 15
-      }
-    },
     "specification_table_V9fxRr": {
       "type": "specification-table",
       "blocks": {
@@ -1096,6 +1028,7 @@
         "row_mzzj4L",
         "row_QDaURX"
       ],
+      "disabled": true,
       "name": "Specification table",
       "settings": {
         "full_width": true,
@@ -1120,154 +1053,258 @@
         "chart_true_false_color": ""
       }
     },
-    "series_comparison_table_GcmTwG": {
-      "type": "series-comparison-table",
+    "product_specs_zfiYLL": {
+      "type": "product-specs",
       "blocks": {
-        "parameter_eJdFMF": {
-          "type": "parameter",
+        "geometry_item_CcqEhL": {
+          "type": "geometry_item",
           "settings": {
-            "label": "Peak Power",
-            "value_1": "3000 W",
-            "value_2": "3550 W",
-            "value_3": "4800 W"
+            "label_id": "A",
+            "label": "Total Length",
+            "value": "156 cm"
           }
         },
-        "parameter_Y94pTi": {
-          "type": "parameter",
+        "geometry_item_zEUtjC": {
+          "type": "geometry_item",
           "settings": {
-            "label": "Battery Capacity",
-            "value_1": "48V23.4Ah",
-            "value_2": "48V26 Ah",
-            "value_3": "60V30 Ah"
+            "label_id": "B",
+            "label": "Handlebar Height",
+            "value": "95 cm"
           }
         },
-        "parameter_7EHYdB": {
-          "type": "parameter",
+        "geometry_item_6FUxAq": {
+          "type": "geometry_item",
+          "settings": {
+            "label_id": "C",
+            "label": "Wheelbase",
+            "value": "110 cm"
+          }
+        },
+        "geometry_item_6eyFNN": {
+          "type": "geometry_item",
+          "settings": {
+            "label_id": "D",
+            "label": "Seat Height",
+            "value": "72 cm"
+          }
+        },
+        "geometry_item_DWFfQY": {
+          "type": "geometry_item",
+          "settings": {
+            "label_id": "E",
+            "label": "Ground clearance",
+            "value": "20 cm"
+          }
+        },
+        "spec_item_jXAXAd": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Model",
+            "value": "D3"
+          }
+        },
+        "spec_item_PcyLrj": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Motor",
+            "value": "1500W rated / 3550W peak motor"
+          }
+        },
+        "spec_item_Fiykhb": {
+          "type": "spec_item",
           "settings": {
             "label": "Torque",
-            "value_1": "180 Nm",
-            "value_2": "204 Nm",
-            "value_3": "226 Nm"
+            "value": "204 N.m"
           }
         },
-        "parameter_9nhd6w": {
-          "type": "parameter",
+        "spec_item_Kpic6M": {
+          "type": "spec_item",
           "settings": {
-            "label": "Max range",
-            "value_1": "24.85 Miles",
-            "value_2": "28 Miles",
-            "value_3": "34.2 Miles"
+            "label": "Suspension",
+            "value": "Dual hydraulic suspension"
           }
         },
-        "parameter_GRrcDT": {
-          "type": "parameter",
+        "spec_item_P6wGGb": {
+          "type": "spec_item",
           "settings": {
-            "label": "Top Speed",
-            "value_1": "37.28 MPH",
-            "value_2": "38 MPH",
-            "value_3": "50 MPH"
+            "label": "Tires",
+            "value": "60/100-14\" front / 80/100-12\" rear tires"
           }
         },
-        "parameter_mjtPaD": {
-          "type": "parameter",
+        "spec_item_NeWbKD": {
+          "type": "spec_item",
           "settings": {
-            "label": "Payload",
-            "value_1": "242.5 lbs (110kg)",
-            "value_2": "242.5 lbs (110kg)",
-            "value_3": "264.6 lbs (120kg)"
+            "label": "Top speed",
+            "value": "38 Mph"
           }
         },
-        "parameter_cmaYT6": {
-          "type": "parameter",
+        "spec_item_VREWUX": {
+          "type": "spec_item",
           "settings": {
-            "label": "Tire",
-            "value_1": "14\"/12\"",
-            "value_2": "14\"/12\"",
-            "value_3": "17\"/14\""
+            "label": "Range",
+            "value": "Up to 28 Miles"
           }
         },
-        "parameter_8AEMrd": {
-          "type": "parameter",
+        "spec_item_zD6mAA": {
+          "type": "spec_item",
           "settings": {
-            "label": "Suitable Height",
-            "value_1": "3.94ft-5.9ft",
-            "value_2": "3.94ft-5.9ft",
-            "value_3": "4.7ft-6.3ft"
+            "label": "Bike Weight",
+            "value": "59 kg"
           }
         },
-        "parameter_dRtYKd": {
-          "type": "parameter",
+        "spec_item_RU3gYx": {
+          "type": "spec_item",
           "settings": {
-            "label": "Charging Time",
-            "value_1": "6.5 Hours",
-            "value_2": "7 Hours",
-            "value_3": "7 Hours"
+            "label": "Max Climbing Grade",
+            "value": "35 degrees"
+          }
+        },
+        "spec_item_qbbjyR": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Maximum Load",
+            "value": "110 kg"
+          }
+        },
+        "spec_item_zt6i4F": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Charging time",
+            "value": "7 hours"
+          }
+        },
+        "spec_item_JRCzxj": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Brakes",
+            "value": "Front and rear hydraulic disc brakes"
+          }
+        },
+        "spec_item_ydehfG": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Battery",
+            "value": "48V, 26Ah"
+          }
+        },
+        "spec_item_kNzzad": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Ride Modes",
+            "value": "3 ride modes"
+          }
+        },
+        "box_item_4dnAhy": {
+          "type": "box_item",
+          "settings": {
+            "label_id": "A",
+            "label": "MC01 Dirt Bike*1"
+          }
+        },
+        "box_item_a3zpNH": {
+          "type": "box_item",
+          "settings": {
+            "label_id": "B",
+            "label": "Charger*1"
+          }
+        },
+        "box_item_R9E7fF": {
+          "type": "box_item",
+          "settings": {
+            "label_id": "C",
+            "label": "User Manual*1"
+          }
+        },
+        "box_item_kkJKHa": {
+          "type": "box_item",
+          "settings": {
+            "label_id": "D",
+            "label": "Yozma IN 10 Pro Dirt Bike*1"
           }
         }
       },
       "block_order": [
-        "parameter_eJdFMF",
-        "parameter_Y94pTi",
-        "parameter_7EHYdB",
-        "parameter_9nhd6w",
-        "parameter_GRrcDT",
-        "parameter_mjtPaD",
-        "parameter_cmaYT6",
-        "parameter_8AEMrd",
-        "parameter_dRtYKd"
+        "geometry_item_CcqEhL",
+        "geometry_item_zEUtjC",
+        "geometry_item_6FUxAq",
+        "geometry_item_6eyFNN",
+        "geometry_item_DWFfQY",
+        "spec_item_jXAXAd",
+        "spec_item_PcyLrj",
+        "spec_item_Fiykhb",
+        "spec_item_Kpic6M",
+        "spec_item_P6wGGb",
+        "spec_item_NeWbKD",
+        "spec_item_VREWUX",
+        "spec_item_zD6mAA",
+        "spec_item_RU3gYx",
+        "spec_item_qbbjyR",
+        "spec_item_zt6i4F",
+        "spec_item_JRCzxj",
+        "spec_item_ydehfG",
+        "spec_item_kNzzad",
+        "box_item_4dnAhy",
+        "box_item_a3zpNH",
+        "box_item_R9E7fF",
+        "box_item_kkJKHa"
       ],
-      "name": "Series Comparison Table",
+      "name": "Product Specifications",
       "settings": {
-        "section_background": "#000000",
-        "table_padding_mobile": 10,
-        "border_color": "#ff0000",
-        "column_gap_mobile": 5,
-        "mobile_sticky_label_width": 70,
-        "mobile_product_col_min": 90,
-        "column_gap": 10,
-        "row_gap": 10,
-        "row_gap_mobile": 8,
-        "mobile_title_size": 10,
-        "mobile_price_size": 12,
-        "mobile_compare_at_size": 8,
-        "mobile_button_size": 8,
-        "mobile_title_bg_width": 65,
-        "mobile_outer_padding": 10,
-        "mobile_table_radius": 10,
-        "header_body_gap": 30,
-        "product_image_aspect_ratio": "1/1",
-        "image_title_gap": 15,
-        "product_image_max_width": 200,
-        "title_price_gap": 10,
-        "title_bg_width": 145,
-        "title_bg_height": 45,
-        "title_offset_x": -10,
-        "price_button_gap": 10,
-        "product_1_handle": "mc01-electric-dirt-bike",
-        "product_2_handle": "mc01-pro-electric-dirt-bike",
-        "product_3_handle": "",
-        "product_1_title": "MC01",
-        "product_2_title": "MC01 Pro",
-        "product_3_title": "",
-        "product_1_discount_price": "",
-        "product_2_discount_price": "",
-        "product_3_discount_price": "",
-        "button_text": "Shop Now",
-        "button_font_size": 14,
-        "button_border_radius": 20,
-        "button_background": "#ff0000",
-        "button_background_dark": "#cc0000",
-        "button_text_color": "#ffffff",
-        "product_title_color": "#ffffff",
-        "product_title_font_size": 20,
-        "price_font_size": 32,
-        "compare_at_font_size": 18,
-        "compare_at_color": "#999999",
-        "label_font_size": 20,
-        "value_font_size": 20,
-        "value_color": "#ffffff",
-        "label_font_size_mobile": 10,
-        "value_font_size_mobile": 8
+        "title": "Specifications And Parameters",
+        "bg_color": "#000000",
+        "accent_color": "#9544d7",
+        "accent_gradient": "",
+        "geometry_image": "shopify://shop_images/4f159098ea9989fb426f3d032d918340.jpg"
+      }
+    },
+    "page_hero_banner_GqzGWM": {
+      "type": "page-hero-banner",
+      "disabled": true,
+      "name": "Page Hero Banner",
+      "settings": {
+        "image": "shopify://shop_images/fc6ce0fa167eb63348ecddb258a0ac6e.jpg"
+      }
+    },
+    "slideshow_7EcqVi": {
+      "type": "slideshow",
+      "blocks": {
+        "image_mrjiHF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/fc6ce0fa167eb63348ecddb258a0ac6e.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_mrjiHF"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#ffffff",
+        "background_gradient": ""
       }
     },
     "faq_gND4cN": {
@@ -1366,14 +1403,14 @@
         "intro_text_color": "#ffffff",
         "text_position": "center",
         "section_background": "",
-        "section_gradient_color_1": "#5a0909",
-        "section_gradient_color_2": "#200505",
+        "section_gradient_color_1": "#390A71",
+        "section_gradient_color_2": "#1D0235",
         "section_gradient_color_3": "#000000",
-        "section_gradient_angle": "0",
-        "section_gradient_position_1": "-1",
-        "section_gradient_position_2": "5",
-        "section_gradient_position_3": "80",
-        "wrapper_background": "",
+        "section_gradient_angle": "",
+        "section_gradient_position_1": "",
+        "section_gradient_position_2": "",
+        "section_gradient_position_3": "",
+        "wrapper_background": "#171717",
         "wrapper_gradient_color_1": "#271716",
         "wrapper_gradient_color_2": "#1f1817",
         "wrapper_gradient_color_3": "#151414",
@@ -1426,6 +1463,7 @@
       "block_order": [
         "judge_me_reviews_review_widget_gKPfXa"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
@@ -1561,14 +1599,16 @@
     "page_hero_banner_RjYFEh",
     "custom_heading_XjJCrC",
     "video_BQHRRz",
+    "product_media_banner_wEaYQX",
     "series_comparison_table_Hbh884",
+    "brand_story_nCwggX",
     "media_with_text_nfDdtd",
-    "image_with_text_overlay_E7Vjd6",
+    "brand_story_Wg9PTn",
     "media_with_text_aXCG8m",
-    "video_with_text_AXLDy3",
-    "video_with_text_H7hrkw",
     "specification_table_V9fxRr",
-    "series_comparison_table_GcmTwG",
+    "product_specs_zfiYLL",
+    "page_hero_banner_GqzGWM",
+    "slideshow_7EcqVi",
     "faq_gND4cN",
     "178254800403c25569",
     "related-products",
