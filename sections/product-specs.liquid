@@ -1,0 +1,472 @@
+{%- liquid
+  if section.settings.accent_gradient != blank
+    assign accent_bg = section.settings.accent_gradient
+  else
+    assign accent_bg = section.settings.accent_color | default: '#FF0000'
+  endif
+-%}
+{%- style -%}
+  .product-specs-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: 100px;
+    padding-bottom: 100px;
+    color: #ffffff;
+    overflow: hidden;
+    --ps-accent: {{ accent_bg }};
+  }
+
+  .product-specs-{{ section.id }} .ps-container {
+    max-width: calc(63.5vw + 60px);
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
+  .product-specs-{{ section.id }} .ps-header {
+    text-align: left;
+    margin-bottom: 60px;
+  }
+
+  .product-specs-{{ section.id }} .ps-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 0px;
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+
+  .product-specs-{{ section.id }} .ps-title::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    right: 0;
+    width: 200px;
+    height: 10px;
+    background: var(--ps-accent);
+    border-radius: 5px;
+    transform: rotate(-1deg);
+    z-index: 1;
+    display: none;
+  }
+
+  /* Tabs Nav */
+  .product-specs-{{ section.id }} .ps-tabs-nav {
+    display: flex;
+    margin-top: 48px;
+    margin-bottom: 80px;
+    border: 1px solid #333;
+    border-radius: 16px;
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .product-specs-{{ section.id }} .ps-tab-btn {
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #e5e5e5;
+    color: #000000;
+    transition: all 0.3s ease;
+    border: none;
+    min-width: 240px;
+    text-align: center;
+  }
+
+  .product-specs-{{ section.id }} .ps-tab-btn.active {
+    background: var(--ps-accent);
+    color: #ffffff;
+  }
+
+  .ps-mobile-text { display: none; }
+  .ps-desktop-text { display: inline; }
+
+  /* Tab Content Area */
+  .product-specs-{{ section.id }} .ps-tab-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .product-specs-{{ section.id }} .ps-tab-panel.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Geometry Tab Layout */
+  .product-specs-{{ section.id }} .ps-geometry-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .product-specs-{{ section.id }} .ps-geometry-image {
+    flex: 1;
+  }
+
+  .product-specs-{{ section.id }} .ps-geometry-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+  }
+
+  .product-specs-{{ section.id }} .ps-geometry-list {
+    flex: 0 0 400px;
+  }
+
+  /* Spec List Shared Styles */
+  .product-specs-{{ section.id }} .ps-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+  }
+
+  .product-specs-{{ section.id }} .ps-list-label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+  .product-specs-{{ section.id }} .ps-list-icon {
+    width: 36px;
+    height: 36px;
+    background: #2f2f2f;
+    color: #999999;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .product-specs-{{ section.id }} .ps-list-value {
+    width: 52%;
+    text-align: right;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  /* Specification Tab Layout (Double Columns) */
+  .product-specs-{{ section.id }} .ps-specification-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
+  }
+
+  /* Box Tab Layout */
+  .product-specs-{{ section.id }} .ps-box-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
+  }
+
+  /* 1200px Adaption */
+  @media screen and (max-width: 1200px) {
+    .product-specs-{{ section.id }} {
+      padding-top: calc(100 / 1200 * 100vw);
+      padding-bottom: calc(100 / 1200 * 100vw);
+    }
+    .product-specs-{{ section.id }} .ps-container { padding: 0 calc(30 / 1200 * 100vw); }
+    .product-specs-{{ section.id }} .ps-header { margin-bottom: calc(60 / 1200 * 100vw); }
+    .product-specs-{{ section.id }} .ps-title { font-size: calc(40 / 1200 * 100vw); }
+    .product-specs-{{ section.id }} .ps-title::after {
+      bottom: calc(-10 / 1200 * 100vw);
+      width: calc(200 / 1200 * 100vw);
+      height: calc(10 / 1200 * 100vw);
+    }
+    .product-specs-{{ section.id }} .ps-tabs-nav {
+      margin-top: calc(48 / 1200 * 100vw);
+      margin-bottom: calc(80 / 1200 * 100vw);
+      border-radius: calc(16 / 1200 * 100vw);
+    }
+    .product-specs-{{ section.id }} .ps-tab-btn {
+      padding: calc(10 / 1200 * 100vw) calc(30 / 1200 * 100vw);
+      font-size: calc(18 / 1200 * 100vw);
+      min-width: calc(240 / 1200 * 100vw);
+    }
+    .product-specs-{{ section.id }} .ps-geometry-content { gap: calc(120 / 1200 * 100vw); }
+    .product-specs-{{ section.id }} .ps-geometry-image img { border-radius: calc(16 / 1200 * 100vw); }
+    .product-specs-{{ section.id }} .ps-geometry-list { flex: 0 0 calc(400 / 1200 * 100vw); }
+    .product-specs-{{ section.id }} .ps-list-item { padding: calc(24 / 1200 * 100vw) 0; }
+    .product-specs-{{ section.id }} .ps-list-label, .product-specs-{{ section.id }} .ps-list-value { font-size: calc(16 / 1200 * 100vw); }
+    .product-specs-{{ section.id }} .ps-list-icon { width: calc(36 / 1200 * 100vw); height: calc(36 / 1200 * 100vw); font-size: calc(16 / 1200 * 100vw); }
+    .product-specs-{{ section.id }} .ps-specification-content, .product-specs-{{ section.id }} .ps-box-content { gap: 0 calc(60 / 1200 * 100vw); }
+  }
+
+  /* Mobile 768px Adaption */
+  @media screen and (max-width: 768px) {
+    .product-specs-{{ section.id }} {
+      padding-top: calc(80 / 750 * 100vw);
+      padding-bottom: calc(80 / 750 * 100vw);
+    }
+    .product-specs-{{ section.id }} .ps-container { padding: 0 calc(40 / 750 * 100vw); }
+    .product-specs-{{ section.id }} .ps-header { margin-bottom: calc(40 / 750 * 100vw); }
+    .product-specs-{{ section.id }} .ps-title { font-size: calc(48 / 750 * 100vw); }
+    .product-specs-{{ section.id }} .ps-title::after {
+      bottom: calc(-8 / 750 * 100vw);
+      width: calc(160 / 750 * 100vw);
+      height: calc(8 / 750 * 100vw);
+    }
+    .product-specs-{{ section.id }} .ps-tabs-nav {
+      margin-top: calc(32 / 750 * 100vw);
+      margin-bottom: calc(60 / 750 * 100vw);
+      width: 100%;
+      border-radius: calc(16 / 750 * 100vw);
+    }
+    .product-specs-{{ section.id }} .ps-tab-btn {
+      flex: 1;
+      padding: calc(20 / 750 * 100vw) calc(10 / 750 * 100vw);
+      font-size: calc(22 / 750 * 100vw);
+    }
+    .ps-mobile-text { display: inline; }
+    .ps-desktop-text { display: none; }
+    .product-specs-{{ section.id }} .ps-geometry-content {
+      flex-direction: column;
+      gap: calc(40 / 750 * 100vw);
+    }
+    .product-specs-{{ section.id }} .ps-geometry-image img { border-radius: calc(16 / 750 * 100vw); }
+    .product-specs-{{ section.id }} .ps-specification-content, .product-specs-{{ section.id }} .ps-box-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .product-specs-{{ section.id }} .ps-geometry-list { flex: 0 0 auto; width: 100%; }
+    .product-specs-{{ section.id }} .ps-list-item { padding: calc(28 / 750 * 100vw) 0; }
+    .product-specs-{{ section.id }} .ps-list-label, .product-specs-{{ section.id }} .ps-list-value { font-size: calc(24 / 750 * 100vw); }
+    .product-specs-{{ section.id }} .ps-list-icon { width: calc(40 / 750 * 100vw); height: calc(40 / 750 * 100vw); font-size: calc(18 / 750 * 100vw); }
+  }
+{%- endstyle -%}
+
+<div class="product-specs-{{ section.id }}" id="ProductSpecs-{{ section.id }}">
+  <div class="ps-container">
+    <div class="ps-header">
+      <h2 class="ps-title">{{ section.settings.title }}</h2>
+      <div class="ps-tabs-nav">
+        <button class="ps-tab-btn active" data-tab="geometry">
+          <span class="ps-desktop-text">Geometry</span>
+          <span class="ps-mobile-text">Geo</span>
+        </button>
+        <button class="ps-tab-btn" data-tab="specification">
+          <span class="ps-desktop-text">Specifications</span>
+          <span class="ps-mobile-text">Spec</span>
+        </button>
+        <button class="ps-tab-btn" data-tab="box">
+          <span class="ps-desktop-text">What's in the Box</span>
+          <span class="ps-mobile-text">In Box</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="ps-tabs-content">
+      {% comment %} Geometry Panel {% endcomment %}
+      <div class="ps-tab-panel active" id="pane-geometry">
+        <div class="ps-geometry-content">
+          <div class="ps-geometry-image">
+            {% if section.settings.geometry_image != blank %}
+              {{ section.settings.geometry_image | image_url: width: 1200 | image_tag: loading: 'lazy' }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="ps-geometry-list">
+            {% for block in section.blocks %}
+              {% if block.type == 'geometry_item' %}
+                <div class="ps-list-item" {{ block.shopify_attributes }}>
+                  <div class="ps-list-label">
+                    <span class="ps-list-icon">{{ block.settings.label_id }}</span>
+                    {{ block.settings.label }}
+                  </div>
+                  <div class="ps-list-value">{{ block.settings.value }}</div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Specification Panel {% endcomment %}
+      <div class="ps-tab-panel" id="pane-specification">
+        <div class="ps-specification-content">
+          {% assign spec_blocks = section.blocks | where: 'type', 'spec_item' %}
+          {% assign spec_count = spec_blocks.size %}
+          {% assign half_count = spec_count | plus: 1 | divided_by: 2 %}
+
+          <div class="ps-spec-column">
+            {% for i in (0..half_count) %}
+              {% assign block = spec_blocks[i] %}
+              {% if block %}
+                <div class="ps-list-item" {{ block.shopify_attributes }}>
+                  <div class="ps-list-label">{{ block.settings.label }}</div>
+                  <div class="ps-list-value">{{ block.settings.value }}</div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="ps-spec-column">
+            {% for i in (half_count..spec_count) %}
+              {% assign block = spec_blocks[i] %}
+              {% if block %}
+                <div class="ps-list-item" {{ block.shopify_attributes }}>
+                  <div class="ps-list-label">{{ block.settings.label }}</div>
+                  <div class="ps-list-value">{{ block.settings.value }}</div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Box Panel {% endcomment %}
+      <div class="ps-tab-panel" id="pane-box">
+        <div class="ps-box-content">
+          {% assign box_blocks = section.blocks | where: 'type', 'box_item' %}
+          {% assign box_count = box_blocks.size %}
+          {% assign half_box = box_count | plus: 1 | divided_by: 2 %}
+
+          <div class="ps-box-column">
+            {% for i in (0..half_box) %}
+              {% assign block = box_blocks[i] %}
+              {% if block %}
+                <div class="ps-list-item" {{ block.shopify_attributes }}>
+                  <div class="ps-list-label">
+                    <span class="ps-list-icon">{{ block.settings.label_id }}</span>
+                    {{ block.settings.label }}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="ps-box-column">
+            {% for i in (half_box..box_count) %}
+              {% assign block = box_blocks[i] %}
+              {% if block %}
+                <div class="ps-list-item" {{ block.shopify_attributes }}>
+                  <div class="ps-list-label">
+                    <span class="ps-list-icon">{{ block.settings.label_id }}</span>
+                    {{ block.settings.label }}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const section = document.querySelector('#ProductSpecs-{{ section.id }}');
+      const buttons = section.querySelectorAll('.ps-tab-btn');
+      const panels = section.querySelectorAll('.ps-tab-panel');
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = btn.dataset.tab;
+
+          buttons.forEach((b) => b.classList.remove('active'));
+          panels.forEach((p) => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          section.querySelector('#pane-' + target).classList.add('active');
+        });
+      });
+    });
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Product Specifications",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Specifications And Parameters"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Active tab accent"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Solid color",
+      "default": "#FF0000",
+      "info": "Used when gradient is empty."
+    },
+    {
+      "type": "color_background",
+      "id": "accent_gradient",
+      "label": "Gradient (optional)",
+      "info": "When set, overrides the solid color. Supports linear/radial gradients."
+    },
+    {
+      "type": "image_picker",
+      "id": "geometry_image",
+      "label": "Geometry Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "geometry_item",
+      "name": "Geometry Item",
+      "settings": [
+        { "type": "text", "id": "label_id", "label": "ID (A, B, C...)", "default": "A" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Total Length" },
+        { "type": "text", "id": "value", "label": "Value", "default": "168cm" }
+      ]
+    },
+    {
+      "type": "spec_item",
+      "name": "Specification Item",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Top speed" },
+        { "type": "text", "id": "value", "label": "Value", "default": "50 Mph" }
+      ]
+    },
+    {
+      "type": "box_item",
+      "name": "Box Item",
+      "settings": [
+        { "type": "text", "id": "label_id", "label": "ID (A, B, C...)", "default": "A" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Yozma IN 10 Pro Dirt Bike*1" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Specifications",
+      "blocks": [
+        { "type": "geometry_item", "settings": { "label_id": "A", "label": "Total Length", "value": "168cm" } },
+        { "type": "geometry_item", "settings": { "label_id": "B", "label": "Handlebar Height", "value": "105cm" } },
+        { "type": "spec_item", "settings": { "label": "Top speed", "value": "50 Mph" } },
+        { "type": "spec_item", "settings": { "label": "Motor", "value": "5500W Peak, Brushless Motor" } },
+        { "type": "box_item", "settings": { "label_id": "A", "label": "Yozma IN 10 Pro Dirt Bike*1" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,344 @@
+{%- comment -%}
+  Product media banner: video (priority) or image.
+  Priority: Shopify video > MP4 URL > YouTube/Vimeo > image.
+  Width 100% of container, height auto, no crop.
+{%- endcomment -%}
+
+{%- liquid
+  assign media_video = section.settings.video
+  assign media_mp4_url = section.settings.mp4_url | strip
+  assign media_external = section.settings.external_video_url
+  assign media_image = section.settings.image
+  assign media_type = blank
+
+  if media_video != blank
+    assign media_type = 'shopify_video'
+  elsif media_mp4_url != blank
+    assign media_type = 'mp4'
+  elsif media_external != blank
+    assign media_type = 'external'
+  elsif media_image != blank
+    assign media_type = 'image'
+  endif
+
+  assign autoplay = section.settings.autoplay
+  assign show_controls = section.settings.show_controls
+  assign loop = section.settings.loop
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .product-media-banner {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .product-media-banner__media {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: {{ section.settings.border_radius }}px;
+  }
+
+  #shopify-section-{{ section.id }} .product-media-banner__embed {
+    position: relative;
+    width: 100%;
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+
+  #shopify-section-{{ section.id }} .product-media-banner__embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .product-media-banner__placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: {{ section.settings.border_radius }}px;
+    background: #111;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .product-media-banner {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-right: {{ section.settings.mobile_padding_right }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+      padding-left: {{ section.settings.mobile_padding_left }}px;
+    }
+  }
+</style>
+
+<div class="product-media-banner">
+  {%- case media_type -%}
+    {%- when 'shopify_video' -%}
+      {{ media_video
+        | video_tag:
+          class: 'product-media-banner__media',
+          autoplay: autoplay,
+          muted: autoplay,
+          loop: loop,
+          controls: show_controls,
+          playsinline: true,
+          preload: 'metadata',
+          image_size: '1600x'
+      }}
+
+    {%- when 'mp4' -%}
+      <video
+        class="product-media-banner__media"
+        src="{{ media_mp4_url | escape }}"
+        playsinline
+        preload="metadata"
+        {% if autoplay %}autoplay muted{% endif %}
+        {% if loop %}loop{% endif %}
+        {% if show_controls %}controls{% endif %}
+      ></video>
+
+    {%- when 'external' -%}
+      {%- liquid
+        assign embed_controls = 1
+        if show_controls == false
+          assign embed_controls = 0
+        endif
+      -%}
+      <div class="product-media-banner__embed">
+        {%- if media_external.type == 'youtube' -%}
+          <iframe
+            src="https://www.youtube.com/embed/{{ media_external.id }}?playsinline=1&rel=0&modestbranding=1&controls={{ embed_controls }}{% if autoplay %}&autoplay=1&mute=1{% endif %}{% if loop %}&loop=1&playlist={{ media_external.id }}{% endif %}&enablejsapi=1&origin={{ 'https://' | append: request.host | url_encode }}"
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            allowfullscreen
+            title="YouTube video"
+            loading="lazy"
+          ></iframe>
+        {%- elsif media_external.type == 'vimeo' -%}
+          <iframe
+            src="https://player.vimeo.com/video/{{ media_external.id }}?autopause=1&responsive=1&transparent=0&portrait=0&title=0&byline=0{% if autoplay %}&autoplay=1&muted=1{% endif %}{% if loop %}&loop=1{% endif %}{% unless show_controls %}&controls=0&background=1{% endunless %}"
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            allowfullscreen
+            title="Vimeo video"
+            loading="lazy"
+          ></iframe>
+        {%- endif -%}
+      </div>
+
+    {%- when 'image' -%}
+      {%- liquid
+        assign image_alt = media_image.alt | default: product.title
+        assign side_pad = section.settings.mobile_padding_left | plus: section.settings.mobile_padding_right
+      -%}
+      {%- capture image_sizes -%}(max-width: 749px) calc(100vw - {{ side_pad }}px), min({{ section.settings.max_width }}px, 100vw){%- endcapture -%}
+      {{ media_image
+        | image_url: width: media_image.width
+        | image_tag:
+          class: 'product-media-banner__media',
+          widths: '400,600,800,1000,1200,1400,1600,1800,2000',
+          sizes: image_sizes,
+          loading: 'lazy',
+          alt: image_alt
+      }}
+
+    {%- else -%}
+      <div class="product-media-banner__placeholder">
+        Add a Shopify video, MP4 URL, YouTube/Vimeo URL, or image in this section.
+      </div>
+  {%- endcase -%}
+</div>
+
+{% schema %}
+{
+  "name": "Product media banner",
+  "tag": "section",
+  "class": "shopify-section--product-media-banner",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Priority: Shopify video → MP4 URL → YouTube/Vimeo → image. Media fills configured width at 100% with auto height (no crop)."
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Shopify video",
+      "info": "Highest priority when set."
+    },
+    {
+      "type": "text",
+      "id": "mp4_url",
+      "label": "MP4 URL",
+      "info": "Direct .mp4 link. Used when Shopify video is empty."
+    },
+    {
+      "type": "video_url",
+      "id": "external_video_url",
+      "accept": ["youtube", "vimeo"],
+      "label": "YouTube or Vimeo URL",
+      "info": "Used when Shopify video and MP4 URL are empty."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Fallback when no video is set."
+    },
+    {
+      "type": "header",
+      "content": "Video options"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "info": "Video is muted when autoplay is enabled (browser requirement).",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Show controls",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Content max width",
+      "min": 600,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1000
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile padding"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_left",
+      "label": "Mobile left padding",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_right",
+      "label": "Mobile right padding",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product media banner"
+    }
+  ]
+}
+{% endschema %}

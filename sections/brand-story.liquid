@@ -1,0 +1,186 @@
+{%- style -%}
+  .brand-story-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: 100px;
+    padding-bottom: 100px;
+    color: #ffffff;
+    overflow: hidden;
+  }
+
+  .brand-story-{{ section.id }} .bs-container {
+    max-width: calc(63.5vw + 60px);
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
+  .brand-story-{{ section.id }} .bs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .brand-story-{{ section.id }} .bs-title-wrap {
+    flex: 0 0 45%;
+  }
+
+  .brand-story-{{ section.id }} .bs-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+  }
+
+  .brand-story-{{ section.id }} .bs-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 220px;
+    height: 10px;
+    background: #FF6501;
+    border-radius: 5px;
+    transform: rotate(-1.5deg);
+    z-index: 1;
+    display: none;
+  }
+
+  .brand-story-{{ section.id }} .bs-desc-wrap {
+    flex: 0 0 45%;
+  }
+
+  .brand-story-{{ section.id }} .bs-description {
+    color: #999999;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  .brand-story-{{ section.id }} .bs-image-wrap {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .brand-story-{{ section.id }} .bs-image-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* 1200px Adaption */
+  @media screen and (max-width: 1200px) {
+    .brand-story-{{ section.id }} {
+      padding-top: calc(100 / 1200 * 100vw);
+      padding-bottom: calc(100 / 1200 * 100vw);
+    }
+    .brand-story-{{ section.id }} .bs-container { padding: 0 calc(30 / 1200 * 100vw); max-width: none; }
+    .brand-story-{{ section.id }} .bs-header {
+      gap: calc(80 / 1200 * 100vw);
+      margin-bottom: calc(80 / 1200 * 100vw);
+    }
+    .brand-story-{{ section.id }} .bs-title { font-size: calc(40 / 1200 * 100vw); }
+    .brand-story-{{ section.id }} .bs-title::after {
+      bottom: calc(-10 / 1200 * 100vw);
+      width: calc(220 / 1200 * 100vw);
+      height: calc(10 / 1200 * 100vw);
+    }
+    .brand-story-{{ section.id }} .bs-description { font-size: calc(16 / 1200 * 100vw); }
+    .brand-story-{{ section.id }} .bs-image-wrap {
+      border-radius: calc(16 / 1200 * 100vw);
+    }
+  }
+
+  /* Mobile 768px Adaption */
+  @media screen and (max-width: 768px) {
+    .brand-story-{{ section.id }} {
+      padding-top: calc(80 / 750 * 100vw);
+      padding-bottom: calc(80 / 750 * 100vw);
+    }
+    .brand-story-{{ section.id }} .bs-container { padding: 0 calc(40 / 750 * 100vw); }
+    .brand-story-{{ section.id }} .bs-header {
+      flex-direction: column;
+      gap: calc(30 / 750 * 100vw);
+      margin-bottom: calc(60 / 750 * 100vw);
+    }
+    .brand-story-{{ section.id }} .bs-title-wrap,
+    .brand-story-{{ section.id }} .bs-desc-wrap {
+      flex: 0 0 100%;
+    }
+    .brand-story-{{ section.id }} .bs-title { font-size: calc(48 / 750 * 100vw); }
+    .brand-story-{{ section.id }} .bs-title::after {
+      bottom: calc(-8 / 750 * 100vw);
+      width: calc(180 / 750 * 100vw);
+      height: calc(8 / 750 * 100vw);
+    }
+    .brand-story-{{ section.id }} .bs-description { font-size: calc(24 / 750 * 100vw); color: #999999; }
+    .brand-story-{{ section.id }} .bs-image-wrap {
+      max-height: calc(700 / 750 * 100vw);
+      border-radius: calc(16 / 750 * 100vw);
+    }
+  }
+{%- endstyle -%}
+
+<div class="brand-story-{{ section.id }}">
+  <div class="bs-container">
+    <div class="bs-header">
+      <div class="bs-title-wrap">
+        <h2 class="bs-title">{{ section.settings.title }}</h2>
+      </div>
+      <div class="bs-desc-wrap">
+        <div class="bs-description">
+          {{ section.settings.description }}
+        </div>
+      </div>
+    </div>
+    <div class="bs-image-wrap">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy' }}
+      {% else %}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Playful by choice. Predictable by design."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Most bikes avoid excitement to stay safe. Flux X26 is engineered to manage excitement instead. Acceleration feels responsive, not jumpy. Handling feels lively, not nervous. You stay in control — even when you're having fun."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#1a1a1a"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story"
+    }
+  ]
+}
+{% endschema %}
+

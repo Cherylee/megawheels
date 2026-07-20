@@ -1255,10 +1255,99 @@
         "mobile_content_padding_bottom": 0,
         "mobile_content_padding_left": 10
       }
+    },
+    "product_media_banner_d2": {
+      "type": "product-media-banner",
+      "disabled": true,
+      "name": "Product media banner",
+      "settings": {
+        "mp4_url": "https://cdn.shopify.com/videos/c/o/v/a40e1b85a9e345f28685ab19b0c72ea2.mp4",
+        "autoplay": true,
+        "show_controls": true,
+        "loop": true,
+        "max_width": 1000,
+        "border_radius": 10,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30,
+        "mobile_padding_left": 20,
+        "mobile_padding_right": 20
+      }
+    },
+    "brand_story_d2": {
+      "type": "brand-story",
+      "disabled": true,
+      "name": "Brand Story",
+      "settings": {
+        "title": "Playful by choice. Predictable by design.",
+        "description": "Most bikes avoid excitement to stay safe. Flux X26 is engineered to manage excitement instead. Acceleration feels responsive, not jumpy. Handling feels lively, not nervous. You stay in control — even when you're having fun.",
+        "bg_color": "#1a1a1a"
+      }
+    },
+    "product_specs_d2": {
+      "type": "product-specs",
+      "disabled": true,
+      "name": "Product Specifications",
+      "blocks": {
+        "geometry_item_a": {
+          "type": "geometry_item",
+          "settings": {
+            "label_id": "A",
+            "label": "Total Length",
+            "value": "168cm"
+          }
+        },
+        "geometry_item_b": {
+          "type": "geometry_item",
+          "settings": {
+            "label_id": "B",
+            "label": "Handlebar Height",
+            "value": "105cm"
+          }
+        },
+        "spec_item_1": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Top speed",
+            "value": "50 Mph"
+          }
+        },
+        "spec_item_2": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Motor",
+            "value": "5500W Peak, Brushless Motor"
+          }
+        },
+        "box_item_a": {
+          "type": "box_item",
+          "settings": {
+            "label_id": "A",
+            "label": "Yozma IN 10 Pro Dirt Bike*1"
+          }
+        }
+      },
+      "block_order": [
+        "geometry_item_a",
+        "geometry_item_b",
+        "spec_item_1",
+        "spec_item_2",
+        "box_item_a"
+      ],
+      "settings": {
+        "title": "Specifications And Parameters",
+        "bg_color": "#000000",
+        "accent_color": "#FF0000",
+        "accent_gradient": ""
+      }
     }
   },
   "order": [
     "main",
+    "product_media_banner_d2",
     "video_reviews_npRnwP",
     "image_with_text_overlay_fEiz4z",
     "image_with_text_overlay_fPqQtp",
@@ -1269,6 +1358,8 @@
     "video_with_text_H7hrkw",
     "media_with_text_GLycPY",
     "image_with_text_overlay_TTVcCY",
+    "brand_story_d2",
+    "product_specs_d2",
     "specification_table_V9fxRr",
     "faq_gND4cN",
     "178254800403c25569",
@@ -1276,3 +1367,4 @@
     "media_with_text_6qmpJd"
   ]
 }
+
