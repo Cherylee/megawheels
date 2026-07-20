@@ -305,14 +305,59 @@
     },
     "page_hero_banner_RjYFEh": {
       "type": "page-hero-banner",
+      "disabled": true,
       "name": "Page Hero Banner",
       "settings": {
         "image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-3840x2160-01.jpg",
         "mobile_image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-2160x3840-01.jpg"
       }
     },
+    "slideshow_g8ePTc": {
+      "type": "slideshow",
+      "blocks": {
+        "image_LwraXH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-3840x2160-01.jpg",
+            "mobile_image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-2160x3840-01.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "",
+            "title": "D3 Dirt Bike",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_LwraXH"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#F2F2F2",
+        "background_gradient": ""
+      }
+    },
     "custom_heading_XjJCrC": {
       "type": "custom-heading",
+      "disabled": true,
       "name": "独立通用标题",
       "settings": {
         "text_alignment": "center",
@@ -614,77 +659,11 @@
             "content_font_size": 16,
             "content_color": "#ffffff"
           }
-        },
-        "video_Ley9dg": {
-          "type": "video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/环绕.mp4",
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": true,
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "PIONEERING AOTOS AVANT-GARDE DESIGN LANGUAGE.",
-            "content": "<p>Industrial art meets elite performance. The MC01 Pro redefines the aesthetic benchmark by stripping away the unnecessary. Showcasing the signature AOTOS avant-garde industrial aesthetic, its sharp geometric armor and hyper-minimalist profile fuse modern sophistication with raw, mechanical heritage.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#666666",
-            "subheading_gradient": "",
-            "title_font_size": 32,
-            "title_color": "#9544d7",
-            "content_font_size": 16,
-            "content_color": "#ffffff"
-          }
-        },
-        "video_YUQLwJ": {
-          "type": "video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/显示器.mp4",
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": true,
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-end text-end",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "INTEGRATED STATUS MONITOR & ACTIVE CODES.",
-            "content": "<p>Under racing stress, data is ammunition. Backed by a high-definition status display and real-time diagnostic fault-code alerts, the onboard CPU actively monitors all core electronic networks simultaneously, securing system-level safety when pushing the machine to its absolute threshold.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#666666",
-            "subheading_gradient": "",
-            "title_font_size": 32,
-            "title_color": "#9544d7",
-            "content_font_size": 16,
-            "content_color": "#ffffff"
-          }
         }
       },
       "block_order": [
         "video_j9fBwG",
-        "video_8KXXpb",
-        "video_Ley9dg",
-        "video_YUQLwJ"
+        "video_8KXXpb"
       ],
       "name": "Media with text",
       "settings": {
@@ -720,76 +699,12 @@
         "title": "Playful by choice. Predictable by design.",
         "description": "Most bikes avoid excitement to stay safe. Flux X26 is engineered to manage excitement instead. Acceleration feels responsive, not jumpy. Handling feels lively, not nervous. You stay in control — even when you're having fun.",
         "image": "shopify://shop_images/f87e432365a53d96096ed76673bab060.jpg",
-        "bg_color": "#1a1a1a"
+        "bg_color": "#1A1A1A"
       }
     },
     "media_with_text_aXCG8m": {
       "type": "media-with-text",
       "blocks": {
-        "video_zH37wL": {
-          "type": "video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/电机.mp4",
-            "external_video_url": "",
-            "autoplay": true,
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "4800W MONSTER OUTPUT. APEX POWER DENSITY.",
-            "content": "<p>An absolute beast engineered for the relentless pursuit of speed. Boasting a massive 4800W peak output with class-leading power density, the MC01 Pro alters the laws of traction. It delivers instantaneous, aggressive high-voltage energy that pulls hard out of corners and leaves the competition behind.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#ffffff",
-            "subheading_gradient": "",
-            "title_font_size": 32,
-            "title_color": "#9544d7",
-            "content_font_size": 16,
-            "content_color": "#ffffff"
-          }
-        },
-        "video_nAfPkr": {
-          "type": "video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/防滑.mp4",
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": true,
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-end text-end",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "COMPETITION-GRADE HIGH-REBOUND PRO SADDLE.",
-            "content": "<p>Maximum support where it counts. Inspired by the Surge Pro, the Pro seat is meticulously redesigned to be wider, flatter, and thicker. Packed with premium high-rebound foam and covered in a heavy-duty, anti-slip grained technical leather, it ensures ultimate pelvic cushioning during rough landings and superior grip, keeping the rider firmly anchored under brutal acceleration.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#666666",
-            "subheading_gradient": "",
-            "title_font_size": 32,
-            "title_color": "#9544d7",
-            "content_font_size": 16,
-            "content_color": "#ffffff"
-          }
-        },
         "video_nmHz4E": {
           "type": "video",
           "settings": {
@@ -854,8 +769,6 @@
         }
       },
       "block_order": [
-        "video_zH37wL",
-        "video_nAfPkr",
         "video_nmHz4E",
         "video_Rkeg8Q"
       ],
@@ -1219,7 +1132,7 @@
           "type": "box_item",
           "settings": {
             "label_id": "D",
-            "label": "Yozma IN 10 Pro Dirt Bike*1"
+            "label": "Toolkit *1"
           }
         }
       },
@@ -1251,10 +1164,10 @@
       "name": "Product Specifications",
       "settings": {
         "title": "Specifications And Parameters",
-        "bg_color": "#000000",
+        "bg_color": "#1A1A1A",
         "accent_color": "#9544d7",
         "accent_gradient": "",
-        "geometry_image": "shopify://shop_images/4f159098ea9989fb426f3d032d918340.jpg"
+        "geometry_image": "shopify://shop_images/2_960505e1-6197-4423-b9a4-e29f1df00e51.jpg"
       }
     },
     "page_hero_banner_GqzGWM": {
@@ -1298,12 +1211,12 @@
         "full_width": false,
         "allow_transparent_header": true,
         "show_initial_transition": false,
-        "image_size": "auto",
+        "image_size": "fill",
         "controls_type": "dots",
         "transition_type": "fade_with_text",
         "autoplay": false,
         "cycle_speed": 6,
-        "background": "#ffffff",
+        "background": "#1A1A1A",
         "background_gradient": ""
       }
     },
@@ -1403,8 +1316,8 @@
         "intro_text_color": "#ffffff",
         "text_position": "center",
         "section_background": "",
-        "section_gradient_color_1": "#390A71",
-        "section_gradient_color_2": "#1D0235",
+        "section_gradient_color_1": "#390a71",
+        "section_gradient_color_2": "#1d0235",
         "section_gradient_color_3": "#000000",
         "section_gradient_angle": "",
         "section_gradient_position_1": "",
@@ -1597,6 +1510,7 @@
     "main",
     "video_reviews_npRnwP",
     "page_hero_banner_RjYFEh",
+    "slideshow_g8ePTc",
     "custom_heading_XjJCrC",
     "video_BQHRRz",
     "product_media_banner_wEaYQX",
