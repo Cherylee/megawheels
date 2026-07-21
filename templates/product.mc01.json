@@ -303,15 +303,6 @@
         "short_tab_text": "Short Video"
       }
     },
-    "page_hero_banner_RjYFEh": {
-      "type": "page-hero-banner",
-      "disabled": true,
-      "name": "Page Hero Banner",
-      "settings": {
-        "image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-3840x2160-01.jpg",
-        "mobile_image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-2160x3840-01.jpg"
-      }
-    },
     "slideshow_g8ePTc": {
       "type": "slideshow",
       "blocks": {
@@ -321,17 +312,17 @@
             "image": "shopify://shop_images/banner_900.jpg",
             "mobile_image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-2160x3840-01.jpg",
             "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
+            "mobile_text_position": "place-self-start-center text-center",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
-            "subheading": "",
-            "title": "D3 Dirt Bike",
-            "heading_tag": "h0",
+            "subheading": "Full Upgrade, Full Throttle, Full Off-Road Freedom",
+            "title": "Upgraded. Unbeatable D3",
+            "heading_tag": "h1",
             "button_text": "",
             "button_link": "",
-            "text_color": "#ffffff",
+            "text_color": "#FFFFFF",
             "button_background": "#ffffff",
             "button_text_color": "#000000",
-            "overlay_color": "#000000",
+            "overlay_color": "#FFFFFF",
             "overlay_opacity": 0,
             "background": "",
             "background_gradient": ""
@@ -345,13 +336,13 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "show_initial_transition": false,
+        "show_initial_transition": true,
         "image_size": "auto",
         "controls_type": "dots",
         "transition_type": "fade_with_text",
         "autoplay": false,
         "cycle_speed": 6,
-        "background": "#1A1A1A",
+        "background": "#1a1a1a",
         "background_gradient": ""
       }
     },
@@ -363,172 +354,19 @@
         "mp4_url": "",
         "external_video_url": "",
         "autoplay": true,
-        "show_controls": true,
+        "show_controls": false,
         "loop": false,
-        "max_width": 1220,
+        "background_color": "#000000",
+        "max_width": 1500,
         "border_radius": 0,
         "padding_top": 20,
         "padding_bottom": 20,
         "padding_left": 0,
         "padding_right": 0,
-        "mobile_padding_top": 30,
-        "mobile_padding_bottom": 30,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 10,
         "mobile_padding_left": 20,
         "mobile_padding_right": 20
-      }
-    },
-    "series_comparison_table_Hbh884": {
-      "type": "series-comparison-table",
-      "blocks": {
-        "parameter_NC6efV": {
-          "type": "parameter",
-          "settings": {
-            "label": "Peak Power",
-            "value_1": "3000 W",
-            "value_2": "3550 W",
-            "value_3": ""
-          }
-        },
-        "parameter_wEB9fB": {
-          "type": "parameter",
-          "settings": {
-            "label": "Battery Capacity",
-            "value_1": "48V23.4Ah",
-            "value_2": "48V26 Ah",
-            "value_3": "60V30 Ah"
-          }
-        },
-        "parameter_njMGp7": {
-          "type": "parameter",
-          "settings": {
-            "label": "Torque",
-            "value_1": "180 Nm",
-            "value_2": "204 Nm",
-            "value_3": "226 Nm"
-          }
-        },
-        "parameter_nL9NQn": {
-          "type": "parameter",
-          "settings": {
-            "label": "Max range",
-            "value_1": "24.85 Miles",
-            "value_2": "28 Miles",
-            "value_3": "34.2 Miles"
-          }
-        },
-        "parameter_VbXwiW": {
-          "type": "parameter",
-          "settings": {
-            "label": "Top Speed",
-            "value_1": "37.28 MPH",
-            "value_2": "38 MPH",
-            "value_3": "50 MPH"
-          }
-        },
-        "parameter_jPQaaB": {
-          "type": "parameter",
-          "settings": {
-            "label": "Payload",
-            "value_1": "242.5 lbs (110kg)",
-            "value_2": "242.5 lbs (110kg)",
-            "value_3": "264.6 lbs (120kg)"
-          }
-        },
-        "parameter_riAFjX": {
-          "type": "parameter",
-          "settings": {
-            "label": "Tire",
-            "value_1": "14\"/12\"",
-            "value_2": "14\"/12\"",
-            "value_3": "17\"/14\""
-          }
-        },
-        "parameter_XTkQtQ": {
-          "type": "parameter",
-          "settings": {
-            "label": "Suitable Height",
-            "value_1": "3.94ft-5.9ft",
-            "value_2": "3.94ft-5.9ft",
-            "value_3": "4.7ft-6.3ft"
-          }
-        },
-        "parameter_cCNTiG": {
-          "type": "parameter",
-          "settings": {
-            "label": "Charging Time",
-            "value_1": "6.5 Hours",
-            "value_2": "7 Hours",
-            "value_3": "7 Hours"
-          }
-        }
-      },
-      "block_order": [
-        "parameter_NC6efV",
-        "parameter_wEB9fB",
-        "parameter_njMGp7",
-        "parameter_nL9NQn",
-        "parameter_VbXwiW",
-        "parameter_jPQaaB",
-        "parameter_riAFjX",
-        "parameter_XTkQtQ",
-        "parameter_cCNTiG"
-      ],
-      "disabled": true,
-      "name": "Series Comparison Table",
-      "settings": {
-        "section_background": "#000000",
-        "table_padding_mobile": 10,
-        "border_color": "#9544d7",
-        "column_gap_mobile": 5,
-        "mobile_sticky_label_width": 70,
-        "mobile_product_col_min": 90,
-        "column_gap": 4,
-        "row_gap": 4,
-        "row_gap_mobile": 6,
-        "mobile_title_size": 12,
-        "mobile_price_size": 12,
-        "mobile_compare_at_size": 8,
-        "mobile_button_size": 8,
-        "mobile_title_bg_width": 65,
-        "mobile_outer_padding": 10,
-        "mobile_table_radius": 10,
-        "header_body_gap": 20,
-        "product_image_aspect_ratio": "1/1",
-        "image_title_gap": 15,
-        "product_image_max_width": 200,
-        "title_price_gap": 5,
-        "title_bg_width": 140,
-        "title_bg_height": 40,
-        "title_offset_x": -4,
-        "price_button_gap": 5,
-        "product_1_handle": "",
-        "product_2_handle": "",
-        "product_3_handle": "",
-        "product_1_image": "shopify://shop_images/dc0a0581cb17f1179c87de5dc5386c0e.png",
-        "product_1_title": "MC01",
-        "product_2_image": "shopify://shop_images/dc0a0581cb17f1179c87de5dc5386c0e.png",
-        "product_2_title": "MC01 Pro",
-        "product_3_image": "shopify://shop_images/dc0a0581cb17f1179c87de5dc5386c0e.png",
-        "product_3_title": "MC02",
-        "product_1_discount_price": "999.99",
-        "product_2_discount_price": "1699.99",
-        "product_3_discount_price": "",
-        "button_text": "Shop Now",
-        "button_font_size": 16,
-        "button_border_radius": 20,
-        "button_background": "#ff0000",
-        "button_background_dark": "#cc0000",
-        "button_text_color": "#ffffff",
-        "product_title_color": "#ffffff",
-        "product_title_font_size": 18,
-        "price_font_size": 20,
-        "compare_at_font_size": 16,
-        "compare_at_color": "#999999",
-        "label_font_size": 18,
-        "value_font_size": 16,
-        "value_color": "#ffffff",
-        "label_font_size_mobile": 10,
-        "value_font_size_mobile": 8
       }
     },
     "brand_story_nCwggX": {
@@ -536,9 +374,23 @@
       "name": "Brand Story",
       "settings": {
         "title": "226Nm PEAK TORQUE. CRUSH ANY SLOPE.",
-        "description": "Dominate the vertical. With a brutal 226Nm of peak wheel torque, the MC01 Pro provides unparalleled low-end climbing authority. It sustains absolute traction across loose shale and steep forest walls, effortlessly converting electrical energy into pure hill-climbing dominance.",
+        "description": "Dominate the vertical. With a brutal 226Nm of peak wheel torque, the D3 Pro provides unparalleled low-end climbing authority. It sustains absolute traction across loose shale and steep forest walls, effortlessly converting electrical energy into pure hill-climbing dominance.",
+        "title_color": "#9544D7",
+        "description_color": "#FFFFFF",
         "image": "shopify://shop_images/336e02a9003dd9954490ee09367c3bee.jpg",
-        "bg_color": "#1a1a1a"
+        "bg_color": "#1a1a1a",
+        "padding_top": 30,
+        "padding_bottom": 20,
+        "padding_left": 30,
+        "padding_right": 30,
+        "header_gap": 60,
+        "header_margin_bottom": 60,
+        "mobile_padding_top": 50,
+        "mobile_padding_bottom": 50,
+        "mobile_padding_left": 40,
+        "mobile_padding_right": 40,
+        "mobile_header_gap": 30,
+        "mobile_header_margin_bottom": 60
       }
     },
     "media_with_text_nfDdtd": {
@@ -557,7 +409,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "4800W MONSTER OUTPUT. APEX POWER DENSITY.",
-            "content": "<p>An absolute beast engineered for the relentless pursuit of speed. Boasting a massive 4800W peak output with class-leading power density, the MC01 Pro alters the laws of traction. It delivers instantaneous, aggressive high-voltage energy that pulls hard out of corners and leaves the competition behind.</p>",
+            "content": "<p>An absolute beast engineered for the relentless pursuit of speed. Boasting a massive 4800W peak output with class-leading power density, the D3 Pro alters the laws of traction. It delivers instantaneous, aggressive high-voltage energy that pulls hard out of corners and leaves the competition behind.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -569,7 +421,7 @@
             "subheading_font_size": 18,
             "subheading_color": "#ffffff",
             "subheading_gradient": "",
-            "title_font_size": 32,
+            "title_font_size": 36,
             "title_color": "#9544d7",
             "content_font_size": 16,
             "content_color": "#ffffff"
@@ -600,7 +452,7 @@
             "subheading_font_size": 18,
             "subheading_color": "#666666",
             "subheading_gradient": "",
-            "title_font_size": 32,
+            "title_font_size": 36,
             "title_color": "#9544d7",
             "content_font_size": 16,
             "content_color": "#ffffff"
@@ -614,8 +466,8 @@
       "name": "Media with text",
       "settings": {
         "section_background": "#000000",
-        "section_padding_top": 0,
-        "section_padding_bottom": 0,
+        "section_padding_top": 5,
+        "section_padding_bottom": 5,
         "full_width": true,
         "alternate_media_position": true,
         "spacing": "none",
@@ -642,10 +494,24 @@
       "type": "brand-story",
       "name": "Brand Story",
       "settings": {
-        "title": "Playful by choice. Predictable by design.",
-        "description": "Most bikes avoid excitement to stay safe. Flux X26 is engineered to manage excitement instead. Acceleration feels responsive, not jumpy. Handling feels lively, not nervous. You stay in control — even when you're having fun.",
+        "title": "THE ULTIMATE VESSEL FOR EXPLOSIVE FORCE.",
+        "description": "When the track demands extreme capabilities, the Pro platform delivers. The heavy-duty powertrain acts as a direct vessel for instantaneous torque, allowing pilots to clear massive technical obstacles, launch out of deep ruts, and attack the most punishing terrains with unrelenting momentum.",
+        "title_color": "#9544D7",
+        "description_color": "#FFFFFF",
         "image": "shopify://shop_images/f87e432365a53d96096ed76673bab060.jpg",
-        "bg_color": "#1a1a1a"
+        "bg_color": "#1a1a1a",
+        "padding_top": 30,
+        "padding_bottom": 20,
+        "padding_left": 30,
+        "padding_right": 30,
+        "header_gap": 60,
+        "header_margin_bottom": 60,
+        "mobile_padding_top": 80,
+        "mobile_padding_bottom": 80,
+        "mobile_padding_left": 40,
+        "mobile_padding_right": 40,
+        "mobile_header_gap": 30,
+        "mobile_header_margin_bottom": 60
       }
     },
     "media_with_text_aXCG8m": {
@@ -664,7 +530,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "PIONEERING AOTOS AVANT-GARDE DESIGN LANGUAGE.",
-            "content": "<p>Industrial art meets elite performance. The MC01 Pro redefines the aesthetic benchmark by stripping away the unnecessary. Showcasing the signature AOTOS avant-garde industrial aesthetic, its sharp geometric armor and hyper-minimalist profile fuse modern sophistication with raw, mechanical heritage.</p>",
+            "content": "<p>Industrial art meets elite performance. The D3 Pro redefines the aesthetic benchmark by stripping away the unnecessary. Showcasing the signature AOTOS avant-garde industrial aesthetic, its sharp geometric armor and hyper-minimalist profile fuse modern sophistication with raw, mechanical heritage.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -676,7 +542,7 @@
             "subheading_font_size": 18,
             "subheading_color": "#666666",
             "subheading_gradient": "",
-            "title_font_size": 32,
+            "title_font_size": 36,
             "title_color": "#9544d7",
             "content_font_size": 16,
             "content_color": "#ffffff"
@@ -707,7 +573,7 @@
             "subheading_font_size": 18,
             "subheading_color": "#666666",
             "subheading_gradient": "",
-            "title_font_size": 32,
+            "title_font_size": 36,
             "title_color": "#9544d7",
             "content_font_size": 16,
             "content_color": "#ffffff"
@@ -1249,7 +1115,7 @@
         "full_width": true,
         "subheading": "",
         "title": "FAQ",
-        "content": "<p>Read the following FAQs to learn more about Megawheels dirt bike.</p>",
+        "content": "<p>Read the following FAQs to learn more about our electric dirt bike.</p>",
         "team_avatar_width": 160,
         "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
         "answer_time": "Average answer time: 24h",
@@ -1277,7 +1143,7 @@
         "wrapper_gradient_position_1": "0",
         "wrapper_gradient_position_2": "10",
         "wrapper_gradient_position_3": "80",
-        "wrapper_padding_vertical": 28,
+        "wrapper_padding_vertical": 16,
         "wrapper_padding_horizontal": 0,
         "wrapper_border_radius": 20,
         "background": "",
@@ -1353,112 +1219,13 @@
         "product_card_background": "",
         "product_card_text_color": ""
       }
-    },
-    "media_with_text_6qmpJd": {
-      "type": "media-with-text",
-      "blocks": {
-        "video_877kEC": {
-          "type": "video",
-          "settings": {
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": true,
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "MEGAWHEELS",
-            "title": "ELECTRIC BIKE",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#fc0000",
-            "subheading_gradient": "",
-            "title_font_size": 32,
-            "title_color": "#f0c417",
-            "content_font_size": 16,
-            "content_color": "#ffffff"
-          }
-        },
-        "video_eGAfRj": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/6月9日减震.mp4",
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": true,
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "A1C Electric Scooter",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#666666",
-            "subheading_gradient": "",
-            "title_font_size": 32,
-            "title_color": "#ffb74a",
-            "content_font_size": 16,
-            "content_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "video_877kEC",
-        "video_eGAfRj"
-      ],
-      "disabled": true,
-      "name": "Media with text",
-      "settings": {
-        "section_background": "#000000",
-        "section_padding_top": 0,
-        "section_padding_bottom": 0,
-        "full_width": false,
-        "alternate_media_position": false,
-        "spacing": "none",
-        "mobile_keep_desktop_layout": false,
-        "mobile_layout_gap": 8,
-        "mobile_layout_subheading_size": 11,
-        "mobile_layout_title_size": 14,
-        "mobile_layout_text_size": 10,
-        "mobile_layout_line_height": 1.2,
-        "mobile_padding_top": 40,
-        "mobile_padding_right": 0,
-        "mobile_padding_bottom": 20,
-        "mobile_padding_left": 0,
-        "mobile_subheading_size": 18,
-        "mobile_text_size": 16,
-        "mobile_text_align": "left",
-        "mobile_content_padding_top": 0,
-        "mobile_content_padding_right": 10,
-        "mobile_content_padding_bottom": 0,
-        "mobile_content_padding_left": 10
-      }
     }
   },
   "order": [
     "main",
     "video_reviews_npRnwP",
-    "page_hero_banner_RjYFEh",
     "slideshow_g8ePTc",
     "product_media_banner_wEaYQX",
-    "series_comparison_table_Hbh884",
     "brand_story_nCwggX",
     "media_with_text_nfDdtd",
     "brand_story_Wg9PTn",
@@ -1469,7 +1236,6 @@
     "slideshow_7EcqVi",
     "faq_gND4cN",
     "178254800403c25569",
-    "related-products",
-    "media_with_text_6qmpJd"
+    "related-products"
   ]
 }
