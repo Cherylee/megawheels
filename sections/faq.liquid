@@ -89,6 +89,15 @@
     color: {{ section.settings.intro_text_color }};
   }
 
+  {%- comment -%} Availability 文案：深色背景下需显式设色，避免继承主题深色字看不见 {%- endcomment -%}
+  #shopify-section-{{ section.id }} .faq-availability {
+    color: {{ section.settings.intro_text_color | default: section.settings.text_color | default: '#cccccc' }};
+  }
+  #shopify-section-{{ section.id }} .faq-availability .text-subdued {
+    color: currentColor;
+    opacity: 0.7;
+  }
+
   .section-stack__main1_content {
     background: none;
     padding: 0px 24px;

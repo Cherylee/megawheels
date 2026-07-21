@@ -8,7 +8,7 @@
   }
 
   .brand-story-{{ section.id }} .bs-container {
-    max-width: calc(63.5vw + 60px);
+    max-width: {{ section.settings.max_width }}px;
     margin: 0 auto;
     padding-left: {{ section.settings.padding_left }}px;
     padding-right: {{ section.settings.padding_right }}px;
@@ -203,6 +203,16 @@
     {
       "type": "header",
       "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Content max width",
+      "min": 800,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1440
     },
     {
       "type": "range",

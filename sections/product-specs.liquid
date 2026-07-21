@@ -16,7 +16,7 @@
   }
 
   .product-specs-{{ section.id }} .ps-container {
-    max-width: calc(63.5vw + 60px);
+    max-width: {{ section.settings.max_width }}px;
     margin: 0 auto;
     padding: 0 30px;
   }
@@ -418,6 +418,16 @@
       "id": "bg_color",
       "label": "Background Color",
       "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Content max width",
+      "min": 800,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1440
     },
     {
       "type": "header",

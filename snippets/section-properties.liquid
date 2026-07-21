@@ -20,6 +20,8 @@ but you can override them by manually passing a different value (although this s
 * input_background: an optional color for input background
 * input_text_color: an optional color for input text color
 * full_width: a boolean saying if the section is full width or not
+* padding_top: optional top padding (px), overrides theme section spacing with !important
+* padding_bottom: optional bottom padding (px), overrides theme section spacing with !important
 {%- endcomment -%}
 
 {%- assign full_width = full_width | default: section.settings.full_width, allow_false: true -%}
@@ -28,6 +30,8 @@ but you can override them by manually passing a different value (although this s
 {%- assign text_color = text_color | default: section.settings.text_color -%}
 {%- assign input_background = input_background | default: section.settings.input_background -%}
 {%- assign input_text_color = input_text_color | default: section.settings.input_text_color -%}
+{%- assign padding_top = padding_top | default: section.settings.padding_top, allow_false: true -%}
+{%- assign padding_bottom = padding_bottom | default: section.settings.padding_bottom, allow_false: true -%}
 
 {%- if background_gradient == blank and background == blank or background == 'rgba(0,0,0,0)' or background == settings.background -%}
   {%- comment -%}The section blends, so we have to use vertical margin, and set a container{%- endcomment -%}
@@ -62,6 +66,13 @@ but you can override them by manually passing a different value (although this s
 {%- unless input_text_color == 'rgba(0,0,0,0)' or input_text_color == blank -%}
   {%- capture style_attributes -%}{{ style_attributes }} --input-text-color: {{ input_text_color.rgb }};{%- endcapture -%}
 {%- endunless -%}
+
+{%- if padding_top != blank -%}
+  {%- capture style_attributes -%}{{ style_attributes }} padding-top: {{ padding_top }}px !important; padding-block-start: {{ padding_top }}px !important;{%- endcapture -%}
+{%- endif -%}
+{%- if padding_bottom != blank -%}
+  {%- capture style_attributes -%}{{ style_attributes }} padding-bottom: {{ padding_bottom }}px !important; padding-block-end: {{ padding_bottom }}px !important;{%- endcapture -%}
+{%- endif -%}
 
 {%- if class != blank -%}
   class="section {% if tight %}section--tight{% endif %} {% if narrow %}section--narrow{% endif %} {{ class | strip }}"
