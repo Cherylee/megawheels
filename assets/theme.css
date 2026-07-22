@@ -1,4 +1,18 @@
 /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
+
+/* Megawheels responsive rem baseline (PC 1440 / Mob 750) */
+:root {
+  --megawheels-design-width-pc: 1440;
+  --megawheels-design-width-mob: 750;
+  --rem: calc(100vw / var(--megawheels-design-width-pc));
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --rem: calc(100vw / var(--megawheels-design-width-mob));
+  }
+}
+
 *, :before, :after {
   box-sizing: border-box;
   border-style: solid;
