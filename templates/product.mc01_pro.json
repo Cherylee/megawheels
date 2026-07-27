@@ -46,7 +46,6 @@
         },
         "discount_code_8wQi3T": {
           "type": "discount_code",
-          "disabled": true,
           "settings": {
             "default_checked": false
           }
@@ -309,13 +308,13 @@
         "image_LwraXH": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/banner_900.jpg",
-            "mobile_image": "shopify://shop_images/AOTOS-MC01-electric-dirt-bike-2160x3840-01.jpg",
+            "image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-900-01.jpg",
+            "mobile_image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-2160x3840-01.jpg",
             "content_max_width": 780,
             "mobile_text_position": "place-self-start-center text-center",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
-            "subheading": "Full Upgrade, Full Throttle, Full Off-Road Freedom",
-            "title": "Upgraded. Unbeatable D3",
+            "subheading": "Level Up Your Off-Road Game with Our Updated E-Dirt Bike",
+            "title": "D3 Pro, More power, more trails.",
             "heading_tag": "h1",
             "button_text": "",
             "button_link": "",
@@ -350,8 +349,8 @@
       "type": "product-media-banner",
       "name": "Product media banner",
       "settings": {
-        "video": "shopify://files/videos/MC01展示视频2026-7-22_x264.mp4",
-        "mp4_url": "",
+        "video": "shopify://files/videos/展示视频2026-7-22_x264.mp4",
+        "mp4_url": "https://cdn.shopify.com/videos/c/o/v/9937ba8de8c84815ba32bfc9c4676f40.mp4",
         "external_video_url": "",
         "autoplay": false,
         "show_controls": true,
@@ -373,93 +372,25 @@
       "type": "brand-story",
       "name": "Brand Story",
       "settings": {
-        "title": "204Nm PEAK TORQUE. CRUSH ANY SLOPE.",
-        "description": "Dominate the vertical. With a brutal 204Nm of peak wheel torque, the D3 provides unparalleled low-end climbing authority. It sustains absolute traction across loose shale and steep forest walls, effortlessly converting electrical energy into pure hill-climbing dominance.",
-        "title_color": "#9544d7",
+        "title": "226Nm PEAK TORQUE. CRUSH ANY SLOPE.",
+        "description": "Dominate the vertical. With a brutal 226Nm of peak wheel torque, the D3 Pro provides unparalleled low-end climbing authority. It sustains absolute traction across loose shale and steep forest walls, effortlessly converting electrical energy into pure hill-climbing dominance.",
+        "title_color": "#e57401",
         "description_color": "#ffffff",
-        "image": "shopify://shop_images/336e02a9003dd9954490ee09367c3bee.jpg",
+        "image": "shopify://shop_images/AOTOS-D3-PRO-electric-dirt-bike-torque-224Nm.jpg",
         "bg_color": "#1a1a1a",
         "max_width": 1440,
-        "padding_top": 30,
-        "padding_bottom": 20,
+        "padding_top": 20,
+        "padding_bottom": 10,
         "padding_left": 30,
         "padding_right": 30,
-        "header_gap": 40,
-        "header_margin_bottom": 30,
-        "mobile_padding_top": 40,
-        "mobile_padding_bottom": 40,
-        "mobile_padding_left": 40,
-        "mobile_padding_right": 40,
+        "header_gap": 60,
+        "header_margin_bottom": 20,
+        "mobile_padding_top": 30,
+        "mobile_padding_bottom": 30,
+        "mobile_padding_left": 30,
+        "mobile_padding_right": 30,
         "mobile_header_gap": 30,
         "mobile_header_margin_bottom": 60
-      }
-    },
-    "video_with_text_XfJiBr": {
-      "type": "video-with-text",
-      "name": "文字+视频模块（双比例+字体选择含Bayon）",
-      "settings": {
-        "section_bg": "#000000",
-        "section_padding_top": 0,
-        "section_padding_bottom": 0,
-        "desktop_layout": "text-right",
-        "mobile_order": "text-top",
-        "text_bg": "#000000",
-        "text_padding": 70,
-        "text_align": "left",
-        "subtitle": "",
-        "subtitle_color": "#ff0000",
-        "subtitle_size": 24,
-        "subtitle_margin_bottom": 10,
-        "subtitle_font": "inherit",
-        "subtitle_font_weight": "700",
-        "title": "3550W MONSTER OUTPUT. APEX POWER DENSITY.",
-        "title_color": "#9544d7",
-        "title_size": 32,
-        "title_margin_bottom": 20,
-        "title_font": "'Bayon', sans-serif",
-        "title_font_weight": "400",
-        "description": "An absolute beast engineered for the relentless pursuit of speed. Boasting a massive 3550W peak output with class-leading power density, the D3 alters the laws of traction. It delivers instantaneous, aggressive high-voltage energy that pulls hard out of corners and leaves the competition behind.",
-        "description_color": "#ffffff",
-        "description_size": 18,
-        "description_line_height": 1.6,
-        "video_url": "https://cdn.shopify.com/videos/c/o/v/9135c262d33c4042a3f1325c85549830.mp4",
-        "video_ratio": "16-9",
-        "video_border_radius": 0,
-        "mobile_video_margin_top": 15
-      }
-    },
-    "video_with_text_tibKdJ": {
-      "type": "video-with-text",
-      "name": "文字+视频模块（双比例+字体选择含Bayon）",
-      "settings": {
-        "section_bg": "#000000",
-        "section_padding_top": 0,
-        "section_padding_bottom": 0,
-        "desktop_layout": "text-left",
-        "mobile_order": "text-top",
-        "text_bg": "#000000",
-        "text_padding": 70,
-        "text_align": "right",
-        "subtitle": "",
-        "subtitle_color": "#ff0000",
-        "subtitle_size": 24,
-        "subtitle_margin_bottom": 10,
-        "subtitle_font": "inherit",
-        "subtitle_font_weight": "700",
-        "title": "COMPETITION-GRADE HIGH-REBOUND PRO SADDLE.",
-        "title_color": "#9544d7",
-        "title_size": 32,
-        "title_margin_bottom": 10,
-        "title_font": "'Bayon', sans-serif",
-        "title_font_weight": "400",
-        "description": "Maximum support where it counts. Inspired by the Surge Pro, the Pro seat is meticulously redesigned to be wider, flatter, and thicker. Packed with premium high-rebound foam and covered in a heavy-duty, anti-slip grained technical leather, it ensures ultimate pelvic cushioning during rough landings and superior grip, keeping the rider firmly anchored under brutal acceleration.",
-        "description_color": "#ccc",
-        "description_size": 18,
-        "description_line_height": 1.6,
-        "video_url": "https://cdn.shopify.com/videos/c/o/v/94f55b1189bf4ffb96da000e0d58bc67.mp4",
-        "video_ratio": "16-9",
-        "video_border_radius": 0,
-        "mobile_video_margin_top": 15
       }
     },
     "media_with_text_nfDdtd": {
@@ -468,48 +399,17 @@
         "video_j9fBwG": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/电机.mp4",
+            "video": "shopify://files/videos/AOTOS-D3-Pro-electric-dirt-bike-motor.mp4",
             "external_video_url": "",
             "autoplay": true,
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
-            "icon_width": 40,
-            "subheading": "",
-            "title": "3550W MONSTER OUTPUT. APEX POWER DENSITY.",
-            "content": "<p>An absolute beast engineered for the relentless pursuit of speed. Boasting a massive 3550W peak output with class-leading power density, the D3 alters the laws of traction. It delivers instantaneous, aggressive high-voltage energy that pulls hard out of corners and leaves the competition behind.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#ffffff",
-            "subheading_gradient": "",
-            "title_font_size": 28,
-            "title_color": "#9544d7",
-            "content_font_size": 16,
-            "content_color": "#ffffff"
-          }
-        },
-        "video_8KXXpb": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/防滑.mp4",
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": true,
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-end text-end",
-            "icon": "none",
             "icon_width": 48,
-            "subheading": "",
-            "title": "COMPETITION-GRADE HIGH-REBOUND PRO SADDLE.",
-            "content": "<p>Maximum support where it counts. Inspired by the Surge Pro, the Pro seat is meticulously redesigned to be wider, flatter, and thicker. Packed with premium high-rebound foam and covered in a heavy-duty, anti-slip grained technical leather, it ensures ultimate pelvic cushioning during rough landings and superior grip, keeping the rider firmly anchored under brutal acceleration.</p>",
+            "subheading": "An absolute beast engineered for the relentless pursuit of speed.",
+            "title": "4800W MONSTER OUTPUT. APEX POWER DENSITY.",
+            "content": "<p>Boasting a massive 4800W peak output with class-leading power density, the D3 Pro alters the laws of traction. It delivers instantaneous, aggressive high-voltage energy that pulls hard out of corners and leaves the competition behind.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -519,11 +419,42 @@
             "button_background": "",
             "button_text_color": "",
             "subheading_font_size": 20,
-            "subheading_color": "#666666",
+            "subheading_color": "#ffffff",
             "subheading_gradient": "",
             "title_font_size": 28,
-            "title_color": "#9544d7",
-            "content_font_size": 16,
+            "title_color": "#e57401",
+            "content_font_size": 14,
+            "content_color": "#ffffff"
+          }
+        },
+        "video_8KXXpb": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/AOTOS-D3-Pro-electric-dirt-bike-cushion.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "autoplay": true,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-end text-end",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Maximum support where it counts.",
+            "title": "COMPETITION-GRADE HIGH-REBOUND PRO SADDLE.",
+            "content": "<p>Inspired by the Surge Pro, the Pro seat is meticulously redesigned to be wider, flatter, and thicker. Packed with premium high-rebound foam and covered in a heavy-duty, anti-slip grained technical leather, it ensures ultimate pelvic cushioning during rough landings and superior grip, keeping the rider firmly anchored under brutal acceleration.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 20,
+            "subheading_color": "#ffffff",
+            "subheading_gradient": "",
+            "title_font_size": 28,
+            "title_color": "#e57401",
+            "content_font_size": 14,
             "content_color": "#ffffff"
           }
         }
@@ -532,7 +463,6 @@
         "video_j9fBwG",
         "video_8KXXpb"
       ],
-      "disabled": true,
       "name": "Media with text",
       "settings": {
         "section_background": "#000000",
@@ -547,16 +477,16 @@
         "mobile_layout_title_size": 14,
         "mobile_layout_text_size": 10,
         "mobile_layout_line_height": 1.2,
-        "mobile_padding_top": 0,
+        "mobile_padding_top": 40,
         "mobile_padding_right": 0,
-        "mobile_padding_bottom": 5,
+        "mobile_padding_bottom": 20,
         "mobile_padding_left": 0,
-        "mobile_subheading_size": 20,
-        "mobile_text_size": 13,
+        "mobile_subheading_size": 18,
+        "mobile_text_size": 16,
         "mobile_text_align": "left",
         "mobile_content_padding_top": 20,
         "mobile_content_padding_right": 15,
-        "mobile_content_padding_bottom": 5,
+        "mobile_content_padding_bottom": 20,
         "mobile_content_padding_left": 15
       }
     },
@@ -566,17 +496,17 @@
       "settings": {
         "title": "THE ULTIMATE VESSEL FOR EXPLOSIVE FORCE.",
         "description": "When the track demands extreme capabilities, the Pro platform delivers. The heavy-duty powertrain acts as a direct vessel for instantaneous torque, allowing pilots to clear massive technical obstacles, launch out of deep ruts, and attack the most punishing terrains with unrelenting momentum.",
-        "title_color": "#9544d7",
+        "title_color": "#e57401",
         "description_color": "#ffffff",
-        "image": "shopify://shop_images/f87e432365a53d96096ed76673bab060.jpg",
+        "image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-02.jpg",
         "bg_color": "#1a1a1a",
         "max_width": 1440,
-        "padding_top": 40,
+        "padding_top": 30,
         "padding_bottom": 20,
         "padding_left": 30,
         "padding_right": 30,
-        "header_gap": 50,
-        "header_margin_bottom": 40,
+        "header_gap": 60,
+        "header_margin_bottom": 60,
         "mobile_padding_top": 80,
         "mobile_padding_bottom": 80,
         "mobile_padding_left": 40,
@@ -591,7 +521,7 @@
         "video_nmHz4E": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/环绕.mp4",
+            "video": "shopify://files/videos/AOTOS-D3-Pro-electric-dirt-bike-shape.mp4",
             "external_video_url": "",
             "autoplay": true,
             "media_width": 50,
@@ -599,9 +529,9 @@
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "",
+            "subheading": "Industrial art meets elite performance.",
             "title": "PIONEERING AOTOS AVANT-GARDE DESIGN LANGUAGE.",
-            "content": "<p>Industrial art meets elite performance. The D3 redefines the aesthetic benchmark by stripping away the unnecessary. Showcasing the signature AOTOS avant-garde industrial aesthetic, its sharp geometric armor and hyper-minimalist profile fuse modern sophistication with raw, mechanical heritage.</p>",
+            "content": "<p>The D3 Pro redefines the aesthetic benchmark by stripping away the unnecessary. Showcasing the signature AOTOS avant-garde industrial aesthetic, its sharp geometric armor and hyper-minimalist profile fuse modern sophistication with raw, mechanical heritage.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -610,29 +540,29 @@
             "text_gradient": "",
             "button_background": "",
             "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#666666",
+            "subheading_font_size": 20,
+            "subheading_color": "#ffffff",
             "subheading_gradient": "",
             "title_font_size": 28,
-            "title_color": "#9544d7",
-            "content_font_size": 16,
+            "title_color": "#e57401",
+            "content_font_size": 14,
             "content_color": "#ffffff"
           }
         },
         "video_Rkeg8Q": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/显示器.mp4",
-            "external_video_url": "",
+            "video": "shopify://files/videos/AOTOS-D3-Pro-electric-dirt-bike-display.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "autoplay": true,
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center-end text-end",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "",
+            "subheading": "Under racing stress, data is ammunition.",
             "title": "INTEGRATED STATUS MONITOR & ACTIVE CODES.",
-            "content": "<p>Under racing stress, data is ammunition. Backed by a high-definition status display and real-time diagnostic fault-code alerts, the onboard CPU actively monitors all core electronic networks simultaneously, securing system-level safety when pushing the machine to its absolute threshold.</p>",
+            "content": "<p>Backed by a high-definition status display and real-time diagnostic fault-code alerts, the onboard CPU actively monitors all core electronic networks simultaneously, securing system-level safety when pushing the machine to its absolute threshold.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#000000",
@@ -641,12 +571,12 @@
             "text_gradient": "",
             "button_background": "",
             "button_text_color": "",
-            "subheading_font_size": 18,
-            "subheading_color": "#666666",
+            "subheading_font_size": 20,
+            "subheading_color": "#ffffff",
             "subheading_gradient": "",
             "title_font_size": 28,
-            "title_color": "#9544d7",
-            "content_font_size": 16,
+            "title_color": "#e57401",
+            "content_font_size": 14,
             "content_color": "#ffffff"
           }
         }
@@ -664,189 +594,22 @@
         "alternate_media_position": true,
         "spacing": "none",
         "mobile_keep_desktop_layout": false,
-        "mobile_layout_gap": 14,
+        "mobile_layout_gap": 8,
         "mobile_layout_subheading_size": 11,
-        "mobile_layout_title_size": 16,
+        "mobile_layout_title_size": 14,
         "mobile_layout_text_size": 10,
         "mobile_layout_line_height": 1.2,
-        "mobile_padding_top": 0,
-        "mobile_padding_right": 5,
-        "mobile_padding_bottom": 10,
-        "mobile_padding_left": 5,
+        "mobile_padding_top": 40,
+        "mobile_padding_right": 0,
+        "mobile_padding_bottom": 20,
+        "mobile_padding_left": 0,
         "mobile_subheading_size": 18,
         "mobile_text_size": 16,
         "mobile_text_align": "left",
         "mobile_content_padding_top": 20,
-        "mobile_content_padding_right": 10,
-        "mobile_content_padding_bottom": 0,
-        "mobile_content_padding_left": 10
-      }
-    },
-    "specification_table_V9fxRr": {
-      "type": "specification-table",
-      "blocks": {
-        "row_wzcR7b": {
-          "type": "row",
-          "settings": {
-            "heading": "Tire",
-            "value": "<p>14\" front/ 12\" rear tires</p>"
-          }
-        },
-        "row_HC3Jif": {
-          "type": "row",
-          "settings": {
-            "heading": "Speed mode",
-            "value": "<p>3 speed modes</p>"
-          }
-        },
-        "row_jgcjAd": {
-          "type": "row",
-          "settings": {
-            "heading": "Max speed",
-            "value": "<p>22mph/28mph/40mph</p>"
-          }
-        },
-        "row_LkpRh7": {
-          "type": "row",
-          "settings": {
-            "heading": "Rated motor power",
-            "value": "<p>1500W</p>"
-          }
-        },
-        "row_CWiV4g": {
-          "type": "row",
-          "settings": {
-            "heading": "Peak motor",
-            "value": "<p>3550W</p>"
-          }
-        },
-        "row_AapAEK": {
-          "type": "row",
-          "settings": {
-            "heading": "Torque",
-            "value": "<p>204NM</p>"
-          }
-        },
-        "row_Kjkwrb": {
-          "type": "row",
-          "settings": {
-            "heading": "Gradeability",
-            "value": "<p>35°</p>"
-          }
-        },
-        "row_a4nrn4": {
-          "type": "row",
-          "settings": {
-            "heading": "Maximum Load",
-            "value": "<p>243 lbs</p>"
-          }
-        },
-        "row_HkPYwM": {
-          "type": "row",
-          "settings": {
-            "heading": "Battery",
-            "value": "<p>48V, 26Ah</p>"
-          }
-        },
-        "row_a3qW4w": {
-          "type": "row",
-          "settings": {
-            "heading": "Range",
-            "value": "<p>53 miles</p>"
-          }
-        },
-        "row_PjcdBB": {
-          "type": "row",
-          "settings": {
-            "heading": "Suspension",
-            "value": "<p>Hydraulic front fork and nitrogen rear shock absorber</p>"
-          }
-        },
-        "row_Qw9iMc": {
-          "type": "row",
-          "settings": {
-            "heading": "Brake system",
-            "value": "<p>Dual hydraulic disc brake</p>"
-          }
-        },
-        "row_XaRfkd": {
-          "type": "row",
-          "settings": {
-            "heading": "Charger",
-            "value": "<p>54.6V 4A</p>"
-          }
-        },
-        "row_MHjjLG": {
-          "type": "row",
-          "settings": {
-            "heading": "Charging time",
-            "value": "<p>7 hours</p>"
-          }
-        },
-        "row_qHitgy": {
-          "type": "row",
-          "settings": {
-            "heading": "Waterproof standard",
-            "value": "<p>IP65</p>"
-          }
-        },
-        "row_mzzj4L": {
-          "type": "row",
-          "settings": {
-            "heading": "Frame material",
-            "value": "<p>Carbon steel</p>"
-          }
-        },
-        "row_QDaURX": {
-          "type": "row",
-          "settings": {
-            "heading": "Product weight",
-            "value": "<p>130 lbs</p>"
-          }
-        }
-      },
-      "block_order": [
-        "row_wzcR7b",
-        "row_HC3Jif",
-        "row_jgcjAd",
-        "row_LkpRh7",
-        "row_CWiV4g",
-        "row_AapAEK",
-        "row_Kjkwrb",
-        "row_a4nrn4",
-        "row_HkPYwM",
-        "row_a3qW4w",
-        "row_PjcdBB",
-        "row_Qw9iMc",
-        "row_XaRfkd",
-        "row_MHjjLG",
-        "row_qHitgy",
-        "row_mzzj4L",
-        "row_QDaURX"
-      ],
-      "disabled": true,
-      "name": "Specification table",
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "D2 Dirt Bike",
-        "content": "<p>Go Further, Ride Stronger.<br/>Enhanced Performance for Riders Ready to Level Up</p><p>Meet D2 - enhanced performance for growing riders with foundation skills. 204Nm peak torque paired with 40mph top speed delivers stronger off-road capability and extended range for longer adventures.</p>",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "max_rows": 5,
-        "view_all_text": "View all",
-        "view_less_text": "View less",
-        "background": "#000000",
-        "background_gradient": "",
-        "text_color": "#ffffff",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "chart_background": "#1a1a1a",
-        "chart_text_color": "#ffffff",
-        "chart_true_false_color": ""
+        "mobile_content_padding_right": 15,
+        "mobile_content_padding_bottom": 20,
+        "mobile_content_padding_left": 15
       }
     },
     "product_specs_zfiYLL": {
@@ -857,7 +620,7 @@
           "settings": {
             "label_id": "A",
             "label": "Total Length",
-            "value": "156 cm"
+            "value": "167 cm"
           }
         },
         "geometry_item_zEUtjC": {
@@ -865,7 +628,7 @@
           "settings": {
             "label_id": "B",
             "label": "Handlebar Height",
-            "value": "95 cm"
+            "value": "105 cm"
           }
         },
         "geometry_item_6FUxAq": {
@@ -873,7 +636,7 @@
           "settings": {
             "label_id": "C",
             "label": "Wheelbase",
-            "value": "110 cm"
+            "value": "115.5 cm"
           }
         },
         "geometry_item_6eyFNN": {
@@ -881,7 +644,7 @@
           "settings": {
             "label_id": "D",
             "label": "Seat Height",
-            "value": "72 cm"
+            "value": "81 cm"
           }
         },
         "geometry_item_DWFfQY": {
@@ -889,63 +652,28 @@
           "settings": {
             "label_id": "E",
             "label": "Ground clearance",
-            "value": "20 cm"
+            "value": "27 cm"
           }
         },
         "spec_item_jXAXAd": {
           "type": "spec_item",
           "settings": {
             "label": "Model",
-            "value": "D3"
-          }
-        },
-        "spec_item_NeWbKD": {
-          "type": "spec_item",
-          "settings": {
-            "label": "Top speed",
-            "value": "38 Mph"
-          }
-        },
-        "spec_item_kNzzad": {
-          "type": "spec_item",
-          "settings": {
-            "label": "Ride Modes",
-            "value": "3 ride modes"
+            "value": "D3 Pro"
           }
         },
         "spec_item_PcyLrj": {
           "type": "spec_item",
           "settings": {
             "label": "Motor",
-            "value": "1500W rated / 3550W peak motor"
+            "value": "2000W rated / 4800W peak motor"
           }
         },
         "spec_item_Fiykhb": {
           "type": "spec_item",
           "settings": {
             "label": "Torque",
-            "value": "204 N.m"
-          }
-        },
-        "spec_item_RU3gYx": {
-          "type": "spec_item",
-          "settings": {
-            "label": "Max Climbing Grade",
-            "value": "35 degrees"
-          }
-        },
-        "spec_item_ydehfG": {
-          "type": "spec_item",
-          "settings": {
-            "label": "Battery",
-            "value": "48V, 26Ah"
-          }
-        },
-        "spec_item_VREWUX": {
-          "type": "spec_item",
-          "settings": {
-            "label": "Range",
-            "value": "Up to 28 Miles"
+            "value": "226 N.m"
           }
         },
         "spec_item_Kpic6M": {
@@ -959,21 +687,42 @@
           "type": "spec_item",
           "settings": {
             "label": "Tires",
-            "value": "60/100-14\" front / 80/100-12\" rear tires"
+            "value": "70/100-17\" front / 90/100-14\" rear tires"
+          }
+        },
+        "spec_item_NeWbKD": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Top speed",
+            "value": "50 Mph"
+          }
+        },
+        "spec_item_VREWUX": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Range",
+            "value": "Up to 35 Miles"
           }
         },
         "spec_item_zD6mAA": {
           "type": "spec_item",
           "settings": {
             "label": "Bike Weight",
-            "value": "59 kg"
+            "value": "65.7 kg"
+          }
+        },
+        "spec_item_RU3gYx": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Max Climbing Grade",
+            "value": "35 degrees"
           }
         },
         "spec_item_qbbjyR": {
           "type": "spec_item",
           "settings": {
             "label": "Maximum Load",
-            "value": "110 kg"
+            "value": "120 kg"
           }
         },
         "spec_item_zt6i4F": {
@@ -990,11 +739,25 @@
             "value": "Front and rear hydraulic disc brakes"
           }
         },
+        "spec_item_ydehfG": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Battery",
+            "value": "60V, 30Ah"
+          }
+        },
+        "spec_item_kNzzad": {
+          "type": "spec_item",
+          "settings": {
+            "label": "Ride Modes",
+            "value": "3 ride modes"
+          }
+        },
         "box_item_4dnAhy": {
           "type": "box_item",
           "settings": {
             "label_id": "A",
-            "label": "MC01 Dirt Bike*1"
+            "label": "D3 Pro Dirt Bike*1"
           }
         },
         "box_item_a3zpNH": {
@@ -1026,19 +789,19 @@
         "geometry_item_6eyFNN",
         "geometry_item_DWFfQY",
         "spec_item_jXAXAd",
-        "spec_item_NeWbKD",
-        "spec_item_kNzzad",
         "spec_item_PcyLrj",
         "spec_item_Fiykhb",
-        "spec_item_RU3gYx",
-        "spec_item_ydehfG",
-        "spec_item_VREWUX",
         "spec_item_Kpic6M",
         "spec_item_P6wGGb",
+        "spec_item_NeWbKD",
+        "spec_item_VREWUX",
         "spec_item_zD6mAA",
+        "spec_item_RU3gYx",
         "spec_item_qbbjyR",
         "spec_item_zt6i4F",
         "spec_item_JRCzxj",
+        "spec_item_ydehfG",
+        "spec_item_kNzzad",
         "box_item_4dnAhy",
         "box_item_a3zpNH",
         "box_item_R9E7fF",
@@ -1049,9 +812,9 @@
         "title": "Specifications And Parameters",
         "bg_color": "#1a1a1a",
         "max_width": 1440,
-        "accent_color": "#9544d7",
+        "accent_color": "#e57401",
         "accent_gradient": "",
-        "geometry_image": "shopify://shop_images/2_960505e1-6197-4423-b9a4-e29f1df00e51.jpg"
+        "geometry_image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-dimension.jpg"
       }
     },
     "slideshow_7EcqVi": {
@@ -1060,7 +823,7 @@
         "image_mrjiHF": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/fc6ce0fa167eb63348ecddb258a0ac6e.jpg",
+            "image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-promotion.jpg",
             "content_max_width": 780,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -1102,8 +865,8 @@
         "item_bDbQJ6": {
           "type": "item",
           "settings": {
-            "title": "What electric dirt bikes does Megawheels Dirt Bike offer?",
-            "content": "<p>Megawheels D2 Series offers three electric dirt bike models: the D2 Lite,D2 and D2 Pro.<br/>The D2 Lite is an ideal entry-level electric dirt bike, featuring 14\"/12\" wheels, a 3000 W peak mid-drive motor, and a 48V/23.4 Ah battery, delivering a top speed of 38 MPH.<br/>The D2 is the high-performance upgrade, equipped with a 3550W peak mid-drive motor, 48V/26Ah battery, 14\"/12\"wheels, and a top speed of 40 MPH.<br/>The D2 Pro is the flagship model, equipped with a 6000W peak mid-drive motor, 60V/30Ah battery, 17\"/14\" wheels, and a top speed of 50 MPH.<br/>All models come with full hydraulic brakes, dual shock absorption, and three speed modes.</p>"
+            "title": "What does Megawheels Dirt Bike offer?",
+            "content": "<p>Megawheels offers D2 Series (D2 Lite, D2 and D2 Pro) and D3 series (D3, D3 Pro) electric dirt bikes.<br/>The D2 Lite is an ideal entry-level electric dirt bike, featuring 14\"/12\" wheels, a 3000 W peak mid-drive motor, and a 48V/23.4 Ah battery, delivering a top speed of 38 MPH.<br/>The D2 is the high-performance upgrade, equipped with a 3550W peak mid-drive motor, 48V/26Ah battery, 14\"/12\"wheels, and a top speed of 40 MPH.<br/>The D2 Pro is the flagship model, equipped with a 6000W peak mid-drive motor, 60V/30Ah battery, 17\"/14\" wheels, and a top speed of 50 MPH.</p><p><br/>All models come with full hydraulic brakes, dual shock absorption, and 3 speed modes.</p>"
           }
         },
         "item_Bgzi89": {
@@ -1192,21 +955,21 @@
         "intro_text_color": "#ffffff",
         "text_position": "center",
         "section_background": "",
-        "section_gradient_color_1": "#390a71",
-        "section_gradient_color_2": "#1d0235",
+        "section_gradient_color_1": "#512900",
+        "section_gradient_color_2": "#231000",
         "section_gradient_color_3": "#000000",
         "section_gradient_angle": "0",
         "section_gradient_position_1": "0",
         "section_gradient_position_2": "20",
         "section_gradient_position_3": "80",
         "wrapper_background": "#171717",
-        "wrapper_gradient_color_1": "#2a0c4c",
-        "wrapper_gradient_color_2": "#160b1f",
-        "wrapper_gradient_color_3": "#000000",
+        "wrapper_gradient_color_1": "#452911",
+        "wrapper_gradient_color_2": "#2e1200",
+        "wrapper_gradient_color_3": "#131313",
         "wrapper_gradient_angle": "0",
         "wrapper_gradient_position_1": "0",
         "wrapper_gradient_position_2": "20",
-        "wrapper_gradient_position_3": "80",
+        "wrapper_gradient_position_3": "70",
         "wrapper_padding_vertical": 16,
         "wrapper_padding_horizontal": 0,
         "wrapper_border_radius": 20,
@@ -1291,12 +1054,9 @@
     "slideshow_g8ePTc",
     "product_media_banner_wEaYQX",
     "brand_story_nCwggX",
-    "video_with_text_XfJiBr",
-    "video_with_text_tibKdJ",
     "media_with_text_nfDdtd",
     "brand_story_Wg9PTn",
     "media_with_text_aXCG8m",
-    "specification_table_V9fxRr",
     "product_specs_zfiYLL",
     "slideshow_7EcqVi",
     "faq_gND4cN",

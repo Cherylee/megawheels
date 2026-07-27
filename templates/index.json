@@ -12,28 +12,6 @@
     "slideshow_PzpeMA": {
       "type": "slideshow",
       "blocks": {
-        "image_Ch4ryC": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/2800_1000.jpg",
-            "mobile_image": "shopify://shop_images/1200_1600_d172128c-a6b3-4baf-af9b-1c9162873aab.png",
-            "content_max_width": 1200,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "shopify://pages/sales",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
         "image_janpKy": {
           "type": "image",
           "settings": {
@@ -55,11 +33,33 @@
             "background": "",
             "background_gradient": ""
           }
+        },
+        "image_Ch4ryC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-900-01.jpg",
+            "mobile_image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-750x999.jpg",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-start-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "Level Up Your Off-Road Game with Our Updated E-Dirt Bike",
+            "title": "More power, more trails.",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "shopify://products/d3-pro-electric-dirt-bike",
+            "text_color": "#ffffff",
+            "button_background": "#e57401",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
         }
       },
       "block_order": [
-        "image_Ch4ryC",
-        "image_janpKy"
+        "image_janpKy",
+        "image_Ch4ryC"
       ],
       "name": "Slideshow",
       "settings": {
@@ -113,22 +113,6 @@
         "product_card_text_color": ""
       }
     },
-    "floating_sticker_kP4cwW": {
-      "type": "floating-sticker",
-      "disabled": true,
-      "name": "🔥万能悬浮贴纸",
-      "settings": {
-        "width": 260,
-        "width_mobile": 120,
-        "horizontal_align": "center",
-        "horizontal_offset": 175,
-        "vertical_anchor": "bottom",
-        "vertical_offset": -100,
-        "rotation": -10,
-        "z_index": 5,
-        "hide_mobile": true
-      }
-    },
     "custom_heading_rK9AWx": {
       "type": "custom-heading",
       "name": "独立通用标题",
@@ -137,7 +121,7 @@
         "offset_x": 0,
         "offset_y": 0,
         "heading_text": "Find Your Perfect Ride",
-        "heading_font": "bayon_n4",
+        "heading_font": "system_ui_n4",
         "heading_size": 46,
         "heading_color": "#000000",
         "subheading_text": "Built For Speed, Crafted For Adventure",
@@ -145,7 +129,7 @@
         "subheading_size": 20,
         "subheading_color": "#666666",
         "title_spacing": 2,
-        "margin_top": 35,
+        "margin_top": 60,
         "margin_bottom": 0
       }
     },
@@ -158,7 +142,7 @@
             "title": "D2 LITE",
             "tagline": "Entry-Level Performance for Young Riders",
             "product_image": "shopify://shop_images/MEGAWHEELS-D2-Lite-electric-dirt-bike-675x1200-1.jpg",
-            "hover_video_url": "https://cdn.shopify.com/videos/c/o/v/27001a025da0450cbf15464d2f6c28be.mp4",
+            "hover_video_url": "https://cdn.shopify.com/videos/c/o/v/be78ff9ff90a495aa8ad63571f59c8e9.mp4",
             "shop_now_link": "shopify://products/d2-lite-electric-dirt-bike",
             "shop_now_text": "Shop Now",
             "add_to_cart_link": "shopify://products/d2-lite-electric-dirt-bike",
@@ -180,11 +164,11 @@
             "title": "D2",
             "tagline": "Enhanced Performance for Riders Ready to Level Up",
             "product_image": "shopify://shop_images/MEGAWHEELS-D2-electric-dirt-bike-675x1200-1.jpg",
-            "hover_video_url": "",
+            "hover_video_url": "https://cdn.shopify.com/videos/c/o/v/4abb398f275e443db8b385ee3183e38d.mp4",
             "shop_now_link": "shopify://products/d2-electric-dirt-bike",
             "shop_now_text": "Shop Now",
             "add_to_cart_link": "shopify://products/d2-electric-dirt-bike",
-            "add_to_cart_text": "$1199",
+            "add_to_cart_text": "$1099",
             "icon_1": "motor",
             "value_1": "3550W",
             "label_1": "Motor",
@@ -206,7 +190,7 @@
             "shop_now_link": "shopify://products/d2-pro-electric-dirt-bike",
             "shop_now_text": "Shop Now",
             "add_to_cart_link": "shopify://products/d2-pro-electric-dirt-bike",
-            "add_to_cart_text": "$1999",
+            "add_to_cart_text": "$1899",
             "icon_1": "motor",
             "value_1": "6000W",
             "label_1": "Motor",
@@ -240,9 +224,9 @@
         "card_bg": "#f8fafc",
         "accent_color": "#ffb74a",
         "text_color_title": "#1a1a1a",
-        "font_size_title": 24,
-        "text_align_title": "left",
-        "text_color_subtitle": "#0a0a0a",
+        "font_size_title": 32,
+        "text_align_title": "center",
+        "text_color_subtitle": "#000000",
         "font_size_subtitle": 10,
         "text_align_subtitle": "center",
         "text_color_product_title": "#ffffff",
@@ -332,7 +316,7 @@
         "container_padding": 10,
         "section_title": "Selected e-scooter for your commuting",
         "section_subtitle": "Big discount, free shipping & professional after-sales support",
-        "title_font_family": "Bayon",
+        "title_font_family": "inherit",
         "subtitle_font_family": "inherit",
         "title_align": "center",
         "title_font_size": 46,
@@ -1159,7 +1143,7 @@
         "offset_x": 0,
         "offset_y": 0,
         "heading_text": "MEGAWHEELS D2 LITE",
-        "heading_font": "bayon_n4",
+        "heading_font": "system_ui_n4",
         "heading_size": 46,
         "heading_color": "#000000",
         "subheading_text": "Entry-level Performance For Young Riders",
@@ -1331,36 +1315,6 @@
         "background_gradient": ""
       }
     },
-    "two_column_info_RxTXDA": {
-      "type": "two-column-info",
-      "disabled": true,
-      "name": "双栏信息卡片",
-      "settings": {
-        "section_padding_top": 20,
-        "section_padding_bottom": 20,
-        "section_bg_img": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-1920x868-01.jpg",
-        "bg_img_opacity": 90,
-        "bg_overlay": "#f7f7f7eb",
-        "card_bg": "#fafafa",
-        "line_color": "#ffffff",
-        "icon_color": "#fc0000",
-        "btn_bg": "#898989",
-        "btn_text": "#ffffff",
-        "title_font_size": 26,
-        "desc_font_size": 16,
-        "icon_font_size": 26,
-        "left_icon": "fa fa-gift",
-        "left_title": "Join Our Family",
-        "left_desc": "<p>Become a member today to enjoy exclusive discounts, early access to new products, and special giveaways all year long.</p>",
-        "left_btn_text": "Sign Up Now",
-        "left_btn_link": "https://megawheels.com/account/register",
-        "right_icon": "fa fa-envelope",
-        "right_title": "Need Help?",
-        "right_desc": "<p>Our support team is ready to help you with any questions about orders, products, or returns. We’re here for you 24/7.</p>",
-        "right_btn_text": "Contact Support",
-        "right_btn_link": "shopify://pages/contact-us"
-      }
-    },
     "blog_posts_CBRdTL": {
       "type": "blog-posts",
       "blocks": {
@@ -1450,7 +1404,6 @@
   "order": [
     "slideshow_PzpeMA",
     "featured_collection_DrWD8b",
-    "floating_sticker_kP4cwW",
     "custom_heading_rK9AWx",
     "product_video_carousel_tG7TPL",
     "product_grid_paHQUM",
@@ -1466,7 +1419,6 @@
     "custom_heading_n9BctT",
     "section-8",
     "slideshow_3yzyiU",
-    "two_column_info_RxTXDA",
     "blog_posts_CBRdTL",
     "17828871045a0ec593"
   ]

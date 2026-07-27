@@ -1,0 +1,528 @@
+{% comment %}
+E-Scooter 产品网格展示 Section
+新增：点击图片跳转产品详情页
+{% endcomment %}
+
+<style>
+  .product-grid-section-{{ section.id }} {
+    padding: {{ section.settings.section_padding_top }}px 0 {{ section.settings.section_padding_bottom }}px 0;
+    background: {{ section.settings.section_bg_color }};
+  }
+  .product-grid-section__header {
+    text-align: {{ section.settings.header_align }};
+    margin-bottom: {{ section.settings.header_bottom_margin }}px;
+  }
+  .product-grid-section__title {
+    font-size: {{ section.settings.title_font_size }}px;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 {{ section.settings.subtitle_margin_top }}px 0;
+    font-weight: 600;
+  }
+  .product-grid-section__subtitle {
+    font-size: {{ section.settings.subtitle_font_size }}px;
+    color: {{ section.settings.subtitle_color }};
+    margin: 0;
+  }
+  .product-grid-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ section.settings.grid_gap }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .product-grid-wrap {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .product-card {
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+  }
+  .product-card__image-wrap {
+    position: relative;
+  }
+  .product-card__image-link {
+    display: block;
+  }
+  .product-card__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: {{ section.settings.badge_bg_color }};
+    color: {{ section.settings.badge_text_color }};
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: {{ section.settings.badge_font_size }}px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    z-index: 2;
+  }
+  .product-card__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .product-card__info {
+    padding: 16px 12px 20px;
+    text-align: {{ section.settings.card_content_align }};
+  }
+  .product-card__model {
+    font-size: {{ section.settings.model_font_size }}px;
+    color: {{ section.settings.model_color }};
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .product-card__spec {
+    font-size: {{ section.settings.spec_font_size }}px;
+    color: {{ section.settings.spec_color }};
+    margin: 0 0 10px;
+  }
+  .product-card__price-wrap {
+    margin-bottom: 16px;
+  }
+  .product-card__price {
+    font-size: {{ section.settings.price_font_size }}px;
+    color: {{ section.settings.price_color }};
+    font-weight: bold;
+  }
+  .product-card__compare-price {
+    font-size: {{ section.settings.old_price_font_size }}px;
+    color: {{ section.settings.old_price_color }};
+    text-decoration: line-through;
+    margin-left: 6px;
+  }
+  .product-card__buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .btn-learn {
+    background: {{ section.settings.btn_learn_bg }};
+    color: {{ section.settings.btn_learn_text }};
+    border: none;
+    padding: 10px 4px;
+    font-size: {{ section.settings.btn_font_size }}px;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  .btn-cart {
+    background: {{ section.settings.btn_cart_bg }};
+    color: {{ section.settings.btn_cart_text }};
+    border: none;
+    padding: 10px 4px;
+    font-size: {{ section.settings.btn_font_size }}px;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+</style>
+
+<div class="product-grid-section-{{ section.id }}">
+  <div class="container">
+    {% if section.settings.section_title != blank or section.settings.section_subtitle != blank %}
+      <div class="product-grid-section__header">
+        {% if section.settings.section_title != blank %}
+          <h2 class="product-grid-section__title">{{ section.settings.section_title }}</h2>
+        {% endif %}
+        {% if section.settings.section_subtitle != blank %}
+          <p class="product-grid-section__subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="product-grid-wrap">
+      {% for block in section.blocks %}
+        {% if block.type == 'product_item' %}
+          <div class="product-card">
+            <div class="product-card__image-wrap">
+              {% if block.settings.badge_text != blank %}
+                <div class="product-card__badge">{{ block.settings.badge_text }}</div>
+              {% endif %}
+              
+              {% if block.settings.product_image and block.settings.link_learn %}
+                <a href="{{ block.settings.link_learn }}" class="product-card__image-link">
+                  <img 
+                    src="{{ block.settings.product_image | image_url: width: 800 }}" 
+                    alt="{{ block.settings.model_name }}"
+                    class="product-card__image"
+                    loading="lazy"
+                  >
+                </a>
+              {% elsif block.settings.product_image %}
+                <img 
+                  src="{{ block.settings.product_image | image_url: width: 800 }}" 
+                  alt="{{ block.settings.model_name }}"
+                  class="product-card__image"
+                  loading="lazy"
+                >
+              {% endif %}
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__model">{{ block.settings.model_name }}</h3>
+              <p class="product-card__spec">{{ block.settings.spec_text }}</p>
+              <div class="product-card__price-wrap">
+                <span class="product-card__price">{{ block.settings.current_price }}</span>
+                {% if block.settings.original_price != blank %}
+                  <span class="product-card__compare-price">{{ block.settings.original_price }}</span>
+                {% endif %}
+              </div>
+              <div class="product-card__buttons">
+                <a href="{{ block.settings.link_learn }}" class="btn-learn">{{ section.settings.btn_learn_label }}</a>
+                <a href="{{ block.settings.link_cart }}" class="btn-cart">{{ section.settings.btn_cart_label }}</a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "E-Scooter 产品网格展示",
+  "presets": [
+    {
+      "name": "电动滑板车产品卡片网格",
+      "blocks": [
+        {
+          "type": "product_item"
+        },
+        {
+          "type": "product_item"
+        },
+        {
+          "type": "product_item"
+        },
+        {
+          "type": "product_item"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "【整体区域设置】"
+    },
+    {
+      "id": "section_bg_color",
+      "type": "color",
+      "label": "Section背景色",
+      "default": "#f0f8ff"
+    },
+    {
+      "id": "section_padding_top",
+      "type": "range",
+      "label": "顶部内边距(px)",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "default": 60
+    },
+    {
+      "id": "section_padding_bottom",
+      "type": "range",
+      "label": "底部内边距(px)",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "default": 60
+    },
+    {
+      "id": "grid_gap",
+      "type": "range",
+      "label": "卡片之间间距(px)",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "default": 16
+    },
+
+    {
+      "type": "header",
+      "content": "【标题 & 副标题设置】"
+    },
+    {
+      "id": "section_title",
+      "type": "text",
+      "label": "Section大标题",
+      "default": "Our Electric Scooters"
+    },
+    {
+      "id": "section_subtitle",
+      "type": "text",
+      "label": "Section副标题",
+      "default": "Choose your perfect ride"
+    },
+    {
+      "id": "header_align",
+      "type": "select",
+      "label": "标题区域对齐方式",
+      "options": [
+        {"value":"left","label":"左对齐"},
+        {"value":"center","label":"居中"},
+        {"value":"right","label":"右对齐"}
+      ],
+      "default":"center"
+    },
+    {
+      "id": "header_bottom_margin",
+      "type": "range",
+      "label": "标题区域距离卡片间距(px)",
+      "min":10,
+      "max":80,
+      "default":40
+    },
+    {
+      "id": "title_font_size",
+      "type": "range",
+      "label": "标题字体大小(px)",
+      "min":16,
+      "max":48,
+      "default":32
+    },
+    {
+      "id": "title_color",
+      "type": "color",
+      "label": "标题文字颜色",
+      "default":"#000000"
+    },
+    {
+      "id": "subtitle_margin_top",
+      "type": "range",
+      "label": "副标题距离标题间距(px)",
+      "min":0,
+      "max":20,
+      "default":8
+    },
+    {
+      "id": "subtitle_font_size",
+      "type": "range",
+      "label": "副标题字体大小(px)",
+      "min":12,
+      "max":28,
+      "default":18
+    },
+    {
+      "id": "subtitle_color",
+      "type": "color",
+      "label": "副标题文字颜色",
+      "default":"#444444"
+    },
+
+    {
+      "type": "header",
+      "content": "【卡片内容通用设置】"
+    },
+    {
+      "id": "card_content_align",
+      "type": "select",
+      "label": "卡片内部文字对齐",
+      "options": [
+        {"value":"left","label":"左对齐"},
+        {"value":"center","label":"居中"},
+        {"value":"right","label":"右对齐"}
+      ],
+      "default":"center"
+    },
+
+    {
+      "type": "header",
+      "content": "【左上角折扣徽章 SAVE 设置】"
+    },
+    {
+      "id": "badge_bg_color",
+      "type": "color",
+      "label": "徽章背景色",
+      "default":"#38b6ff"
+    },
+    {
+      "id": "badge_text_color",
+      "type": "color",
+      "label": "徽章文字颜色",
+      "default":"#ffffff"
+    },
+    {
+      "id": "badge_font_size",
+      "type": "range",
+      "label": "徽章文字大小(px)",
+      "min":9,
+      "max":16,
+      "default":12
+    },
+
+    {
+      "type": "header",
+      "content": "【卡片文字样式】"
+    },
+    {
+      "id": "model_font_size",
+      "type": "range",
+      "label": "产品型号文字大小(px)",
+      "min":14,
+      "max":26,
+      "default":22
+    },
+    {
+      "id": "model_color",
+      "type": "color",
+      "label": "产品型号文字颜色",
+      "default":"#000000"
+    },
+    {
+      "id": "spec_font_size",
+      "type": "range",
+      "label": "参数文字大小(px)",
+      "min":11,
+      "max":18,
+      "default":15
+    },
+    {
+      "id": "spec_color",
+      "type": "color",
+      "label": "参数文字颜色",
+      "default":"#333333"
+    },
+    {
+      "id": "price_font_size",
+      "type": "range",
+      "label": "现价字体大小(px)",
+      "min":16,
+      "max":32,
+      "default":28
+    },
+    {
+      "id": "price_color",
+      "type": "color",
+      "label": "现价文字颜色",
+      "default":"#000000"
+    },
+    {
+      "id": "old_price_font_size",
+      "type": "range",
+      "label": "划掉原价字体大小(px)",
+      "min":11,
+      "max":20,
+      "default":16
+    },
+    {
+      "id": "old_price_color",
+      "type": "color",
+      "label": "划掉原价文字颜色",
+      "default":"#888888"
+    },
+
+    {
+      "type": "header",
+      "content": "【按钮全局设置】"
+    },
+    {
+      "id": "btn_learn_label",
+      "type": "text",
+      "label": "Learn More 按钮文字",
+      "default": "Learn More"
+    },
+    {
+      "id": "btn_cart_label",
+      "type": "text",
+      "label": "Add to Cart 按钮文字",
+      "default": "Add to Cart"
+    },
+    {
+      "id": "btn_font_size",
+      "type": "range",
+      "label": "按钮字体大小(px)",
+      "min":11,
+      "max":18,
+      "default":15
+    },
+    {
+      "id": "btn_learn_bg",
+      "type": "color",
+      "label": "Learn More 按钮背景",
+      "default":"#111111"
+    },
+    {
+      "id": "btn_learn_text",
+      "type": "color",
+      "label": "Learn More 按钮文字色",
+      "default":"#ffffff"
+    },
+    {
+      "id": "btn_cart_bg",
+      "type": "color",
+      "label": "Add to Cart 按钮背景",
+      "default":"#42a5f5"
+    },
+    {
+      "id": "btn_cart_text",
+      "type": "color",
+      "label": "Add to Cart 按钮文字色",
+      "default":"#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_item",
+      "name": "单个产品卡片",
+      "settings": [
+        {
+          "id": "product_image",
+          "type": "image_picker",
+          "label": "产品图片"
+        },
+        {
+          "id": "badge_text",
+          "type": "text",
+          "label": "左上角折扣文字（例如 SAVE 52%）",
+          "default": "SAVE 52%"
+        },
+        {
+          "id": "model_name",
+          "type": "text",
+          "label": "产品型号",
+          "default": "S2 Nova"
+        },
+        {
+          "id": "spec_text",
+          "type": "text",
+          "label": "参数文本",
+          "default": "20 miles | 350w | 19 mph"
+        },
+        {
+          "id": "current_price",
+          "type": "text",
+          "label": "现价",
+          "default": "$314.99"
+        },
+        {
+          "id": "original_price",
+          "type": "text",
+          "label": "原价（划线价，留空不显示）",
+          "default": "$659.99"
+        },
+        {
+          "id": "link_learn",
+          "type": "url",
+          "label": "Learn More / 图片点击跳转链接"
+        },
+        {
+          "id": "link_cart",
+          "type": "url",
+          "label": "Add to Cart 跳转链接"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

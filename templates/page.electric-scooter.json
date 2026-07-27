@@ -1,0 +1,744 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "image": "shopify://shop_images/E2-electric-scooter-1900x868-04.jpg",
+        "mobile_image": "shopify://shop_images/MEGAWHEELS-E2-electric-scooter-1000-07.jpg"
+      }
+    },
+    "product_video_carousel_7cPG7Y": {
+      "type": "product-video-carousel",
+      "blocks": {
+        "product_q37BFb": {
+          "type": "product",
+          "settings": {
+            "title": "IN 10 Pro",
+            "tagline": "High-Performance Electric Mini Dirt Bike",
+            "hover_video_url": "https://player.vimeo.com/external/434045526.sd.mp4?s=c27d3e3ca9e5adb23b20e50ef20117a5c87a22ef",
+            "shop_now_link": "",
+            "shop_now_text": "Shop Now",
+            "add_to_cart_link": "",
+            "add_to_cart_text": "Add To Cart",
+            "icon_1": "motor",
+            "value_1": "5500W",
+            "label_1": "Motor",
+            "icon_2": "torque",
+            "value_2": "220N.M",
+            "label_2": "Torque",
+            "icon_3": "speedometer",
+            "value_3": "50Mph",
+            "label_3": "Top Speed"
+          }
+        },
+        "product_yqT3HU": {
+          "type": "product",
+          "settings": {
+            "title": "IN 10 Pro",
+            "tagline": "High-Performance Electric Mini Dirt Bike",
+            "hover_video_url": "https://player.vimeo.com/external/434045526.sd.mp4?s=c27d3e3ca9e5adb23b20e50ef20117a5c87a22ef",
+            "shop_now_link": "",
+            "shop_now_text": "Shop Now",
+            "add_to_cart_link": "",
+            "add_to_cart_text": "Add To Cart",
+            "icon_1": "motor",
+            "value_1": "5500W",
+            "label_1": "Motor",
+            "icon_2": "torque",
+            "value_2": "220N.M",
+            "label_2": "Torque",
+            "icon_3": "speedometer",
+            "value_3": "50Mph",
+            "label_3": "Top Speed"
+          }
+        },
+        "product_DYC99e": {
+          "type": "product",
+          "settings": {
+            "title": "IN 10 Pro",
+            "tagline": "High-Performance Electric Mini Dirt Bike",
+            "hover_video_url": "https://player.vimeo.com/external/434045526.sd.mp4?s=c27d3e3ca9e5adb23b20e50ef20117a5c87a22ef",
+            "shop_now_link": "",
+            "shop_now_text": "Shop Now",
+            "add_to_cart_link": "",
+            "add_to_cart_text": "Add To Cart",
+            "icon_1": "motor",
+            "value_1": "5500W",
+            "label_1": "Motor",
+            "icon_2": "torque",
+            "value_2": "220N.M",
+            "label_2": "Torque",
+            "icon_3": "speedometer",
+            "value_3": "50Mph",
+            "label_3": "Top Speed"
+          }
+        }
+      },
+      "block_order": [
+        "product_q37BFb",
+        "product_yqT3HU",
+        "product_DYC99e"
+      ],
+      "disabled": true,
+      "name": "Product Video Showcase",
+      "settings": {
+        "title": "Electric scooter for commuting",
+        "subtitle": "Built for speeds. Crafted for high octane thrills.",
+        "shop_now_color": "#000000",
+        "shop_now_text_color": "#ffffff",
+        "shop_now_font_size": 13,
+        "shop_now_opacity": 1,
+        "add_to_cart_color": "#e2e8f0",
+        "add_to_cart_text_color": "#1e293b",
+        "add_to_cart_font_size": 13,
+        "add_to_cart_opacity": 1,
+        "bg_color": "#ffffff",
+        "card_bg": "#f8fafc",
+        "accent_color": "#ef4444",
+        "text_color_title": "#ff0000",
+        "font_size_title": 48,
+        "text_align_title": "left",
+        "text_color_subtitle": "#000000",
+        "font_size_subtitle": 16,
+        "text_align_subtitle": "center",
+        "text_color_product_title": "#1e293b",
+        "font_size_product_title": 28,
+        "text_align_product_title": "center",
+        "text_color_product_subtitle": "#1e293b",
+        "font_size_product_subtitle": 13,
+        "text_align_product_subtitle": "center",
+        "text_color_point_value": "#0f172a",
+        "font_size_point_value": 14,
+        "text_color_point_label": "#64748b",
+        "font_size_point_label": 11
+      }
+    },
+    "featured_product_grid_9ycrLr": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "product_item_TnX87X": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 24%",
+            "model_name": "A1C",
+            "spec_text": "12 miles | APP | 15.5 mph",
+            "current_price": "$179.99",
+            "original_price": "$235.99",
+            "link_learn": "shopify://products/a1c-electric-scooter",
+            "link_cart": "shopify://products/a1c-electric-scooter"
+          }
+        },
+        "product_item_fmwdJ6": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1200x1600.jpg",
+            "badge_text": "SAVE 20%",
+            "model_name": "A6L ECO",
+            "spec_text": "20 miles | 350w | 19 mph",
+            "current_price": "$239.99",
+            "original_price": "$292.99",
+            "link_learn": "shopify://products/a6l-eco-electric-scooter",
+            "link_cart": "shopify://products/a6l-eco-electric-scooter"
+          }
+        },
+        "product_item_pJQNA4": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-M1-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 17%",
+            "model_name": "M1",
+            "spec_text": "20 miles | 350w | 19 mph",
+            "current_price": "$249.99",
+            "original_price": "$299.99",
+            "link_learn": "shopify://products/m1-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_qhURne": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-C2-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 15%",
+            "model_name": "C2",
+            "spec_text": "12 miles | 350W | 15.5 mph",
+            "current_price": "$259.99",
+            "original_price": "$304.99",
+            "link_learn": "shopify://products/c2-electric-scooter",
+            "link_cart": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_TnX87X",
+        "product_item_fmwdJ6",
+        "product_item_pJQNA4",
+        "product_item_qhURne"
+      ],
+      "name": "电动滑板车产品卡片网格",
+      "settings": {
+        "section_bg_color": "#f0f8ff",
+        "section_padding_top": 10,
+        "section_padding_bottom": 10,
+        "grid_gap": 16,
+        "section_title": "Affordable E-Scooters under $300",
+        "section_subtitle": "Choose your perfect ride",
+        "header_align": "center",
+        "header_bottom_margin": 10,
+        "title_font_size": 30,
+        "title_color": "#000000",
+        "subtitle_margin_top": 8,
+        "subtitle_font_size": 18,
+        "subtitle_color": "#444444",
+        "card_content_align": "center",
+        "badge_bg_color": "#ff0000",
+        "badge_text_color": "#ffffff",
+        "badge_font_size": 11,
+        "model_font_size": 22,
+        "model_color": "#000000",
+        "spec_font_size": 15,
+        "spec_color": "#333333",
+        "price_font_size": 28,
+        "price_color": "#000000",
+        "old_price_font_size": 16,
+        "old_price_color": "#888888",
+        "btn_learn_label": "Learn More",
+        "btn_cart_label": "Add to Cart",
+        "btn_font_size": 15,
+        "btn_learn_bg": "#111111",
+        "btn_learn_text": "#ffffff",
+        "btn_cart_bg": "#42a5f5",
+        "btn_cart_text": "#ffffff"
+      }
+    },
+    "product_grid_qBFnna": {
+      "type": "product-grid",
+      "blocks": {
+        "product_item_xxtN3M": {
+          "type": "product_item",
+          "settings": {
+            "product": "c2-electric-scooter",
+            "product_title": "",
+            "product_specs": "1500W | 45 Miles | 34.2 Mph"
+          }
+        },
+        "product_item_VkGtpi": {
+          "type": "product_item",
+          "settings": {
+            "product": "e2-electric-scooter",
+            "product_title": "",
+            "product_specs": "1500W | 45 Miles | 34.2 Mph"
+          }
+        }
+      },
+      "block_order": [
+        "product_item_xxtN3M",
+        "product_item_VkGtpi"
+      ],
+      "disabled": true,
+      "name": "产品展示网格",
+      "settings": {
+        "bg_color": "#ffffff",
+        "section_padding_top": 40,
+        "section_padding_bottom": 40,
+        "grid_max_width": 1200,
+        "container_padding": 20,
+        "section_title": "Electric scooter with suspension",
+        "section_subtitle": "",
+        "title_font_family": "inherit",
+        "subtitle_font_family": "inherit",
+        "title_align": "center",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "title_color": "#222222",
+        "subtitle_font_size": 16,
+        "subtitle_color": "#666666",
+        "header_spacing": 30,
+        "grid_gap": 16,
+        "grid_gap_mobile": 12,
+        "card_radius": 8,
+        "sale_text_color": "#ffcc00",
+        "btn_bg_color": "#222222",
+        "btn_text_color": "#ffffff",
+        "btn_hover_color": "#444444",
+        "prod_title_font": "inherit",
+        "prod_title_size": 16,
+        "prod_title_color": "#222222",
+        "prod_spec_font": "inherit",
+        "prod_spec_size": 13,
+        "prod_spec_color": "#666666",
+        "prod_price_font": "inherit",
+        "prod_price_size": 18,
+        "prod_price_color": "#ff0000",
+        "prod_tag_font": "inherit",
+        "prod_tag_size": 14,
+        "prod_tag_color": "#1a1a1a",
+        "banner_enable": true,
+        "banner_sale_text": "Up to £450 off 11th Anniversary Sale",
+        "banner_btn_text": "Learn More",
+        "banner_btn_link": "/"
+      }
+    },
+    "gallery": {
+      "type": "product-thumbnail-gallery",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/D2__02.jpg",
+        "mobile_image": "shopify://shop_images/M__02.jpg"
+      }
+    },
+    "media_text": {
+      "type": "media-with-text",
+      "blocks": {
+        "media_block": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Precision-tuned suspension for the toughest trails. Conquer Terrain, Stay in Command",
+            "title": "",
+            "content": "<p>Engineered with a high-performance dual hydraulic suspension system and 226 N·m of torque, paired with responsive four-piston hydraulic disc brakes. Whether it's jagged rock gardens or high-speed whoops, D2 Pro keeps you planted, poised, and in absolute control.<br/></p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#ff0000",
+            "button_text_color": "#ffffff",
+            "subheading_font_size": 32,
+            "subheading_color": "#ed0000",
+            "subheading_gradient": "",
+            "title_font_size": 32,
+            "title_color": "#ffffff",
+            "content_font_size": 18,
+            "content_color": "#ffffff",
+            "mobile_text_align": "flex-start"
+          }
+        },
+        "image_CfNhq4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2_ff5579b4-b98d-4f6f-b4ff-a3a1ec26d2d8.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-end text-end",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Instant thrust, relentless acceleration. Twist. Go. Dominate.",
+            "title": "",
+            "content": "<p>The 4800W mid-drive motor delivers explosive power that propels you from zero to 50 MPH with surgical precision. Every twist of the throttle translates into immediate, linear response—giving you the confidence to hit jumps, carve corners, and own the trail like never before.<br/></p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "subheading_font_size": 32,
+            "subheading_color": "#ed0000",
+            "subheading_gradient": "",
+            "title_font_size": 32,
+            "title_color": "#000000",
+            "content_font_size": 18,
+            "content_color": "#ffffff",
+            "mobile_text_align": "flex-start"
+          }
+        }
+      },
+      "block_order": [
+        "media_block",
+        "image_CfNhq4"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_background": "#000000",
+        "section_padding_top": 20,
+        "section_padding_bottom": 20,
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "small",
+        "mobile_keep_desktop_layout": true,
+        "mobile_layout_gap": 8,
+        "mobile_layout_subheading_size": 11,
+        "mobile_layout_title_size": 14,
+        "mobile_layout_text_size": 10,
+        "mobile_layout_line_height": 1.2,
+        "mobile_padding_top": 40,
+        "mobile_padding_right": 0,
+        "mobile_padding_bottom": 20,
+        "mobile_padding_left": 0,
+        "mobile_subheading_size": 18,
+        "mobile_text_size": 16,
+        "mobile_text_align": "left",
+        "mobile_content_padding_top": 0,
+        "mobile_content_padding_right": 10,
+        "mobile_content_padding_bottom": 0,
+        "mobile_content_padding_left": 10
+      }
+    },
+    "carousel": {
+      "type": "brand-cta-carousel",
+      "blocks": {
+        "slide_nb8UCB": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1_3d70b460-417c-4e46-9059-4fafd5bc6860.jpg",
+            "mobile_image": "shopify://shop_images/1_3c316a63-8102-4158-b0a7-73c75351ad97.jpg",
+            "link": ""
+          }
+        },
+        "slide_V9NrWM": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3_2347196e-827c-4d0c-a520-158c899a6851.jpg",
+            "mobile_image": "shopify://shop_images/3_88df19df-883f-415b-b482-e319b0f76194.jpg",
+            "link": ""
+          }
+        },
+        "slide_xDMTBL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/2_fff1b2a1-d5ac-4d7d-a651-4da73afb99b9.jpg",
+            "mobile_image": "shopify://shop_images/2_88b6d51f-e5cd-486e-af63-8330251ceaba.jpg",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_nb8UCB",
+        "slide_V9NrWM",
+        "slide_xDMTBL"
+      ],
+      "disabled": true,
+      "settings": {
+        "background_color": "#000000",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "side_padding": 20,
+        "max_width": 1400,
+        "gap": 16,
+        "gap_mobile": 8,
+        "slide_width": 45,
+        "slide_width_mobile": 80,
+        "image_aspect_ratio": "16/9",
+        "border_radius": 8,
+        "auto_play": true,
+        "auto_play_interval": 5,
+        "show_arrows": true,
+        "show_dots": true,
+        "arrow_size": 40,
+        "arrow_color": "#ffffff",
+        "dot_size": 10,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_show_nav": true,
+        "mobile_show_arrows": false,
+        "mobile_nav_gap": 7,
+        "mobile_dot_size": 8,
+        "dot_active_color": "#ff0000",
+        "dot_inactive_color": "#444444",
+        "mobile_arrow_size": 20,
+        "mobile_arrow_svg_size": 40,
+        "mobile_arrow_offset": 10
+      }
+    },
+    "video_reviews_4GtVWr": {
+      "type": "video-reviews",
+      "blocks": {
+        "youtube_video_RaERKA": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "",
+            "video_title": "",
+            "date": "",
+            "author_name": ""
+          }
+        },
+        "youtube_video_ty4jJW": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "",
+            "video_title": "",
+            "date": "",
+            "author_name": ""
+          }
+        },
+        "youtube_video_9aefF4": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "",
+            "video_title": "",
+            "date": "",
+            "author_name": ""
+          }
+        },
+        "youtube_video_fmwCLB": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "",
+            "video_title": "",
+            "date": "",
+            "author_name": ""
+          }
+        }
+      },
+      "block_order": [
+        "youtube_video_RaERKA",
+        "youtube_video_ty4jJW",
+        "youtube_video_9aefF4",
+        "youtube_video_fmwCLB"
+      ],
+      "name": "视频展示轮播",
+      "settings": {
+        "title": "MEGAWHEELS E-SCOOTER REVIEWS",
+        "subtitle": "Watch our latest videos",
+        "section_bg": "#f0f0f0",
+        "section_padding": 20,
+        "items_per_row": 4,
+        "title_color": "#111111",
+        "title_size": 36,
+        "subtitle_color": "#6b7280",
+        "subtitle_size": 16,
+        "video_title_color": "#111111",
+        "video_title_size": 16,
+        "author_color": "#111111",
+        "author_size": 14,
+        "date_color": "#6b7280",
+        "date_size": 12,
+        "arrow_color": "#111111",
+        "arrow_bg": "#ffffff",
+        "arrow_size": 36,
+        "arrow_font_size": 18,
+        "youtube_tab_text": "YouTube",
+        "short_tab_text": "Short Video"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "item_mwqh3i": {
+          "type": "item",
+          "settings": {
+            "title": "1.What electric dirt bikes does Megawheels Dirt Bike offer?",
+            "content": "<p>Megawheels D2 Series offers three electric dirt bike models: the D2 Lite,D2 and D2 Pro.The D2 Lite is an ideal entry-level electric dirt bike, featuring 14\"/12\" wheels, a 3000 W peak mid-drive motor, and a 48V/23.4 Ah battery, delivering a top speed of 37.28 MPH.The D2 is the high-performance upgrade, equipped with a 3550W peak mid-drive motor, 48V/26Ah battery, 14\"/12\"wheels, and a top speed of 38 MPH.The D2 Pro is the flagship model, equipped with a 4800W peak mid-drive motor, 60V/30Ah battery, 17\"/14\" wheels, and a top speed of 50 MPH.All models come with full hydraulic brakes, dual shock absorption, and three speed modes.</p>"
+          }
+        },
+        "item_H4aL7L": {
+          "type": "item",
+          "settings": {
+            "title": "2.What is the top speed and range of the Megawheels D2 Pro electric dirt bike?",
+            "content": "<p>At its top speed of 80 km/h, the estimated riding time is about 44 minutes, with a range of approximately 29 km.</p>"
+          }
+        },
+        "item_kT6Y8w": {
+          "type": "item",
+          "settings": {
+            "title": "3.Why does Megawheels D2 Series Dirt Bike use a mid-drive motor instead of a hub motor?",
+            "content": "<p>A mid-drive motor offers several key advantages over a hub motor:- Better handling with a more balanced center of gravity. - Stronger low-speed torque for climbing and acceleration. - Better heat dissipation for consistent performance. - Easier to push when the battery is out. - Lighter wheels for improved agility and easier maintenance.</p>"
+          }
+        },
+        "item_cAjBfj": {
+          "type": "item",
+          "settings": {
+            "title": "4.Which Megawheels electric dirt bike is right for me— D2 or D2 Pro?",
+            "content": "<p>The D2 is ideal for beginners, while the D2 Pro is recommended for riders with prior electric dirt bike experience.</p>"
+          }
+        },
+        "item_Y9nR8g": {
+          "type": "item",
+          "settings": {
+            "title": "5.How long does it take to charge a Megawheels D2 Pro electric dirt bike?",
+            "content": "<p>7 hours</p>"
+          }
+        },
+        "item_x7nYLL": {
+          "type": "item",
+          "settings": {
+            "title": "6.Is the Megawheels electric dirt bike street legal?",
+            "content": "<p>Subject to local regulations. Riders who meet the applicable legal requirements and documentation can ride on public roads where permitted.</p>"
+          }
+        },
+        "item_KgFM3z": {
+          "type": "item",
+          "settings": {
+            "title": "7. What age is the Megawheeels D2 pro electric dirt bike suitable for?",
+            "content": "<p>Suitable for riders aged 13+.</p>"
+          }
+        },
+        "item_rdePUz": {
+          "type": "item",
+          "settings": {
+            "title": "8. What warranty does Megawheels offer on its electric dirt bikes?",
+            "content": "<p>Megawheels D2 Series electric dirt bikes supports a 30‑day return and refund policy. For returns due to non‑quality issues, customers are required to pay the round‑trip shipping costs. In addition, it comes with a 1‑year warranty.</p>"
+          }
+        },
+        "item_xzB8Wd": {
+          "type": "item",
+          "settings": {
+            "title": "9. Does Megawheels offer free shipping on electric dirt bikes?",
+            "content": "<p>Yes, free shipping is offered on all Megawheels electric dirt bikes.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_mwqh3i",
+        "item_H4aL7L",
+        "item_kT6Y8w",
+        "item_cAjBfj",
+        "item_Y9nR8g",
+        "item_x7nYLL",
+        "item_KgFM3z",
+        "item_rdePUz",
+        "item_xzB8Wd"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section-stack__main2 {max-width: 1240px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Megawheels FAQ",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "intro_alignment": "left",
+        "intro_heading_font_size": 32,
+        "intro_heading_color": "#ffffff",
+        "intro_text_font_size": 16,
+        "intro_text_color": "#cccccc",
+        "text_position": "center",
+        "section_background": "",
+        "section_gradient_color_1": "#5a0909",
+        "section_gradient_color_2": "#200505",
+        "section_gradient_color_3": "#000000",
+        "section_gradient_angle": "0",
+        "section_gradient_position_1": "-1",
+        "section_gradient_position_2": "5",
+        "section_gradient_position_3": "80",
+        "wrapper_background": "",
+        "wrapper_gradient_color_1": "#271716",
+        "wrapper_gradient_color_2": "#1f1817",
+        "wrapper_gradient_color_3": "#151414",
+        "wrapper_gradient_angle": "0",
+        "wrapper_gradient_position_1": "0",
+        "wrapper_gradient_position_2": "10",
+        "wrapper_gradient_position_3": "80",
+        "wrapper_padding_vertical": 28,
+        "wrapper_padding_horizontal": 0,
+        "wrapper_border_radius": 20,
+        "background": "#000000",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#111111",
+        "accordion_text_color": "#ffffff",
+        "border_width": 0,
+        "border_color": "#ffffff",
+        "mobile_wrapper_padding_top": 28,
+        "mobile_wrapper_padding_right": 0,
+        "mobile_wrapper_padding_bottom": 0,
+        "mobile_wrapper_padding_left": 0,
+        "mobile_stack_gap": 20,
+        "mobile_accordion_padding": 10,
+        "mobile_chevron_size": 20,
+        "mobile_content_padding_vertical": 0,
+        "mobile_content_padding_horizontal": 10,
+        "mobile_heading_size": 26,
+        "mobile_accordion_title_size": 12,
+        "mobile_text_size": 10,
+        "mobile_accordion_content_margin": 10
+      }
+    },
+    "1784862943abad3a2b": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_NjJjjL": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "custom_products",
+            "products": [
+              "a6l-eco-electric-scooter",
+              "c2-electric-scooter",
+              "a6l-max-electric-scooter",
+              "m1-electric-scooter",
+              "e2-electric-scooter",
+              "s2-electric-scooter",
+              "e3-electric-scooter",
+              "a1c-electric-scooter"
+            ],
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1.33",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1400,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "#ff0000",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "What customer think about our electric scooter?",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_NjJjjL"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "product_video_carousel_7cPG7Y",
+    "featured_product_grid_9ycrLr",
+    "product_grid_qBFnna",
+    "gallery",
+    "media_text",
+    "carousel",
+    "video_reviews_4GtVWr",
+    "faq",
+    "1784862943abad3a2b"
+  ]
+}

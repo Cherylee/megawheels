@@ -32,16 +32,16 @@
             "label": "Peak Power",
             "value_1": "3000 W",
             "value_2": "3550 W",
-            "value_3": "4800 W"
+            "value_3": "6000 W"
           }
         },
         "parameter_VD7GWn": {
           "type": "parameter",
           "settings": {
             "label": "Battery Capacity",
-            "value_1": "48V23.4 Ah",
-            "value_2": "48V26 Ah",
-            "value_3": "60V30 Ah"
+            "value_1": "48V 23.4 Ah",
+            "value_2": "48V 26 Ah",
+            "value_3": "60V 30 Ah"
           }
         },
         "parameter_tNW7ff": {
@@ -57,17 +57,17 @@
           "type": "parameter",
           "settings": {
             "label": "Max range",
-            "value_1": "24.85 Miles",
-            "value_2": "28 Miles",
-            "value_3": "34.2 Miles"
+            "value_1": "45 Miles",
+            "value_2": "53 Miles",
+            "value_3": "60 Miles"
           }
         },
         "parameter_PHdCJ6": {
           "type": "parameter",
           "settings": {
             "label": "Top Speed",
-            "value_1": "37.28 MPH",
-            "value_2": "38 MPH",
+            "value_1": "38 MPH",
+            "value_2": "40 MPH",
             "value_3": "50 MPH"
           }
         },
@@ -187,7 +187,7 @@
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "Precision-tuned suspension for the toughest trailsConquer Terrain, Stay in Command",
+            "subheading": "Precision-tuned suspension for the toughest trails. Conquer Terrain, Stay in Command",
             "title": "",
             "content": "<p>Engineered with a high-performance dual hydraulic suspension system and 226 N·m of torque, paired with responsive four-piston hydraulic disc brakes. Whether it's jagged rock gardens or high-speed whoops, D2 Pro keeps you planted, poised, and in absolute control.<br/></p>",
             "link_text": "",
@@ -217,7 +217,7 @@
             "text_position": "place-self-center-end text-end",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "Instant thrust, relentless accelerationTwist. Go. Dominate.",
+            "subheading": "Instant thrust, relentless acceleration. Twist. Go. Dominate.",
             "title": "",
             "content": "<p>The 4800W mid-drive motor delivers explosive power that propels you from zero to 50 MPH with surgical precision. Every twist of the throttle translates into immediate, linear response—giving you the confidence to hit jumps, carve corners, and own the trail like never before.<br/></p>",
             "link_text": "",

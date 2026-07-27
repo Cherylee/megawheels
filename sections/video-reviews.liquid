@@ -263,10 +263,10 @@
 {% assign items_per_row = section.settings.items_per_row | default: 4 %}
 {% assign item_width = 100.0 | divided_by: items_per_row | minus: 1 %}
 
-{% comment %} 引入 BAYON 字体 {% endcomment %}
+{% comment %} 引入 system_ui 字体 {% endcomment %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bayon&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=system_ui&display=swap" rel="stylesheet">
 
 <style>
   .video-review-section {
@@ -277,7 +277,7 @@
   }
   .video-review-section .section-title {
     text-align: center;
-    font-family: 'Bayon', sans-serif;
+    font-family: 'system_ui', sans-serif;
     font-size: {{ section.settings.title_size }}px;
     font-weight: normal;
     color: {{ section.settings.title_color }};

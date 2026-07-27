@@ -12,21 +12,22 @@
     "banner": {
       "type": "collection-banner",
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "allow_transparent_header": false,
-        "enable_parallax": true,
+        "enable_parallax": false,
         "show_collection_title": true,
-        "show_collection_description": true,
-        "show_collection_image": false,
-        "collection_title_size": "h1",
-        "image_size": "auto",
+        "show_collection_description": false,
+        "show_collection_image": true,
+        "collection_title_size": "h2",
+        "image_size": "lg",
+        "image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1900x868-01.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
         "featured_product_heading": "Featured product",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 0
       }
     },
     "main": {
@@ -55,15 +56,15 @@
         "promotion_image_xRjkTG"
       ],
       "settings": {
-        "products_per_page": 24,
+        "products_per_page": 16,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "filter_layout": "sidebar",
+        "products_per_row_desktop": 3,
+        "filter_layout": "horizontal",
         "show_sort_by": true,
         "show_filters": true,
         "show_filter_group_name": false,
         "show_filter_values_count": true,
-        "open_first_filter_group": false,
+        "open_first_filter_group": true,
         "hide_products_count_mobile": true
       }
     },

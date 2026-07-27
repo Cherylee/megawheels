@@ -15,13 +15,13 @@
         "image_bK3bCw": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2800_1000.jpg",
-            "mobile_image": "shopify://shop_images/1200_1600_d172128c-a6b3-4baf-af9b-1c9162873aab.png",
+            "image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-900-01.jpg",
+            "mobile_image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-750x999.jpg",
             "content_max_width": 1200,
             "mobile_text_position": "place-self-start text-start",
-            "desktop_text_position": "sm:place-self-start sm:text-start",
-            "subheading": "",
-            "title": "",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "subheading": "Level Up Your Off-Road Game with Our Updated E-Dirt Bike",
+            "title": "More Power, More Trails.",
             "heading_tag": "h0",
             "button_text": "",
             "button_link": "shopify://pages/sales",
@@ -145,12 +145,30 @@
             "product_title": "D2 Pro Electric Dirt Bike",
             "product_specs": "6000W | 60 Miles | 50 Mph"
           }
+        },
+        "product_item_tnUGba": {
+          "type": "product_item",
+          "settings": {
+            "product": "d3-electric-dirt-bike",
+            "product_title": "",
+            "product_specs": "3550W | 28 Miles | 38 Mph"
+          }
+        },
+        "product_item_apCQhR": {
+          "type": "product_item",
+          "settings": {
+            "product": "d3-pro-electric-dirt-bike",
+            "product_title": "",
+            "product_specs": "4800W | 35 Miles | 50 Mph"
+          }
         }
       },
       "block_order": [
         "product_item_aipwEt",
         "product_item_iKVgqp",
-        "product_item_eKqfhc"
+        "product_item_eKqfhc",
+        "product_item_tnUGba",
+        "product_item_apCQhR"
       ],
       "name": "iScooter 产品展示网格",
       "settings": {
@@ -290,7 +308,7 @@
             "header_text_color": "#000000",
             "text_color": "#000000",
             "card_color": "#f9f9f9",
-            "stars_color": "#FF0000",
+            "stars_color": "#ff0000",
             "arrows_color": "#000000",
             "transition_speed": 4,
             "header_text": "Customers are saying",
