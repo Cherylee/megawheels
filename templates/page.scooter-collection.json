@@ -176,6 +176,7 @@
           "settings": {
             "category_key": "summer-rides",
             "product": "electric-scooter-adults-350w-motor-15-mph-top-speed-20",
+            "save_percent": 30,
             "title": "S2 Pro",
             "attributes": "25 miles | 500w | 19 mph"
           }
@@ -185,6 +186,7 @@
           "settings": {
             "category_key": "summer-rides",
             "product": "electric-scooter-adults-400w-motor-up-to-20-mph-45",
+            "save_percent": 10,
             "title": "S2",
             "attributes": "25 miles | 500w | 19 mph"
           }
@@ -194,6 +196,7 @@
           "settings": {
             "category_key": "summer-rides",
             "product": "electric-scooter-adults-600w-motor-up-to-20-mph-28",
+            "save_percent": 20,
             "title": "EX6",
             "attributes": "up to 75 miles | 500w | up to 25 mph"
           }
@@ -203,6 +206,7 @@
           "settings": {
             "category_key": "summer-rides",
             "product": "electric-scooter-adults-24-mph-top-speed-46-6-miles",
+            "save_percent": 50,
             "title": "P6",
             "attributes": "up to 75 miles | 500w | up to 25 mph"
           }
@@ -212,6 +216,7 @@
           "settings": {
             "category_key": "e-bikes",
             "product": "electric-dirt-bike-3350w-38mph-35-miles-48v-26ah-removable",
+            "save_percent": 0,
             "title": "D2 Lite",
             "attributes": "35 miles | 3350w | 38 mph"
           }
@@ -221,6 +226,7 @@
           "settings": {
             "category_key": "e-bikes",
             "product": "electric-dirt-bike-3500w-42mph-50-miles-48v-23-5ah",
+            "save_percent": 0,
             "title": "D2",
             "attributes": "50 miles | 3500w | 42 mph"
           }
@@ -230,6 +236,7 @@
           "settings": {
             "category_key": "e-bikes",
             "product": "electric-dirt-bike-4800w-50mph-45-miles-60v-30ah-removable",
+            "save_percent": 0,
             "title": "D2 Pro",
             "attributes": "45 miles | 4800w | 50 mph"
           }
@@ -239,6 +246,7 @@
           "settings": {
             "category_key": "e-bikes",
             "product": "electric-dirt-bike-3000w-38mph-30-miles-48v-23-4ah",
+            "save_percent": 0,
             "title": "D2 Mini",
             "attributes": "30 miles | 3000w | 38 mph"
           }
@@ -248,6 +256,7 @@
           "settings": {
             "category_key": "ride-together",
             "product": "a6l-eco-electric-scooter-display",
+            "save_percent": 0,
             "title": "Display",
             "attributes": "Accessory"
           }
@@ -257,6 +266,7 @@
           "settings": {
             "category_key": "ride-together",
             "product": "a6l-eco-electric-scooter-front-wheel",
+            "save_percent": 0,
             "title": "Front Wheel",
             "attributes": "Accessory"
           }
@@ -266,6 +276,7 @@
           "settings": {
             "category_key": "ride-together",
             "product": "a6l-eco-electric-scooter-motor",
+            "save_percent": 0,
             "title": "Motor",
             "attributes": "Accessory"
           }
@@ -275,6 +286,7 @@
           "settings": {
             "category_key": "ride-together",
             "product": "a6l-eco-electric-scooter-rear-mudguard",
+            "save_percent": 0,
             "title": "Rear Mudguard",
             "attributes": "Accessory"
           }
@@ -284,6 +296,7 @@
           "settings": {
             "category_key": "complete-your-ride",
             "product": "a1c-electric-scooter",
+            "save_percent": 0,
             "title": "A1C",
             "attributes": "Electric scooter"
           }
@@ -293,6 +306,7 @@
           "settings": {
             "category_key": "complete-your-ride",
             "product": "a6l-eco-electric-scooter",
+            "save_percent": 0,
             "title": "A6L Eco",
             "attributes": "Electric scooter"
           }
@@ -302,6 +316,7 @@
           "settings": {
             "category_key": "complete-your-ride",
             "product": "a6l-max-electric-scooter",
+            "save_percent": 0,
             "title": "A6L Max",
             "attributes": "Electric scooter"
           }
@@ -311,6 +326,7 @@
           "settings": {
             "category_key": "complete-your-ride",
             "product": "c2-electric-scooter",
+            "save_percent": 0,
             "title": "C2",
             "attributes": "Electric scooter"
           }

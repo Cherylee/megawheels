@@ -203,11 +203,11 @@
 
   #shopify-section-{{ section.id }} .scn-card__badge {
     position: absolute;
-    top: calc(10 * var(--rem));
-    left: calc(10 * var(--rem));
+    top: calc(8 * var(--rem));
+    left: calc(8 * var(--rem));
     z-index: 2;
-    width: calc(72 * var(--rem));
-    height: calc(72 * var(--rem));
+    width: calc(50 * var(--rem));
+    height: calc(50 * var(--rem));
     border-radius: 50%;
     overflow: hidden;
     background: {{ section.settings.badge_bg | default: '#7EC8E8' }};
@@ -242,13 +242,13 @@
   #shopify-section-{{ section.id }} .scn-card__badge-label {
     display: block;
     font-size: calc(11 * var(--rem));
-    font-weight: 500;
-    text-transform: lowercase;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
   #shopify-section-{{ section.id }} .scn-card__badge-pct {
     display: block;
-    font-size: calc(18 * var(--rem));
+    font-size: calc(13 * var(--rem));
     font-weight: 700;
   }
 
@@ -400,16 +400,16 @@
     }
 
     #shopify-section-{{ section.id }} .scn-card__badge {
-      width: calc(58 * var(--rem));
-      height: calc(58 * var(--rem));
+      width: calc(40 * var(--rem));
+      height: calc(40 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-card__badge-label {
-      font-size: calc(10 * var(--rem));
+      font-size: calc(9 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-card__badge-pct {
-      font-size: calc(15 * var(--rem));
+      font-size: calc(11 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-card__title {
@@ -625,13 +625,13 @@
                                 | image_tag:
                                   class: 'scn-card__badge-img',
                                   widths: '80,120,160,200',
-                                  sizes: '72px',
+                                  sizes: '50px',
                                   loading: 'lazy',
                                   alt: ''
                               }}
                             {%- endif -%}
                             <span class="scn-card__badge-content">
-                              <span class="scn-card__badge-label">save</span>
+                              <span class="scn-card__badge-label">SAVE</span>
                               <span class="scn-card__badge-pct">{{ save_pct }}%</span>
                             </span>
                           </div>
