@@ -1,0 +1,120 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "scooter_collection_nav": {
+      "type": "scooter-collection-nav",
+      "blocks": {
+        "category_summer": {
+          "type": "category",
+          "settings": {
+            "nav_label": "SUMMER RIDES",
+            "anchor_id": "summer-rides",
+            "title": "SUMMER RIDES",
+            "title_size": 72,
+            "title_color": "#ffffff",
+            "title_weight": "700",
+            "title_italic": true,
+            "subtitle": "Smooth rides all summer long.",
+            "subtitle_size": 20,
+            "subtitle_color": "#ffffff",
+            "subtitle_weight": "400",
+            "products": []
+          }
+        },
+        "category_ebikes": {
+          "type": "category",
+          "settings": {
+            "nav_label": "E-BIKES",
+            "anchor_id": "e-bikes",
+            "title": "E-BIKES",
+            "title_size": 72,
+            "title_color": "#ffffff",
+            "title_weight": "700",
+            "title_italic": true,
+            "subtitle": "Smooth rides all summer long.",
+            "subtitle_size": 20,
+            "subtitle_color": "#ffffff",
+            "subtitle_weight": "400",
+            "products": []
+          }
+        },
+        "category_together": {
+          "type": "category",
+          "settings": {
+            "nav_label": "RIDE TOGETHER & SAVE",
+            "anchor_id": "ride-together",
+            "title": "RIDE TOGETHER & SAVE",
+            "title_size": 72,
+            "title_color": "#ffffff",
+            "title_weight": "700",
+            "title_italic": true,
+            "subtitle": "Smooth rides all summer long.",
+            "subtitle_size": 20,
+            "subtitle_color": "#ffffff",
+            "subtitle_weight": "400",
+            "products": []
+          }
+        },
+        "category_complete": {
+          "type": "category",
+          "settings": {
+            "nav_label": "COMPLETE YOUR RIDE",
+            "anchor_id": "complete-your-ride",
+            "title": "COMPLETE YOUR RIDE",
+            "title_size": 72,
+            "title_color": "#ffffff",
+            "title_weight": "700",
+            "title_italic": true,
+            "subtitle": "Smooth rides all summer long.",
+            "subtitle_size": 20,
+            "subtitle_color": "#ffffff",
+            "subtitle_weight": "400",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "category_summer",
+        "category_ebikes",
+        "category_together",
+        "category_complete"
+      ],
+      "settings": {
+        "nav_bg": "#3BA4D9",
+        "nav_text_color": "#ffffff",
+        "nav_active_bg": "#000000",
+        "nav_active_text": "#ffffff",
+        "nav_hover_bg": "#2B8FBF",
+        "nav_hover_text": "#ffffff",
+        "nav_font_size": 16,
+        "nav_font_size_mobile": 13,
+        "nav_font_weight": "600",
+        "content_bg": "#A8D5EA",
+        "content_max_width": 1440,
+        "badge_bg": "#7EC8E8",
+        "badge_text_color": "#ffffff",
+        "learn_text": "Learn More",
+        "learn_bg": "#2B2B2B",
+        "learn_text_color": "#ffffff",
+        "learn_hover_bg": "#000000",
+        "learn_hover_text": "#ffffff",
+        "atc_text": "Add to Cart",
+        "atc_bg": "#3BA4D9",
+        "atc_text_color": "#ffffff",
+        "atc_hover_bg": "#2B8FBF",
+        "atc_hover_text": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "scooter_collection_nav"
+  ]
+}

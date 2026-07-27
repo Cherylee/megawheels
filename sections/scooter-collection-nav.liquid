@@ -1,0 +1,925 @@
+{%- comment -%}
+  Scooter collection page: sticky nav + category content modules (banner + 4-col product cards).
+  Nav click smooth-scrolls to matching category block.
+{%- endcomment -%}
+
+{%- liquid
+  assign nav_bg = section.settings.nav_bg | default: '#3BA4D9'
+  assign nav_text = section.settings.nav_text_color | default: '#ffffff'
+  assign nav_active_bg = section.settings.nav_active_bg | default: '#000000'
+  assign nav_active_text = section.settings.nav_active_text | default: '#ffffff'
+  assign nav_hover_bg = section.settings.nav_hover_bg | default: '#2B8FBF'
+  assign nav_hover_text = section.settings.nav_hover_text | default: '#ffffff'
+  assign content_bg = section.settings.content_bg | default: '#A8D5EA'
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --scn-nav-bg: {{ nav_bg }};
+    --scn-nav-text: {{ nav_text }};
+    --scn-nav-active-bg: {{ nav_active_bg }};
+    --scn-nav-active-text: {{ nav_active_text }};
+    --scn-nav-hover-bg: {{ nav_hover_bg }};
+    --scn-nav-hover-text: {{ nav_hover_text }};
+    --scn-content-bg: {{ content_bg }};
+    --scn-learn-bg: {{ section.settings.learn_bg | default: '#2B2B2B' }};
+    --scn-learn-text: {{ section.settings.learn_text_color | default: '#ffffff' }};
+    --scn-learn-hover-bg: {{ section.settings.learn_hover_bg | default: '#000000' }};
+    --scn-learn-hover-text: {{ section.settings.learn_hover_text | default: '#ffffff' }};
+    --scn-atc-bg: {{ section.settings.atc_bg | default: '#3BA4D9' }};
+    --scn-atc-text: {{ section.settings.atc_text_color | default: '#ffffff' }};
+    --scn-atc-hover-bg: {{ section.settings.atc_hover_bg | default: '#2B8FBF' }};
+    --scn-atc-hover-text: {{ section.settings.atc_hover_text | default: '#ffffff' }};
+  }
+
+  #shopify-section-{{ section.id }} .scn {
+    width: 100%;
+  }
+
+  /* ========== Sticky Nav ========== */
+  #shopify-section-{{ section.id }} .scn-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--scn-nav-bg);
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .scn-nav__list {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .scn-nav__item {
+    flex: 1 1 0;
+    min-width: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.55);
+  }
+
+  #shopify-section-{{ section.id }} .scn-nav__item:last-child {
+    border-right: none;
+  }
+
+  #shopify-section-{{ section.id }} .scn-nav__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(56 * var(--rem));
+    padding: calc(14 * var(--rem)) calc(12 * var(--rem));
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-family: var(--heading-font-family);
+    font-size: {{ section.settings.nav_font_size | default: 16 }}px;
+    font-weight: {{ section.settings.nav_font_weight | default: '600' }};
+    color: var(--scn-nav-text);
+    background: transparent;
+    transition: background-color 0.28s ease, color 0.28s ease, transform 0.28s ease;
+  }
+
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .scn-nav__link:hover {
+      background: var(--scn-nav-hover-bg);
+      color: var(--scn-nav-hover-text);
+    }
+  }
+
+  #shopify-section-{{ section.id }} .scn-nav__link.is-active {
+    background: var(--scn-nav-active-bg);
+    color: var(--scn-nav-active-text);
+  }
+
+  /* ========== Category panel ========== */
+  #shopify-section-{{ section.id }} .scn-panel {
+    background: var(--scn-content-bg);
+    scroll-margin-top: calc(56 * var(--rem) + 8px);
+  }
+
+  #shopify-section-{{ section.id }} .scn-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .scn-banner__media {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1920 / 700;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .scn-banner__placeholder {
+    width: 100%;
+    aspect-ratio: 1920 / 700;
+    background: #9bb8c9;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .scn-banner__caption {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: calc(40 * var(--rem));
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .scn-banner__title {
+    margin: 0 0 calc(12 * var(--rem));
+    font-family: var(--heading-font-family);
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .scn-banner__subtitle {
+    margin: 0;
+    font-family: var(--text-font-family);
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .scn-products {
+    max-width: {{ section.settings.content_max_width | default: 1440 }}px;
+    margin: 0 auto;
+    padding: calc(40 * var(--rem)) calc(30 * var(--rem)) calc(56 * var(--rem));
+  }
+
+  #shopify-section-{{ section.id }} .scn-products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: calc(20 * var(--rem));
+  }
+
+  /* ========== Product card ========== */
+  #shopify-section-{{ section.id }} .scn-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: calc(8 * var(--rem));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 calc(4 * var(--rem)) calc(16 * var(--rem)) rgba(0, 0, 0, 0.08);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+  }
+
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .scn-card:hover {
+      transform: translateY(calc(-4 * var(--rem)));
+      box-shadow: 0 calc(10 * var(--rem)) calc(28 * var(--rem)) rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__badge {
+    position: absolute;
+    top: calc(12 * var(--rem));
+    left: calc(12 * var(--rem));
+    z-index: 2;
+    width: calc(64 * var(--rem));
+    height: calc(64 * var(--rem));
+    border-radius: 50%;
+    background: {{ section.settings.badge_bg | default: '#7EC8E8' }};
+    color: {{ section.settings.badge_text_color | default: '#ffffff' }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: calc(12 * var(--rem));
+    font-weight: 700;
+    line-height: 1.15;
+    padding: calc(6 * var(--rem));
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__media {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #f3f3f3;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__body {
+    padding: calc(16 * var(--rem)) calc(16 * var(--rem)) calc(20 * var(--rem));
+    display: flex;
+    flex-direction: column;
+    gap: calc(10 * var(--rem));
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__title {
+    margin: 0;
+    text-align: center;
+    font-family: var(--heading-font-family);
+    font-size: calc(22 * var(--rem));
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__specs {
+    margin: 0;
+    text-align: center;
+    font-size: calc(13 * var(--rem));
+    color: #666666;
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: calc(10 * var(--rem));
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__price-sale {
+    font-size: calc(24 * var(--rem));
+    font-weight: 700;
+    color: #111111;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__price-compare {
+    font-size: calc(14 * var(--rem));
+    color: #999999;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(8 * var(--rem));
+    margin-top: auto;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__form {
+    display: contents;
+  }
+
+  #shopify-section-{{ section.id }} .scn-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(40 * var(--rem));
+    padding: calc(8 * var(--rem)) calc(10 * var(--rem));
+    border: none;
+    border-radius: calc(4 * var(--rem));
+    text-decoration: none;
+    text-align: center;
+    font-size: calc(13 * var(--rem));
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.28s ease, color 0.28s ease, transform 0.28s ease;
+  }
+
+  #shopify-section-{{ section.id }} .scn-btn--learn {
+    background: var(--scn-learn-bg);
+    color: var(--scn-learn-text);
+  }
+
+  #shopify-section-{{ section.id }} .scn-btn--atc {
+    background: var(--scn-atc-bg);
+    color: var(--scn-atc-text);
+  }
+
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .scn-btn--learn:hover {
+      background: var(--scn-learn-hover-bg);
+      color: var(--scn-learn-hover-text);
+      transform: translateY(-1px);
+    }
+
+    #shopify-section-{{ section.id }} .scn-btn--atc:hover {
+      background: var(--scn-atc-hover-bg);
+      color: var(--scn-atc-hover-text);
+      transform: translateY(-1px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .scn-nav__list {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #shopify-section-{{ section.id }} .scn-nav__item {
+      flex: 0 0 auto;
+      min-width: calc(160 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-nav__link {
+      min-height: calc(48 * var(--rem));
+      font-size: {{ section.settings.nav_font_size_mobile | default: 13 }}px;
+      padding: calc(12 * var(--rem)) calc(14 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-products {
+      padding: calc(24 * var(--rem)) calc(16 * var(--rem)) calc(40 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-products__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: calc(12 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-card__badge {
+      width: calc(52 * var(--rem));
+      height: calc(52 * var(--rem));
+      font-size: calc(11 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-card__title {
+      font-size: calc(18 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-card__price-sale {
+      font-size: calc(18 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-card__actions {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="scn" data-scn-root>
+  {%- if section.blocks.size > 0 -%}
+    <nav class="scn-nav" aria-label="Collection navigation">
+      <ul class="scn-nav__list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign anchor = block.settings.anchor_id | strip | handleize
+            if anchor == blank
+              assign anchor = block.settings.nav_label | default: block.settings.title | handleize
+            endif
+            if anchor == blank
+              assign anchor = 'category-' | append: forloop.index
+            endif
+          -%}
+          <li class="scn-nav__item" {{ block.shopify_attributes }}>
+            <a
+              class="scn-nav__link{% if forloop.first %} is-active{% endif %}"
+              href="#scn-{{ section.id }}-{{ anchor }}"
+              data-scn-nav
+              data-target="scn-{{ section.id }}-{{ anchor }}"
+            >
+              {{ block.settings.nav_label | default: block.settings.title | default: 'Category' | escape }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign anchor = block.settings.anchor_id | strip | handleize
+        if anchor == blank
+          assign anchor = block.settings.nav_label | default: block.settings.title | handleize
+        endif
+        if anchor == blank
+          assign anchor = 'category-' | append: forloop.index
+        endif
+        assign panel_products = block.settings.products
+      -%}
+      <section
+        class="scn-panel"
+        id="scn-{{ section.id }}-{{ anchor }}"
+        data-scn-panel
+        {{ block.shopify_attributes }}
+      >
+        <div class="scn-banner">
+          {%- if block.settings.banner_image != blank -%}
+            {%- assign banner_alt = block.settings.title | default: block.settings.nav_label -%}
+            {{ block.settings.banner_image
+              | image_url: width: 2400
+              | image_tag:
+                class: 'scn-banner__media',
+                widths: '800,1200,1600,2000,2400',
+                sizes: '100vw',
+                loading: 'lazy',
+                alt: banner_alt
+            }}
+          {%- else -%}
+            <span class="scn-banner__placeholder" aria-hidden="true"></span>
+          {%- endif -%}
+
+          {%- if block.settings.title != blank or block.settings.subtitle != blank -%}
+            <div class="scn-banner__caption">
+              {%- if block.settings.title != blank -%}
+                <h2
+                  class="scn-banner__title"
+                  style="
+                    font-size: {{ block.settings.title_size | default: 72 }}px;
+                    color: {{ block.settings.title_color | default: '#ffffff' }};
+                    font-weight: {{ block.settings.title_weight | default: '700' }};
+                    font-style: {% if block.settings.title_italic %}italic{% else %}normal{% endif %};
+                  "
+                >
+                  {{ block.settings.title | escape }}
+                </h2>
+              {%- endif -%}
+              {%- if block.settings.subtitle != blank -%}
+                <p
+                  class="scn-banner__subtitle"
+                  style="
+                    font-size: {{ block.settings.subtitle_size | default: 20 }}px;
+                    color: {{ block.settings.subtitle_color | default: '#ffffff' }};
+                    font-weight: {{ block.settings.subtitle_weight | default: '400' }};
+                  "
+                >
+                  {{ block.settings.subtitle | escape }}
+                </p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if panel_products != blank and panel_products.size > 0 -%}
+          <div class="scn-products">
+            <div class="scn-products__grid">
+              {%- for product in panel_products limit: 4 -%}
+                {%- liquid
+                  assign variant = product.selected_or_first_available_variant
+                  assign specs = product.metafields.custom.product_specs.value | default: product.metafields.custom.specs.value
+                  if specs == blank
+                    assign specs = product.metafields.descriptors.subtitle.value
+                  endif
+
+                  assign save_label = blank
+                  if product.compare_at_price > product.price and product.compare_at_price > 0
+                    assign save_pct = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round
+                    assign save_label = 'SAVE ' | append: save_pct | append: '%'
+                  endif
+
+                  assign form_id = 'scn-atc-' | append: section.id | append: '-' | append: block.id | append: '-' | append: product.id
+                -%}
+                <article class="scn-card">
+                  {%- if save_label != blank -%}
+                    <div class="scn-card__badge">{{ save_label }}</div>
+                  {%- endif -%}
+
+                  <a class="scn-card__media" href="{{ product.url }}">
+                    {%- if product.featured_media != blank -%}
+                      {%- assign media_alt = product.featured_media.alt | default: product.title -%}
+                      {{ product.featured_media
+                        | image_url: width: 800
+                        | image_tag:
+                          widths: '300,400,600,800',
+                          sizes: '(max-width: 768px) 50vw, 25vw',
+                          loading: 'lazy',
+                          alt: media_alt
+                      }}
+                    {%- endif -%}
+                  </a>
+
+                  <div class="scn-card__body">
+                    <h3 class="scn-card__title">
+                      <a href="{{ product.url }}" style="color: inherit; text-decoration: none;">{{ product.title }}</a>
+                    </h3>
+
+                    {%- if specs != blank -%}
+                      <p class="scn-card__specs">{{ specs }}</p>
+                    {%- endif -%}
+
+                    <div class="scn-card__price">
+                      <span class="scn-card__price-sale">
+                        {%- if settings.currency_code_enabled -%}
+                          {{ product.price | money_with_currency }}
+                        {%- else -%}
+                          {{ product.price | money }}
+                        {%- endif -%}
+                      </span>
+                      {%- if product.compare_at_price > product.price -%}
+                        <span class="scn-card__price-compare">
+                          {%- if settings.currency_code_enabled -%}
+                            {{ product.compare_at_price | money_with_currency }}
+                          {%- else -%}
+                            {{ product.compare_at_price | money }}
+                          {%- endif -%}
+                        </span>
+                      {%- endif -%}
+                    </div>
+
+                    <div class="scn-card__actions">
+                      <a class="scn-btn scn-btn--learn" href="{{ product.url }}">
+                        {{ section.settings.learn_text | default: 'Learn More' }}
+                      </a>
+
+                      {%- if product.available -%}
+                        {%- form 'product', product, id: form_id, is: 'product-form', class: 'scn-card__form' -%}
+                          <input type="hidden" name="id" value="{{ variant.id }}">
+                          <button type="submit" class="scn-btn scn-btn--atc" name="add">
+                            {{ section.settings.atc_text | default: 'Add to Cart' }}
+                          </button>
+                        {%- endform -%}
+                      {%- else -%}
+                        <button type="button" class="scn-btn scn-btn--atc" disabled>
+                          {{ 'product.general.sold_out_button' | t }}
+                        </button>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </article>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </section>
+    {%- endfor -%}
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    var root = document.querySelector('#shopify-section-{{ section.id }} [data-scn-root]');
+    if (!root) return;
+
+    var links = root.querySelectorAll('[data-scn-nav]');
+    var panels = root.querySelectorAll('[data-scn-panel]');
+    if (!links.length || !panels.length) return;
+
+    function setActive(id) {
+      links.forEach(function (link) {
+        link.classList.toggle('is-active', link.getAttribute('data-target') === id);
+      });
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var targetId = link.getAttribute('data-target');
+        var panel = document.getElementById(targetId);
+        if (!panel) return;
+        event.preventDefault();
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActive(targetId);
+        if (history.replaceState) {
+          history.replaceState(null, '', '#' + targetId);
+        }
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+            }
+          });
+        },
+        { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+      );
+      panels.forEach(function (panel) {
+        observer.observe(panel);
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scooter collection nav",
+  "tag": "section",
+  "class": "shopify-section--scooter-collection-nav",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Sticky top nav + category panels. Each block = one nav item and its banner/products. Click nav to smooth-scroll to that panel."
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "color",
+      "id": "nav_bg",
+      "label": "Nav background",
+      "default": "#3BA4D9"
+    },
+    {
+      "type": "color",
+      "id": "nav_text_color",
+      "label": "Nav text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "nav_active_bg",
+      "label": "Active background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "nav_active_text",
+      "label": "Active text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_bg",
+      "label": "Hover background",
+      "default": "#2B8FBF"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_text",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "nav_font_size",
+      "label": "Nav font size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "nav_font_size_mobile",
+      "label": "Nav font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "nav_font_weight",
+      "label": "Nav font weight",
+      "options": [
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Content area"
+    },
+    {
+      "type": "color",
+      "id": "content_bg",
+      "label": "Products area background",
+      "default": "#A8D5EA"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Products max width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1440
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Save badge background",
+      "default": "#7EC8E8"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Save badge text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Learn More button"
+    },
+    {
+      "type": "text",
+      "id": "learn_text",
+      "label": "Button text",
+      "default": "Learn More"
+    },
+    {
+      "type": "color",
+      "id": "learn_bg",
+      "label": "Background",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "color",
+      "id": "learn_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "learn_hover_bg",
+      "label": "Hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "learn_hover_text",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Add to Cart button"
+    },
+    {
+      "type": "text",
+      "id": "atc_text",
+      "label": "Button text",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg",
+      "label": "Background",
+      "default": "#3BA4D9"
+    },
+    {
+      "type": "color",
+      "id": "atc_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "atc_hover_bg",
+      "label": "Hover background",
+      "default": "#2B8FBF"
+    },
+    {
+      "type": "color",
+      "id": "atc_hover_text",
+      "label": "Hover text",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "nav_label",
+          "label": "Nav label",
+          "default": "SUMMER RIDES"
+        },
+        {
+          "type": "text",
+          "id": "anchor_id",
+          "label": "Anchor ID",
+          "info": "Optional. Used for URL hash / scroll target. Auto from nav label if empty."
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Banner title",
+          "default": "E-BIKES"
+        },
+        {
+          "type": "range",
+          "id": "title_size",
+          "label": "Title size",
+          "min": 24,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "default": 72
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "select",
+          "id": "title_weight",
+          "label": "Title weight",
+          "options": [
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" },
+            { "value": "700", "label": "Bold" },
+            { "value": "800", "label": "Extra bold" }
+          ],
+          "default": "700"
+        },
+        {
+          "type": "checkbox",
+          "id": "title_italic",
+          "label": "Title italic",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Banner subtitle",
+          "default": "Smooth rides all summer long."
+        },
+        {
+          "type": "range",
+          "id": "subtitle_size",
+          "label": "Subtitle size",
+          "min": 12,
+          "max": 40,
+          "step": 1,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "Subtitle color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "select",
+          "id": "subtitle_weight",
+          "label": "Subtitle weight",
+          "options": [
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "Products",
+          "limit": 4,
+          "info": "Up to 4 products. Specs use product metafield custom.product_specs (or custom.specs / descriptors.subtitle). Save badge uses compare-at price."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scooter collection nav",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "nav_label": "SUMMER RIDES",
+            "title": "SUMMER RIDES",
+            "subtitle": "Smooth rides all summer long."
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "nav_label": "E-BIKES",
+            "title": "E-BIKES",
+            "subtitle": "Smooth rides all summer long."
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "nav_label": "RIDE TOGETHER & SAVE",
+            "title": "RIDE TOGETHER & SAVE",
+            "subtitle": "Smooth rides all summer long."
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "nav_label": "COMPLETE YOUR RIDE",
+            "title": "COMPLETE YOUR RIDE",
+            "subtitle": "Smooth rides all summer long."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
