@@ -39,8 +39,8 @@
   /* ========== Sticky Nav ========== */
   #shopify-section-{{ section.id }} .scn-nav {
     position: sticky;
-    top: 0;
-    z-index: 40;
+    top: calc(var(--header-is-visible, 1) * var(--sticky-area-height, var(--header-height, 0px)));
+    z-index: 30;
     background: var(--scn-nav-bg);
     width: 100%;
   }
@@ -49,10 +49,11 @@
     display: flex;
     align-items: stretch;
     justify-content: stretch;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     list-style: none;
     width: 100%;
+    max-width: calc(1200 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .scn-nav__item {
@@ -70,14 +71,19 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: calc(56 * var(--rem));
-    padding: calc(14 * var(--rem)) calc(12 * var(--rem));
+    min-height: calc(40 * var(--rem));
+    padding: calc(8 * var(--rem)) calc(12 * var(--rem));
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    white-space: nowrap;
     font-family: var(--heading-font-family);
-    font-size: {{ section.settings.nav_font_size | default: 16 }}px;
+    font-size: clamp(
+      11px,
+      calc({{ section.settings.nav_font_size | default: 16 }} * var(--rem)),
+      {{ section.settings.nav_font_size | default: 16 }}px
+    );
     font-weight: {{ section.settings.nav_font_weight | default: '600' }};
     color: var(--scn-nav-text);
     background: transparent;
@@ -99,26 +105,42 @@
   /* ========== Category panel ========== */
   #shopify-section-{{ section.id }} .scn-panel {
     background: var(--scn-content-bg);
-    scroll-margin-top: calc(56 * var(--rem) + 8px);
+    scroll-margin-top: calc(
+      var(--header-is-visible, 1) * var(--sticky-area-height, var(--header-height, 0px))
+      + 40 * var(--rem)
+      + 8px
+    );
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .scn-panel {
+      scroll-margin-top: calc(
+        var(--header-is-visible, 1) * var(--sticky-area-height, var(--header-height, 0px))
+        + 48 * var(--rem)
+        + 8px
+      );
+    }
   }
 
   #shopify-section-{{ section.id }} .scn-banner {
     position: relative;
     width: 100%;
-    overflow: hidden;
   }
 
   #shopify-section-{{ section.id }} .scn-banner__media {
     width: 100%;
     height: auto;
     display: block;
-    aspect-ratio: 1920 / 700;
-    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .scn-banner picture {
+    display: block;
+    width: 100%;
   }
 
   #shopify-section-{{ section.id }} .scn-banner__placeholder {
     width: 100%;
-    aspect-ratio: 1920 / 700;
+    aspect-ratio: 16 / 9;
     background: #9bb8c9;
     display: block;
   }
@@ -149,7 +171,7 @@
   }
 
   #shopify-section-{{ section.id }} .scn-products {
-    max-width: {{ section.settings.content_max_width | default: 1440 }}px;
+    max-width: calc({{ section.settings.content_max_width | default: 1200 }} * var(--rem));
     margin: 0 auto;
     padding: calc(40 * var(--rem)) calc(30 * var(--rem)) calc(56 * var(--rem));
   }
@@ -181,23 +203,53 @@
 
   #shopify-section-{{ section.id }} .scn-card__badge {
     position: absolute;
-    top: calc(12 * var(--rem));
-    left: calc(12 * var(--rem));
+    top: calc(10 * var(--rem));
+    left: calc(10 * var(--rem));
     z-index: 2;
-    width: calc(64 * var(--rem));
-    height: calc(64 * var(--rem));
+    width: calc(72 * var(--rem));
+    height: calc(72 * var(--rem));
     border-radius: 50%;
+    overflow: hidden;
     background: {{ section.settings.badge_bg | default: '#7EC8E8' }};
     color: {{ section.settings.badge_text_color | default: '#ffffff' }};
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: calc(12 * var(--rem));
-    font-weight: 700;
-    line-height: 1.15;
-    padding: calc(6 * var(--rem));
     box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__badge-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__badge-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.05;
+    padding: calc(4 * var(--rem));
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__badge-label {
+    display: block;
+    font-size: calc(11 * var(--rem));
+    font-weight: 500;
+    text-transform: lowercase;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__badge-pct {
+    display: block;
+    font-size: calc(18 * var(--rem));
+    font-weight: 700;
   }
 
   #shopify-section-{{ section.id }} .scn-card__media {
@@ -227,7 +279,7 @@
     margin: 0;
     text-align: center;
     font-family: var(--heading-font-family);
-    font-size: calc(22 * var(--rem));
+    font-size: calc(16 * var(--rem));
     font-weight: 700;
     color: #111111;
     line-height: 1.2;
@@ -312,8 +364,9 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} .scn-nav__list {
+      max-width: none;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
@@ -326,7 +379,15 @@
     #shopify-section-{{ section.id }} .scn-nav__link {
       min-height: calc(48 * var(--rem));
       font-size: {{ section.settings.nav_font_size_mobile | default: 13 }}px;
-      padding: calc(12 * var(--rem)) calc(14 * var(--rem));
+      padding: calc(12 * var(--rem)) calc(12 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-banner__caption {
+      padding: calc(24 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-banner__title {
+      margin-bottom: calc(8 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-products {
@@ -339,21 +400,32 @@
     }
 
     #shopify-section-{{ section.id }} .scn-card__badge {
-      width: calc(52 * var(--rem));
-      height: calc(52 * var(--rem));
-      font-size: calc(11 * var(--rem));
+      width: calc(58 * var(--rem));
+      height: calc(58 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-card__badge-label {
+      font-size: calc(10 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-card__badge-pct {
+      font-size: calc(15 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-card__title {
-      font-size: calc(18 * var(--rem));
+      font-size: calc(14 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-card__price-sale {
       font-size: calc(18 * var(--rem));
     }
+  }
 
-    #shopify-section-{{ section.id }} .scn-card__actions {
-      grid-template-columns: 1fr;
+  /* Mid widths: keep nav labels on one line without feeling oversized */
+  @media screen and (min-width: 750px) and (max-width: 1240px) {
+    #shopify-section-{{ section.id }} .scn-nav__link {
+      letter-spacing: 0.02em;
+      padding-inline: calc(6 * var(--rem));
     }
   }
 </style>
@@ -362,185 +434,283 @@
   {%- if section.blocks.size > 0 -%}
     <nav class="scn-nav" aria-label="Collection navigation">
       <ul class="scn-nav__list">
+        {%- assign nav_index = 0 -%}
         {%- for block in section.blocks -%}
-          {%- liquid
-            assign anchor = block.settings.anchor_id | strip | handleize
-            if anchor == blank
-              assign anchor = block.settings.nav_label | default: block.settings.title | handleize
-            endif
-            if anchor == blank
-              assign anchor = 'category-' | append: forloop.index
-            endif
-          -%}
-          <li class="scn-nav__item" {{ block.shopify_attributes }}>
-            <a
-              class="scn-nav__link{% if forloop.first %} is-active{% endif %}"
-              href="#scn-{{ section.id }}-{{ anchor }}"
-              data-scn-nav
-              data-target="scn-{{ section.id }}-{{ anchor }}"
-            >
-              {{ block.settings.nav_label | default: block.settings.title | default: 'Category' | escape }}
-            </a>
-          </li>
+          {%- if block.type == 'category' -%}
+            {%- liquid
+              assign anchor = block.settings.anchor_id | strip | handleize
+              if anchor == blank
+                assign anchor = block.settings.nav_label | default: block.settings.title | handleize
+              endif
+              if anchor == blank
+                assign anchor = 'category-' | append: forloop.index
+              endif
+              assign nav_index = nav_index | plus: 1
+            -%}
+            <li class="scn-nav__item" {{ block.shopify_attributes }}>
+              <a
+                class="scn-nav__link{% if nav_index == 1 %} is-active{% endif %}"
+                href="#scn-{{ section.id }}-{{ anchor }}"
+                data-scn-nav
+                data-target="scn-{{ section.id }}-{{ anchor }}"
+              >
+                {{ block.settings.nav_label | default: block.settings.title | default: 'Category' | escape }}
+              </a>
+            </li>
+          {%- endif -%}
         {%- endfor -%}
       </ul>
     </nav>
 
     {%- for block in section.blocks -%}
-      {%- liquid
-        assign anchor = block.settings.anchor_id | strip | handleize
-        if anchor == blank
-          assign anchor = block.settings.nav_label | default: block.settings.title | handleize
-        endif
-        if anchor == blank
-          assign anchor = 'category-' | append: forloop.index
-        endif
-        assign panel_products = block.settings.products
-      -%}
-      <section
-        class="scn-panel"
-        id="scn-{{ section.id }}-{{ anchor }}"
-        data-scn-panel
-        {{ block.shopify_attributes }}
-      >
-        <div class="scn-banner">
-          {%- if block.settings.banner_image != blank -%}
-            {%- assign banner_alt = block.settings.title | default: block.settings.nav_label -%}
-            {{ block.settings.banner_image
-              | image_url: width: 2400
-              | image_tag:
-                class: 'scn-banner__media',
-                widths: '800,1200,1600,2000,2400',
-                sizes: '100vw',
-                loading: 'lazy',
-                alt: banner_alt
-            }}
-          {%- else -%}
-            <span class="scn-banner__placeholder" aria-hidden="true"></span>
-          {%- endif -%}
+      {%- if block.type == 'category' -%}
+        {%- liquid
+          assign anchor = block.settings.anchor_id | strip | handleize
+          if anchor == blank
+            assign anchor = block.settings.nav_label | default: block.settings.title | handleize
+          endif
+          if anchor == blank
+            assign anchor = 'category-' | append: forloop.index
+          endif
+        -%}
+        <section
+          class="scn-panel"
+          id="scn-{{ section.id }}-{{ anchor }}"
+          data-scn-panel
+          {{ block.shopify_attributes }}
+        >
+          <div class="scn-banner">
+            {%- liquid
+              assign banner_alt = block.settings.title | default: block.settings.nav_label
+              assign banner_desktop = block.settings.banner_image
+              assign banner_mobile = block.settings.banner_image_mobile
+            -%}
+            {%- if banner_desktop != blank or banner_mobile != blank -%}
+              <picture>
+                {%- if banner_mobile != blank -%}
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="
+                      {{ banner_mobile | image_url: width: 400 }} 400w,
+                      {{ banner_mobile | image_url: width: 600 }} 600w,
+                      {{ banner_mobile | image_url: width: 800 }} 800w,
+                      {{ banner_mobile | image_url: width: 1000 }} 1000w,
+                      {{ banner_mobile | image_url: width: 1200 }} 1200w
+                    "
+                    sizes="100vw"
+                    width="{{ banner_mobile.width }}"
+                    height="{{ banner_mobile.height }}"
+                  >
+                {%- endif -%}
+                {%- if banner_desktop != blank -%}
+                  {{ banner_desktop
+                    | image_url: width: banner_desktop.width
+                    | image_tag:
+                      class: 'scn-banner__media',
+                      widths: '800,1200,1600,2000,2400,2800,3200',
+                      sizes: '100vw',
+                      loading: 'lazy',
+                      alt: banner_alt
+                  }}
+                {%- else -%}
+                  {{ banner_mobile
+                    | image_url: width: banner_mobile.width
+                    | image_tag:
+                      class: 'scn-banner__media',
+                      widths: '400,600,800,1000,1200',
+                      sizes: '100vw',
+                      loading: 'lazy',
+                      alt: banner_alt
+                  }}
+                {%- endif -%}
+              </picture>
+            {%- else -%}
+              <span class="scn-banner__placeholder" aria-hidden="true"></span>
+            {%- endif -%}
 
-          {%- if block.settings.title != blank or block.settings.subtitle != blank -%}
-            <div class="scn-banner__caption">
-              {%- if block.settings.title != blank -%}
-                <h2
-                  class="scn-banner__title"
-                  style="
-                    font-size: {{ block.settings.title_size | default: 72 }}px;
-                    color: {{ block.settings.title_color | default: '#ffffff' }};
-                    font-weight: {{ block.settings.title_weight | default: '700' }};
-                    font-style: {% if block.settings.title_italic %}italic{% else %}normal{% endif %};
-                  "
-                >
-                  {{ block.settings.title | escape }}
-                </h2>
-              {%- endif -%}
-              {%- if block.settings.subtitle != blank -%}
-                <p
-                  class="scn-banner__subtitle"
-                  style="
-                    font-size: {{ block.settings.subtitle_size | default: 20 }}px;
-                    color: {{ block.settings.subtitle_color | default: '#ffffff' }};
-                    font-weight: {{ block.settings.subtitle_weight | default: '400' }};
-                  "
-                >
-                  {{ block.settings.subtitle | escape }}
-                </p>
-              {%- endif -%}
-            </div>
-          {%- endif -%}
-        </div>
-
-        {%- if panel_products != blank and panel_products.size > 0 -%}
-          <div class="scn-products">
-            <div class="scn-products__grid">
-              {%- for product in panel_products limit: 4 -%}
-                {%- liquid
-                  assign variant = product.selected_or_first_available_variant
-                  assign specs = product.metafields.custom.product_specs.value | default: product.metafields.custom.specs.value
-                  if specs == blank
-                    assign specs = product.metafields.descriptors.subtitle.value
-                  endif
-
-                  assign save_label = blank
-                  if product.compare_at_price > product.price and product.compare_at_price > 0
-                    assign save_pct = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round
-                    assign save_label = 'SAVE ' | append: save_pct | append: '%'
-                  endif
-
-                  assign form_id = 'scn-atc-' | append: section.id | append: '-' | append: block.id | append: '-' | append: product.id
-                -%}
-                <article class="scn-card">
-                  {%- if save_label != blank -%}
-                    <div class="scn-card__badge">{{ save_label }}</div>
-                  {%- endif -%}
-
-                  <a class="scn-card__media" href="{{ product.url }}">
-                    {%- if product.featured_media != blank -%}
-                      {%- assign media_alt = product.featured_media.alt | default: product.title -%}
-                      {{ product.featured_media
-                        | image_url: width: 800
-                        | image_tag:
-                          widths: '300,400,600,800',
-                          sizes: '(max-width: 768px) 50vw, 25vw',
-                          loading: 'lazy',
-                          alt: media_alt
-                      }}
-                    {%- endif -%}
-                  </a>
-
-                  <div class="scn-card__body">
-                    <h3 class="scn-card__title">
-                      <a href="{{ product.url }}" style="color: inherit; text-decoration: none;">{{ product.title }}</a>
-                    </h3>
-
-                    {%- if specs != blank -%}
-                      <p class="scn-card__specs">{{ specs }}</p>
-                    {%- endif -%}
-
-                    <div class="scn-card__price">
-                      <span class="scn-card__price-sale">
-                        {%- if settings.currency_code_enabled -%}
-                          {{ product.price | money_with_currency }}
-                        {%- else -%}
-                          {{ product.price | money }}
-                        {%- endif -%}
-                      </span>
-                      {%- if product.compare_at_price > product.price -%}
-                        <span class="scn-card__price-compare">
-                          {%- if settings.currency_code_enabled -%}
-                            {{ product.compare_at_price | money_with_currency }}
-                          {%- else -%}
-                            {{ product.compare_at_price | money }}
-                          {%- endif -%}
-                        </span>
-                      {%- endif -%}
-                    </div>
-
-                    <div class="scn-card__actions">
-                      <a class="scn-btn scn-btn--learn" href="{{ product.url }}">
-                        {{ section.settings.learn_text | default: 'Learn More' }}
-                      </a>
-
-                      {%- if product.available -%}
-                        {%- form 'product', product, id: form_id, is: 'product-form', class: 'scn-card__form' -%}
-                          <input type="hidden" name="id" value="{{ variant.id }}">
-                          <button type="submit" class="scn-btn scn-btn--atc" name="add">
-                            {{ section.settings.atc_text | default: 'Add to Cart' }}
-                          </button>
-                        {%- endform -%}
-                      {%- else -%}
-                        <button type="button" class="scn-btn scn-btn--atc" disabled>
-                          {{ 'product.general.sold_out_button' | t }}
-                        </button>
-                      {%- endif -%}
-                    </div>
-                  </div>
-                </article>
-              {%- endfor -%}
-            </div>
+            {%- if block.settings.title != blank or block.settings.subtitle != blank -%}
+              <div class="scn-banner__caption">
+                {%- if block.settings.title != blank -%}
+                  <h2
+                    class="scn-banner__title"
+                    style="
+                      font-size: calc({{ block.settings.title_size | default: 72 }} * var(--rem));
+                      color: {{ block.settings.title_color | default: '#ffffff' }};
+                      font-weight: {{ block.settings.title_weight | default: '700' }};
+                      font-style: {% if block.settings.title_italic %}italic{% else %}normal{% endif %};
+                    "
+                  >
+                    {{ block.settings.title | escape }}
+                  </h2>
+                {%- endif -%}
+                {%- if block.settings.subtitle != blank -%}
+                  <p
+                    class="scn-banner__subtitle"
+                    style="
+                      font-size: calc({{ block.settings.subtitle_size | default: 20 }} * var(--rem));
+                      color: {{ block.settings.subtitle_color | default: '#ffffff' }};
+                      font-weight: {{ block.settings.subtitle_weight | default: '400' }};
+                    "
+                  >
+                    {{ block.settings.subtitle | escape }}
+                  </p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
           </div>
-        {%- endif -%}
-      </section>
+
+          {%- assign panel_has_products = false -%}
+          {%- for product_block in section.blocks -%}
+            {%- if product_block.type == 'product_item' -%}
+              {%- assign product_cat = product_block.settings.category_key | strip | handleize -%}
+              {%- if product_cat == anchor -%}
+                {%- assign panel_has_products = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if panel_has_products -%}
+            <div class="scn-products">
+              <div class="scn-products__grid">
+                {%- for product_block in section.blocks -%}
+                  {%- if product_block.type == 'product_item' -%}
+                    {%- assign product_cat = product_block.settings.category_key | strip | handleize -%}
+                    {%- if product_cat == anchor -%}
+                      {%- liquid
+                        assign product = product_block.settings.product
+                        assign variant = product.selected_or_first_available_variant
+                        assign display_title = product_block.settings.title
+                        if display_title == blank and product != blank
+                          assign display_title = product.title
+                        endif
+                        assign display_attrs = product_block.settings.attributes
+                        assign card_image = product_block.settings.image
+                        if card_image == blank and product != blank
+                          assign card_image = product.featured_media
+                        endif
+
+                        assign save_pct = 0
+                        assign card_price = blank
+                        assign card_compare_at = blank
+                        if product_block.settings.save_percent > 0
+                          assign save_pct = product_block.settings.save_percent
+                        endif
+                        if product != blank
+                          assign card_price = variant.price | default: product.price
+                          assign card_compare_at = variant.compare_at_price
+                          if card_compare_at == blank or card_compare_at <= card_price
+                            assign card_compare_at = product.compare_at_price
+                          endif
+                          if card_compare_at == blank or card_compare_at <= card_price
+                            assign card_compare_at = product.compare_at_price_max
+                          endif
+                          if save_pct == 0 and card_compare_at > card_price and card_compare_at > 0
+                            assign save_pct = card_compare_at | minus: card_price | times: 100.0 | divided_by: card_compare_at | round
+                          endif
+                        endif
+
+                        assign product_url = '#'
+                        if product != blank
+                          assign product_url = product.url
+                        endif
+                        assign form_id = 'scn-atc-' | append: section.id | append: '-' | append: product_block.id
+                      -%}
+                      <article class="scn-card" {{ product_block.shopify_attributes }}>
+                        {%- if save_pct > 0 -%}
+                          <div class="scn-card__badge">
+                            {%- if product_block.settings.badge_image != blank -%}
+                              {{ product_block.settings.badge_image
+                                | image_url: width: 200
+                                | image_tag:
+                                  class: 'scn-card__badge-img',
+                                  widths: '80,120,160,200',
+                                  sizes: '72px',
+                                  loading: 'lazy',
+                                  alt: ''
+                              }}
+                            {%- endif -%}
+                            <span class="scn-card__badge-content">
+                              <span class="scn-card__badge-label">save</span>
+                              <span class="scn-card__badge-pct">{{ save_pct }}%</span>
+                            </span>
+                          </div>
+                        {%- endif -%}
+
+                        <a class="scn-card__media" href="{{ product_url }}">
+                          {%- if card_image != blank -%}
+                            {%- assign media_alt = display_title -%}
+                            {{ card_image
+                              | image_url: width: 800
+                              | image_tag:
+                                widths: '300,400,600,800',
+                                sizes: '(max-width: 749px) 50vw, 25vw',
+                                loading: 'lazy',
+                                alt: media_alt
+                            }}
+                          {%- endif -%}
+                        </a>
+
+                        <div class="scn-card__body">
+                          {%- if display_title != blank -%}
+                            <h3 class="scn-card__title">
+                              <a href="{{ product_url }}" style="color: inherit; text-decoration: none;">{{ display_title | escape }}</a>
+                            </h3>
+                          {%- endif -%}
+
+                          {%- if display_attrs != blank -%}
+                            <p class="scn-card__specs">{{ display_attrs | escape }}</p>
+                          {%- endif -%}
+
+                          {%- if product != blank -%}
+                            <div class="scn-card__price">
+                              <span class="scn-card__price-sale">
+                                {%- if settings.currency_code_enabled -%}
+                                  {{ card_price | money_with_currency }}
+                                {%- else -%}
+                                  {{ card_price | money }}
+                                {%- endif -%}
+                              </span>
+                              {%- if card_compare_at > card_price -%}
+                                <span class="scn-card__price-compare">
+                                  {%- if settings.currency_code_enabled -%}
+                                    {{ card_compare_at | money_with_currency }}
+                                  {%- else -%}
+                                    {{ card_compare_at | money }}
+                                  {%- endif -%}
+                                </span>
+                              {%- endif -%}
+                            </div>
+
+                            <div class="scn-card__actions">
+                              <a class="scn-btn scn-btn--learn" href="{{ product.url }}">
+                                {{ section.settings.learn_text | default: 'Learn More' }}
+                              </a>
+
+                              {%- if product.available -%}
+                                {%- form 'product', product, id: form_id, is: 'product-form', class: 'scn-card__form' -%}
+                                  <input type="hidden" name="id" value="{{ variant.id }}">
+                                  <button type="submit" class="scn-btn scn-btn--atc" name="add">
+                                    {{ section.settings.atc_text | default: 'Add to Cart' }}
+                                  </button>
+                                {%- endform -%}
+                              {%- else -%}
+                                <button type="button" class="scn-btn scn-btn--atc" disabled>
+                                  {{ 'product.general.sold_out_button' | t }}
+                                </button>
+                              {%- endif -%}
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </article>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endif -%}
+        </section>
+      {%- endif -%}
     {%- endfor -%}
   {%- endif -%}
 </div>
@@ -603,7 +773,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Sticky top nav + category panels. Each block = one nav item and its banner/products. Click nav to smooth-scroll to that panel."
+      "content": "Sticky top nav + category panels. Add Category blocks for nav/banner, then Product card blocks. Set each product's Category key to match the Category Anchor ID. Save badge uses Compare-at price when set; for discount-code-only promos, set Save badge % on the product card."
     },
     {
       "type": "header",
@@ -690,11 +860,12 @@
       "type": "range",
       "id": "content_max_width",
       "label": "Products max width",
-      "min": 1000,
+      "min": 900,
       "max": 1600,
       "step": 20,
       "unit": "px",
-      "default": 1440
+      "default": 1200,
+      "info": "Project default content width is 1200. Applied as calc(N * var(--rem))."
     },
     {
       "type": "color",
@@ -762,7 +933,7 @@
       "type": "color",
       "id": "atc_text_color",
       "label": "Text",
-      "default": "#ffffff"
+      "default": "#0A3D5C"
     },
     {
       "type": "color",
@@ -798,6 +969,12 @@
           "type": "image_picker",
           "id": "banner_image",
           "label": "Banner image"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_image_mobile",
+          "label": "Banner image (mobile)",
+          "info": "Optional. Shown at max-width 749px. Falls back to desktop banner if empty."
         },
         {
           "type": "text",
@@ -871,13 +1048,62 @@
             { "value": "600", "label": "Semibold" }
           ],
           "default": "400"
+        }
+      ]
+    },
+    {
+      "type": "product_item",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_key",
+          "label": "Category key",
+          "info": "Must match the Category block Anchor ID (e.g. summer-rides, e-bikes).",
+          "default": "summer-rides"
         },
         {
-          "type": "product_list",
-          "id": "products",
-          "label": "Products",
-          "limit": 4,
-          "info": "Up to 4 products. Specs use product metafield custom.product_specs (or custom.specs / descriptors.subtitle). Save badge uses compare-at price."
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Used for price, compare-at, Add to Cart, and product URL."
+        },
+        {
+          "type": "range",
+          "id": "save_percent",
+          "label": "Save badge %",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "default": 0,
+          "info": "Discount codes / automatic discounts cannot be read here. Set a % manually to show the save badge (0 = auto from Compare-at price only)."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product image",
+          "info": "Optional. Falls back to product featured image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "S2 Pro",
+          "info": "Short display name. Falls back to product title if empty."
+        },
+        {
+          "type": "text",
+          "id": "attributes",
+          "label": "Attributes line",
+          "default": "25 miles | 500w | 19 mph",
+          "info": "Shown under the title."
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_image",
+          "label": "Save badge image",
+          "info": "Circle/starburst background behind fixed text: save + %."
         }
       ]
     }
@@ -890,6 +1116,7 @@
           "type": "category",
           "settings": {
             "nav_label": "SUMMER RIDES",
+            "anchor_id": "summer-rides",
             "title": "SUMMER RIDES",
             "subtitle": "Smooth rides all summer long."
           }
@@ -898,6 +1125,7 @@
           "type": "category",
           "settings": {
             "nav_label": "E-BIKES",
+            "anchor_id": "e-bikes",
             "title": "E-BIKES",
             "subtitle": "Smooth rides all summer long."
           }
@@ -906,6 +1134,7 @@
           "type": "category",
           "settings": {
             "nav_label": "RIDE TOGETHER & SAVE",
+            "anchor_id": "ride-together",
             "title": "RIDE TOGETHER & SAVE",
             "subtitle": "Smooth rides all summer long."
           }
@@ -914,8 +1143,17 @@
           "type": "category",
           "settings": {
             "nav_label": "COMPLETE YOUR RIDE",
+            "anchor_id": "complete-your-ride",
             "title": "COMPLETE YOUR RIDE",
             "subtitle": "Smooth rides all summer long."
+          }
+        },
+        {
+          "type": "product_item",
+          "settings": {
+            "category_key": "summer-rides",
+            "title": "S2 Pro",
+            "attributes": "25 miles | 500w | 19 mph"
           }
         }
       ]
