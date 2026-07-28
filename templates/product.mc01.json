@@ -60,6 +60,7 @@
         },
         "offer_cMQLyt": {
           "type": "offer",
+          "disabled": true,
           "settings": {
             "text_alignment": "start",
             "icon_position": "aligned",
@@ -1223,7 +1224,7 @@
         "border_color": "#ffffff",
         "mobile_wrapper_padding_top": 28,
         "mobile_wrapper_padding_right": 0,
-        "mobile_wrapper_padding_bottom": 0,
+        "mobile_wrapper_padding_bottom": 10,
         "mobile_wrapper_padding_left": 0,
         "mobile_stack_gap": 20,
         "mobile_accordion_padding": 10,

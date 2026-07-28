@@ -18,13 +18,15 @@
         "show_collection_title": true,
         "show_collection_description": false,
         "show_collection_image": true,
-        "collection_title_size": "h2",
+        "collection_title_size": "h1",
         "image_size": "md",
+        "image": "shopify://shop_images/MEGAWHEELS-D2-Lite-electric-dirt-bike-1920x800-05.jpg",
+        "mobile_image": "shopify://shop_images/MEGAWHEELS-D2-Lite-electric-dirt-bike-1300x1500-5-1.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
         "featured_product_heading": "Featured product",
-        "text_color": "#ffffff",
+        "text_color": "#000000",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }

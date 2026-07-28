@@ -155,10 +155,35 @@
     },
     "video_reviews_Ea64b3": {
       "type": "video-reviews",
-      "disabled": true,
+      "blocks": {
+        "youtube_video_QRCFY8": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "0fDLGgTtRTM",
+            "video_title": "Megawheels Aotos S2A Stand Up Electric Scooter",
+            "date": "2026/7/26",
+            "author_name": "I Scoot Connecticut",
+            "author_avatar": "shopify://shop_images/ytb-I_Scoot_Connecticut.jpg"
+          }
+        },
+        "short_video_gNUhaV": {
+          "type": "short_video",
+          "settings": {
+            "short_url": "https://www.youtube.com/shorts/BBESpBkSsZQ",
+            "video_title": "Megawheels Aotos S2A Stand Up Electric Scooter - Top Speed & Hill Climb",
+            "date": "2026/7/19",
+            "author_name": "I Scoot Connecticut",
+            "author_avatar": "shopify://shop_images/ytb-I_Scoot_Connecticut.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "youtube_video_QRCFY8",
+        "short_video_gNUhaV"
+      ],
       "name": "视频展示轮播",
       "settings": {
-        "title": "Hear from Our Riders",
+        "title": "S2 Electric Scooter Review From Our Riders",
         "subtitle": "Watch our latest videos",
         "section_bg": "#f0f0f0",
         "section_padding": 20,

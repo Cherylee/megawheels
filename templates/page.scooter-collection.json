@@ -106,8 +106,8 @@
         "category_summer": {
           "type": "category",
           "settings": {
-            "nav_label": "SUMMER RIDES",
-            "anchor_id": "summer-rides",
+            "nav_label": "Scooter under $300",
+            "anchor_id": "scooter-under-300",
             "banner_image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-promotion.jpg",
             "title": "SUMMER RIDES",
             "title_size": 72,
@@ -156,6 +156,7 @@
         },
         "category_complete": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "nav_label": "COMPLETE YOUR RIDE",
             "anchor_id": "complete-your-ride",
@@ -174,40 +175,41 @@
         "product_summer_1": {
           "type": "product_item",
           "settings": {
-            "category_key": "summer-rides",
-            "product": "electric-scooter-adults-350w-motor-15-mph-top-speed-20",
-            "save_percent": 30,
-            "title": "S2 Pro",
-            "attributes": "25 miles | 500w | 19 mph"
+            "category_key": "scooter-under-300",
+            "product": "a1c-electric-scooter",
+            "save_percent": 17,
+            "image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
+            "title": "A1C",
+            "attributes": "12.5 miles | 250W | 15.5 mph"
           }
         },
         "product_summer_2": {
           "type": "product_item",
           "settings": {
-            "category_key": "summer-rides",
-            "product": "electric-scooter-adults-400w-motor-up-to-20-mph-45",
+            "category_key": "scooter-under-300",
+            "product": "a6l-eco-electric-scooter",
             "save_percent": 10,
-            "title": "S2",
-            "attributes": "25 miles | 500w | 19 mph"
+            "title": "A6L ECO",
+            "attributes": "20 miles | 300W | 15.5 mph"
           }
         },
         "product_summer_3": {
           "type": "product_item",
           "settings": {
-            "category_key": "summer-rides",
-            "product": "electric-scooter-adults-600w-motor-up-to-20-mph-28",
+            "category_key": "scooter-under-300",
+            "product": "c2-electric-scooter",
             "save_percent": 20,
-            "title": "EX6",
+            "title": "C2",
             "attributes": "up to 75 miles | 500w | up to 25 mph"
           }
         },
         "product_summer_4": {
           "type": "product_item",
           "settings": {
-            "category_key": "summer-rides",
-            "product": "electric-scooter-adults-24-mph-top-speed-46-6-miles",
+            "category_key": "scooter-under-300",
+            "product": "a6l-max-electric-scooter",
             "save_percent": 50,
-            "title": "P6",
+            "title": "A6L MAX",
             "attributes": "up to 75 miles | 500w | up to 25 mph"
           }
         },

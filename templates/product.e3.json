@@ -170,11 +170,22 @@
             "author_name": "Gadget Junkie Reviews",
             "author_avatar": "shopify://shop_images/YTB-Gadget_Junkie_Reviews.jpg"
           }
+        },
+        "youtube_video_9dJNVe": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "M3bNxNBWkug",
+            "video_title": "AOTOS E3 Electric Scooter POV Test Ride",
+            "date": "2026/7/20",
+            "author_name": "Gadget Junkie Reviews",
+            "author_avatar": "shopify://shop_images/YTB-Gadget_Junkie_Reviews.jpg"
+          }
         }
       },
       "block_order": [
         "youtube_video_YP4AGx",
-        "youtube_video_Xh7iBx"
+        "youtube_video_Xh7iBx",
+        "youtube_video_9dJNVe"
       ],
       "name": "视频展示轮播",
       "settings": {
