@@ -177,6 +177,7 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a1c-electric-scooter",
+            "sale_price": "170",
             "save_percent": 17,
             "image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
             "title": "A1C",
@@ -188,6 +189,7 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a6l-eco-electric-scooter",
+            "sale_price": "190.63",
             "save_percent": 10,
             "title": "A6L ECO",
             "attributes": "20 miles | 300W | 15.5 mph"
@@ -198,6 +200,7 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "c2-electric-scooter",
+            "sale_price": "",
             "save_percent": 20,
             "title": "C2",
             "attributes": "up to 75 miles | 500w | up to 25 mph"
@@ -208,6 +211,7 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a6l-max-electric-scooter",
+            "sale_price": "",
             "save_percent": 50,
             "title": "A6L MAX",
             "attributes": "up to 75 miles | 500w | up to 25 mph"
@@ -218,6 +222,7 @@
           "settings": {
             "category_key": "e-bikes",
             "product": "electric-dirt-bike-3350w-38mph-35-miles-48v-26ah-removable",
+            "sale_price": "",
             "save_percent": 0,
             "title": "D2 Lite",
             "attributes": "35 miles | 3350w | 38 mph"
@@ -228,6 +233,7 @@
           "settings": {
             "category_key": "e-bikes",
             "product": "electric-dirt-bike-3500w-42mph-50-miles-48v-23-5ah",
+            "sale_price": "",
             "save_percent": 0,
             "title": "D2",
             "attributes": "50 miles | 3500w | 42 mph"
@@ -238,6 +244,7 @@
           "settings": {
             "category_key": "e-bikes",
             "product": "electric-dirt-bike-4800w-50mph-45-miles-60v-30ah-removable",
+            "sale_price": "",
             "save_percent": 0,
             "title": "D2 Pro",
             "attributes": "45 miles | 4800w | 50 mph"
@@ -248,6 +255,7 @@
           "settings": {
             "category_key": "e-bikes",
             "product": "electric-dirt-bike-3000w-38mph-30-miles-48v-23-4ah",
+            "sale_price": "",
             "save_percent": 0,
             "title": "D2 Mini",
             "attributes": "30 miles | 3000w | 38 mph"
@@ -258,6 +266,7 @@
           "settings": {
             "category_key": "ride-together",
             "product": "a6l-eco-electric-scooter-display",
+            "sale_price": "",
             "save_percent": 0,
             "title": "Display",
             "attributes": "Accessory"
@@ -268,6 +277,7 @@
           "settings": {
             "category_key": "ride-together",
             "product": "a6l-eco-electric-scooter-front-wheel",
+            "sale_price": "",
             "save_percent": 0,
             "title": "Front Wheel",
             "attributes": "Accessory"
@@ -278,6 +288,7 @@
           "settings": {
             "category_key": "ride-together",
             "product": "a6l-eco-electric-scooter-motor",
+            "sale_price": "",
             "save_percent": 0,
             "title": "Motor",
             "attributes": "Accessory"
@@ -288,6 +299,7 @@
           "settings": {
             "category_key": "ride-together",
             "product": "a6l-eco-electric-scooter-rear-mudguard",
+            "sale_price": "",
             "save_percent": 0,
             "title": "Rear Mudguard",
             "attributes": "Accessory"
@@ -298,6 +310,7 @@
           "settings": {
             "category_key": "complete-your-ride",
             "product": "a1c-electric-scooter",
+            "sale_price": "",
             "save_percent": 0,
             "title": "A1C",
             "attributes": "Electric scooter"
@@ -308,6 +321,7 @@
           "settings": {
             "category_key": "complete-your-ride",
             "product": "a6l-eco-electric-scooter",
+            "sale_price": "",
             "save_percent": 0,
             "title": "A6L Eco",
             "attributes": "Electric scooter"
@@ -318,6 +332,7 @@
           "settings": {
             "category_key": "complete-your-ride",
             "product": "a6l-max-electric-scooter",
+            "sale_price": "",
             "save_percent": 0,
             "title": "A6L Max",
             "attributes": "Electric scooter"
@@ -328,6 +343,7 @@
           "settings": {
             "category_key": "complete-your-ride",
             "product": "c2-electric-scooter",
+            "sale_price": "",
             "save_percent": 0,
             "title": "C2",
             "attributes": "Electric scooter"
