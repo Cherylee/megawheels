@@ -590,23 +590,20 @@
                           assign card_image = product.featured_media
                         endif
 
-                        assign save_pct = 0
+                        assign save_pct = product_block.settings.save_percent | default: 0 | plus: 0
                         assign card_price = blank
                         assign card_compare_at = blank
-                        if product_block.settings.save_percent > 0
-                          assign save_pct = product_block.settings.save_percent
-                        endif
                         if product != blank
-                          assign card_price = variant.price | default: product.price
-                          assign card_compare_at = variant.compare_at_price
-                          if card_compare_at == blank or card_compare_at <= card_price
-                            assign card_compare_at = product.compare_at_price
-                          endif
-                          if card_compare_at == blank or card_compare_at <= card_price
-                            assign card_compare_at = product.compare_at_price_max
-                          endif
-                          if save_pct == 0 and card_compare_at > card_price and card_compare_at > 0
-                            assign save_pct = card_compare_at | minus: card_price | times: 100.0 | divided_by: card_compare_at | round
+                          assign card_price = variant.price | default: product.price | plus: 0
+                          assign sale_input = product_block.settings.sale_price | strip | replace: '$', '' | replace: ',', ''
+                          if sale_input != blank
+                            assign sale_cents = sale_input | times: 100.0 | round | plus: 0
+                            if sale_cents > 0 and card_price > sale_cents
+                              assign card_compare_at = card_price
+                              assign card_price = sale_cents
+                            elsif sale_cents > 0
+                              assign card_price = sale_cents
+                            endif
                           endif
                         endif
 
@@ -671,7 +668,7 @@
                                   {{ card_price | money }}
                                 {%- endif -%}
                               </span>
-                              {%- if card_compare_at > card_price -%}
+                              {%- if card_compare_at != blank and card_compare_at > card_price -%}
                                 <span class="scn-card__price-compare">
                                   {%- if settings.currency_code_enabled -%}
                                     {{ card_compare_at | money_with_currency }}
@@ -773,7 +770,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Sticky top nav + category panels. Add Category blocks for nav/banner, then Product card blocks. Set each product's Category key to match the Category Anchor ID. Save badge uses Compare-at price when set; for discount-code-only promos, set Save badge % on the product card."
+      "content": "Sticky top nav + category panels. Add Category blocks for nav/banner, then Product card blocks. Set each product's Category key to match the Category Anchor ID. For discount-code promos: fill Sale price + Save badge % (product price = original / strikethrough)."
     },
     {
       "type": "header",
@@ -1066,7 +1063,13 @@
           "type": "product",
           "id": "product",
           "label": "Product",
-          "info": "Used for price, compare-at, Add to Cart, and product URL."
+          "info": "Product price is treated as the original price (strikethrough). ATC / URL still use this product."
+        },
+        {
+          "type": "text",
+          "id": "sale_price",
+          "label": "Sale price",
+          "info": "Discounted price to show (e.g. 299.00). Required for discount-code promos. Leave empty to show product price only."
         },
         {
           "type": "range",
@@ -1077,7 +1080,7 @@
           "step": 1,
           "unit": "%",
           "default": 0,
-          "info": "Discount codes / automatic discounts cannot be read here. Set a % manually to show the save badge (0 = auto from Compare-at price only)."
+          "info": "Manual save % for the badge. Discount codes cannot be read automatically. 0 = hide badge."
         },
         {
           "type": "image_picker",
