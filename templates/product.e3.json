@@ -45,12 +45,6 @@
             "show_taxes_notice": false
           }
         },
-        "rating": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
         "payment_terms": {
           "type": "payment_terms",
           "settings": {}
@@ -120,7 +114,6 @@
         "price_second_BFNU4U",
         "discount_code_ydkBN8",
         "price",
-        "rating",
         "payment_terms",
         "separator",
         "description",
