@@ -55,11 +55,11 @@
       ],
       "settings": {
         "accessibility_label": "Store perks",
-        "background": "#0a2f4a",
-        "text_color": "#aeaaaa",
+        "background": "#FF0000",
+        "text_color": "#000000",
         "icon_color": "#000000",
         "content_max_width": 1200,
-        "font_size": 14,
+        "font_size": 12,
         "font_size_mobile": 13,
         "font_weight": "500"
       }
@@ -134,7 +134,7 @@
         "category_ebikes": {
           "type": "category",
           "settings": {
-            "nav_label": "Long Range",
+            "nav_label": "Long Range Scooter",
             "anchor_id": "long-range",
             "banner_image": "shopify://shop_images/long-range-electric-scooter-1920x504.jpg",
             "title": "Long range e-scooter",
@@ -335,16 +335,16 @@
         "product_item_JnRqqT"
       ],
       "settings": {
-        "nav_bg": "#3ba4d9",
+        "nav_bg": "#0E0E0E",
         "nav_text_color": "#ffffff",
         "nav_active_bg": "#000000",
         "nav_active_text": "#ffffff",
-        "nav_hover_bg": "#2b8fbf",
+        "nav_hover_bg": "#64A8C5",
         "nav_hover_text": "#ffffff",
         "nav_font_size": 16,
         "nav_font_size_mobile": 13,
-        "nav_font_weight": "600",
-        "content_bg": "#a8d5ea",
+        "nav_font_weight": "500",
+        "content_bg": "#0E0E0E",
         "content_max_width": 1200,
         "badge_bg": "#7ec8e8",
         "badge_text_color": "#ffffff",
@@ -436,12 +436,12 @@
       "settings": {
         "title": "Hear from Our Riders",
         "subtitle": "Watch our latest videos",
-        "section_bg": "#f0f0f0",
+        "section_bg": "#FFFFFF",
         "section_padding": 20,
         "items_per_row": 4,
-        "title_color": "#111111",
+        "title_color": "#0E0E0E",
         "title_size": 36,
-        "subtitle_color": "#6b7280",
+        "subtitle_color": "#0E0E0E",
         "subtitle_size": 16,
         "video_title_color": "#111111",
         "video_title_size": 16,
@@ -473,6 +473,7 @@
               "m1-electric-scooter",
               "e2-electric-scooter"
             ],
+            "filter_custom_tags": "",
             "star_rating": "5_star",
             "show_review_media": true,
             "display_order": "media_first",
@@ -507,9 +508,9 @@
         "full_width": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "background": "",
+        "background": "#FFFFFF",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "#FFFFFF"
       }
     }
   },
