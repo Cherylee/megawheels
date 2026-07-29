@@ -55,8 +55,8 @@
       ],
       "settings": {
         "accessibility_label": "Store perks",
-        "background": "#FF0000",
-        "text_color": "#000000",
+        "background": "#ff0000",
+        "text_color": "#FFFFFF",
         "icon_color": "#000000",
         "content_max_width": 1200,
         "font_size": 12,
@@ -188,7 +188,7 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a1c-electric-scooter",
-            "sale_price": "170.99",
+            "sale_price": "",
             "save_percent": 28,
             "title": "A1C",
             "attributes": "300W | 15.5 mph | APP"
@@ -199,10 +199,10 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a6l-eco-electric-scooter",
-            "sale_price": "239.99",
+            "sale_price": "",
             "save_percent": 18,
             "title": "A6L ECO",
-            "attributes": "19 miles | 350W | APP"
+            "attributes": "350W | 19 miles | APP"
           }
         },
         "product_summer_3": {
@@ -210,10 +210,10 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "c2-electric-scooter",
-            "sale_price": "243.99",
-            "save_percent": 20,
+            "sale_price": "",
+            "save_percent": 15,
             "title": "C2",
-            "attributes": "19 miles | 350W | Suspension design"
+            "attributes": "350W | 19 miles | Suspension design"
           }
         },
         "product_summer_4": {
@@ -221,10 +221,10 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a6l-max-electric-scooter",
-            "sale_price": "269.99",
-            "save_percent": 43,
+            "sale_price": "",
+            "save_percent": 35,
             "title": "A6L MAX",
-            "attributes": "28 miles | 500W | APP"
+            "attributes": "500W | 28 miles | APP"
           }
         },
         "product_ebike_4": {
@@ -232,10 +232,10 @@
           "settings": {
             "category_key": "long-range",
             "product": "a6l-max-electric-scooter",
-            "sale_price": "269.99",
-            "save_percent": 43,
+            "sale_price": "",
+            "save_percent": 35,
             "title": "A6L MAX",
-            "attributes": "28 miles | 500w | APP"
+            "attributes": "500W | 28 miles | APP"
           }
         },
         "product_ebike_1": {
@@ -243,10 +243,10 @@
           "settings": {
             "category_key": "long-range",
             "product": "e2-electric-scooter",
-            "sale_price": "339.99",
+            "sale_price": "",
             "save_percent": 30,
             "title": "E2",
-            "attributes": "28 miles | 400W | 20 mph"
+            "attributes": "400W | 28 miles | 20 mph"
           }
         },
         "product_ebike_2": {
@@ -254,10 +254,10 @@
           "settings": {
             "category_key": "long-range",
             "product": "e3-electric-scooter",
-            "sale_price": "399.99",
+            "sale_price": "",
             "save_percent": 11,
             "title": "E3",
-            "attributes": "28 miles | 650W | 12\" Wheel"
+            "attributes": "650W | 28 miles | 12\" Wheel"
           }
         },
         "product_ebike_3": {
@@ -335,18 +335,18 @@
         "product_item_JnRqqT"
       ],
       "settings": {
-        "nav_bg": "#0E0E0E",
+        "nav_bg": "#0e0e0e",
         "nav_text_color": "#ffffff",
         "nav_active_bg": "#000000",
         "nav_active_text": "#ffffff",
-        "nav_hover_bg": "#64A8C5",
+        "nav_hover_bg": "#64a8c5",
         "nav_hover_text": "#ffffff",
         "nav_font_size": 16,
         "nav_font_size_mobile": 13,
         "nav_font_weight": "500",
-        "content_bg": "#0E0E0E",
+        "content_bg": "#0e0e0e",
         "content_max_width": 1200,
-        "badge_bg": "#7ec8e8",
+        "badge_bg": "#FF0000",
         "badge_text_color": "#ffffff",
         "learn_text": "Learn More",
         "learn_bg": "#2b2b2b",
@@ -354,9 +354,9 @@
         "learn_hover_bg": "#000000",
         "learn_hover_text": "#ffffff",
         "atc_text": "Add to Cart",
-        "atc_bg": "#3ba4d9",
-        "atc_text_color": "#0a3d5c",
-        "atc_hover_bg": "#2b8fbf",
+        "atc_bg": "#2B2B2B",
+        "atc_text_color": "#FFFFFF",
+        "atc_hover_bg": "#000000",
         "atc_hover_text": "#ffffff"
       }
     },
@@ -436,12 +436,12 @@
       "settings": {
         "title": "Hear from Our Riders",
         "subtitle": "Watch our latest videos",
-        "section_bg": "#FFFFFF",
+        "section_bg": "#ffffff",
         "section_padding": 20,
         "items_per_row": 4,
-        "title_color": "#0E0E0E",
+        "title_color": "#0e0e0e",
         "title_size": 36,
-        "subtitle_color": "#0E0E0E",
+        "subtitle_color": "#0e0e0e",
         "subtitle_size": 16,
         "video_title_color": "#111111",
         "video_title_size": 16,
@@ -508,9 +508,9 @@
         "full_width": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "background": "#FFFFFF",
+        "background": "#ffffff",
         "background_gradient": "",
-        "text_color": "#FFFFFF"
+        "text_color": "#ffffff"
       }
     }
   },
