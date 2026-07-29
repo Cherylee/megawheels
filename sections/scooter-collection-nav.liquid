@@ -105,18 +105,27 @@
   /* ========== Category panel ========== */
   #shopify-section-{{ section.id }} .scn-panel {
     background: var(--scn-content-bg);
+  }
+
+  #shopify-section-{{ section.id }} .scn-products {
+    max-width: calc({{ section.settings.content_max_width | default: 1200 }} * var(--rem));
+    margin: 0 auto;
+    padding: calc(40 * var(--rem)) calc(30 * var(--rem)) calc(56 * var(--rem));
+    /* Extra offset so a slice of the category banner stays visible above products */
     scroll-margin-top: calc(
       var(--header-is-visible, 1) * var(--sticky-area-height, var(--header-height, 0px))
       + 40 * var(--rem)
+      + 220 * var(--rem)
       + 8px
     );
   }
 
   @media screen and (max-width: 749px) {
-    #shopify-section-{{ section.id }} .scn-panel {
+    #shopify-section-{{ section.id }} .scn-products {
       scroll-margin-top: calc(
         var(--header-is-visible, 1) * var(--sticky-area-height, var(--header-height, 0px))
         + 48 * var(--rem)
+        + 180 * var(--rem)
         + 8px
       );
     }
@@ -168,12 +177,6 @@
     margin: 0;
     font-family: var(--text-font-family);
     line-height: 1.4;
-  }
-
-  #shopify-section-{{ section.id }} .scn-products {
-    max-width: calc({{ section.settings.content_max_width | default: 1200 }} * var(--rem));
-    margin: 0 auto;
-    padding: calc(40 * var(--rem)) calc(30 * var(--rem)) calc(56 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .scn-products__grid {
@@ -454,9 +457,9 @@
             <li class="scn-nav__item" {{ block.shopify_attributes }}>
               <a
                 class="scn-nav__link{% if nav_index == 1 %} is-active{% endif %}"
-                href="#scn-{{ section.id }}-{{ anchor }}"
+                href="#scn-{{ section.id }}-{{ anchor }}-products"
                 data-scn-nav
-                data-target="scn-{{ section.id }}-{{ anchor }}"
+                data-target="scn-{{ section.id }}-{{ anchor }}-products"
               >
                 {{ block.settings.nav_label | default: block.settings.title | default: 'Category' | escape }}
               </a>
@@ -481,6 +484,7 @@
           class="scn-panel"
           id="scn-{{ section.id }}-{{ anchor }}"
           data-scn-panel
+          data-scn-nav-target="scn-{{ section.id }}-{{ anchor }}-products"
           {{ block.shopify_attributes }}
         >
           <div class="scn-banner">
@@ -575,7 +579,7 @@
           {%- endfor -%}
 
           {%- if panel_has_products -%}
-            <div class="scn-products">
+            <div class="scn-products" id="scn-{{ section.id }}-{{ anchor }}-products">
               <div class="scn-products__grid">
                 {%- for product_block in section.blocks -%}
                   {%- if product_block.type == 'product_item' -%}
@@ -734,10 +738,13 @@
     links.forEach(function (link) {
       link.addEventListener('click', function (event) {
         var targetId = link.getAttribute('data-target');
-        var panel = document.getElementById(targetId);
-        if (!panel) return;
+        var target = document.getElementById(targetId);
+        if (!target) return;
         event.preventDefault();
-        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        var marginTop = parseFloat(window.getComputedStyle(target).scrollMarginTop) || 0;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - marginTop;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
         setActive(targetId);
         if (history.replaceState) {
           history.replaceState(null, '', '#' + targetId);
@@ -750,7 +757,7 @@
         function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              setActive(entry.target.id);
+              setActive(entry.target.getAttribute('data-scn-nav-target') || entry.target.id);
             }
           });
         },
