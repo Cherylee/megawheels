@@ -146,7 +146,7 @@
             "shop_now_link": "shopify://products/d2-lite-electric-dirt-bike",
             "shop_now_text": "Shop Now",
             "add_to_cart_link": "shopify://products/d2-lite-electric-dirt-bike",
-            "add_to_cart_text": "$999",
+            "add_to_cart_text": "$1199.99",
             "icon_1": "motor",
             "value_1": "3000W",
             "label_1": "Motor",
@@ -168,7 +168,7 @@
             "shop_now_link": "shopify://products/d2-electric-dirt-bike",
             "shop_now_text": "Shop Now",
             "add_to_cart_link": "shopify://products/d2-electric-dirt-bike",
-            "add_to_cart_text": "$1099",
+            "add_to_cart_text": "$1399.99",
             "icon_1": "motor",
             "value_1": "3550W",
             "label_1": "Motor",
@@ -190,7 +190,7 @@
             "shop_now_link": "shopify://products/d2-pro-electric-dirt-bike",
             "shop_now_text": "Shop Now",
             "add_to_cart_link": "shopify://products/d2-pro-electric-dirt-bike",
-            "add_to_cart_text": "$1899",
+            "add_to_cart_text": "$2199.99",
             "icon_1": "motor",
             "value_1": "6000W",
             "label_1": "Motor",
@@ -340,7 +340,8 @@
         "prod_spec_color": "#666666",
         "prod_price_font": "inherit",
         "prod_price_size": 20,
-        "prod_price_color": "#ff0000",
+        "prod_price_color": "#000000",
+        "show_save_badge": true,
         "prod_tag_font": "inherit",
         "prod_tag_size": 16,
         "prod_tag_color": "#ffffff",
@@ -349,6 +350,119 @@
         "banner_sale_text": "Up to $200 off Electric Scooter",
         "banner_btn_text": "Learn More",
         "banner_btn_link": "shopify://collections/electric-scooters"
+      }
+    },
+    "featured_product_grid_AfQFQL": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "product_item_Jkpeni": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 28%",
+            "model_name": "A1C",
+            "spec_text": "300W | 15.5 mph | APP",
+            "current_price": "$170.99",
+            "original_price": "$235.99",
+            "link_learn": "shopify://products/a1c-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_YJfdEX": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1200x1600.jpg",
+            "badge_text": "SAVE 18%",
+            "model_name": "A6L ECO",
+            "spec_text": "19 miles | 350W | APP",
+            "current_price": "$239.99",
+            "original_price": "$292.99",
+            "link_learn": "shopify://products/a6l-eco-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_4r96zd": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-C2-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 20%",
+            "model_name": "C2",
+            "spec_text": "19 miles | 350w | Suspension design",
+            "current_price": "$243.99",
+            "original_price": "$304.99",
+            "link_learn": "shopify://products/c2-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_HjfgFf": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-M1-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 17%",
+            "model_name": "M1",
+            "spec_text": "28 miles | APP | 20 mph",
+            "current_price": "$249.99",
+            "original_price": "$299.99",
+            "link_learn": "shopify://products/m1-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_DwwcnH": {
+          "type": "product_item",
+          "disabled": true,
+          "settings": {
+            "badge_text": "SAVE 52%",
+            "model_name": "S2 Nova",
+            "spec_text": "20 miles | 350w | 19 mph",
+            "current_price": "$314.99",
+            "original_price": "$659.99",
+            "link_learn": "",
+            "link_cart": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_Jkpeni",
+        "product_item_YJfdEX",
+        "product_item_4r96zd",
+        "product_item_HjfgFf",
+        "product_item_DwwcnH"
+      ],
+      "disabled": true,
+      "name": "电动滑板车产品卡片网格",
+      "settings": {
+        "section_bg_color": "#f0f8ff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "grid_gap": 16,
+        "section_title": "Selected E-scooter For Daily Commuting",
+        "section_subtitle": "Choose your perfect ride",
+        "header_align": "center",
+        "header_bottom_margin": 40,
+        "title_font_size": 32,
+        "title_color": "#000000",
+        "subtitle_margin_top": 8,
+        "subtitle_font_size": 18,
+        "subtitle_color": "#444444",
+        "card_content_align": "center",
+        "badge_bg_color": "#38b6ff",
+        "badge_text_color": "#ffffff",
+        "badge_font_size": 12,
+        "model_font_size": 22,
+        "model_color": "#000000",
+        "spec_font_size": 15,
+        "spec_color": "#333333",
+        "price_font_size": 28,
+        "price_color": "#000000",
+        "old_price_font_size": 16,
+        "old_price_color": "#888888",
+        "btn_learn_label": "Learn More",
+        "btn_cart_label": "Add to Cart",
+        "btn_font_size": 15,
+        "btn_learn_bg": "#111111",
+        "btn_learn_text": "#ffffff",
+        "btn_cart_bg": "#42a5f5",
+        "btn_cart_text": "#ffffff"
       }
     },
     "custom_heading_EtDgUT": {
@@ -1361,6 +1475,7 @@
             "show_sample_reviews": true,
             "reviews_selection": "all",
             "products": [],
+            "filter_custom_tags": "",
             "star_rating": "all",
             "show_review_media": true,
             "display_order": "media_first",
@@ -1407,6 +1522,7 @@
     "custom_heading_rK9AWx",
     "product_video_carousel_tG7TPL",
     "product_grid_paHQUM",
+    "featured_product_grid_AfQFQL",
     "custom_heading_EtDgUT",
     "featured_collection_ndN7D4",
     "video_YGMqGD",

@@ -35,7 +35,7 @@
         "discount_code_ydkBN8": {
           "type": "discount_code",
           "settings": {
-            "default_checked": true
+            "default_checked": false
           }
         },
         "price": {

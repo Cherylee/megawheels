@@ -42,7 +42,7 @@
         "discount_code_mENfiR": {
           "type": "discount_code",
           "settings": {
-            "default_checked": true
+            "default_checked": false
           }
         },
         "price": {
@@ -1031,7 +1031,7 @@
         "intro_heading_font_size": 32,
         "intro_heading_color": "#ffffff",
         "intro_text_font_size": 16,
-        "intro_text_color": "#FFFFFF",
+        "intro_text_color": "#ffffff",
         "text_position": "center",
         "section_background": "",
         "section_gradient_color_1": "#5a0909",
@@ -1054,13 +1054,13 @@
         "wrapper_border_radius": 20,
         "background": "",
         "background_gradient": "",
-        "text_color": "#FFFFFF",
-        "heading_color": "#FFFFFF",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
         "heading_gradient": "",
         "button_background": "",
-        "button_text_color": "#FFFFFF",
+        "button_text_color": "#ffffff",
         "accordion_background": "",
-        "accordion_text_color": "#FFFFFF",
+        "accordion_text_color": "#ffffff",
         "border_width": 0,
         "border_color": "#ffffff",
         "mobile_wrapper_padding_top": 28,

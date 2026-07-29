@@ -35,7 +35,7 @@
         "discount_code_CNAz8H": {
           "type": "discount_code",
           "settings": {
-            "default_checked": true
+            "default_checked": false
           }
         },
         "price": {
@@ -436,10 +436,12 @@
             "button_text_color": "",
             "subheading_font_size": 24,
             "subheading_color": "#fc0000",
+            "subheading_gradient": "",
             "title_font_size": 48,
             "title_color": "#ffffff",
             "content_font_size": 20,
-            "content_color": "#ffffff"
+            "content_color": "#ffffff",
+            "mobile_text_align": "flex-start"
           }
         },
         "image_bKqHWd": {
@@ -464,10 +466,12 @@
             "button_text_color": "",
             "subheading_font_size": 24,
             "subheading_color": "#fc0000",
+            "subheading_gradient": "",
             "title_font_size": 48,
             "title_color": "#ffffff",
             "content_font_size": 20,
-            "content_color": "#ffffff"
+            "content_color": "#ffffff",
+            "mobile_text_align": "flex-start"
           }
         }
       },
@@ -482,7 +486,24 @@
         "section_padding_bottom": 0,
         "full_width": true,
         "alternate_media_position": false,
-        "spacing": "none"
+        "spacing": "none",
+        "mobile_keep_desktop_layout": false,
+        "mobile_layout_gap": 8,
+        "mobile_layout_subheading_size": 11,
+        "mobile_layout_title_size": 14,
+        "mobile_layout_text_size": 10,
+        "mobile_layout_line_height": 1.2,
+        "mobile_padding_top": 40,
+        "mobile_padding_right": 0,
+        "mobile_padding_bottom": 20,
+        "mobile_padding_left": 0,
+        "mobile_subheading_size": 18,
+        "mobile_text_size": 16,
+        "mobile_text_align": "left",
+        "mobile_content_padding_top": 0,
+        "mobile_content_padding_right": 10,
+        "mobile_content_padding_bottom": 0,
+        "mobile_content_padding_left": 10
       }
     },
     "slideshow_ctUjDT": {
@@ -553,10 +574,12 @@
             "button_text_color": "",
             "subheading_font_size": 24,
             "subheading_color": "#fc0000",
+            "subheading_gradient": "",
             "title_font_size": 48,
             "title_color": "#ffffff",
             "content_font_size": 20,
-            "content_color": "#ffffff"
+            "content_color": "#ffffff",
+            "mobile_text_align": "flex-start"
           }
         },
         "image_hxXjC6": {
@@ -581,10 +604,12 @@
             "button_text_color": "",
             "subheading_font_size": 24,
             "subheading_color": "#fc0000",
+            "subheading_gradient": "",
             "title_font_size": 48,
             "title_color": "#ffffff",
             "content_font_size": 20,
-            "content_color": "#ffffff"
+            "content_color": "#ffffff",
+            "mobile_text_align": "flex-start"
           }
         }
       },
@@ -599,7 +624,24 @@
         "section_padding_bottom": 0,
         "full_width": true,
         "alternate_media_position": false,
-        "spacing": "none"
+        "spacing": "none",
+        "mobile_keep_desktop_layout": false,
+        "mobile_layout_gap": 8,
+        "mobile_layout_subheading_size": 11,
+        "mobile_layout_title_size": 14,
+        "mobile_layout_text_size": 10,
+        "mobile_layout_line_height": 1.2,
+        "mobile_padding_top": 40,
+        "mobile_padding_right": 0,
+        "mobile_padding_bottom": 20,
+        "mobile_padding_left": 0,
+        "mobile_subheading_size": 18,
+        "mobile_text_size": 16,
+        "mobile_text_align": "left",
+        "mobile_content_padding_top": 0,
+        "mobile_content_padding_right": 10,
+        "mobile_content_padding_bottom": 0,
+        "mobile_content_padding_left": 10
       }
     },
     "image_with_text_pro_4twVnc": {

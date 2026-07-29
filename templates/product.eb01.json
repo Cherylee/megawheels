@@ -35,7 +35,7 @@
         "discount_code_AWqbqh": {
           "type": "discount_code",
           "settings": {
-            "default_checked": true
+            "default_checked": false
           }
         },
         "price": {

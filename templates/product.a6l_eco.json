@@ -35,7 +35,7 @@
         "discount_code_Wx3ECn": {
           "type": "discount_code",
           "settings": {
-            "default_checked": true
+            "default_checked": false
           }
         },
         "price": {
@@ -268,7 +268,7 @@
         "mobile_image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1200x1600.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#FFFFFF",
+        "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
@@ -689,13 +689,13 @@
         "view_less_text": "View less",
         "background": "#000000",
         "background_gradient": "",
-        "text_color": "#FFFFFF",
-        "heading_color": "#FFFFFF",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "chart_background": "#0E0E0E",
-        "chart_text_color": "#FFFFFF",
+        "chart_background": "#0e0e0e",
+        "chart_text_color": "#ffffff",
         "chart_true_false_color": ""
       }
     },

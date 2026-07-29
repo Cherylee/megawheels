@@ -3072,10 +3072,6 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
   gap: var(--spacing-2);
 }
 
-.card-discount-price.justify-center {
-  justify-content: center;
-}
-
 .card-discount-price__current {
   color: rgb(var(--on-sale-text));
   white-space: nowrap;

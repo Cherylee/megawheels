@@ -12,6 +12,15 @@
     "scooter_trust_bar": {
       "type": "scooter-trust-bar",
       "blocks": {
+        "perk_shop_pay": {
+          "type": "perk",
+          "settings": {
+            "icon": "shopify://shop_images/UL-icon-500.png",
+            "icon_preset": "shop_pay",
+            "text": "UL cERTIFIED",
+            "link": ""
+          }
+        },
         "perk_shipping": {
           "type": "perk",
           "settings": {
@@ -28,27 +37,29 @@
             "link": ""
           }
         },
-        "perk_shop_pay": {
+        "perk_EnK4yj": {
           "type": "perk",
           "settings": {
-            "icon_preset": "shop_pay",
-            "text": "0% APR WITH SHOP PAY",
+            "icon": "shopify://shop_images/Warranty_2.png",
+            "icon_preset": "returns",
+            "text": "1-year warranty",
             "link": ""
           }
         }
       },
       "block_order": [
+        "perk_shop_pay",
         "perk_shipping",
         "perk_returns",
-        "perk_shop_pay"
+        "perk_EnK4yj"
       ],
       "settings": {
         "accessibility_label": "Store perks",
         "background": "#0a2f4a",
-        "text_color": "#ffffff",
-        "icon_color": "#7ec8e8",
+        "text_color": "#aeaaaa",
+        "icon_color": "#000000",
         "content_max_width": 1200,
-        "font_size": 20,
+        "font_size": 14,
         "font_size_mobile": 13,
         "font_weight": "500"
       }
@@ -57,15 +68,15 @@
       "type": "image-with-titles",
       "name": "Image with titles",
       "settings": {
-        "image": "shopify://shop_images/2.png",
+        "image": "shopify://shop_images/electric-scooter-1920-504.jpg",
         "border_radius": 0,
         "show_title": true,
-        "title": "",
+        "title": "Electric Scooter For Commuting",
         "show_subtitle": false,
         "subtitle": "",
-        "text_align": "left",
-        "caption_max_width": 50,
-        "title_size": 36,
+        "text_align": "center",
+        "caption_max_width": 70,
+        "title_size": 48,
         "title_color": "#ffffff",
         "title_weight": "700",
         "title_line_height": "1.2",
@@ -74,7 +85,7 @@
         "subtitle_color": "#ffffff",
         "subtitle_weight": "400",
         "subtitle_line_height": "1.5",
-        "position_x": 5,
+        "position_x": 25,
         "position_y": 50,
         "anchor_x": "left",
         "anchor_y": "center",
@@ -108,14 +119,14 @@
           "settings": {
             "nav_label": "Scooter under $300",
             "anchor_id": "scooter-under-300",
-            "banner_image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-promotion.jpg",
-            "title": "SUMMER RIDES",
-            "title_size": 72,
+            "banner_image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1920x700.jpg",
+            "title": "E-scooter under $300",
+            "title_size": 56,
             "title_color": "#ffffff",
             "title_weight": "700",
             "title_italic": true,
-            "subtitle": "Smooth rides all summer long.",
-            "subtitle_size": 20,
+            "subtitle": "Get Your First Electric Scooter with an Really Affordable Price.",
+            "subtitle_size": 24,
             "subtitle_color": "#ffffff",
             "subtitle_weight": "400"
           }
@@ -123,16 +134,16 @@
         "category_ebikes": {
           "type": "category",
           "settings": {
-            "nav_label": "E-BIKES",
-            "anchor_id": "e-bikes",
-            "banner_image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-900-01.jpg",
-            "title": "E-BIKES",
-            "title_size": 72,
+            "nav_label": "Long Range",
+            "anchor_id": "long-range",
+            "banner_image": "shopify://shop_images/long-range-electric-scooter-1920x504.jpg",
+            "title": "Long range e-scooter",
+            "title_size": 56,
             "title_color": "#ffffff",
             "title_weight": "700",
             "title_italic": true,
-            "subtitle": "Smooth rides all summer long.",
-            "subtitle_size": 20,
+            "subtitle": "No need to worry about the scooter running out of battery.",
+            "subtitle_size": 24,
             "subtitle_color": "#ffffff",
             "subtitle_weight": "400"
           }
@@ -140,16 +151,16 @@
         "category_together": {
           "type": "category",
           "settings": {
-            "nav_label": "RIDE TOGETHER & SAVE",
-            "anchor_id": "ride-together",
-            "banner_image": "shopify://shop_images/4.jpg",
-            "title": "RIDE TOGETHER & SAVE",
-            "title_size": 72,
+            "nav_label": "Scooter with suspension",
+            "anchor_id": "scooter-with-suspension",
+            "banner_image": "shopify://shop_images/electric-scooter-with-suspension-1920x504.jpg",
+            "title": "Comfortable riding",
+            "title_size": 56,
             "title_color": "#ffffff",
             "title_weight": "700",
             "title_italic": true,
-            "subtitle": "Smooth rides all summer long.",
-            "subtitle_size": 20,
+            "subtitle": "The large wheel and front fork suspension design offer the scooter with a more comfortable riding experience.",
+            "subtitle_size": 24,
             "subtitle_color": "#ffffff",
             "subtitle_weight": "400"
           }
@@ -177,11 +188,10 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a1c-electric-scooter",
-            "sale_price": "170",
-            "save_percent": 17,
-            "image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
+            "sale_price": "170.99",
+            "save_percent": 28,
             "title": "A1C",
-            "attributes": "12.5 miles | 250W | 15.5 mph"
+            "attributes": "300W | 15.5 mph | APP"
           }
         },
         "product_summer_2": {
@@ -189,10 +199,10 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a6l-eco-electric-scooter",
-            "sale_price": "190.63",
-            "save_percent": 10,
+            "sale_price": "239.99",
+            "save_percent": 18,
             "title": "A6L ECO",
-            "attributes": "20 miles | 300W | 15.5 mph"
+            "attributes": "19 miles | 350W | APP"
           }
         },
         "product_summer_3": {
@@ -200,10 +210,10 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "c2-electric-scooter",
-            "sale_price": "",
+            "sale_price": "243.99",
             "save_percent": 20,
             "title": "C2",
-            "attributes": "up to 75 miles | 500w | up to 25 mph"
+            "attributes": "19 miles | 350W | Suspension design"
           }
         },
         "product_summer_4": {
@@ -211,142 +221,98 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a6l-max-electric-scooter",
-            "sale_price": "",
-            "save_percent": 50,
+            "sale_price": "269.99",
+            "save_percent": 43,
             "title": "A6L MAX",
-            "attributes": "up to 75 miles | 500w | up to 25 mph"
-          }
-        },
-        "product_ebike_1": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "e-bikes",
-            "product": "electric-dirt-bike-3350w-38mph-35-miles-48v-26ah-removable",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "D2 Lite",
-            "attributes": "35 miles | 3350w | 38 mph"
-          }
-        },
-        "product_ebike_2": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "e-bikes",
-            "product": "electric-dirt-bike-3500w-42mph-50-miles-48v-23-5ah",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "D2",
-            "attributes": "50 miles | 3500w | 42 mph"
-          }
-        },
-        "product_ebike_3": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "e-bikes",
-            "product": "electric-dirt-bike-4800w-50mph-45-miles-60v-30ah-removable",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "D2 Pro",
-            "attributes": "45 miles | 4800w | 50 mph"
+            "attributes": "28 miles | 500W | APP"
           }
         },
         "product_ebike_4": {
           "type": "product_item",
           "settings": {
-            "category_key": "e-bikes",
-            "product": "electric-dirt-bike-3000w-38mph-30-miles-48v-23-4ah",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "D2 Mini",
-            "attributes": "30 miles | 3000w | 38 mph"
+            "category_key": "long-range",
+            "product": "a6l-max-electric-scooter",
+            "sale_price": "269.99",
+            "save_percent": 43,
+            "title": "A6L MAX",
+            "attributes": "28 miles | 500w | APP"
+          }
+        },
+        "product_ebike_1": {
+          "type": "product_item",
+          "settings": {
+            "category_key": "long-range",
+            "product": "e2-electric-scooter",
+            "sale_price": "339.99",
+            "save_percent": 30,
+            "title": "E2",
+            "attributes": "28 miles | 400W | 20 mph"
+          }
+        },
+        "product_ebike_2": {
+          "type": "product_item",
+          "settings": {
+            "category_key": "long-range",
+            "product": "e3-electric-scooter",
+            "sale_price": "399.99",
+            "save_percent": 11,
+            "title": "E3",
+            "attributes": "28 miles | 650W | 12\" Wheel"
+          }
+        },
+        "product_ebike_3": {
+          "type": "product_item",
+          "settings": {
+            "category_key": "long-range",
+            "product": "s2-electric-scooter",
+            "sale_price": "439.99",
+            "save_percent": 12,
+            "title": "S2",
+            "attributes": "44 miles | 750W | 20 mph"
           }
         },
         "product_together_1": {
           "type": "product_item",
           "settings": {
-            "category_key": "ride-together",
-            "product": "a6l-eco-electric-scooter-display",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "Display",
-            "attributes": "Accessory"
+            "category_key": "scooter-with-suspension",
+            "product": "m1-electric-scooter",
+            "sale_price": "249.99",
+            "save_percent": 17,
+            "title": "M1",
+            "attributes": "28 miles | 20 mph | APP"
           }
         },
-        "product_together_2": {
+        "product_item_gcewgM": {
           "type": "product_item",
           "settings": {
-            "category_key": "ride-together",
-            "product": "a6l-eco-electric-scooter-front-wheel",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "Front Wheel",
-            "attributes": "Accessory"
-          }
-        },
-        "product_together_3": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "ride-together",
-            "product": "a6l-eco-electric-scooter-motor",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "Motor",
-            "attributes": "Accessory"
-          }
-        },
-        "product_together_4": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "ride-together",
-            "product": "a6l-eco-electric-scooter-rear-mudguard",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "Rear Mudguard",
-            "attributes": "Accessory"
-          }
-        },
-        "product_complete_1": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "complete-your-ride",
-            "product": "a1c-electric-scooter",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "A1C",
-            "attributes": "Electric scooter"
-          }
-        },
-        "product_complete_2": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "complete-your-ride",
-            "product": "a6l-eco-electric-scooter",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "A6L Eco",
-            "attributes": "Electric scooter"
-          }
-        },
-        "product_complete_3": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "complete-your-ride",
-            "product": "a6l-max-electric-scooter",
-            "sale_price": "",
-            "save_percent": 0,
-            "title": "A6L Max",
-            "attributes": "Electric scooter"
-          }
-        },
-        "product_complete_4": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "complete-your-ride",
+            "category_key": "scooter-with-suspension",
             "product": "c2-electric-scooter",
-            "sale_price": "",
-            "save_percent": 0,
+            "sale_price": "243.99",
+            "save_percent": 20,
             "title": "C2",
-            "attributes": "Electric scooter"
+            "attributes": "19 miles | 350W | Suspension design"
+          }
+        },
+        "product_item_3BqLrf": {
+          "type": "product_item",
+          "settings": {
+            "category_key": "scooter-with-suspension",
+            "product": "e3-electric-scooter",
+            "sale_price": "399.99",
+            "save_percent": 11,
+            "title": "E3",
+            "attributes": "28 miles | 650W | 12\" Wheel"
+          }
+        },
+        "product_item_JnRqqT": {
+          "type": "product_item",
+          "settings": {
+            "category_key": "scooter-with-suspension",
+            "product": "s2-electric-scooter",
+            "sale_price": "439.99",
+            "save_percent": 12,
+            "title": "S2",
+            "attributes": "44 miles | 750W | 20 mph"
           }
         }
       },
@@ -359,18 +325,14 @@
         "product_summer_2",
         "product_summer_3",
         "product_summer_4",
+        "product_ebike_4",
         "product_ebike_1",
         "product_ebike_2",
         "product_ebike_3",
-        "product_ebike_4",
         "product_together_1",
-        "product_together_2",
-        "product_together_3",
-        "product_together_4",
-        "product_complete_1",
-        "product_complete_2",
-        "product_complete_3",
-        "product_complete_4"
+        "product_item_gcewgM",
+        "product_item_3BqLrf",
+        "product_item_JnRqqT"
       ],
       "settings": {
         "nav_bg": "#3ba4d9",
@@ -397,11 +359,165 @@
         "atc_hover_bg": "#2b8fbf",
         "atc_hover_text": "#ffffff"
       }
+    },
+    "video_reviews_jKTiPw": {
+      "type": "video-reviews",
+      "blocks": {
+        "youtube_video_PzBh4Q": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "sLY-jBm2DQ0",
+            "video_title": "M1 Electric Scooter for Adults, 20 MPH Speed & 28 Miles Long Range, 550W Peak Motor",
+            "date": "2026/6/26",
+            "author_name": "Product Master Review",
+            "author_avatar": "shopify://shop_images/YTB-Product_Master_Review.jpg"
+          }
+        },
+        "youtube_video_CwJ8pG": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "Youq7MSia-s",
+            "video_title": "MegaWheels Sent Me There M1 Scooter… (Was It Worth It?)",
+            "date": "2026/7/13",
+            "author_name": "The Nephews",
+            "author_avatar": "shopify://shop_images/YTB-The_Nephews.jpg"
+          }
+        },
+        "youtube_video_WMaLaT": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "b1aJAaCUyxQ",
+            "video_title": "MEGAWHEELS A6L Eco E-Scooter Review: A Good Choice As Daily Commuter",
+            "date": "2024/7/29",
+            "author_name": "gizmochina",
+            "author_avatar": "shopify://shop_images/YTB-gizmochina.jpg"
+          }
+        },
+        "youtube_video_MzAchr": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "msK6vz3S-2U",
+            "video_title": "Worth It? MEGAWHEELS Electric Scooter A6L MAX, Electric Scooter with 10IN Shock Absorbing Tires",
+            "date": "2024/10/23",
+            "author_name": "Adam’s Simple & Fast Reviews",
+            "author_avatar": "shopify://shop_images/YTB-Adam_s_Simple_Fast_Reviews.jpg"
+          }
+        },
+        "youtube_video_mAAjBD": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "0fDLGgTtRTM",
+            "video_title": "Megawheels Aotos S2A Stand Up Electric Scooter",
+            "date": "2026/7/26",
+            "author_name": "I Scoot Connecticut",
+            "author_avatar": "shopify://shop_images/ytb-I_Scoot_Connecticut.jpg"
+          }
+        },
+        "youtube_video_WhyQDM": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "ekiDvPTflBc",
+            "video_title": "Full Review: Megawheels A1C E-Scooter with App Control",
+            "date": "2025/4/15",
+            "author_name": "Review Central",
+            "author_avatar": "shopify://shop_images/YTB-Review_Central.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "youtube_video_PzBh4Q",
+        "youtube_video_CwJ8pG",
+        "youtube_video_WMaLaT",
+        "youtube_video_MzAchr",
+        "youtube_video_mAAjBD",
+        "youtube_video_WhyQDM"
+      ],
+      "name": "视频展示轮播",
+      "settings": {
+        "title": "Hear from Our Riders",
+        "subtitle": "Watch our latest videos",
+        "section_bg": "#f0f0f0",
+        "section_padding": 20,
+        "items_per_row": 4,
+        "title_color": "#111111",
+        "title_size": 36,
+        "subtitle_color": "#6b7280",
+        "subtitle_size": 16,
+        "video_title_color": "#111111",
+        "video_title_size": 16,
+        "author_color": "#111111",
+        "author_size": 14,
+        "date_color": "#6b7280",
+        "date_size": 12,
+        "arrow_color": "#111111",
+        "arrow_bg": "#ffffff",
+        "arrow_size": 36,
+        "arrow_font_size": 18,
+        "youtube_tab_text": "YouTube",
+        "short_tab_text": "Short Video"
+      }
+    },
+    "178520540861d065a3": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_fNf3cF": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "custom_products",
+            "products": [
+              "a1c-electric-scooter",
+              "a6l-eco-electric-scooter",
+              "a6l-max-electric-scooter",
+              "c2-electric-scooter",
+              "m1-electric-scooter",
+              "e2-electric-scooter"
+            ],
+            "star_rating": "5_star",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1.33",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": false,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "#ff0000",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_fNf3cF"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "scooter_trust_bar",
     "image_with_titles_73rRJy",
-    "scooter_collection_nav"
+    "scooter_collection_nav",
+    "video_reviews_jKTiPw",
+    "178520540861d065a3"
   ]
 }

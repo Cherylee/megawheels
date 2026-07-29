@@ -35,7 +35,7 @@
         "discount_code_nXcAKi": {
           "type": "discount_code",
           "settings": {
-            "default_checked": true
+            "default_checked": false
           }
         },
         "offer_V7F7ED": {
@@ -437,7 +437,7 @@
             "link_url": "",
             "background": "#000000",
             "background_gradient": "",
-            "text_color": "#FFFFFF",
+            "text_color": "#ffffff",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": "",
@@ -445,9 +445,9 @@
             "subheading_color": "#666666",
             "subheading_gradient": "",
             "title_font_size": 32,
-            "title_color": "#FFFFFF",
+            "title_color": "#ffffff",
             "content_font_size": 16,
-            "content_color": "#FFFFFF",
+            "content_color": "#ffffff",
             "mobile_text_align": "center"
           }
         },
@@ -475,9 +475,9 @@
             "subheading_color": "#666666",
             "subheading_gradient": "",
             "title_font_size": 32,
-            "title_color": "#FFFFFF",
+            "title_color": "#ffffff",
             "content_font_size": 16,
-            "content_color": "#FFFFFF",
+            "content_color": "#ffffff",
             "mobile_text_align": "flex-start"
           }
         },
@@ -505,9 +505,9 @@
             "subheading_color": "#666666",
             "subheading_gradient": "",
             "title_font_size": 32,
-            "title_color": "#FFFFFF",
+            "title_color": "#ffffff",
             "content_font_size": 16,
-            "content_color": "#FFFFFF",
+            "content_color": "#ffffff",
             "mobile_text_align": "flex-start"
           }
         },
@@ -535,9 +535,9 @@
             "subheading_color": "#666666",
             "subheading_gradient": "",
             "title_font_size": 32,
-            "title_color": "#FFFFFF",
+            "title_color": "#ffffff",
             "content_font_size": 16,
-            "content_color": "#FFFFFF",
+            "content_color": "#ffffff",
             "mobile_text_align": "flex-start"
           }
         }
@@ -667,13 +667,13 @@
         "view_less_text": "View less",
         "background": "#000000",
         "background_gradient": "",
-        "text_color": "#FFFFFF",
+        "text_color": "#ffffff",
         "heading_color": "",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "chart_background": "#0E0E0E",
-        "chart_text_color": "#FFFFFF",
+        "chart_background": "#0e0e0e",
+        "chart_text_color": "#ffffff",
         "chart_true_false_color": ""
       }
     },

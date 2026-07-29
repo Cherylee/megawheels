@@ -20,6 +20,11 @@
     --product-list-promo-grid-column: span {{ section.settings.products_per_row_mobile }};
 
     --content-over-media-gap: var(--spacing-8);
+    --collection-card-price-color: {{ section.settings.product_card_price_color }};
+  }
+
+  #shopify-section-{{ section.id }} .product-card .price-list sale-price {
+    color: var(--collection-card-price-color);
   }
 
   @media screen and (min-width: 700px) {
@@ -229,7 +234,7 @@
                       </div>
                     {%- endfor -%}
 
-                    {%- render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true -%}
+                    {%- render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true, show_save_badge: section.settings.show_save_badge -%}
                   {%- endfor -%}
                 </product-list>
               </reveal-items>
@@ -628,6 +633,22 @@
       "label": "Products per row (desktop)",
       "info": "For best results, limit to 4 when using sidebar filtering. On small screen size, products per row is limited to 2 (with sidebar) or 3 (without sidebar) to maximize readability",
       "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Product card"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_save_badge",
+      "label": "Show Save badge",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "product_card_price_color",
+      "label": "Price text color",
+      "default": "#fc0000"
     },
     {
       "type": "header",

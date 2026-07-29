@@ -212,13 +212,38 @@
       height: auto;
       min-height: 320px;
     }
+    .iscooter-product-card-link {
+      display: flex;
+      flex-direction: column;
+    }
+    .iscooter-product-title {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .iscooter-product-title-text {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
     .iscooter-product-img {
       height: 180px;
+    }
+    .iscooter-product-specs {
+      height: 39px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
     .iscooter-product-price {
       display: flex;
       flex-direction: column;
       gap: 0px;
+      margin-top: auto;
     }
   }
 </style>
@@ -262,20 +287,19 @@
           assign card_title = block.settings.product_title | default: card_product.title
           assign card_url = card_product.url | default: '/'
 
-          # 元字段折扣：仅当 custom.discount_code 与 custom.discount_money_count 同时有值时，
-          # 价格区展示「折后价 + Save 节省额徽章」。discount_money_count 为 money 类型，其 .value 即为分，可直接 minus / money。
+          # 元字段折扣：仅当 custom.discount_code 与 custom.discount_money_count 同时有值时展示 Save 徽章。
+          # 红色价格始终展示产品的 price；discount_money_count 为 money 类型，其 .value 即为分，可直接使用 money 格式化。
           assign card_discount_code = card_product.metafields.custom.discount_code.value
           assign card_discount_amount = card_product.metafields.custom.discount_money_count.value
           assign card_has_discount = false
           if card_discount_code != blank and card_discount_amount != blank and card_discount_amount > 0
             assign card_has_discount = true
-            assign card_discounted_price = card_product.price | minus: card_discount_amount
           endif
         -%}
         <div class="iscooter-grid-item iscooter-product-item">
           <a href="{{ card_url }}" class="iscooter-product-card-link">
             <div class="iscooter-product-content">
-              <h3 class="iscooter-product-title">{{ card_title }}</h3>
+              <h3 class="iscooter-product-title"><span class="iscooter-product-title-text">{{ card_title }}</span></h3>
 
               {%- if block.settings.product_image -%}
                 <img src="{{ block.settings.product_image | image_url: width: 800 }}" class="iscooter-product-img" alt="{{ card_title | default: 'Product' | escape }}">
@@ -289,15 +313,11 @@
             </div>
 
             <div class="iscooter-product-price">
-              {%- if card_has_discount -%}
-                <span class="iscooter-price-sale">
-                  {%- if settings.currency_code_enabled -%}{{ card_discounted_price | money_with_currency }}{%- else -%}{{ card_discounted_price | money }}{%- endif -%}
-                </span>
+              <span class="iscooter-price-sale">
+                {%- if settings.currency_code_enabled -%}{{ card_product.price | money_with_currency }}{%- else -%}{{ card_product.price | money }}{%- endif -%}
+              </span>
+              {%- if section.settings.show_save_badge and card_has_discount -%}
                 <span class="iscooter-save-badge">Save&nbsp;{{ card_discount_amount | money }}</span>
-              {%- else -%}
-                <span class="iscooter-price-sale">
-                  {%- if settings.currency_code_enabled -%}{{ card_product.price | money_with_currency }}{%- else -%}{{ card_product.price | money }}{%- endif -%}
-                </span>
               {%- endif -%}
             </div>
           </a>
@@ -646,6 +666,12 @@
     {
       "type": "header",
       "content": "卡片 - Save 徽章设置"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_save_badge",
+      "label": "在产品卡片中展示 Save 徽章",
+      "default": true
     },
     {
       "type": "select",
