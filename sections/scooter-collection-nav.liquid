@@ -111,24 +111,11 @@
     max-width: calc({{ section.settings.content_max_width | default: 1200 }} * var(--rem));
     margin: 0 auto;
     padding: calc(40 * var(--rem)) calc(30 * var(--rem)) calc(56 * var(--rem));
-    /* Extra offset so a slice of the category banner stays visible above products */
     scroll-margin-top: calc(
       var(--header-is-visible, 1) * var(--sticky-area-height, var(--header-height, 0px))
-      + 40 * var(--rem)
-      + 220 * var(--rem)
-      + 8px
+      + 48 * var(--rem)
+      + 20px
     );
-  }
-
-  @media screen and (max-width: 749px) {
-    #shopify-section-{{ section.id }} .scn-products {
-      scroll-margin-top: calc(
-        var(--header-is-visible, 1) * var(--sticky-area-height, var(--header-height, 0px))
-        + 48 * var(--rem)
-        + 180 * var(--rem)
-        + 8px
-      );
-    }
   }
 
   #shopify-section-{{ section.id }} .scn-banner {
@@ -727,6 +714,7 @@
 
     var links = root.querySelectorAll('[data-scn-nav]');
     var panels = root.querySelectorAll('[data-scn-panel]');
+    var nav = root.querySelector('.scn-nav');
     if (!links.length || !panels.length) return;
 
     function setActive(id) {
@@ -735,22 +723,58 @@
       });
     }
 
+    function stickyOffset() {
+      var navBottom = nav ? Math.ceil(nav.getBoundingClientRect().bottom) : 0;
+      var styles = getComputedStyle(document.documentElement);
+      var stickyArea = parseFloat(styles.getPropertyValue('--sticky-area-height')) || 0;
+      var headerH = parseFloat(styles.getPropertyValue('--header-height')) || 0;
+      var headerVisible = parseFloat(styles.getPropertyValue('--header-is-visible'));
+      if (isNaN(headerVisible)) headerVisible = 1;
+      var navHeight = nav ? Math.ceil(nav.getBoundingClientRect().height) : 0;
+      var fromCss = Math.ceil(headerVisible * (stickyArea || headerH) + navHeight);
+      /* Extra gap so product cards are not tucked under the sticky nav */
+      return Math.max(navBottom, fromCss) + 20;
+    }
+
+    function scrollToProducts(targetId, behavior) {
+      var target = document.getElementById(targetId);
+      if (!target) return false;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - stickyOffset();
+      window.scrollTo({ top: Math.max(0, top), behavior: behavior || 'smooth' });
+
+      if ((behavior || 'smooth') === 'smooth') {
+        window.setTimeout(function () {
+          var corrected = target.getBoundingClientRect().top + window.pageYOffset - stickyOffset();
+          if (Math.abs(corrected - window.pageYOffset) > 4) {
+            window.scrollTo({ top: Math.max(0, corrected), behavior: 'auto' });
+          }
+        }, 450);
+      }
+      return true;
+    }
+
     links.forEach(function (link) {
       link.addEventListener('click', function (event) {
         var targetId = link.getAttribute('data-target');
-        var target = document.getElementById(targetId);
-        if (!target) return;
+        if (!targetId) return;
         event.preventDefault();
-
-        var marginTop = parseFloat(window.getComputedStyle(target).scrollMarginTop) || 0;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - marginTop;
-        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        if (!scrollToProducts(targetId)) return;
         setActive(targetId);
         if (history.replaceState) {
           history.replaceState(null, '', '#' + targetId);
         }
       });
     });
+
+    if (window.location.hash) {
+      var hashId = window.location.hash.slice(1);
+      if (hashId && document.getElementById(hashId)) {
+        requestAnimationFrame(function () {
+          scrollToProducts(hashId);
+          setActive(hashId);
+        });
+      }
+    }
 
     if ('IntersectionObserver' in window) {
       var observer = new IntersectionObserver(
