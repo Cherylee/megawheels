@@ -17,8 +17,8 @@
         "message_B6LQaC": {
           "type": "message",
           "settings": {
-            "text": "$200 OFF FOR D2 SERIES ELECTRIC DIRT BIKE",
-            "url": "shopify://collections/dirt-bikes"
+            "text": "UP TO $600 OFF FOR D2 SERIES ELECTRIC DIRT BIKE",
+            "url": "shopify://pages/d2-dirt-bike"
           }
         },
         "message": {
@@ -40,9 +40,9 @@
         "cycle_speed": 6,
         "scrolling_speed": 20,
         "text_size": "text-base",
-        "background": "#FFFFFF",
+        "background": "#ffffff",
         "background_gradient": "",
-        "text_color": "#00000000"
+        "text_color": "rgba(0,0,0,0)"
       }
     },
     "header": {

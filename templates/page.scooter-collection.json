@@ -15,7 +15,7 @@
         "perk_shop_pay": {
           "type": "perk",
           "settings": {
-            "icon": "shopify://shop_images/UL-icon-500.png",
+            "icon": "shopify://shop_images/ul_2_1.png",
             "icon_preset": "shop_pay",
             "text": "UL cERTIFIED",
             "link": ""
@@ -40,7 +40,7 @@
         "perk_EnK4yj": {
           "type": "perk",
           "settings": {
-            "icon": "shopify://shop_images/Warranty_2.png",
+            "icon": "shopify://shop_images/Warranty_2_1.png",
             "icon_preset": "returns",
             "text": "1-year warranty",
             "link": ""
@@ -56,8 +56,8 @@
       "settings": {
         "accessibility_label": "Store perks",
         "background": "#ff0000",
-        "text_color": "#FFFFFF",
-        "icon_color": "#000000",
+        "text_color": "#ffffff",
+        "icon_color": "#FFFFFF",
         "content_max_width": 1200,
         "font_size": 12,
         "font_size_mobile": 13,
@@ -120,12 +120,13 @@
             "nav_label": "Scooter under $300",
             "anchor_id": "scooter-under-300",
             "banner_image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1920x700.jpg",
-            "title": "E-scooter under $300",
+            "banner_image_mobile": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1200x1600.jpg",
+            "title": "Electric Scooter under $300",
             "title_size": 56,
             "title_color": "#ffffff",
             "title_weight": "700",
             "title_italic": true,
-            "subtitle": "Get Your First Electric Scooter with an Really Affordable Price.",
+            "subtitle": "Use the Code and Get Your First Electric Scooter with an Really Affordable Price.",
             "subtitle_size": 24,
             "subtitle_color": "#ffffff",
             "subtitle_weight": "400"
@@ -137,6 +138,7 @@
             "nav_label": "Long Range Scooter",
             "anchor_id": "long-range",
             "banner_image": "shopify://shop_images/long-range-electric-scooter-1920x504.jpg",
+            "banner_image_mobile": "shopify://shop_images/long-range-electric-scooter-900x1200-01.jpg",
             "title": "Long range e-scooter",
             "title_size": 56,
             "title_color": "#ffffff",
@@ -154,6 +156,7 @@
             "nav_label": "Scooter with suspension",
             "anchor_id": "scooter-with-suspension",
             "banner_image": "shopify://shop_images/electric-scooter-with-suspension-1920x504.jpg",
+            "banner_image_mobile": "shopify://shop_images/electric-scooter-with-suspension-900x1200.jpg",
             "title": "Comfortable riding",
             "title_size": 56,
             "title_color": "#ffffff",
@@ -235,7 +238,7 @@
             "sale_price": "",
             "save_percent": 35,
             "title": "A6L MAX",
-            "attributes": "500W | 28 miles | APP"
+            "attributes": "28 miles | 500W | APP"
           }
         },
         "product_ebike_1": {
@@ -246,7 +249,7 @@
             "sale_price": "",
             "save_percent": 30,
             "title": "E2",
-            "attributes": "400W | 28 miles | 20 mph"
+            "attributes": "28 miles | 400W | 20 mph"
           }
         },
         "product_ebike_2": {
@@ -255,9 +258,9 @@
             "category_key": "long-range",
             "product": "e3-electric-scooter",
             "sale_price": "",
-            "save_percent": 11,
+            "save_percent": 15,
             "title": "E3",
-            "attributes": "650W | 28 miles | 12\" Wheel"
+            "attributes": "28 miles | 650W | 12\" Wheel"
           }
         },
         "product_ebike_3": {
@@ -265,7 +268,7 @@
           "settings": {
             "category_key": "long-range",
             "product": "s2-electric-scooter",
-            "sale_price": "439.99",
+            "sale_price": "",
             "save_percent": 12,
             "title": "S2",
             "attributes": "44 miles | 750W | 20 mph"
@@ -276,8 +279,8 @@
           "settings": {
             "category_key": "scooter-with-suspension",
             "product": "m1-electric-scooter",
-            "sale_price": "249.99",
-            "save_percent": 17,
+            "sale_price": "",
+            "save_percent": 18,
             "title": "M1",
             "attributes": "28 miles | 20 mph | APP"
           }
@@ -287,8 +290,8 @@
           "settings": {
             "category_key": "scooter-with-suspension",
             "product": "c2-electric-scooter",
-            "sale_price": "243.99",
-            "save_percent": 20,
+            "sale_price": "",
+            "save_percent": 15,
             "title": "C2",
             "attributes": "19 miles | 350W | Suspension design"
           }
@@ -298,8 +301,8 @@
           "settings": {
             "category_key": "scooter-with-suspension",
             "product": "e3-electric-scooter",
-            "sale_price": "399.99",
-            "save_percent": 11,
+            "sale_price": "",
+            "save_percent": 15,
             "title": "E3",
             "attributes": "28 miles | 650W | 12\" Wheel"
           }
@@ -309,7 +312,7 @@
           "settings": {
             "category_key": "scooter-with-suspension",
             "product": "s2-electric-scooter",
-            "sale_price": "439.99",
+            "sale_price": "",
             "save_percent": 12,
             "title": "S2",
             "attributes": "44 miles | 750W | 20 mph"
@@ -339,14 +342,14 @@
         "nav_text_color": "#ffffff",
         "nav_active_bg": "#000000",
         "nav_active_text": "#ffffff",
-        "nav_hover_bg": "#64a8c5",
+        "nav_hover_bg": "#282828",
         "nav_hover_text": "#ffffff",
         "nav_font_size": 16,
         "nav_font_size_mobile": 13,
         "nav_font_weight": "500",
         "content_bg": "#0e0e0e",
         "content_max_width": 1200,
-        "badge_bg": "#FF0000",
+        "badge_bg": "#ff0000",
         "badge_text_color": "#ffffff",
         "learn_text": "Learn More",
         "learn_bg": "#2b2b2b",
@@ -354,8 +357,8 @@
         "learn_hover_bg": "#000000",
         "learn_hover_text": "#ffffff",
         "atc_text": "Add to Cart",
-        "atc_bg": "#2B2B2B",
-        "atc_text_color": "#FFFFFF",
+        "atc_bg": "#2b2b2b",
+        "atc_text_color": "#ffffff",
         "atc_hover_bg": "#000000",
         "atc_hover_text": "#ffffff"
       }
@@ -363,6 +366,16 @@
     "video_reviews_jKTiPw": {
       "type": "video-reviews",
       "blocks": {
+        "youtube_video_r7KWBy": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "EHg-M2jvfdw",
+            "video_title": "The BEST Electric Scooter UNDER $300 !",
+            "date": "2024/9/22",
+            "author_name": "Jon Reyes",
+            "author_avatar": "shopify://shop_images/YTB-Jon_Reyes.jpg"
+          }
+        },
         "youtube_video_PzBh4Q": {
           "type": "youtube_video",
           "settings": {
@@ -381,6 +394,16 @@
             "date": "2026/7/13",
             "author_name": "The Nephews",
             "author_avatar": "shopify://shop_images/YTB-The_Nephews.jpg"
+          }
+        },
+        "youtube_video_NQtMmf": {
+          "type": "youtube_video",
+          "settings": {
+            "video_id": "Zdwojzj1IAk",
+            "video_title": "Megawheels A6L ECO Electric Scooter - Full Review",
+            "date": "2024/7/23",
+            "author_name": "Brian Unboxed",
+            "author_avatar": "shopify://shop_images/YTB-Brian_Unboxed.jpg"
           }
         },
         "youtube_video_WMaLaT": {
@@ -422,19 +445,65 @@
             "author_name": "Review Central",
             "author_avatar": "shopify://shop_images/YTB-Review_Central.jpg"
           }
+        },
+        "short_video_TTqtRK": {
+          "type": "short_video",
+          "settings": {
+            "short_url": "https://www.youtube.com/shorts/xSVkUjesDXo",
+            "video_title": "I Think I Found the Perfect Electric Scooter! AOTOS M1",
+            "date": "2026/6/23",
+            "author_name": "Kizyle",
+            "author_avatar": "shopify://shop_images/YTB-Kizyle.jpg"
+          }
+        },
+        "short_video_CjDfMz": {
+          "type": "short_video",
+          "settings": {
+            "short_url": "https://www.youtube.com/shorts/B167vpzCTJ8",
+            "video_title": "AOTOS M1 Scooter: 20 MPH Speed & 28 Mile Range Tested",
+            "date": "2026/6/19",
+            "author_name": "nadin sarg",
+            "author_avatar": "shopify://shop_images/YTB-nadin_sarg.jpg"
+          }
+        },
+        "short_video_49G8Qr": {
+          "type": "short_video",
+          "settings": {
+            "short_url": "https://www.youtube.com/shorts/SLcwSNdtvME",
+            "video_title": "Smooth Ride with Megawheels Scooter! Long Range & Fun!",
+            "date": "2026/3/29",
+            "author_name": "Amazon Finds By Joey And Kris",
+            "author_avatar": "shopify://shop_images/YTB-Amazon_Finds_By_Joey_And_Kris.jpg"
+          }
+        },
+        "short_video_wPV3tD": {
+          "type": "short_video",
+          "settings": {
+            "short_url": "https://www.youtube.com/shorts/50Z3hV9gsAY",
+            "video_title": "Megawheels Aotos S2A Stand Up Electric Scooter -Top Speed & Hill Climb",
+            "date": "2026/7/19",
+            "author_name": "I Scoot Connecticut",
+            "author_avatar": "shopify://shop_images/ytb-I_Scoot_Connecticut.jpg"
+          }
         }
       },
       "block_order": [
+        "youtube_video_r7KWBy",
         "youtube_video_PzBh4Q",
         "youtube_video_CwJ8pG",
+        "youtube_video_NQtMmf",
         "youtube_video_WMaLaT",
         "youtube_video_MzAchr",
         "youtube_video_mAAjBD",
-        "youtube_video_WhyQDM"
+        "youtube_video_WhyQDM",
+        "short_video_TTqtRK",
+        "short_video_CjDfMz",
+        "short_video_49G8Qr",
+        "short_video_wPV3tD"
       ],
       "name": "视频展示轮播",
       "settings": {
-        "title": "Hear from Our Riders",
+        "title": "Trusted Reviews From Our Riders",
         "subtitle": "Watch our latest videos",
         "section_bg": "#ffffff",
         "section_padding": 20,

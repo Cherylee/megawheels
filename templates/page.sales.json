@@ -15,13 +15,13 @@
         "image_bK3bCw": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-900-01.jpg",
-            "mobile_image": "shopify://shop_images/AOTOS-D3-Pro-electric-dirt-bike-750x999.jpg",
+            "image": "shopify://shop_images/Back-to-school-sale-3840x1800.jpg",
+            "mobile_image": "shopify://shop_images/Back-to-school-sale-1500x1998.jpg",
             "content_max_width": 1200,
             "mobile_text_position": "place-self-start text-start",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
-            "subheading": "Level Up Your Off-Road Game with Our Updated E-Dirt Bike",
-            "title": "More Power, More Trails.",
+            "subheading": "",
+            "title": "",
             "heading_tag": "h0",
             "button_text": "",
             "button_link": "shopify://pages/sales",
@@ -76,44 +76,312 @@
         "content_width": "100ch"
       }
     },
-    "featured_collection_wCBkyy": {
-      "type": "featured-collection",
-      "name": "Featured collection",
+    "scooter_trust_bar_zgYAeL": {
+      "type": "scooter-trust-bar",
+      "blocks": {
+        "perk_MUtFkL": {
+          "type": "perk",
+          "settings": {
+            "icon": "shopify://shop_images/ul_2_1.png",
+            "icon_preset": "truck",
+            "text": "UL CERTIFIED",
+            "link": ""
+          }
+        },
+        "perk_iFKQiH": {
+          "type": "perk",
+          "settings": {
+            "icon_preset": "truck",
+            "text": "FREE SHIPPING",
+            "link": ""
+          }
+        },
+        "perk_zBgnMe": {
+          "type": "perk",
+          "settings": {
+            "icon_preset": "returns",
+            "text": "30-DAY RETURNS",
+            "link": ""
+          }
+        },
+        "perk_bWzzR8": {
+          "type": "perk",
+          "settings": {
+            "icon": "shopify://shop_images/Warranty_2_1.png",
+            "icon_preset": "shop_pay",
+            "text": "1-YEAR WARRANTY",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "perk_MUtFkL",
+        "perk_iFKQiH",
+        "perk_zBgnMe",
+        "perk_bWzzR8"
+      ],
+      "name": "Scooter trust bar",
       "settings": {
-        "collection": "",
-        "products": [
-          "d2-electric-dirt-bike",
-          "d2-lite-electric-dirt-bike",
-          "d2-pro-electric-dirt-bike",
-          "eb01-electric-bike",
-          "e3-electric-scooter",
-          "a1c-electric-scooter",
-          "a6l-eco-electric-scooter",
-          "a6l-max-electric-scooter",
-          "c2-electric-scooter",
-          "e2-electric-scooter",
-          "m1-electric-scooter",
-          "s2-electric-scooter",
-          "l2-electric-luggage"
-        ],
-        "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "products_count": 16,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "",
-        "title": "Featured collection",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
+        "accessibility_label": "Store perks",
+        "background": "#FF0000",
+        "text_color": "#ffffff",
+        "icon_color": "#FFFFFF",
+        "content_max_width": 1200,
+        "font_size": 12,
+        "font_size_mobile": 13,
+        "font_weight": "500"
+      }
+    },
+    "featured_product_grid_9rUt3M": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "product_item_G4n4H7": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 28%",
+            "model_name": "A1C",
+            "spec_text": "300W | APP | 19 mph",
+            "current_price": "235.99",
+            "original_price": "",
+            "link_learn": "shopify://products/a1c-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_xFjDUr": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1200x1600.jpg",
+            "badge_text": "SAVE 18%",
+            "model_name": "A6L ECO",
+            "spec_text": "19 miles | 350W | APP",
+            "current_price": "$292.99",
+            "original_price": "",
+            "link_learn": "shopify://products/a6l-eco-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_F7bnrJ": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-M1-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 18%",
+            "model_name": "M1",
+            "spec_text": "28 miles | APP | 20 mph",
+            "current_price": "$329.99",
+            "original_price": "",
+            "link_learn": "shopify://products/m1-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_Qeraq8": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/Megawheels-C2-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 15%",
+            "model_name": "C2",
+            "spec_text": "19 miles | 350W | Front suspension",
+            "current_price": "$304.99",
+            "original_price": "",
+            "link_learn": "shopify://products/c2-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_rUiqAC": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-A6L-MAX-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 35%",
+            "model_name": "A6L MAX",
+            "spec_text": "28 miles | 500W | APP",
+            "current_price": "$469.99",
+            "original_price": "",
+            "link_learn": "shopify://products/a6l-max-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_4wRqPR": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-E2-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 30%",
+            "model_name": "E2",
+            "spec_text": "28 miles | 400w | 20 mph",
+            "current_price": "$482.99",
+            "original_price": "",
+            "link_learn": "shopify://products/e2-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_9LBKPM": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/AOTOS-E3-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 15%",
+            "model_name": "E3",
+            "spec_text": "28 miles | 650W | 12\" Wheels",
+            "current_price": "$469.99",
+            "original_price": "",
+            "link_learn": "shopify://products/e3-electric-scooter",
+            "link_cart": ""
+          }
+        },
+        "product_item_aheBWn": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/AOTOS-S2-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 12%",
+            "model_name": "S2",
+            "spec_text": "44 miles | 750W | 20 mph",
+            "current_price": "$499.99",
+            "original_price": "",
+            "link_learn": "shopify://products/s2-electric-scooter",
+            "link_cart": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_G4n4H7",
+        "product_item_xFjDUr",
+        "product_item_F7bnrJ",
+        "product_item_Qeraq8",
+        "product_item_rUiqAC",
+        "product_item_4wRqPR",
+        "product_item_9LBKPM",
+        "product_item_aheBWn"
+      ],
+      "name": "电动滑板车产品卡片网格",
+      "settings": {
+        "section_bg_color": "#f0f8ff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "grid_gap": 16,
+        "section_title": "Electric Scooters with Up to 35% Off",
+        "section_subtitle": "Choose your perfect ride",
+        "header_align": "center",
+        "header_bottom_margin": 40,
+        "title_font_size": 32,
+        "title_color": "#000000",
+        "subtitle_margin_top": 8,
+        "subtitle_font_size": 18,
+        "subtitle_color": "#444444",
+        "card_content_align": "center",
+        "badge_bg_color": "#FF0000",
+        "badge_text_color": "#ffffff",
+        "badge_font_size": 12,
+        "model_font_size": 22,
+        "model_color": "#000000",
+        "spec_font_size": 15,
+        "spec_color": "#333333",
+        "price_font_size": 28,
+        "price_color": "#000000",
+        "old_price_font_size": 16,
+        "old_price_color": "#888888",
+        "btn_learn_label": "Learn More",
+        "btn_cart_label": "Add to Cart",
+        "btn_font_size": 15,
+        "btn_learn_bg": "#111111",
+        "btn_learn_text": "#ffffff",
+        "btn_cart_bg": "#111111",
+        "btn_cart_text": "#ffffff"
+      }
+    },
+    "featured_product_grid_yDGyYy": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "product_item_i4tnMf": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-D2-Lite-dirt-bike-900x1200.jpg",
+            "badge_text": "SAVE 25%",
+            "model_name": "D2 Lite",
+            "spec_text": "45 miles | 3000W | 38 mph",
+            "current_price": "$1199.99",
+            "original_price": "",
+            "link_learn": "shopify://products/d2-lite-electric-dirt-bike",
+            "link_cart": ""
+          }
+        },
+        "product_item_hdhWqk": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-D2-dirt-bike-900x1200.jpg",
+            "badge_text": "SAVE 29%",
+            "model_name": "D2",
+            "spec_text": "53 miles | 3550W | 40 mph",
+            "current_price": "$1399.99",
+            "original_price": "",
+            "link_learn": "shopify://products/d2-electric-dirt-bike",
+            "link_cart": ""
+          }
+        },
+        "product_item_YxfBqw": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-D2-Pro-electric-dirt-bike-900x1200.jpg",
+            "badge_text": "SAVE 27%",
+            "model_name": "D2 Pro",
+            "spec_text": "60 miles | 6000W | 50 mph",
+            "current_price": "$2199.99",
+            "original_price": "",
+            "link_learn": "shopify://products/d2-pro-electric-dirt-bike",
+            "link_cart": ""
+          }
+        },
+        "product_item_ixJcUR": {
+          "type": "product_item",
+          "disabled": true,
+          "settings": {
+            "badge_text": "SAVE 52%",
+            "model_name": "S2 Nova",
+            "spec_text": "20 miles | 350w | 19 mph",
+            "current_price": "$314.99",
+            "original_price": "$659.99",
+            "link_learn": "",
+            "link_cart": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_i4tnMf",
+        "product_item_hdhWqk",
+        "product_item_YxfBqw",
+        "product_item_ixJcUR"
+      ],
+      "name": "电动滑板车产品卡片网格",
+      "settings": {
+        "section_bg_color": "#f0f8ff",
+        "section_padding_top": 60,
+        "section_padding_bottom": 60,
+        "grid_gap": 16,
+        "section_title": "Electric Dirt Bikes For Kids & Teens Up to $600 Off",
+        "section_subtitle": "Choose your perfect ride",
+        "header_align": "center",
+        "header_bottom_margin": 40,
+        "title_font_size": 32,
+        "title_color": "#000000",
+        "subtitle_margin_top": 8,
+        "subtitle_font_size": 18,
+        "subtitle_color": "#444444",
+        "card_content_align": "center",
+        "badge_bg_color": "#FF0000",
+        "badge_text_color": "#ffffff",
+        "badge_font_size": 12,
+        "model_font_size": 22,
+        "model_color": "#000000",
+        "spec_font_size": 15,
+        "spec_color": "#333333",
+        "price_font_size": 28,
+        "price_color": "#000000",
+        "old_price_font_size": 16,
+        "old_price_color": "#888888",
+        "btn_learn_label": "Learn More",
+        "btn_cart_label": "Add to Cart",
+        "btn_font_size": 15,
+        "btn_learn_bg": "#111111",
+        "btn_learn_text": "#ffffff",
+        "btn_cart_bg": "#111111",
+        "btn_cart_text": "#ffffff"
       }
     },
     "product_grid_wThJJM": {
@@ -170,6 +438,7 @@
         "product_item_tnUGba",
         "product_item_apCQhR"
       ],
+      "disabled": true,
       "name": "iScooter 产品展示网格",
       "settings": {
         "bg_color": "#f0f0f0",
@@ -204,6 +473,7 @@
         "prod_price_font": "inherit",
         "prod_price_size": 18,
         "prod_price_color": "#ff0000",
+        "show_save_badge": true,
         "prod_tag_font": "inherit",
         "prod_tag_size": 14,
         "prod_tag_color": "#1a1a1a",
@@ -214,40 +484,9 @@
         "banner_btn_link": ""
       }
     },
-    "featured_collection_VrJinE": {
-      "type": "featured-collection",
-      "disabled": true,
-      "name": "Featured collection",
-      "settings": {
-        "collection": "dirt-bikes",
-        "products": [
-          "d2-lite-electric-dirt-bike",
-          "d2-electric-dirt-bike",
-          "d2-pro-electric-dirt-bike",
-          "zero-7-dirt-bike"
-        ],
-        "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "products_count": 12,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "",
-        "title": "Discover the e-dirt bike",
-        "content": "<p>Get the dirt bike below and save $200.</p>",
-        "link_url": "",
-        "link_text": "",
-        "background": "#f0f0f0",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
     "featured_collection_Mmik4r": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "electric-scooters",
@@ -290,6 +529,9 @@
             "show_sample_reviews": false,
             "reviews_selection": "product_reviews",
             "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
             "star_rating": "all",
             "show_review_media": true,
             "display_order": "media_first",
@@ -398,9 +640,10 @@
     "slideshow_KLb9jW",
     "scrolling_text_xzGRbB",
     "main",
-    "featured_collection_wCBkyy",
+    "scooter_trust_bar_zgYAeL",
+    "featured_product_grid_9rUt3M",
+    "featured_product_grid_yDGyYy",
     "product_grid_wThJJM",
-    "featured_collection_VrJinE",
     "featured_collection_Mmik4r",
     "17828871821c3919c0",
     "media_with_text_qHPnRr"

@@ -12,6 +12,28 @@
     "slideshow_PzpeMA": {
       "type": "slideshow",
       "blocks": {
+        "image_9MaN3j": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Back-to-school-sale-3840x1800.jpg",
+            "mobile_image": "shopify://shop_images/Back-to-school-sale-1500x1998.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "shopify://pages/sales",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_janpKy": {
           "type": "image",
           "settings": {
@@ -58,6 +80,7 @@
         }
       },
       "block_order": [
+        "image_9MaN3j",
         "image_janpKy",
         "image_Ch4ryC"
       ],
