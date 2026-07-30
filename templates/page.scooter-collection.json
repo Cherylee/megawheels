@@ -57,7 +57,7 @@
         "accessibility_label": "Store perks",
         "background": "#ff0000",
         "text_color": "#ffffff",
-        "icon_color": "#FFFFFF",
+        "icon_color": "#ffffff",
         "content_max_width": 1200,
         "font_size": 12,
         "font_size_mobile": 13,
@@ -219,15 +219,15 @@
             "attributes": "350W | 19 miles | Suspension design"
           }
         },
-        "product_summer_4": {
+        "product_item_ntf43m": {
           "type": "product_item",
           "settings": {
             "category_key": "scooter-under-300",
-            "product": "a6l-max-electric-scooter",
+            "product": "m1-electric-scooter",
             "sale_price": "",
-            "save_percent": 35,
-            "title": "A6L MAX",
-            "attributes": "500W | 28 miles | APP"
+            "save_percent": 18,
+            "title": "M1",
+            "attributes": "28 miles | 20 mph | APP"
           }
         },
         "product_ebike_4": {
@@ -236,7 +236,7 @@
             "category_key": "long-range",
             "product": "a6l-max-electric-scooter",
             "sale_price": "",
-            "save_percent": 35,
+            "save_percent": 0,
             "title": "A6L MAX",
             "attributes": "28 miles | 500W | APP"
           }
@@ -327,7 +327,7 @@
         "product_summer_1",
         "product_summer_2",
         "product_summer_3",
-        "product_summer_4",
+        "product_item_ntf43m",
         "product_ebike_4",
         "product_ebike_1",
         "product_ebike_2",
@@ -542,6 +542,8 @@
               "m1-electric-scooter",
               "e2-electric-scooter"
             ],
+            "filter_pinned": false,
+            "filter_featured": false,
             "filter_custom_tags": "",
             "star_rating": "5_star",
             "show_review_media": true,
