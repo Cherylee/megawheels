@@ -8,8 +8,8 @@
   customer straight to checkout with the currently selected variant and quantity.
 
   Behaviour:
-  * On desktop the bar is always pinned to the bottom and never hides.
-  * On mobile (H5) it hides while the in-page buy buttons block is on screen, and shows again once it has scrolled past.
+  * On desktop (≥700px) the bar is always pinned to the bottom and never hides.
+  * On mobile it hides while the in-page buy buttons are on screen, and shows again once scrolled past.
 
   ********************************************
   Supported variables
@@ -56,18 +56,24 @@
 
   .product-sticky-bar__inner {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.75rem var(--container-gutter);
+    padding: 0.5rem var(--container-gutter);
   }
 
   .product-sticky-bar__price {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: baseline;
-    gap: 0.5rem;
-    font-size: var(--text-lg);
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 0.25rem 0.4rem;
+    font-size: var(--text-base);
     font-weight: bold;
+    line-height: 1.2;
   }
 
   .product-sticky-bar__current {
@@ -133,9 +139,10 @@
   }
 
   .product-sticky-bar__actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.4rem;
   }
 
   .product-sticky-bar__add {
@@ -144,7 +151,12 @@
 
   .product-sticky-bar__add .button,
   .product-sticky-bar__buy-now {
-    width: 100%;
+    width: auto;
+    white-space: nowrap;
+    font-size: var(--text-xs);
+    line-height: 1.3;
+    padding-block: 0.4rem;
+    padding-inline: 0.7rem;
   }
 
   /* 两个按钮的相关颜色统一为黑色 */
@@ -161,16 +173,17 @@
 
   @media screen and (min-width: 700px) {
     .product-sticky-bar__inner {
-      flex-direction: row;
-      align-items: center;
       justify-content: flex-end;
       gap: 1.5rem;
+      padding: 0.75rem var(--container-gutter);
       max-width: var(--container-max-width);
       margin-inline: auto;
     }
 
     .product-sticky-bar__price {
-      justify-content: flex-start;
+      gap: 0.35rem 0.5rem;
+      font-size: var(--text-lg);
+      line-height: inherit;
     }
 
     /* PC 端折扣态：折后价与划线现价在上排，Saving 金额在下方 */
@@ -200,19 +213,16 @@
     }
 
     .product-sticky-bar__actions {
-      display: flex;
-      flex: 0 0 auto;
       gap: 1rem;
-    }
-
-    .product-sticky-bar__add,
-    .product-sticky-bar__buy-now {
-      width: auto;
     }
 
     .product-sticky-bar__add .button,
     .product-sticky-bar__buy-now {
       min-width: 12rem;
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      padding-block: var(--spacing-2-5);
+      padding-inline: var(--spacing-5);
     }
   }
 </style>

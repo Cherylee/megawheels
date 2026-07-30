@@ -7670,6 +7670,77 @@ product-rerender {
   --product-info-block-spacing: var(--spacing-6);
 }
 
+@media screen and (max-width: 699px) {
+  .product-info {
+    --product-info-block-spacing: var(--spacing-3);
+  }
+
+  .product-info__title.h0 {
+    font-size: var(--text-h1);
+  }
+
+  .product-info__title.h1 {
+    font-size: var(--text-h2);
+  }
+
+  .product-info__title.h2 {
+    font-size: var(--text-h3);
+  }
+
+  .product-info__title.h3 {
+    font-size: var(--text-h4);
+  }
+
+  .product-info__title.h4,
+  .product-info__title.h5,
+  .product-info__title.h6 {
+    font-size: var(--text-h5);
+  }
+
+  /* Keep room for sticky ATC when it appears after scroll */
+  .product {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ~375px phones (iPhone SE / 14): tighter title + rating */
+@media screen and (max-width: 430px) {
+  .product-info__title.h0 {
+    font-size: var(--text-h2);
+  }
+
+  .product-info__title.h1 {
+    font-size: var(--text-h3);
+  }
+
+  .product-info__title.h2 {
+    font-size: var(--text-h4);
+  }
+
+  .product-info__title.h3,
+  .product-info__title.h4,
+  .product-info__title.h5,
+  .product-info__title.h6 {
+    font-size: var(--text-h5);
+  }
+
+  .product-info__rating .rating,
+  .product-info__block-item[data-block-type="rating"] .rating {
+    gap: 0.25rem;
+  }
+
+  .product-info__rating .rating .text-sm,
+  .product-info__block-item[data-block-type="rating"] .rating .text-sm {
+    font-size: var(--text-xs);
+  }
+
+  .product-info__rating .rating__star,
+  .product-info__block-item[data-block-type="rating"] .rating__star {
+    width: 12px;
+    height: 12px;
+  }
+}
+
 .product-info > * + * {
   margin-block-start: var(--product-info-block-spacing);
   margin-block-end: var(--product-info-block-spacing);
@@ -7689,6 +7760,43 @@ product-rerender {
 
 .product-info__block-item:where([data-block-type="badges"]) {
   --product-info-block-spacing: var(--spacing-4);
+}
+
+/* ~375px（iPhone SE 等）：标题 / 星级(Judge.me) / 价格 间距收紧 */
+@media screen and (max-width: 430px) {
+  .product-info > .product-info__block-item[data-block-type="title"] {
+    --product-info-block-spacing: 0.2rem;
+    margin-block-end: 0.2rem;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="title"] + .product-info__block-item {
+    --product-info-block-spacing: 0.2rem;
+    margin-block-start: 0.2rem;
+    margin-block-end: 0.2rem;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="title"] + .product-info__block-item :is(.jdgm-widget, .jdgm-preview-badge) {
+    margin-block: 0;
+    line-height: 1.15;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="badges"] {
+    --product-info-block-spacing: 0.2rem;
+    margin-block: 0.2rem;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="price-second"],
+  .product-info > .product-info__block-item[data-block-type="price"] {
+    --product-info-block-spacing: 0.25rem;
+    margin-block-start: 0.25rem;
+    margin-block-end: 0.25rem;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="price-second"] + .product-info__block-item[data-block-type="discount-code"],
+  .product-info > .product-info__block-item[data-block-type="price"] + .product-info__block-item[data-block-type="discount-code"] {
+    --product-info-block-spacing: 0.25rem;
+    margin-block-start: 0.25rem;
+  }
 }
 
 .product-info__sku {
@@ -7777,6 +7885,44 @@ product-rerender {
 
   .product-info__complementary-products .horizontal-product-list-carousel > .horizontal-product-list, .product-info__complementary-products .horizontal-product-list-carousel .horizontal-product {
     border: none;
+  }
+}
+
+/* iPad Mini（744）/ iPad Air（820）等平板：标题–评论–价格间距与字号收紧 */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+  .product-info > .product-info__block-item[data-block-type="title"] {
+    --product-info-block-spacing: 0.25rem;
+    margin-block-end: 0.25rem;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="title"] + .product-info__block-item {
+    --product-info-block-spacing: 0.25rem;
+    margin-block-start: 0.25rem;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="title"] + .product-info__block-item :is(.jdgm-widget, .jdgm-preview-badge) {
+    margin-block: 0;
+    line-height: 1.2;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="badges"] {
+    --product-info-block-spacing: 0.25rem;
+    margin-block: 0.25rem;
+  }
+
+  .product-info > .product-info__block-item[data-block-type="price-second"],
+  .product-info > .product-info__block-item[data-block-type="price"] {
+    --product-info-block-spacing: 0.35rem;
+    margin-block-start: 0.35rem;
+  }
+
+  .product-info .price-second__current,
+  .product-info .price-second__discounted {
+    font-size: 1.35rem;
+  }
+
+  .product-info .product-info__price :is(.price-list, sale-price, .h4, .h5, .h6, .text-lg) {
+    font-size: 1.35rem;
   }
 }
 

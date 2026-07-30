@@ -196,6 +196,20 @@ Supported variables
                 color: rgb(var(--on-sale-text));
               }
 
+              @media screen and (max-width: 389px) {
+                .price-second__current,
+                .price-second__discounted {
+                  font-size: 1.35rem;
+                }
+              }
+
+              @media screen and (min-width: 744px) and (max-width: 1024px) {
+                .price-second__current,
+                .price-second__discounted {
+                  font-size: 1.35rem;
+                }
+              }
+
               .price-second__save {
                 order: 1;
                 align-self: center;
@@ -271,6 +285,13 @@ Supported variables
                 color: rgb(var(--text-color));
                 cursor: pointer;
                 user-select: none;
+              }
+
+              @media screen and (max-width: 699px) {
+                .discount-code {
+                  gap: .5rem;
+                  padding: .65rem .85rem;
+                }
               }
 
               .discount-code__main {
