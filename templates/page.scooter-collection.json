@@ -192,6 +192,9 @@
             "category_key": "scooter-under-300",
             "product": "a1c-electric-scooter",
             "sale_price": "",
+            "save_amount": "50",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 28,
             "title": "A1C",
             "attributes": "300W | 15.5 mph | APP"
@@ -203,6 +206,9 @@
             "category_key": "scooter-under-300",
             "product": "a6l-eco-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 18,
             "title": "A6L ECO",
             "attributes": "350W | 19 miles | APP"
@@ -214,6 +220,9 @@
             "category_key": "scooter-under-300",
             "product": "m1-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 18,
             "title": "M1",
             "attributes": "28 miles | 20 mph | APP"
@@ -225,6 +234,9 @@
             "category_key": "scooter-under-300",
             "product": "c2-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 15,
             "title": "C2",
             "attributes": "350W | 19 miles | Suspension design"
@@ -236,6 +248,9 @@
             "category_key": "long-range",
             "product": "e2-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 35,
             "title": "E2",
             "attributes": "28 miles | 400W | 20 mph"
@@ -247,6 +262,9 @@
             "category_key": "long-range",
             "product": "e3-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 15,
             "title": "E3",
             "attributes": "28 miles | 650W | 12\" Wheel"
@@ -258,6 +276,9 @@
             "category_key": "long-range",
             "product": "s2-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 12,
             "title": "S2",
             "attributes": "44 miles | 750W | 20 mph"
@@ -269,6 +290,9 @@
             "category_key": "long-range",
             "product": "a6l-max-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 0,
             "title": "A6L MAX",
             "attributes": "28 miles | 500W | APP"
@@ -280,6 +304,9 @@
             "category_key": "scooter-with-suspension",
             "product": "m1-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 18,
             "title": "M1",
             "attributes": "28 miles | 20 mph | APP"
@@ -291,6 +318,9 @@
             "category_key": "scooter-with-suspension",
             "product": "c2-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 15,
             "title": "C2",
             "attributes": "19 miles | 350W | Suspension design"
@@ -302,6 +332,9 @@
             "category_key": "scooter-with-suspension",
             "product": "e3-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 15,
             "title": "E3",
             "attributes": "28 miles | 650W | 12\" Wheel"
@@ -313,6 +346,9 @@
             "category_key": "scooter-with-suspension",
             "product": "s2-electric-scooter",
             "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
             "save_percent": 12,
             "title": "S2",
             "attributes": "44 miles | 750W | 20 mph"
@@ -351,6 +387,8 @@
         "content_max_width": 1200,
         "badge_bg": "#ff0000",
         "badge_text_color": "#ffffff",
+        "save_btn_bg": "#ffcc00",
+        "save_btn_text": "#000000",
         "learn_text": "Learn More",
         "learn_bg": "#2b2b2b",
         "learn_text_color": "#ffffff",
