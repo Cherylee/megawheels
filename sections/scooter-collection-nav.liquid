@@ -30,6 +30,8 @@
     --scn-atc-text: {{ section.settings.atc_text_color | default: '#ffffff' }};
     --scn-atc-hover-bg: {{ section.settings.atc_hover_bg | default: '#2B8FBF' }};
     --scn-atc-hover-text: {{ section.settings.atc_hover_text | default: '#ffffff' }};
+    --scn-save-btn-bg: {{ section.settings.save_btn_bg | default: '#FFCC00' }};
+    --scn-save-btn-text: {{ section.settings.save_btn_text | default: '#000000' }};
   }
 
   #shopify-section-{{ section.id }} .scn {
@@ -285,9 +287,9 @@
 
   #shopify-section-{{ section.id }} .scn-card__price {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
-    gap: calc(10 * var(--rem));
+    gap: calc(8 * var(--rem));
     flex-wrap: wrap;
   }
 
@@ -301,6 +303,36 @@
     font-size: calc(12 * var(--rem));
     color: #999999;
     text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__price-compare.is-hidden {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: calc(4 * var(--rem)) calc(8 * var(--rem));
+    border: none;
+    border-radius: calc(4 * var(--rem));
+    background: var(--scn-save-btn-bg);
+    color: var(--scn-save-btn-text);
+    font-size: calc(11 * var(--rem));
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-btn:hover {
+    filter: brightness(0.95);
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-btn.is-active {
+    filter: brightness(0.9);
   }
 
   #shopify-section-{{ section.id }} .scn-card__actions {
@@ -588,6 +620,7 @@
                         assign save_pct = product_block.settings.save_percent | default: 0 | plus: 0
                         assign card_price = blank
                         assign card_compare_at = blank
+                        assign save_amount_cents = 0
                         if product != blank
                           assign card_price = variant.price | default: product.price | plus: 0
                           assign sale_input = product_block.settings.sale_price | strip | replace: '$', '' | replace: ',', ''
@@ -600,6 +633,30 @@
                               assign card_price = sale_cents
                             endif
                           endif
+                          assign save_amount_input = product_block.settings.save_amount | strip | replace: '$', '' | replace: ',', ''
+                          if save_amount_input != blank
+                            assign save_amount_cents = save_amount_input | times: 100.0 | round | plus: 0
+                          endif
+                        endif
+
+                        assign price_sale = card_price
+                        assign price_original = card_price
+                        if card_compare_at != blank and card_compare_at > card_price
+                          assign price_original = card_compare_at
+                          assign price_sale = card_price
+                        elsif save_amount_cents > 0 and card_price > save_amount_cents
+                          assign price_original = card_price
+                          assign price_sale = card_price | minus: save_amount_cents
+                        endif
+
+                        if settings.currency_code_enabled
+                          assign price_sale_label = price_sale | money_with_currency
+                          assign price_original_label = price_original | money_with_currency
+                          assign save_amount_label = save_amount_cents | money_with_currency
+                        else
+                          assign price_sale_label = price_sale | money
+                          assign price_original_label = price_original | money
+                          assign save_amount_label = save_amount_cents | money
                         endif
 
                         assign product_url = '#'
@@ -655,22 +712,27 @@
                           {%- endif -%}
 
                           {%- if product != blank -%}
-                            <div class="scn-card__price">
-                              <span class="scn-card__price-sale">
-                                {%- if settings.currency_code_enabled -%}
-                                  {{ card_price | money_with_currency }}
-                                {%- else -%}
-                                  {{ card_price | money }}
-                                {%- endif -%}
+                            <div
+                              class="scn-card__price"
+                              data-scn-price
+                              data-price-sale="{{ price_sale_label | escape }}"
+                              data-price-original="{{ price_original_label | escape }}"
+                            >
+                              <span class="scn-card__price-sale" data-scn-price-main>
+                                {{ price_original_label }}
                               </span>
-                              {%- if card_compare_at != blank and card_compare_at > card_price -%}
-                                <span class="scn-card__price-compare">
-                                  {%- if settings.currency_code_enabled -%}
-                                    {{ card_compare_at | money_with_currency }}
-                                  {%- else -%}
-                                    {{ card_compare_at | money }}
-                                  {%- endif -%}
-                                </span>
+                              <span class="scn-card__price-compare is-hidden" data-scn-price-compare>
+                                {{ price_original_label }}
+                              </span>
+                              {%- if save_amount_cents > 0 -%}
+                                <button
+                                  type="button"
+                                  class="scn-card__save-btn"
+                                  data-scn-save-btn
+                                  aria-pressed="false"
+                                >
+                                  Save {{ save_amount_label }}
+                                </button>
                               {%- endif -%}
                             </div>
 
@@ -711,6 +773,24 @@
   (function () {
     var root = document.querySelector('#shopify-section-{{ section.id }} [data-scn-root]');
     if (!root) return;
+
+    root.querySelectorAll('[data-scn-save-btn]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var priceWrap = btn.closest('[data-scn-price]');
+        if (!priceWrap) return;
+        var main = priceWrap.querySelector('[data-scn-price-main]');
+        var compare = priceWrap.querySelector('[data-scn-price-compare]');
+        var sale = priceWrap.getAttribute('data-price-sale') || '';
+        var original = priceWrap.getAttribute('data-price-original') || '';
+        var active = btn.classList.toggle('is-active');
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        if (main) main.textContent = active ? sale : original;
+        if (compare) {
+          compare.textContent = original;
+          compare.classList.toggle('is-hidden', !active || !original || original === sale);
+        }
+      });
+    });
 
     var links = root.querySelectorAll('[data-scn-nav]');
     var panels = root.querySelectorAll('[data-scn-panel]');
@@ -913,6 +993,22 @@
     },
     {
       "type": "header",
+      "content": "Save amount button"
+    },
+    {
+      "type": "color",
+      "id": "save_btn_bg",
+      "label": "Save button background",
+      "default": "#FFCC00"
+    },
+    {
+      "type": "color",
+      "id": "save_btn_text",
+      "label": "Save button text",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
       "content": "Learn More button"
     },
     {
@@ -1104,7 +1200,13 @@
           "type": "text",
           "id": "sale_price",
           "label": "Sale price",
-          "info": "Discounted price to show (e.g. 299.00). Required for discount-code promos. Leave empty to show product price only."
+          "info": "Discounted price to show after clicking Save (e.g. 299.00). Leave empty to derive from product price − Save amount."
+        },
+        {
+          "type": "text",
+          "id": "save_amount",
+          "label": "Save amount",
+          "info": "Amount shown on the Save button (e.g. 65.00). Uses store currency. Leave empty to hide the button."
         },
         {
           "type": "range",
@@ -1115,7 +1217,7 @@
           "step": 1,
           "unit": "%",
           "default": 0,
-          "info": "Manual save % for the badge. Discount codes cannot be read automatically. 0 = hide badge."
+          "info": "Manual save % for the corner badge. 0 = hide badge."
         },
         {
           "type": "image_picker",
