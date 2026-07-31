@@ -167,6 +167,39 @@ E-Scooter 产品网格展示 Section
     transform: translate(-50%, -55%) rotate(45deg);
   }
   @media screen and (max-width: 749px) {
+    .product-grid-section-{{ section.id }} .product-card__price-wrap {
+      flex-wrap: wrap;
+      white-space: normal;
+      gap: 2px 6px;
+    }
+
+    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price]::before {
+      content: '';
+      flex-basis: 100%;
+      width: 0;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      order: 2;
+    }
+
+    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__price,
+    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__compare-price {
+      order: 1;
+    }
+
+    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__save-btn {
+      order: 3;
+      margin-top: 0;
+    }
+
+    {% if section.settings.card_content_align == 'center' %}
+    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__save-btn {
+      margin-inline: auto;
+    }
+    {% endif %}
+
     .product-grid-section-{{ section.id }} .product-card__save-btn {
       font-size: 10px;
       padding: 4px 6px;

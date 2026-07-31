@@ -3088,6 +3088,43 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
   color: #e53935;
 }
 
+/* 手机端：价格（+划线价）一行，Save 始终单独一行 */
+@media screen and (max-width: 749px) {
+  .card-discount-price--interactive[data-pc-price] {
+    display: flex;
+    flex-wrap: wrap;
+    white-space: normal;
+    gap: 2px 6px;
+    width: 100%;
+  }
+
+  .card-discount-price--interactive[data-pc-price]::before {
+    content: '';
+    flex-basis: 100%;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    order: 2;
+  }
+
+  .card-discount-price--interactive[data-pc-price] .card-discount-price__main,
+  .card-discount-price--interactive[data-pc-price] .card-discount-price__compare {
+    order: 1;
+  }
+
+  .card-discount-price--interactive[data-pc-price] .card-discount-price__save-btn {
+    order: 3;
+    margin-top: 0;
+  }
+
+  .card-discount-price--interactive[data-pc-price].justify-center .card-discount-price__save-btn {
+    margin-inline: auto;
+  }
+}
+
 .card-discount-price__compare {
   font-size: 0.75em;
   color: rgb(var(--text-color) / 0.55);
