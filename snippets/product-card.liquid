@@ -21,7 +21,7 @@ Supported variables
 * background: the background to use for the product card (if none is passed then the one from the global setting is used)
 * text_color: the text color to use for the product card (if none is passed then the one from the global setting is used)
 * text_alignment: can be "center". If nothing is set, the theme uses the default product card setting
-* show_save_badge: show or hide the metafield discount Save badge. Defaults to true
+* show_save_badge: show or hide the metafield discount Save button. Defaults to true
 {%- endcomment -%}
 
 {%- assign show_rating = show_rating | default: settings.show_product_rating, allow_false: true -%}
@@ -32,13 +32,27 @@ Supported variables
 {%- assign show_save_badge = show_save_badge | default: true, allow_false: true -%}
 
 {%- comment -%}
-  元字段折扣展示：仅当 custom.discount_code 与 custom.discount_money_count 同时有值时展示 Save 徽章。
+  元字段折扣：custom.discount_money_count 有值时展示可点击 Save 按钮。
+  默认显示原价；勾选后显示折扣价 + 划线原价。
 {%- endcomment -%}
-{%- assign card_discount_amount = product.metafields.custom.discount_money_count.value -%}
-{%- assign card_has_discount = false -%}
-{%- if card_discount_amount != blank and card_discount_amount > 0 -%}
-  {%- assign card_has_discount = true -%}
-{%- endif -%}
+{%- liquid
+  assign card_discount_amount = product.metafields.custom.discount_money_count.value
+  assign card_has_discount = false
+  assign card_price_original = product.price | plus: 0
+  assign card_price_sale = card_price_original
+  if card_discount_amount != blank and card_discount_amount > 0
+    assign card_has_discount = true
+    assign card_price_sale = card_price_original | minus: card_discount_amount
+    if card_price_sale < 0
+      assign card_price_sale = 0
+    endif
+  endif
+  if card_has_discount
+    assign card_price_original_label = card_price_original | money | strip_html
+    assign card_price_sale_label = card_price_sale | money | strip_html
+    assign card_save_amount_label = card_discount_amount | money | strip_html
+  endif
+-%}
 
 {%- if stacked and section.settings.products_per_row_mobile == '2' -%}
   {%- assign mobile_reduced = true -%}
@@ -189,12 +203,30 @@ Supported variables
         {%- endif -%}
       </div>
  {%- endcomment -%}
-      <div class="card-discount-price {% if text_alignment == 'center' %}justify-center{% endif %}">
-        {%- render 'price-list', product: product, text_alignment: text_alignment -%}
-        {%- if show_save_badge and card_has_discount -%}
-          <span class="card-discount-price__saved">Save&nbsp;{{ card_discount_amount | money }}</span>
-        {%- endif -%}
-      </div>
+      {%- if show_save_badge and card_has_discount -%}
+        <div
+          class="card-discount-price card-discount-price--interactive {% if text_alignment == 'center' %}justify-center{% endif %}"
+          data-pc-price
+          data-price-sale="{{ card_price_sale_label | escape }}"
+          data-price-original="{{ card_price_original_label | escape }}"
+        >
+          <span class="card-discount-price__main" data-pc-price-main>{{ card_price_original_label }}</span>
+          <span class="card-discount-price__compare is-hidden" data-pc-price-compare>{{ card_price_original_label }}</span>
+          <label class="card-discount-price__save-btn" data-pc-save-btn aria-pressed="false">
+            <input
+              type="checkbox"
+              class="card-discount-price__save-check"
+              data-pc-save-check
+              aria-label="Apply save {{ card_save_amount_label | escape }}"
+            >
+            <span>Save {{ card_save_amount_label }}</span>
+          </label>
+        </div>
+      {%- else -%}
+        <div class="card-discount-price {% if text_alignment == 'center' %}justify-center{% endif %}">
+          {%- render 'price-list', product: product, text_alignment: text_alignment -%}
+        </div>
+      {%- endif -%}
     </div>
 
     {%- comment -%} 居中布局时评分单独居中展示；左对齐布局的评分已并入上方 .product-card__rating-row {%- endcomment -%}

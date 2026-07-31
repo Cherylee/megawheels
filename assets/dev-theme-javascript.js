@@ -215,3 +215,33 @@ class DiscountToggle extends HTMLElement {
 if (!window.customElements.get("discount-toggle")) {
   customElements.define("discount-toggle", DiscountToggle)
 }
+
+/* 产品卡片：Save 勾选切换折扣价 / 划线原价 */
+function setProductCardSaveActive(priceWrap, active) {
+  if (!priceWrap) return
+  const main = priceWrap.querySelector("[data-pc-price-main]")
+  const compare = priceWrap.querySelector("[data-pc-price-compare]")
+  const btn = priceWrap.querySelector("[data-pc-save-btn]")
+  const check = priceWrap.querySelector("[data-pc-save-check]")
+  const sale = priceWrap.getAttribute("data-price-sale") || ""
+  const original = priceWrap.getAttribute("data-price-original") || ""
+
+  priceWrap.classList.toggle("is-saved", active)
+  if (btn) {
+    btn.classList.toggle("is-active", active)
+    btn.setAttribute("aria-pressed", active ? "true" : "false")
+  }
+  if (check) check.checked = active
+  if (main) main.textContent = active ? sale : original
+  if (compare) {
+    compare.textContent = original
+    compare.classList.toggle("is-hidden", !active)
+  }
+}
+
+document.addEventListener("change", (event) => {
+  const check = event.target.closest?.("[data-pc-save-check]")
+  if (!check) return
+  const priceWrap = check.closest("[data-pc-price]")
+  setProductCardSaveActive(priceWrap, check.checked)
+})
