@@ -7,6 +7,9 @@ E-Scooter 产品网格展示 Section
   .product-grid-section-{{ section.id }} {
     padding: {{ section.settings.section_padding_top }}px 0 {{ section.settings.section_padding_bottom }}px 0;
     background: {{ section.settings.section_bg_color }};
+    --fpg-save-btn-bg: {{ section.settings.save_btn_bg | default: '#FFCC00' }};
+    --fpg-save-btn-text: {{ section.settings.save_btn_text | default: '#000000' }};
+    --fpg-sale-price-color: {{ section.settings.sale_price_color | default: '#E53935' }};
   }
   .product-grid-section__header {
     text-align: {{ section.settings.header_align }};
@@ -83,19 +86,96 @@ E-Scooter 产品网格展示 Section
     color: {{ section.settings.spec_color }};
     margin: 0 0 10px;
   }
-  .product-card__price-wrap {
+  .product-grid-section-{{ section.id }} .product-card__price-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: {% if section.settings.card_content_align == 'left' %}flex-start{% elsif section.settings.card_content_align == 'right' %}flex-end{% else %}center{% endif %};
+    flex-wrap: nowrap;
+    gap: 6px;
     margin-bottom: 16px;
+    white-space: nowrap;
   }
-  .product-card__price {
+  .product-grid-section-{{ section.id }} .product-card__price {
     font-size: {{ section.settings.price_font_size }}px;
     color: {{ section.settings.price_color }};
     font-weight: bold;
+    transition: color 0.2s ease;
   }
-  .product-card__compare-price {
+  .product-grid-section-{{ section.id }} .product-card__price-wrap.is-saved .product-card__price {
+    color: var(--fpg-sale-price-color);
+  }
+  .product-grid-section-{{ section.id }} .product-card__compare-price {
     font-size: {{ section.settings.old_price_font_size }}px;
     color: {{ section.settings.old_price_color }};
     text-decoration: line-through;
-    margin-left: 6px;
+  }
+  .product-grid-section-{{ section.id }} .product-card__compare-price.is-hidden {
+    display: none;
+  }
+  .product-grid-section-{{ section.id }} .product-card__save-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    margin: 0;
+    padding: 4px 6px;
+    border: none;
+    border-radius: 3px;
+    background: var(--fpg-save-btn-bg);
+    color: var(--fpg-save-btn-text);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: filter 0.2s ease;
+  }
+  .product-grid-section-{{ section.id }} .product-card__save-btn:hover {
+    filter: brightness(0.95);
+  }
+  .product-grid-section-{{ section.id }} .product-card__save-btn.is-active {
+    filter: brightness(0.9);
+  }
+  .product-grid-section-{{ section.id }} .product-card__save-check {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 11px;
+    height: 11px;
+    margin: 0;
+    border: 1px solid currentColor;
+    border-radius: 1.5px;
+    background: #ffffff;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    color: inherit;
+  }
+  .product-grid-section-{{ section.id }} .product-card__save-check:checked {
+    background: currentColor;
+    border-color: currentColor;
+  }
+  .product-grid-section-{{ section.id }} .product-card__save-check:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 2.5px;
+    height: 5px;
+    border: solid var(--fpg-save-btn-bg);
+    border-width: 0 1.2px 1.2px 0;
+    transform: translate(-50%, -55%) rotate(45deg);
+  }
+  @media screen and (max-width: 749px) {
+    .product-grid-section-{{ section.id }} .product-card__save-btn {
+      font-size: 10px;
+      padding: 4px 6px;
+      gap: 3px;
+    }
+    .product-grid-section-{{ section.id }} .product-card__save-check {
+      width: 11px;
+      height: 11px;
+    }
   }
   .product-card__buttons {
     display: grid;
@@ -169,12 +249,53 @@ E-Scooter 产品网格展示 Section
             <div class="product-card__info">
               <h3 class="product-card__model">{{ block.settings.model_name }}</h3>
               <p class="product-card__spec">{{ block.settings.spec_text }}</p>
-              <div class="product-card__price-wrap">
-                <span class="product-card__price">{{ block.settings.current_price }}</span>
-                {% if block.settings.original_price != blank %}
-                  <span class="product-card__compare-price">{{ block.settings.original_price }}</span>
-                {% endif %}
-              </div>
+              {%- liquid
+                assign price_original_label = block.settings.current_price
+                if block.settings.original_price != blank
+                  assign price_original_label = block.settings.original_price
+                endif
+                assign price_sale_label = block.settings.sale_price
+                if price_sale_label == blank
+                  assign price_sale_label = block.settings.current_price
+                endif
+                assign save_amount_label = block.settings.save_amount | strip
+                if save_amount_label != blank
+                  unless save_amount_label contains '$'
+                    assign save_amount_label = save_amount_label | prepend: '$'
+                  endunless
+                endif
+                assign card_save_btn_bg = block.settings.save_btn_bg | default: section.settings.save_btn_bg | default: '#FFCC00'
+                assign card_save_btn_text = block.settings.save_btn_text | default: section.settings.save_btn_text | default: '#000000'
+                assign card_sale_price_color = block.settings.sale_price_color | default: section.settings.sale_price_color | default: '#E53935'
+              -%}
+              {%- if save_amount_label != blank -%}
+                <div
+                  class="product-card__price-wrap"
+                  data-fpg-price
+                  data-price-sale="{{ price_sale_label | escape }}"
+                  data-price-original="{{ price_original_label | escape }}"
+                  style="--fpg-save-btn-bg: {{ card_save_btn_bg }}; --fpg-save-btn-text: {{ card_save_btn_text }}; --fpg-sale-price-color: {{ card_sale_price_color }};"
+                >
+                  <span class="product-card__price" data-fpg-price-main>{{ price_original_label }}</span>
+                  <span class="product-card__compare-price is-hidden" data-fpg-price-compare>{{ price_original_label }}</span>
+                  <label class="product-card__save-btn" data-fpg-save-btn aria-pressed="false">
+                    <input
+                      type="checkbox"
+                      class="product-card__save-check"
+                      data-fpg-save-check
+                      aria-label="Apply save {{ save_amount_label | escape }}"
+                    >
+                    <span>Save {{ save_amount_label }}</span>
+                  </label>
+                </div>
+              {%- else -%}
+                <div class="product-card__price-wrap">
+                  <span class="product-card__price">{{ block.settings.current_price }}</span>
+                  {% if block.settings.original_price != blank %}
+                    <span class="product-card__compare-price">{{ block.settings.original_price }}</span>
+                  {% endif %}
+                </div>
+              {%- endif -%}
               <div class="product-card__buttons">
                 <a href="{{ block.settings.link_learn }}" class="btn-learn">{{ section.settings.btn_learn_label }}</a>
                 <a href="{{ block.settings.link_cart }}" class="btn-cart">{{ section.settings.btn_cart_label }}</a>
@@ -186,6 +307,43 @@ E-Scooter 产品网格展示 Section
     </div>
   </div>
 </div>
+
+<script>
+  (function () {
+    var root = document.querySelector('.product-grid-section-{{ section.id }}');
+    if (!root) return;
+
+    function setFpgSaveActive(priceWrap, active) {
+      if (!priceWrap) return;
+      var main = priceWrap.querySelector('[data-fpg-price-main]');
+      var compare = priceWrap.querySelector('[data-fpg-price-compare]');
+      var btn = priceWrap.querySelector('[data-fpg-save-btn]');
+      var check = priceWrap.querySelector('[data-fpg-save-check]');
+      var sale = priceWrap.getAttribute('data-price-sale') || '';
+      var original = priceWrap.getAttribute('data-price-original') || '';
+
+      priceWrap.classList.toggle('is-saved', active);
+      if (btn) {
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      }
+      if (check) check.checked = active;
+      if (main) main.textContent = active ? sale : original;
+      if (compare) {
+        compare.textContent = original;
+        compare.classList.toggle('is-hidden', !active);
+      }
+    }
+
+    root.querySelectorAll('[data-fpg-price]').forEach(function (priceWrap) {
+      var check = priceWrap.querySelector('[data-fpg-save-check]');
+      if (!check) return;
+      check.addEventListener('change', function () {
+        setFpgSaveActive(priceWrap, check.checked);
+      });
+    });
+  })();
+</script>
 
 {% schema %}
 {
@@ -424,6 +582,30 @@ E-Scooter 产品网格展示 Section
 
     {
       "type": "header",
+      "content": "Save amount button"
+    },
+    {
+      "type": "color",
+      "id": "save_btn_bg",
+      "label": "Save button background",
+      "default": "#FFCC00"
+    },
+    {
+      "type": "color",
+      "id": "save_btn_text",
+      "label": "Save button text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "sale_price_color",
+      "label": "Sale price color",
+      "default": "#E53935",
+      "info": "Font color for the discounted price after Save is selected."
+    },
+
+    {
+      "type": "header",
       "content": "【按钮全局设置】"
     },
     {
@@ -502,14 +684,46 @@ E-Scooter 产品网格展示 Section
         {
           "id": "current_price",
           "type": "text",
-          "label": "现价",
-          "default": "$314.99"
+          "label": "现价 / 折扣价",
+          "default": "$314.99",
+          "info": "With Save amount: shown as sale price after click (if Sale price empty). Without Save: always shown."
         },
         {
           "id": "original_price",
           "type": "text",
-          "label": "原价（划线价，留空不显示）",
-          "default": "$659.99"
+          "label": "原价（划线价）",
+          "default": "$659.99",
+          "info": "With Save amount: default price before click, then strikethrough after. Without Save: always shown if filled."
+        },
+        {
+          "type": "text",
+          "id": "sale_price",
+          "label": "Sale price",
+          "info": "Discounted price after clicking Save. Leave empty to use 现价 / 折扣价."
+        },
+        {
+          "type": "text",
+          "id": "save_amount",
+          "label": "Save amount",
+          "info": "Amount on the Save button (e.g. 50.00 or $50.00). Leave empty to hide the button and use static prices."
+        },
+        {
+          "type": "color",
+          "id": "save_btn_bg",
+          "label": "Save button background",
+          "default": "#FFCC00"
+        },
+        {
+          "type": "color",
+          "id": "save_btn_text",
+          "label": "Save button text",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "sale_price_color",
+          "label": "Sale price color",
+          "default": "#E53935"
         },
         {
           "id": "link_learn",
