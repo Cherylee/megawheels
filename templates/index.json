@@ -387,6 +387,11 @@
             "spec_text": "300W | 15.5 mph | APP",
             "current_price": "$170.99",
             "original_price": "$235.99",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/a1c-electric-scooter",
             "link_cart": ""
           }
@@ -400,6 +405,11 @@
             "spec_text": "19 miles | 350W | APP",
             "current_price": "$239.99",
             "original_price": "$292.99",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/a6l-eco-electric-scooter",
             "link_cart": ""
           }
@@ -413,6 +423,11 @@
             "spec_text": "19 miles | 350w | Suspension design",
             "current_price": "$243.99",
             "original_price": "$304.99",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/c2-electric-scooter",
             "link_cart": ""
           }
@@ -426,6 +441,11 @@
             "spec_text": "28 miles | APP | 20 mph",
             "current_price": "$249.99",
             "original_price": "$299.99",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/m1-electric-scooter",
             "link_cart": ""
           }
@@ -439,6 +459,11 @@
             "spec_text": "20 miles | 350w | 19 mph",
             "current_price": "$314.99",
             "original_price": "$659.99",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "",
             "link_cart": ""
           }
@@ -451,10 +476,9 @@
         "product_item_HjfgFf",
         "product_item_DwwcnH"
       ],
-      "disabled": true,
       "name": "电动滑板车产品卡片网格",
       "settings": {
-        "section_bg_color": "#f0f8ff",
+        "section_bg_color": "#FFFFFF",
         "section_padding_top": 60,
         "section_padding_bottom": 60,
         "grid_gap": 16,
@@ -468,9 +492,9 @@
         "subtitle_font_size": 18,
         "subtitle_color": "#444444",
         "card_content_align": "center",
-        "badge_bg_color": "#38b6ff",
+        "badge_bg_color": "#FF0000",
         "badge_text_color": "#ffffff",
-        "badge_font_size": 12,
+        "badge_font_size": 11,
         "model_font_size": 22,
         "model_color": "#000000",
         "spec_font_size": 15,
@@ -479,6 +503,9 @@
         "price_color": "#000000",
         "old_price_font_size": 16,
         "old_price_color": "#888888",
+        "save_btn_bg": "#ffcc00",
+        "save_btn_text": "#000000",
+        "sale_price_color": "#e53935",
         "btn_learn_label": "Learn More",
         "btn_cart_label": "Add to Cart",
         "btn_font_size": 15,
