@@ -296,7 +296,7 @@
   }
 
   #shopify-section-{{ section.id }} .scn-card__price-sale {
-    font-size: calc(16 * var(--rem));
+    font-size: calc(18 * var(--rem));
     font-weight: 700;
     color: #111111;
     transition: color 0.2s ease;
@@ -307,7 +307,7 @@
   }
 
   #shopify-section-{{ section.id }} .scn-card__price-compare {
-    font-size: calc(11 * var(--rem));
+    font-size: calc(9 * var(--rem));
     color: #999999;
     text-decoration: line-through;
   }
@@ -316,60 +316,24 @@
     display: none;
   }
 
-  #shopify-section-{{ section.id }} .scn-card__save {
-    display: inline-flex;
-    align-items: center;
-    gap: calc(4 * var(--rem));
-    flex-shrink: 0;
-  }
-
-  #shopify-section-{{ section.id }} .scn-card__save-check {
-    appearance: none;
-    -webkit-appearance: none;
-    width: calc(14 * var(--rem));
-    height: calc(14 * var(--rem));
-    margin: 0;
-    border: 1.5px solid #333333;
-    border-radius: calc(2 * var(--rem));
-    background: #ffffff;
-    cursor: pointer;
-    position: relative;
-    flex-shrink: 0;
-  }
-
-  #shopify-section-{{ section.id }} .scn-card__save-check:checked {
-    background: #111111;
-    border-color: #111111;
-  }
-
-  #shopify-section-{{ section.id }} .scn-card__save-check:checked::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 45%;
-    width: calc(3.5 * var(--rem));
-    height: calc(7 * var(--rem));
-    border: solid #ffffff;
-    border-width: 0 1.5px 1.5px 0;
-    transform: translate(-50%, -55%) rotate(45deg);
-  }
-
   #shopify-section-{{ section.id }} .scn-card__save-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: calc(3 * var(--rem));
     margin: 0;
-    padding: calc(4 * var(--rem)) calc(8 * var(--rem));
+    padding: calc(4 * var(--rem)) calc(6 * var(--rem));
     border: none;
-    border-radius: calc(4 * var(--rem));
+    border-radius: calc(3 * var(--rem));
     background: var(--scn-save-btn-bg);
     color: var(--scn-save-btn-text);
-    font-size: calc(11 * var(--rem));
+    font-size: calc(10 * var(--rem));
     font-weight: 700;
     line-height: 1.2;
     white-space: nowrap;
     cursor: pointer;
-    transition: filter 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+    transition: filter 0.2s ease;
   }
 
   #shopify-section-{{ section.id }} .scn-card__save-btn:hover {
@@ -378,6 +342,38 @@
 
   #shopify-section-{{ section.id }} .scn-card__save-btn.is-active {
     filter: brightness(0.9);
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-check {
+    appearance: none;
+    -webkit-appearance: none;
+    width: calc(11 * var(--rem));
+    height: calc(11 * var(--rem));
+    margin: 0;
+    border: 1px solid currentColor;
+    border-radius: calc(1.5 * var(--rem));
+    background: #ffffff;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-check:checked {
+    background: currentColor;
+    border-color: currentColor;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-check:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: calc(2.5 * var(--rem));
+    height: calc(5 * var(--rem));
+    border: solid var(--scn-save-btn-bg);
+    border-width: 0 1.2px 1.2px 0;
+    transform: translate(-50%, -55%) rotate(45deg);
   }
 
   #shopify-section-{{ section.id }} .scn-card__actions {
@@ -484,16 +480,22 @@
     }
 
     #shopify-section-{{ section.id }} .scn-card__price-sale {
-      font-size: calc(14 * var(--rem));
+      font-size: calc(17 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-card__price-compare {
+      font-size: calc(8 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-card__save-btn {
       font-size: calc(10 * var(--rem));
+      padding: calc(4 * var(--rem)) calc(6 * var(--rem));
+      gap: calc(3 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-card__save-check {
-      width: calc(12 * var(--rem));
-      height: calc(12 * var(--rem));
+      width: calc(11 * var(--rem));
+      height: calc(11 * var(--rem));
     }
   }
 
@@ -699,15 +701,9 @@
                           assign price_sale = card_price | minus: save_amount_cents
                         endif
 
-                        if settings.currency_code_enabled
-                          assign price_sale_label = price_sale | money_with_currency | strip_html
-                          assign price_original_label = price_original | money_with_currency | strip_html
-                          assign save_amount_label = save_amount_cents | money_with_currency | strip_html
-                        else
-                          assign price_sale_label = price_sale | money | strip_html
-                          assign price_original_label = price_original | money | strip_html
-                          assign save_amount_label = save_amount_cents | money | strip_html
-                        endif
+                        assign price_sale_label = price_sale | money | strip_html
+                        assign price_original_label = price_original | money | strip_html
+                        assign save_amount_label = save_amount_cents | money | strip_html
 
                         assign product_url = '#'
                         if product != blank
@@ -781,22 +777,19 @@
                                 {{ price_original_label }}
                               </span>
                               {%- if save_amount_cents > 0 -%}
-                                <div class="scn-card__save">
+                                <label
+                                  class="scn-card__save-btn"
+                                  data-scn-save-btn
+                                  aria-pressed="false"
+                                >
                                   <input
                                     type="checkbox"
                                     class="scn-card__save-check"
                                     data-scn-save-check
                                     aria-label="Apply save {{ save_amount_label | escape }}"
                                   >
-                                  <button
-                                    type="button"
-                                    class="scn-card__save-btn"
-                                    data-scn-save-btn
-                                    aria-pressed="false"
-                                  >
-                                    Save {{ save_amount_label }}
-                                  </button>
-                                </div>
+                                  <span>Save {{ save_amount_label }}</span>
+                                </label>
                               {%- endif -%}
                             </div>
 
@@ -861,20 +854,11 @@
     }
 
     root.querySelectorAll('[data-scn-price]').forEach(function (priceWrap) {
-      var btn = priceWrap.querySelector('[data-scn-save-btn]');
       var check = priceWrap.querySelector('[data-scn-save-check]');
-      if (!btn && !check) return;
-
-      if (btn) {
-        btn.addEventListener('click', function () {
-          setScnSaveActive(priceWrap, !priceWrap.classList.contains('is-saved'));
-        });
-      }
-      if (check) {
-        check.addEventListener('change', function () {
-          setScnSaveActive(priceWrap, check.checked);
-        });
-      }
+      if (!check) return;
+      check.addEventListener('change', function () {
+        setScnSaveActive(priceWrap, check.checked);
+      });
     });
 
     var links = root.querySelectorAll('[data-scn-nav]');
