@@ -650,13 +650,13 @@
                         endif
 
                         if settings.currency_code_enabled
-                          assign price_sale_label = price_sale | money_with_currency
-                          assign price_original_label = price_original | money_with_currency
-                          assign save_amount_label = save_amount_cents | money_with_currency
+                          assign price_sale_label = price_sale | money_with_currency | strip_html
+                          assign price_original_label = price_original | money_with_currency | strip_html
+                          assign save_amount_label = save_amount_cents | money_with_currency | strip_html
                         else
-                          assign price_sale_label = price_sale | money
-                          assign price_original_label = price_original | money
-                          assign save_amount_label = save_amount_cents | money
+                          assign price_sale_label = price_sale | money | strip_html
+                          assign price_original_label = price_original | money | strip_html
+                          assign save_amount_label = save_amount_cents | money | strip_html
                         endif
 
                         assign product_url = '#'
