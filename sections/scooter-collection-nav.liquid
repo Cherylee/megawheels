@@ -32,6 +32,7 @@
     --scn-atc-hover-text: {{ section.settings.atc_hover_text | default: '#ffffff' }};
     --scn-save-btn-bg: {{ section.settings.save_btn_bg | default: '#FFCC00' }};
     --scn-save-btn-text: {{ section.settings.save_btn_text | default: '#000000' }};
+    --scn-sale-price-color: {{ section.settings.sale_price_color | default: '#E53935' }};
   }
 
   #shopify-section-{{ section.id }} .scn {
@@ -289,24 +290,68 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: calc(8 * var(--rem));
-    flex-wrap: wrap;
+    gap: calc(6 * var(--rem));
+    flex-wrap: nowrap;
+    white-space: nowrap;
   }
 
   #shopify-section-{{ section.id }} .scn-card__price-sale {
-    font-size: calc(20 * var(--rem));
+    font-size: calc(16 * var(--rem));
     font-weight: 700;
     color: #111111;
+    transition: color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__price.is-saved .scn-card__price-sale {
+    color: var(--scn-sale-price-color);
   }
 
   #shopify-section-{{ section.id }} .scn-card__price-compare {
-    font-size: calc(12 * var(--rem));
+    font-size: calc(11 * var(--rem));
     color: #999999;
     text-decoration: line-through;
   }
 
   #shopify-section-{{ section.id }} .scn-card__price-compare.is-hidden {
     display: none;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(4 * var(--rem));
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-check {
+    appearance: none;
+    -webkit-appearance: none;
+    width: calc(14 * var(--rem));
+    height: calc(14 * var(--rem));
+    margin: 0;
+    border: 1.5px solid #333333;
+    border-radius: calc(2 * var(--rem));
+    background: #ffffff;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-check:checked {
+    background: #111111;
+    border-color: #111111;
+  }
+
+  #shopify-section-{{ section.id }} .scn-card__save-check:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: calc(3.5 * var(--rem));
+    height: calc(7 * var(--rem));
+    border: solid #ffffff;
+    border-width: 0 1.5px 1.5px 0;
+    transform: translate(-50%, -55%) rotate(45deg);
   }
 
   #shopify-section-{{ section.id }} .scn-card__save-btn {
@@ -439,11 +484,16 @@
     }
 
     #shopify-section-{{ section.id }} .scn-card__price-sale {
-      font-size: calc(16 * var(--rem));
+      font-size: calc(14 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .scn-card__price-compare {
-      font-size: calc(11 * var(--rem));
+      font-size: calc(10 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .scn-card__save-check {
+      width: calc(12 * var(--rem));
+      height: calc(12 * var(--rem));
     }
   }
 
@@ -712,11 +762,17 @@
                           {%- endif -%}
 
                           {%- if product != blank -%}
+                            {%- liquid
+                              assign card_save_btn_bg = product_block.settings.save_btn_bg | default: section.settings.save_btn_bg | default: '#FFCC00'
+                              assign card_save_btn_text = product_block.settings.save_btn_text | default: section.settings.save_btn_text | default: '#000000'
+                              assign card_sale_price_color = product_block.settings.sale_price_color | default: section.settings.sale_price_color | default: '#E53935'
+                            -%}
                             <div
                               class="scn-card__price"
                               data-scn-price
                               data-price-sale="{{ price_sale_label | escape }}"
                               data-price-original="{{ price_original_label | escape }}"
+                              style="--scn-save-btn-bg: {{ card_save_btn_bg }}; --scn-save-btn-text: {{ card_save_btn_text }}; --scn-sale-price-color: {{ card_sale_price_color }};"
                             >
                               <span class="scn-card__price-sale" data-scn-price-main>
                                 {{ price_original_label }}
@@ -725,19 +781,22 @@
                                 {{ price_original_label }}
                               </span>
                               {%- if save_amount_cents > 0 -%}
-                                {%- liquid
-                                  assign card_save_btn_bg = product_block.settings.save_btn_bg | default: section.settings.save_btn_bg | default: '#FFCC00'
-                                  assign card_save_btn_text = product_block.settings.save_btn_text | default: section.settings.save_btn_text | default: '#000000'
-                                -%}
-                                <button
-                                  type="button"
-                                  class="scn-card__save-btn"
-                                  data-scn-save-btn
-                                  aria-pressed="false"
-                                  style="--scn-save-btn-bg: {{ card_save_btn_bg }}; --scn-save-btn-text: {{ card_save_btn_text }};"
-                                >
-                                  Save {{ save_amount_label }}
-                                </button>
+                                <div class="scn-card__save">
+                                  <input
+                                    type="checkbox"
+                                    class="scn-card__save-check"
+                                    data-scn-save-check
+                                    aria-label="Apply save {{ save_amount_label | escape }}"
+                                  >
+                                  <button
+                                    type="button"
+                                    class="scn-card__save-btn"
+                                    data-scn-save-btn
+                                    aria-pressed="false"
+                                  >
+                                    Save {{ save_amount_label }}
+                                  </button>
+                                </div>
                               {%- endif -%}
                             </div>
 
@@ -779,19 +838,43 @@
     var root = document.querySelector('#shopify-section-{{ section.id }} [data-scn-root]');
     if (!root) return;
 
-    root.querySelectorAll('[data-scn-save-btn]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var priceWrap = btn.closest('[data-scn-price]');
-        if (!priceWrap) return;
-        var main = priceWrap.querySelector('[data-scn-price-main]');
-        var compare = priceWrap.querySelector('[data-scn-price-compare]');
-        var sale = priceWrap.getAttribute('data-price-sale') || '';
-        var original = priceWrap.getAttribute('data-price-original') || '';
-        var active = btn.classList.toggle('is-active');
+    function setScnSaveActive(priceWrap, active) {
+      if (!priceWrap) return;
+      var main = priceWrap.querySelector('[data-scn-price-main]');
+      var compare = priceWrap.querySelector('[data-scn-price-compare]');
+      var btn = priceWrap.querySelector('[data-scn-save-btn]');
+      var check = priceWrap.querySelector('[data-scn-save-check]');
+      var sale = priceWrap.getAttribute('data-price-sale') || '';
+      var original = priceWrap.getAttribute('data-price-original') || '';
+
+      priceWrap.classList.toggle('is-saved', active);
+      if (btn) {
+        btn.classList.toggle('is-active', active);
         btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-        if (main) main.textContent = active ? sale : original;
-        if (compare) compare.classList.add('is-hidden');
-      });
+      }
+      if (check) check.checked = active;
+      if (main) main.textContent = active ? sale : original;
+      if (compare) {
+        compare.textContent = original;
+        compare.classList.toggle('is-hidden', !active);
+      }
+    }
+
+    root.querySelectorAll('[data-scn-price]').forEach(function (priceWrap) {
+      var btn = priceWrap.querySelector('[data-scn-save-btn]');
+      var check = priceWrap.querySelector('[data-scn-save-check]');
+      if (!btn && !check) return;
+
+      if (btn) {
+        btn.addEventListener('click', function () {
+          setScnSaveActive(priceWrap, !priceWrap.classList.contains('is-saved'));
+        });
+      }
+      if (check) {
+        check.addEventListener('change', function () {
+          setScnSaveActive(priceWrap, check.checked);
+        });
+      }
     });
 
     var links = root.querySelectorAll('[data-scn-nav]');
@@ -1010,6 +1093,13 @@
       "default": "#000000"
     },
     {
+      "type": "color",
+      "id": "sale_price_color",
+      "label": "Sale price color",
+      "default": "#E53935",
+      "info": "Font color for the discounted price after Save is selected."
+    },
+    {
       "type": "header",
       "content": "Learn More button"
     },
@@ -1221,6 +1311,12 @@
           "id": "save_btn_text",
           "label": "Save button text",
           "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "sale_price_color",
+          "label": "Sale price color",
+          "default": "#E53935"
         },
         {
           "type": "range",
