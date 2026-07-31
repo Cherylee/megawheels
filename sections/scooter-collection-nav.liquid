@@ -725,11 +725,16 @@
                                 {{ price_original_label }}
                               </span>
                               {%- if save_amount_cents > 0 -%}
+                                {%- liquid
+                                  assign card_save_btn_bg = product_block.settings.save_btn_bg | default: section.settings.save_btn_bg | default: '#FFCC00'
+                                  assign card_save_btn_text = product_block.settings.save_btn_text | default: section.settings.save_btn_text | default: '#000000'
+                                -%}
                                 <button
                                   type="button"
                                   class="scn-card__save-btn"
                                   data-scn-save-btn
                                   aria-pressed="false"
+                                  style="--scn-save-btn-bg: {{ card_save_btn_bg }}; --scn-save-btn-text: {{ card_save_btn_text }};"
                                 >
                                   Save {{ save_amount_label }}
                                 </button>
@@ -785,10 +790,7 @@
         var active = btn.classList.toggle('is-active');
         btn.setAttribute('aria-pressed', active ? 'true' : 'false');
         if (main) main.textContent = active ? sale : original;
-        if (compare) {
-          compare.textContent = original;
-          compare.classList.toggle('is-hidden', !active || !original || original === sale);
-        }
+        if (compare) compare.classList.add('is-hidden');
       });
     });
 
@@ -1207,6 +1209,18 @@
           "id": "save_amount",
           "label": "Save amount",
           "info": "Amount shown on the Save button (e.g. 65.00). Uses store currency. Leave empty to hide the button."
+        },
+        {
+          "type": "color",
+          "id": "save_btn_bg",
+          "label": "Save button background",
+          "default": "#FFCC00"
+        },
+        {
+          "type": "color",
+          "id": "save_btn_text",
+          "label": "Save button text",
+          "default": "#000000"
         },
         {
           "type": "range",
