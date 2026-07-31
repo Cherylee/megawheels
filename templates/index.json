@@ -475,7 +475,7 @@
         "model_color": "#000000",
         "spec_font_size": 15,
         "spec_color": "#333333",
-        "price_font_size": 28,
+        "price_font_size": 24,
         "price_color": "#000000",
         "old_price_font_size": 16,
         "old_price_color": "#888888",
