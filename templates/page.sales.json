@@ -132,9 +132,44 @@
         "font_weight": "500"
       }
     },
+    "1785391331c5e4538b": {
+      "type": "apps",
+      "blocks": {
+        "gsc_countdown_timer_countdown_C9Erem": {
+          "type": "shopify://apps/gsc-countdown-timer/blocks/countdown/58dc5b1b-43d2-4209-b1f3-52aff31643ed",
+          "settings": {
+            "widget_id": "GSC-INLINE-BAR-kfqYUrbWBGaJ"
+          }
+        }
+      },
+      "block_order": [
+        "gsc_countdown_timer_countdown_C9Erem"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "background": "#F0F8FF",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "featured_product_grid_9rUt3M": {
       "type": "featured-product-grid",
       "blocks": {
+        "product_item_4wRqPR": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-E2-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 35%",
+            "model_name": "E2",
+            "spec_text": "28 miles | 400w | 20 mph",
+            "current_price": "$522.99",
+            "original_price": "",
+            "link_learn": "shopify://products/e2-electric-scooter",
+            "link_cart": ""
+          }
+        },
         "product_item_G4n4H7": {
           "type": "product_item",
           "settings": {
@@ -187,32 +222,6 @@
             "link_cart": ""
           }
         },
-        "product_item_rUiqAC": {
-          "type": "product_item",
-          "settings": {
-            "product_image": "shopify://shop_images/MEGAWHEELS-A6L-MAX-electric-scooter-900x1200.jpg",
-            "badge_text": "",
-            "model_name": "A6L MAX",
-            "spec_text": "28 miles | 500W | APP",
-            "current_price": "$469.99",
-            "original_price": "",
-            "link_learn": "shopify://products/a6l-max-electric-scooter",
-            "link_cart": ""
-          }
-        },
-        "product_item_4wRqPR": {
-          "type": "product_item",
-          "settings": {
-            "product_image": "shopify://shop_images/MEGAWHEELS-E2-electric-scooter-900x1200.jpg",
-            "badge_text": "SAVE 30%",
-            "model_name": "E2",
-            "spec_text": "28 miles | 400w | 20 mph",
-            "current_price": "$482.99",
-            "original_price": "",
-            "link_learn": "shopify://products/e2-electric-scooter",
-            "link_cart": ""
-          }
-        },
         "product_item_9LBKPM": {
           "type": "product_item",
           "settings": {
@@ -238,17 +247,30 @@
             "link_learn": "shopify://products/s2-electric-scooter",
             "link_cart": ""
           }
+        },
+        "product_item_rUiqAC": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-A6L-MAX-electric-scooter-900x1200.jpg",
+            "badge_text": "",
+            "model_name": "A6L MAX",
+            "spec_text": "28 miles | 500W | APP",
+            "current_price": "$469.99",
+            "original_price": "",
+            "link_learn": "shopify://products/a6l-max-electric-scooter",
+            "link_cart": ""
+          }
         }
       },
       "block_order": [
+        "product_item_4wRqPR",
         "product_item_G4n4H7",
         "product_item_xFjDUr",
         "product_item_F7bnrJ",
         "product_item_Qeraq8",
-        "product_item_rUiqAC",
-        "product_item_4wRqPR",
         "product_item_9LBKPM",
-        "product_item_aheBWn"
+        "product_item_aheBWn",
+        "product_item_rUiqAC"
       ],
       "name": "电动滑板车产品卡片网格",
       "settings": {
@@ -354,7 +376,7 @@
         "section_padding_top": 60,
         "section_padding_bottom": 60,
         "grid_gap": 16,
-        "section_title": "Electric Dirt Bikes For Kids & Teens Up to $600 Off",
+        "section_title": "Electric Dirt Bikes For Kids & Teens Up to $400 Off",
         "section_subtitle": "Choose your perfect ride",
         "header_align": "center",
         "header_bottom_margin": 40,
@@ -641,6 +663,7 @@
     "scrolling_text_xzGRbB",
     "main",
     "scooter_trust_bar_zgYAeL",
+    "1785391331c5e4538b",
     "featured_product_grid_9rUt3M",
     "featured_product_grid_yDGyYy",
     "product_grid_wThJJM",

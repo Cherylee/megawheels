@@ -60,6 +60,8 @@
         "products_per_page": 16,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
+        "show_save_badge": true,
+        "product_card_price_color": "#fc0000",
         "filter_layout": "horizontal",
         "show_sort_by": true,
         "show_filters": true,

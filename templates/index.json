@@ -370,9 +370,9 @@
         "prod_tag_color": "#ffffff",
         "banner_enable": true,
         "banner_image": "shopify://shop_images/MEGAWHEELS-A6L-ECO-electric-scooter-1900x868-01.jpg",
-        "banner_sale_text": "Up to $200 off Electric Scooter",
+        "banner_sale_text": "Up to 35% off Electric Scooter",
         "banner_btn_text": "Learn More",
-        "banner_btn_link": "shopify://collections/electric-scooters"
+        "banner_btn_link": "shopify://pages/scooter-collection"
       }
     },
     "featured_product_grid_AfQFQL": {
@@ -1498,6 +1498,8 @@
             "show_sample_reviews": true,
             "reviews_selection": "all",
             "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
             "filter_custom_tags": "",
             "star_rating": "all",
             "show_review_media": true,

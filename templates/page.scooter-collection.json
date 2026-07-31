@@ -208,17 +208,6 @@
             "attributes": "350W | 19 miles | APP"
           }
         },
-        "product_summer_3": {
-          "type": "product_item",
-          "settings": {
-            "category_key": "scooter-under-300",
-            "product": "c2-electric-scooter",
-            "sale_price": "",
-            "save_percent": 15,
-            "title": "C2",
-            "attributes": "350W | 19 miles | Suspension design"
-          }
-        },
         "product_item_ntf43m": {
           "type": "product_item",
           "settings": {
@@ -230,15 +219,15 @@
             "attributes": "28 miles | 20 mph | APP"
           }
         },
-        "product_ebike_4": {
+        "product_summer_3": {
           "type": "product_item",
           "settings": {
-            "category_key": "long-range",
-            "product": "a6l-max-electric-scooter",
+            "category_key": "scooter-under-300",
+            "product": "c2-electric-scooter",
             "sale_price": "",
-            "save_percent": 0,
-            "title": "A6L MAX",
-            "attributes": "28 miles | 500W | APP"
+            "save_percent": 15,
+            "title": "C2",
+            "attributes": "350W | 19 miles | Suspension design"
           }
         },
         "product_ebike_1": {
@@ -247,7 +236,7 @@
             "category_key": "long-range",
             "product": "e2-electric-scooter",
             "sale_price": "",
-            "save_percent": 30,
+            "save_percent": 35,
             "title": "E2",
             "attributes": "28 miles | 400W | 20 mph"
           }
@@ -272,6 +261,17 @@
             "save_percent": 12,
             "title": "S2",
             "attributes": "44 miles | 750W | 20 mph"
+          }
+        },
+        "product_ebike_4": {
+          "type": "product_item",
+          "settings": {
+            "category_key": "long-range",
+            "product": "a6l-max-electric-scooter",
+            "sale_price": "",
+            "save_percent": 0,
+            "title": "A6L MAX",
+            "attributes": "28 miles | 500W | APP"
           }
         },
         "product_together_1": {
@@ -326,12 +326,12 @@
         "category_complete",
         "product_summer_1",
         "product_summer_2",
-        "product_summer_3",
         "product_item_ntf43m",
-        "product_ebike_4",
+        "product_summer_3",
         "product_ebike_1",
         "product_ebike_2",
         "product_ebike_3",
+        "product_ebike_4",
         "product_together_1",
         "product_item_gcewgM",
         "product_item_3BqLrf",

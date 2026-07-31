@@ -156,7 +156,7 @@
         "product_3_title": "D2 pro",
         "product_1_discount_price": "899.99",
         "product_2_discount_price": "999.99",
-        "product_3_discount_price": "1599.99",
+        "product_3_discount_price": "",
         "button_text": "Shop Now",
         "button_font_size": 14,
         "button_border_radius": 20,
@@ -703,6 +703,62 @@
         "scroll_speed": 60,
         "scroll_dir": "normal"
       }
+    },
+    "1785395970eec7ef8e": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_8iTbNB": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "custom_products",
+            "products": [
+              "d2-electric-dirt-bike",
+              "d2-lite-electric-dirt-bike",
+              "d2-pro-electric-dirt-bike"
+            ],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#F9F9F9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_8iTbNB"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
@@ -714,6 +770,7 @@
     "dual_feature",
     "faq",
     "reviews",
-    "testimonial_carousel_nLe7FG"
+    "testimonial_carousel_nLe7FG",
+    "1785395970eec7ef8e"
   ]
 }
