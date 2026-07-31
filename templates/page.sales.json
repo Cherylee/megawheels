@@ -149,7 +149,7 @@
         "full_width": true,
         "remove_vertical_spacing": true,
         "remove_horizontal_spacing": true,
-        "background": "#F0F8FF",
+        "background": "#f0f8ff",
         "background_gradient": "",
         "text_color": ""
       }
@@ -165,7 +165,12 @@
             "model_name": "E2",
             "spec_text": "28 miles | 400w | 20 mph",
             "current_price": "$522.99",
-            "original_price": "",
+            "original_price": "$522.99",
+            "sale_price": "",
+            "save_amount": "100",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/e2-electric-scooter",
             "link_cart": ""
           }
@@ -179,6 +184,11 @@
             "spec_text": "300W | APP | 19 mph",
             "current_price": "235.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/a1c-electric-scooter",
             "link_cart": ""
           }
@@ -192,6 +202,11 @@
             "spec_text": "19 miles | 350W | APP",
             "current_price": "$292.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/a6l-eco-electric-scooter",
             "link_cart": ""
           }
@@ -205,6 +220,11 @@
             "spec_text": "28 miles | APP | 20 mph",
             "current_price": "$329.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/m1-electric-scooter",
             "link_cart": ""
           }
@@ -218,6 +238,11 @@
             "spec_text": "19 miles | 350W | Front suspension",
             "current_price": "$304.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/c2-electric-scooter",
             "link_cart": ""
           }
@@ -231,6 +256,11 @@
             "spec_text": "28 miles | 650W | 12\" Wheels",
             "current_price": "$469.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/e3-electric-scooter",
             "link_cart": ""
           }
@@ -244,6 +274,11 @@
             "spec_text": "44 miles | 750W | 20 mph",
             "current_price": "$499.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/s2-electric-scooter",
             "link_cart": ""
           }
@@ -257,6 +292,11 @@
             "spec_text": "28 miles | 500W | APP",
             "current_price": "$469.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/a6l-max-electric-scooter",
             "link_cart": ""
           }
@@ -299,6 +339,9 @@
         "price_color": "#000000",
         "old_price_font_size": 16,
         "old_price_color": "#888888",
+        "save_btn_bg": "#ffcc00",
+        "save_btn_text": "#000000",
+        "sale_price_color": "#e53935",
         "btn_learn_label": "Learn More",
         "btn_cart_label": "Add to Cart",
         "btn_font_size": 15,
@@ -320,6 +363,11 @@
             "spec_text": "45 miles | 3000W | 38 mph",
             "current_price": "$1199.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/d2-lite-electric-dirt-bike",
             "link_cart": ""
           }
@@ -333,6 +381,11 @@
             "spec_text": "53 miles | 3550W | 40 mph",
             "current_price": "$1399.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/d2-electric-dirt-bike",
             "link_cart": ""
           }
@@ -346,6 +399,11 @@
             "spec_text": "60 miles | 6000W | 50 mph",
             "current_price": "$2199.99",
             "original_price": "",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "shopify://products/d2-pro-electric-dirt-bike",
             "link_cart": ""
           }
@@ -359,6 +417,11 @@
             "spec_text": "20 miles | 350w | 19 mph",
             "current_price": "$314.99",
             "original_price": "$659.99",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
             "link_learn": "",
             "link_cart": ""
           }
@@ -397,6 +460,9 @@
         "price_color": "#000000",
         "old_price_font_size": 16,
         "old_price_color": "#888888",
+        "save_btn_bg": "#ffcc00",
+        "save_btn_text": "#000000",
+        "sale_price_color": "#e53935",
         "btn_learn_label": "Learn More",
         "btn_cart_label": "Add to Cart",
         "btn_font_size": 15,
