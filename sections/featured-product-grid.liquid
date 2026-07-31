@@ -36,10 +36,16 @@ E-Scooter 产品网格展示 Section
       grid-template-columns: repeat(4, 1fr);
     }
   }
-  .product-card {
+  .product-grid-section-{{ section.id }} .product-grid-wrap {
+    align-items: stretch;
+  }
+  .product-grid-section-{{ section.id }} .product-card {
     background: #fff;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   .product-card__image-wrap {
     position: relative;
@@ -65,15 +71,27 @@ E-Scooter 产品网格展示 Section
     text-align: center;
     z-index: 2;
   }
+  @media screen and (max-width: 749px) {
+    .product-grid-section-{{ section.id }} .product-card__badge {
+      top: 8px;
+      left: 8px;
+      width: 44px;
+      height: 44px;
+      font-size: {{ section.settings.badge_font_size | minus: 2 | at_least: 8 }}px;
+    }
+  }
   .product-card__image {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
   }
-  .product-card__info {
+  .product-grid-section-{{ section.id }} .product-card__info {
     padding: 16px 12px 20px;
     text-align: {{ section.settings.card_content_align }};
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
   .product-card__model {
     font-size: {{ section.settings.model_font_size }}px;
@@ -89,11 +107,35 @@ E-Scooter 产品网格展示 Section
   .product-grid-section-{{ section.id }} .product-card__price-wrap {
     display: flex;
     align-items: center;
-    justify-content: {% if section.settings.card_content_align == 'left' %}flex-start{% elsif section.settings.card_content_align == 'right' %}flex-end{% else %}center{% endif %};
+    justify-content: flex-start;
     flex-wrap: nowrap;
     gap: 6px;
     margin-bottom: 16px;
     white-space: nowrap;
+  }
+  /* Save 按钮：PC/手机都另起一行（价格 + 划线价在上一行） */
+  .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] {
+    flex-wrap: wrap;
+    white-space: normal;
+    gap: 2px 6px;
+    width: 100%;
+  }
+  .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price]::before {
+    content: '';
+    flex-basis: 100%;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    order: 2;
+  }
+  .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__price,
+  .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__compare-price {
+    order: 1;
+  }
+  .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__save-btn {
+    order: 3;
   }
   .product-grid-section-{{ section.id }} .product-card__price {
     font-size: {{ section.settings.price_font_size }}px;
@@ -166,54 +208,12 @@ E-Scooter 产品网格展示 Section
     border-width: 0 1.2px 1.2px 0;
     transform: translate(-50%, -55%) rotate(45deg);
   }
-  @media screen and (max-width: 749px) {
-    .product-grid-section-{{ section.id }} .product-card__price-wrap {
-      flex-wrap: wrap;
-      white-space: normal;
-      gap: 2px 6px;
-    }
-
-    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price]::before {
-      content: '';
-      flex-basis: 100%;
-      width: 0;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      order: 2;
-    }
-
-    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__price,
-    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__compare-price {
-      order: 1;
-    }
-
-    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__save-btn {
-      order: 3;
-      margin-top: 0;
-    }
-
-    {% if section.settings.card_content_align == 'center' %}
-    .product-grid-section-{{ section.id }} .product-card__price-wrap[data-fpg-price] .product-card__save-btn {
-      margin-inline: auto;
-    }
-    {% endif %}
-
-    .product-grid-section-{{ section.id }} .product-card__save-btn {
-      font-size: 10px;
-      padding: 4px 6px;
-      gap: 3px;
-    }
-    .product-grid-section-{{ section.id }} .product-card__save-check {
-      width: 11px;
-      height: 11px;
-    }
-  }
-  .product-card__buttons {
+  .product-grid-section-{{ section.id }} .product-card__buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    margin-top: auto;
+    width: 100%;
   }
   .btn-learn {
     background: {{ section.settings.btn_learn_bg }};
@@ -236,6 +236,13 @@ E-Scooter 产品网格展示 Section
     text-decoration: none;
     display: block;
     text-align: center;
+  }
+  @media screen and (max-width: 749px) {
+    .product-grid-section-{{ section.id }} .btn-learn,
+    .product-grid-section-{{ section.id }} .btn-cart {
+      font-size: {{ section.settings.btn_font_size | minus: 3 | at_least: 10 }}px;
+      padding: 8px 2px;
+    }
   }
 </style>
 
