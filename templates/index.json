@@ -379,6 +379,24 @@
     "featured_product_grid_AfQFQL": {
       "type": "featured-product-grid",
       "blocks": {
+        "product_item_DwwcnH": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-E2-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 35%",
+            "model_name": "E2",
+            "spec_text": "28 miles | 400W | 20 mph",
+            "current_price": "$339.99",
+            "original_price": "$522.99",
+            "sale_price": "339.99",
+            "save_amount": "183",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "link_learn": "",
+            "link_cart": ""
+          }
+        },
         "product_item_Jkpeni": {
           "type": "product_item",
           "settings": {
@@ -415,24 +433,6 @@
             "link_cart": ""
           }
         },
-        "product_item_4r96zd": {
-          "type": "product_item",
-          "settings": {
-            "product_image": "shopify://shop_images/Megawheels-C2-electric-scooter-900x1200.jpg",
-            "badge_text": "SAVE 15%",
-            "model_name": "C2",
-            "spec_text": "19 miles | 350w | Suspension design",
-            "current_price": "$259.99",
-            "original_price": "$304.99",
-            "sale_price": "$259.99",
-            "save_amount": "45",
-            "save_btn_bg": "#ffcc00",
-            "save_btn_text": "#000000",
-            "sale_price_color": "#e53935",
-            "link_learn": "shopify://products/c2-electric-scooter",
-            "link_cart": ""
-          }
-        },
         "product_item_HjfgFf": {
           "type": "product_item",
           "settings": {
@@ -451,21 +451,21 @@
             "link_cart": ""
           }
         },
-        "product_item_DwwcnH": {
+        "product_item_4r96zd": {
           "type": "product_item",
           "settings": {
-            "product_image": "shopify://shop_images/MEGAWHEELS-E2-electric-scooter-900x1200.jpg",
-            "badge_text": "SAVE 35%",
-            "model_name": "E2",
-            "spec_text": "28 miles | 400W | 20 mph",
-            "current_price": "$339.99",
-            "original_price": "$522.99",
-            "sale_price": "339.99",
-            "save_amount": "183",
+            "product_image": "shopify://shop_images/Megawheels-C2-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 15%",
+            "model_name": "C2",
+            "spec_text": "19 miles | 350w | Suspension design",
+            "current_price": "$259.99",
+            "original_price": "$304.99",
+            "sale_price": "$259.99",
+            "save_amount": "45",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
-            "link_learn": "",
+            "link_learn": "shopify://products/c2-electric-scooter",
             "link_cart": ""
           }
         },
@@ -489,11 +489,11 @@
         }
       },
       "block_order": [
+        "product_item_DwwcnH",
         "product_item_Jkpeni",
         "product_item_YJfdEX",
-        "product_item_4r96zd",
         "product_item_HjfgFf",
-        "product_item_DwwcnH",
+        "product_item_4r96zd",
         "product_item_QdTx9q"
       ],
       "name": "电动滑板车产品卡片网格",
@@ -511,7 +511,7 @@
         "subtitle_margin_top": 8,
         "subtitle_font_size": 18,
         "subtitle_color": "#444444",
-        "card_content_align": "center",
+        "card_content_align": "left",
         "badge_bg_color": "#ff0000",
         "badge_text_color": "#ffffff",
         "badge_font_size": 11,
