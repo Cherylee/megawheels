@@ -1,0 +1,1390 @@
+{%- comment -%}
+  Scooter collection v2 — riding-style tabs.
+  Each tab shows: product grid + compare banner + image/text feature panel.
+  Product price: original + Save checkbox; click reveals sale + strikethrough.
+{%- endcomment -%}
+
+{%- liquid
+  assign accent = section.settings.accent_color | default: '#E31C23'
+  assign max_w = section.settings.content_max_width | default: 1200
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --sv2s-accent: {{ accent }};
+    --sv2s-save-bg: {{ section.settings.save_btn_bg | default: '#FFCC00' }};
+    --sv2s-save-text: {{ section.settings.save_btn_text | default: '#000000' }};
+    --sv2s-sale-color: {{ section.settings.sale_price_color | default: '#E53935' }};
+  }
+
+  #shopify-section-{{ section.id }} .sv2s {
+    width: 100%;
+    background: {{ section.settings.section_bg | default: '#ffffff' }};
+    padding: {{ section.settings.padding_top | default: 56 }}px 16px {{ section.settings.padding_bottom | default: 56 }}px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__inner {
+    max-width: {{ max_w }}px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__heading {
+    margin: 0 0 28px;
+    text-align: center;
+    font-family: var(--heading-font-family);
+    font-size: {{ section.settings.heading_size | default: 28 }}px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color | default: '#111111' }};
+  }
+
+  /* ===== Tabs ===== */
+  #shopify-section-{{ section.id }} .sv2s__tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+    list-style: none;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 12px 16px;
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-bottom: 3px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__tab:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__tab.is-active {
+    border-bottom-color: var(--sv2s-accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__tab-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__tab-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111111;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__tab-sub {
+    margin: 0;
+    font-size: 12px;
+    color: #777777;
+    line-height: 1.3;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__panel {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__panel.is-active {
+    display: block;
+  }
+
+  /* ===== Products ===== */
+  #shopify-section-{{ section.id }} .sv2s__products-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__products-title {
+    margin: 0;
+    font-family: var(--heading-font-family);
+    font-size: 28px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #111111;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__view-all {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__view-all:hover {
+    color: var(--sv2s-accent);
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1;
+    background: #f5f5f5;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    min-width: 52px;
+    padding: 6px 8px;
+    background: var(--sv2s-accent);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    padding: 5px 8px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 14px 14px 16px;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #111111;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #555555;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__stars {
+    color: var(--sv2s-accent);
+    letter-spacing: 1px;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__specs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin: 4px 0 2px;
+    padding: 8px 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__spec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    font-size: 11px;
+    color: #555555;
+    line-height: 1.25;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__spec-label {
+    font-size: 10px;
+    color: #999999;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px 8px;
+    width: 100%;
+    margin: 4px 0 8px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__price-main {
+    font-size: 22px;
+    font-weight: 800;
+    color: #111111;
+    line-height: 1.1;
+    transition: color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__price.is-saved .sv2s-card__price-main {
+    color: var(--sv2s-sale-color);
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__price-compare {
+    font-size: 13px;
+    color: #999999;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__price-compare.is-hidden {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__price[data-sv2s-price]::before {
+    content: '';
+    flex-basis: 100%;
+    width: 0;
+    height: 0;
+    order: 2;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__price[data-sv2s-price] .sv2s-card__price-main,
+  #shopify-section-{{ section.id }} .sv2s-card__price[data-sv2s-price] .sv2s-card__price-compare {
+    order: 1;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__save {
+    order: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 3px;
+    background: var(--sv2s-save-bg);
+    color: var(--sv2s-save-text);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    width: max-content;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__save-check {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    background: #ffffff;
+    position: relative;
+    flex-shrink: 0;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__save-check:checked {
+    background: currentColor;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__save-check:checked::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 3px;
+    height: 6px;
+    border: solid var(--sv2s-save-bg);
+    border-width: 0 1.5px 1.5px 0;
+    transform: translate(-50%, -55%) rotate(45deg);
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__atc {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    margin-top: auto;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 2px;
+    background: {{ section.settings.atc_bg | default: '#111111' }};
+    color: {{ section.settings.atc_text_color | default: '#ffffff' }};
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__atc:hover {
+    filter: brightness(1.08);
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__form {
+    display: contents;
+  }
+
+  /* ===== Compare banner ===== */
+  #shopify-section-{{ section.id }} .sv2s-compare {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    align-items: center;
+    padding: 36px 40px;
+    margin-bottom: 48px;
+    background: {{ section.settings.compare_bg | default: '#F2F2F2' }};
+    border-radius: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-compare__title {
+    margin: 0 0 10px;
+    font-family: var(--heading-font-family);
+    font-size: 32px;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: #111111;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-compare__text {
+    margin: 0 0 18px;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.45;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-compare__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 22px;
+    background: var(--sv2s-accent);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-compare__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* ===== Feature (image left / text right) ===== */
+  #shopify-section-{{ section.id }} .sv2s-feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__media {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f3f3f3;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__title {
+    margin: 0 0 20px;
+    font-family: var(--heading-font-family);
+    font-size: 30px;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: #111111;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__item-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__item-title {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__item-text {
+    margin: 0;
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.45;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__link {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111111;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__link:hover {
+    color: var(--sv2s-accent);
+  }
+
+  @media screen and (max-width: 999px) {
+    #shopify-section-{{ section.id }} .sv2s__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-compare,
+    #shopify-section-{{ section.id }} .sv2s-feature {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .sv2s__tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s__tab {
+      padding: 14px 8px 12px;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s__tab-title {
+      font-size: 13px;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s__products-title {
+      font-size: 22px;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__price-main {
+      font-size: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-compare {
+      padding: 24px 18px;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-compare__title,
+    #shopify-section-{{ section.id }} .sv2s-feature__title {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<div class="sv2s" data-sv2s-root>
+  <div class="sv2s__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="sv2s__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- assign tab_index = 0 -%}
+    <div class="sv2s__tabs" role="tablist">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'tab' -%}
+          {%- liquid
+            assign tab_key = block.settings.tab_key | strip | handleize
+            if tab_key == blank
+              assign tab_key = block.settings.title | handleize
+            endif
+            if tab_key == blank
+              assign tab_key = 'tab-' | append: forloop.index
+            endif
+            assign tab_index = tab_index | plus: 1
+          -%}
+          <button
+            type="button"
+            class="sv2s__tab{% if tab_index == 1 %} is-active{% endif %}"
+            role="tab"
+            aria-selected="{% if tab_index == 1 %}true{% else %}false{% endif %}"
+            data-sv2s-tab
+            data-target="{{ tab_key | escape }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.icon != blank -%}
+              {{ block.settings.icon
+                | image_url: width: 96
+                | image_tag: class: 'sv2s__tab-icon', widths: '48,96', sizes: '36px', loading: 'lazy', alt: ''
+              }}
+            {%- endif -%}
+            <p class="sv2s__tab-title">{{ block.settings.title | default: 'Category' | escape }}</p>
+            {%- if block.settings.subtitle != blank -%}
+              <p class="sv2s__tab-sub">{{ block.settings.subtitle | escape }}</p>
+            {%- endif -%}
+          </button>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- assign panel_index = 0 -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'tab' -%}
+        {%- liquid
+          assign tab_key = block.settings.tab_key | strip | handleize
+          if tab_key == blank
+            assign tab_key = block.settings.title | handleize
+          endif
+          if tab_key == blank
+            assign tab_key = 'tab-' | append: forloop.index
+          endif
+          assign panel_index = panel_index | plus: 1
+        -%}
+        <div
+          class="sv2s__panel{% if panel_index == 1 %} is-active{% endif %}"
+          role="tabpanel"
+          data-sv2s-panel
+          data-key="{{ tab_key | escape }}"
+        >
+          {%- comment -%} Products {%- endcomment -%}
+          <div class="sv2s__products-head">
+            <h3 class="sv2s__products-title">{{ block.settings.products_heading | default: 'BEST SELLERS' | escape }}</h3>
+            {%- if block.settings.view_all_text != blank -%}
+              <a class="sv2s__view-all" href="{{ block.settings.view_all_link | default: '#' }}">
+                {{ block.settings.view_all_text | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+
+          <div class="sv2s__grid">
+            {%- for product_block in section.blocks -%}
+              {%- if product_block.type == 'product_card' -%}
+                {%- assign product_tab = product_block.settings.tab_key | strip | handleize -%}
+                {%- if product_tab == tab_key -%}
+                  {%- liquid
+                    assign product = product_block.settings.product
+                    assign variant = product.selected_or_first_available_variant
+                    assign display_title = product_block.settings.title
+                    if display_title == blank and product != blank
+                      assign display_title = product.title
+                    endif
+                    assign card_image = product_block.settings.image
+                    if card_image == blank and product != blank
+                      assign card_image = product.featured_media
+                    endif
+                    assign product_url = '#'
+                    if product != blank
+                      assign product_url = product.url
+                    endif
+
+                    assign price_original_label = product_block.settings.original_price | strip
+                    assign price_sale_label = product_block.settings.sale_price | strip
+                    assign save_amount_label = product_block.settings.save_amount | strip
+
+                    if price_original_label == blank and product != blank
+                      assign price_original_label = product.price | money | strip_html
+                    endif
+                    if price_sale_label == blank and product != blank and save_amount_label != blank
+                      assign save_cents_tmp = save_amount_label | replace: '$', '' | replace: ',', '' | times: 100.0 | round
+                      assign price_sale_cents = product.price | minus: save_cents_tmp
+                      if price_sale_cents < 0
+                        assign price_sale_cents = 0
+                      endif
+                      assign price_sale_label = price_sale_cents | money | strip_html
+                    endif
+                    if save_amount_label != blank
+                      unless save_amount_label contains '$'
+                        assign save_amount_label = save_amount_label | prepend: '$'
+                      endunless
+                    endif
+
+                    assign form_id = 'sv2s-atc-' | append: section.id | append: '-' | append: product_block.id
+                    assign card_save_bg = product_block.settings.save_btn_bg | default: section.settings.save_btn_bg | default: '#FFCC00'
+                    assign card_save_text = product_block.settings.save_btn_text | default: section.settings.save_btn_text | default: '#000000'
+                    assign card_sale_color = product_block.settings.sale_price_color | default: section.settings.sale_price_color | default: '#E53935'
+                  -%}
+                  <article class="sv2s-card" {{ product_block.shopify_attributes }}>
+                    <a class="sv2s-card__media" href="{{ product_url }}">
+                      {%- if product_block.settings.badge_text != blank -%}
+                        <span class="sv2s-card__badge">{{ product_block.settings.badge_text | escape }}</span>
+                      {%- endif -%}
+                      {%- if product_block.settings.corner_tag != blank -%}
+                        <span class="sv2s-card__tag">{{ product_block.settings.corner_tag | escape }}</span>
+                      {%- endif -%}
+                      {%- if card_image != blank -%}
+                        {{ card_image
+                          | image_url: width: 800
+                          | image_tag:
+                            widths: '300,400,600,800',
+                            sizes: '(max-width: 749px) 50vw, 25vw',
+                            loading: 'lazy',
+                            alt: display_title
+                        }}
+                      {%- endif -%}
+                    </a>
+
+                    <div class="sv2s-card__body">
+                      {%- if display_title != blank -%}
+                        <h4 class="sv2s-card__title">
+                          <a href="{{ product_url }}">{{ display_title | escape }}</a>
+                        </h4>
+                      {%- endif -%}
+
+                      {%- if product_block.settings.rating_count != blank -%}
+                        <div class="sv2s-card__rating">
+                          <span class="sv2s-card__stars" aria-hidden="true">★★★★★</span>
+                          <span>({{ product_block.settings.rating_count | escape }})</span>
+                        </div>
+                      {%- endif -%}
+
+                      {%- if product_block.settings.spec_range != blank or product_block.settings.spec_speed != blank or product_block.settings.spec_motor != blank -%}
+                        <div class="sv2s-card__specs">
+                          <div class="sv2s-card__spec">
+                            <span class="sv2s-card__spec-label">Range</span>
+                            <span>{{ product_block.settings.spec_range | default: '—' | escape }}</span>
+                          </div>
+                          <div class="sv2s-card__spec">
+                            <span class="sv2s-card__spec-label">Speed</span>
+                            <span>{{ product_block.settings.spec_speed | default: '—' | escape }}</span>
+                          </div>
+                          <div class="sv2s-card__spec">
+                            <span class="sv2s-card__spec-label">Motor</span>
+                            <span>{{ product_block.settings.spec_motor | default: '—' | escape }}</span>
+                          </div>
+                        </div>
+                      {%- endif -%}
+
+                      {%- if save_amount_label != blank and price_original_label != blank -%}
+                        <div
+                          class="sv2s-card__price"
+                          data-sv2s-price
+                          data-price-sale="{{ price_sale_label | escape }}"
+                          data-price-original="{{ price_original_label | escape }}"
+                          style="--sv2s-save-bg: {{ card_save_bg }}; --sv2s-save-text: {{ card_save_text }}; --sv2s-sale-color: {{ card_sale_color }};"
+                        >
+                          <span class="sv2s-card__price-main" data-sv2s-price-main>{{ price_original_label }}</span>
+                          <span class="sv2s-card__price-compare is-hidden" data-sv2s-price-compare>{{ price_original_label }}</span>
+                          <label class="sv2s-card__save" data-sv2s-save-btn aria-pressed="false">
+                            <input
+                              type="checkbox"
+                              class="sv2s-card__save-check"
+                              data-sv2s-save-check
+                              aria-label="Apply save {{ save_amount_label | escape }}"
+                            >
+                            <span>Save {{ save_amount_label }}</span>
+                          </label>
+                        </div>
+                      {%- elsif price_original_label != blank or price_sale_label != blank -%}
+                        <div class="sv2s-card__price">
+                          <span class="sv2s-card__price-main">{{ price_sale_label | default: price_original_label }}</span>
+                          {%- if price_original_label != blank and price_sale_label != blank and price_original_label != price_sale_label -%}
+                            <span class="sv2s-card__price-compare">{{ price_original_label }}</span>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+
+                      {%- if product != blank and product.available -%}
+                        {%- form 'product', product, id: form_id, is: 'product-form', class: 'sv2s-card__form' -%}
+                          <input type="hidden" name="id" value="{{ variant.id }}">
+                          <button type="submit" class="sv2s-card__atc" name="add">
+                            {{ section.settings.atc_text | default: 'ADD TO CART' }}
+                          </button>
+                        {%- endform -%}
+                      {%- elsif product_block.settings.atc_link != blank -%}
+                        <a class="sv2s-card__atc" href="{{ product_block.settings.atc_link }}">
+                          {{ section.settings.atc_text | default: 'ADD TO CART' }}
+                        </a>
+                      {%- else -%}
+                        <a class="sv2s-card__atc" href="{{ product_url }}">
+                          {{ section.settings.atc_text | default: 'ADD TO CART' }}
+                        </a>
+                      {%- endif -%}
+                    </div>
+                  </article>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- comment -%} Compare banner {%- endcomment -%}
+          {%- if block.settings.compare_heading != blank or block.settings.compare_image != blank -%}
+            <div class="sv2s-compare">
+              <div class="sv2s-compare__content">
+                {%- if block.settings.compare_heading != blank -%}
+                  <h3 class="sv2s-compare__title">{{ block.settings.compare_heading | escape }}</h3>
+                {%- endif -%}
+                {%- if block.settings.compare_text != blank -%}
+                  <p class="sv2s-compare__text">{{ block.settings.compare_text | escape }}</p>
+                {%- endif -%}
+                {%- if block.settings.compare_btn_text != blank -%}
+                  <a class="sv2s-compare__btn" href="{{ block.settings.compare_btn_link | default: '#' }}">
+                    {{ block.settings.compare_btn_text | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+              {%- if block.settings.compare_image != blank -%}
+                <div class="sv2s-compare__media">
+                  {{ block.settings.compare_image
+                    | image_url: width: 1200
+                    | image_tag:
+                      widths: '600,900,1200',
+                      sizes: '(max-width: 749px) 100vw, 40vw',
+                      loading: 'lazy',
+                      alt: block.settings.compare_heading
+                  }}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Feature: image left / text right {%- endcomment -%}
+          {%- if block.settings.feature_heading != blank or block.settings.feature_image != blank -%}
+            <div class="sv2s-feature">
+              <div class="sv2s-feature__media">
+                {%- if block.settings.feature_image != blank -%}
+                  {{ block.settings.feature_image
+                    | image_url: width: 1400
+                    | image_tag:
+                      widths: '600,900,1200,1400',
+                      sizes: '(max-width: 749px) 100vw, 50vw',
+                      loading: 'lazy',
+                      alt: block.settings.feature_heading
+                  }}
+                {%- endif -%}
+              </div>
+              <div class="sv2s-feature__content">
+                {%- if block.settings.feature_heading != blank -%}
+                  <h3 class="sv2s-feature__title">{{ block.settings.feature_heading | escape }}</h3>
+                {%- endif -%}
+                <ul class="sv2s-feature__list">
+                  {%- if block.settings.feature_1_title != blank -%}
+                    <li class="sv2s-feature__item">
+                      {%- if block.settings.feature_1_icon != blank -%}
+                        {{ block.settings.feature_1_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '36px', loading: 'lazy', alt: '' }}
+                      {%- else -%}
+                        <span></span>
+                      {%- endif -%}
+                      <div>
+                        <p class="sv2s-feature__item-title">{{ block.settings.feature_1_title | escape }}</p>
+                        {%- if block.settings.feature_1_text != blank -%}
+                          <p class="sv2s-feature__item-text">{{ block.settings.feature_1_text | escape }}</p>
+                        {%- endif -%}
+                      </div>
+                    </li>
+                  {%- endif -%}
+                  {%- if block.settings.feature_2_title != blank -%}
+                    <li class="sv2s-feature__item">
+                      {%- if block.settings.feature_2_icon != blank -%}
+                        {{ block.settings.feature_2_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '36px', loading: 'lazy', alt: '' }}
+                      {%- else -%}
+                        <span></span>
+                      {%- endif -%}
+                      <div>
+                        <p class="sv2s-feature__item-title">{{ block.settings.feature_2_title | escape }}</p>
+                        {%- if block.settings.feature_2_text != blank -%}
+                          <p class="sv2s-feature__item-text">{{ block.settings.feature_2_text | escape }}</p>
+                        {%- endif -%}
+                      </div>
+                    </li>
+                  {%- endif -%}
+                  {%- if block.settings.feature_3_title != blank -%}
+                    <li class="sv2s-feature__item">
+                      {%- if block.settings.feature_3_icon != blank -%}
+                        {{ block.settings.feature_3_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '36px', loading: 'lazy', alt: '' }}
+                      {%- else -%}
+                        <span></span>
+                      {%- endif -%}
+                      <div>
+                        <p class="sv2s-feature__item-title">{{ block.settings.feature_3_title | escape }}</p>
+                        {%- if block.settings.feature_3_text != blank -%}
+                          <p class="sv2s-feature__item-text">{{ block.settings.feature_3_text | escape }}</p>
+                        {%- endif -%}
+                      </div>
+                    </li>
+                  {%- endif -%}
+                </ul>
+                {%- if block.settings.feature_link_text != blank -%}
+                  <a class="sv2s-feature__link" href="{{ block.settings.feature_link | default: '#' }}">
+                    {{ block.settings.feature_link_text | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.querySelector('#shopify-section-{{ section.id }} [data-sv2s-root]');
+    if (!root) return;
+
+    var tabs = root.querySelectorAll('[data-sv2s-tab]');
+    var panels = root.querySelectorAll('[data-sv2s-panel]');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var key = tab.getAttribute('data-target');
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (panel) {
+          panel.classList.toggle('is-active', panel.getAttribute('data-key') === key);
+        });
+      });
+    });
+
+    function setSaveActive(priceWrap, active) {
+      if (!priceWrap) return;
+      var main = priceWrap.querySelector('[data-sv2s-price-main]');
+      var compare = priceWrap.querySelector('[data-sv2s-price-compare]');
+      var btn = priceWrap.querySelector('[data-sv2s-save-btn]');
+      var check = priceWrap.querySelector('[data-sv2s-save-check]');
+      var sale = priceWrap.getAttribute('data-price-sale') || '';
+      var original = priceWrap.getAttribute('data-price-original') || '';
+      priceWrap.classList.toggle('is-saved', active);
+      if (btn) {
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      }
+      if (check) check.checked = active;
+      if (main) main.textContent = active ? sale : original;
+      if (compare) {
+        compare.textContent = original;
+        compare.classList.toggle('is-hidden', !active);
+      }
+    }
+
+    root.querySelectorAll('[data-sv2s-price]').forEach(function (priceWrap) {
+      var check = priceWrap.querySelector('[data-sv2s-save-check]');
+      if (!check) return;
+      check.addEventListener('change', function () {
+        setSaveActive(priceWrap, check.checked);
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scooter V2 Style Shop",
+  "tag": "section",
+  "class": "scooter-v2-style-shop",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "SHOP BY RIDING STYLE"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (red)",
+      "default": "#E31C23"
+    },
+    {
+      "type": "color",
+      "id": "compare_bg",
+      "label": "Compare banner background",
+      "default": "#F2F2F2"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 960,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "Product ATC / Save"
+    },
+    {
+      "type": "text",
+      "id": "atc_text",
+      "label": "Add to cart text",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg",
+      "label": "ATC background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "atc_text_color",
+      "label": "ATC text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "save_btn_bg",
+      "label": "Save button background",
+      "default": "#FFCC00"
+    },
+    {
+      "type": "color",
+      "id": "save_btn_text",
+      "label": "Save button text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "sale_price_color",
+      "label": "Sale price color",
+      "default": "#E53935"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Style tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_key",
+          "label": "Tab key",
+          "info": "Used to match product cards. e.g. under-300",
+          "default": "under-300"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Tab icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab title",
+          "default": "Under $300"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Tab subtitle",
+          "default": "Great value picks"
+        },
+        {
+          "type": "header",
+          "content": "Product list header"
+        },
+        {
+          "type": "text",
+          "id": "products_heading",
+          "label": "Products heading",
+          "default": "BEST SELLERS"
+        },
+        {
+          "type": "text",
+          "id": "view_all_text",
+          "label": "View all text",
+          "default": "View all scooters >"
+        },
+        {
+          "type": "url",
+          "id": "view_all_link",
+          "label": "View all link"
+        },
+        {
+          "type": "header",
+          "content": "Compare banner"
+        },
+        {
+          "type": "text",
+          "id": "compare_heading",
+          "label": "Compare heading",
+          "default": "NOT SURE WHICH SCOOTER FITS YOU?"
+        },
+        {
+          "type": "text",
+          "id": "compare_text",
+          "label": "Compare text",
+          "default": "Compare range, speed and comfort side by side."
+        },
+        {
+          "type": "text",
+          "id": "compare_btn_text",
+          "label": "Compare button text",
+          "default": "COMPARE ALL MODELS"
+        },
+        {
+          "type": "url",
+          "id": "compare_btn_link",
+          "label": "Compare button link"
+        },
+        {
+          "type": "image_picker",
+          "id": "compare_image",
+          "label": "Compare image"
+        },
+        {
+          "type": "header",
+          "content": "Feature panel (image left / text right)"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image",
+          "label": "Feature image"
+        },
+        {
+          "type": "text",
+          "id": "feature_heading",
+          "label": "Feature heading",
+          "default": "BUILT FOR THE EVERYDAY RIDE"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_1_icon",
+          "label": "Feature 1 icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_title",
+          "label": "Feature 1 title",
+          "default": "Long-lasting range"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_text",
+          "label": "Feature 1 text",
+          "default": "Ride farther without constant charging."
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_2_icon",
+          "label": "Feature 2 icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_2_title",
+          "label": "Feature 2 title",
+          "default": "Comfort-first suspension"
+        },
+        {
+          "type": "text",
+          "id": "feature_2_text",
+          "label": "Feature 2 text",
+          "default": "Stay smooth over city streets."
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_3_icon",
+          "label": "Feature 3 icon"
+        },
+        {
+          "type": "text",
+          "id": "feature_3_title",
+          "label": "Feature 3 title",
+          "default": "Smart app control"
+        },
+        {
+          "type": "text",
+          "id": "feature_3_text",
+          "label": "Feature 3 text",
+          "default": "Track rides and lock from your phone."
+        },
+        {
+          "type": "text",
+          "id": "feature_link_text",
+          "label": "Feature link text",
+          "default": "Explore the technology >"
+        },
+        {
+          "type": "url",
+          "id": "feature_link",
+          "label": "Feature link"
+        }
+      ]
+    },
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_key",
+          "label": "Tab key",
+          "info": "Must match a Style tab key.",
+          "default": "under-300"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "A1C"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Sale badge",
+          "default": "15% OFF"
+        },
+        {
+          "type": "text",
+          "id": "corner_tag",
+          "label": "Corner tag (e.g. BEST VALUE)"
+        },
+        {
+          "type": "text",
+          "id": "rating_count",
+          "label": "Review count",
+          "default": "181"
+        },
+        {
+          "type": "text",
+          "id": "spec_range",
+          "label": "Spec: Range",
+          "default": "15 miles"
+        },
+        {
+          "type": "text",
+          "id": "spec_speed",
+          "label": "Spec: Speed",
+          "default": "15.5 mph"
+        },
+        {
+          "type": "text",
+          "id": "spec_motor",
+          "label": "Spec: Motor",
+          "default": "300W"
+        },
+        {
+          "type": "text",
+          "id": "original_price",
+          "label": "Original price",
+          "info": "Shown by default. Also used as strikethrough after Save.",
+          "default": "$279.99"
+        },
+        {
+          "type": "text",
+          "id": "sale_price",
+          "label": "Sale price",
+          "info": "Shown after clicking Save. Leave empty to use product price − Save amount.",
+          "default": "$235.99"
+        },
+        {
+          "type": "text",
+          "id": "save_amount",
+          "label": "Save amount",
+          "info": "Leave empty to hide Save button.",
+          "default": "44"
+        },
+        {
+          "type": "color",
+          "id": "save_btn_bg",
+          "label": "Save button background",
+          "default": "#FFCC00"
+        },
+        {
+          "type": "color",
+          "id": "save_btn_text",
+          "label": "Save button text",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "sale_price_color",
+          "label": "Sale price color",
+          "default": "#E53935"
+        },
+        {
+          "type": "url",
+          "id": "atc_link",
+          "label": "ATC link fallback"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scooter V2 Style Shop",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_key": "under-300",
+            "title": "Under $300",
+            "subtitle": "Great value picks"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_key": "daily-commute",
+            "title": "Daily Commute",
+            "subtitle": "Balanced & reliable"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_key": "long-range",
+            "title": "Long Range",
+            "subtitle": "Go further, worry less"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_key": "smooth-ride",
+            "title": "Smooth Ride",
+            "subtitle": "Comfort over any road"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": { "tab_key": "under-300", "title": "A1C" }
+        },
+        {
+          "type": "product_card",
+          "settings": { "tab_key": "under-300", "title": "M1" }
+        },
+        {
+          "type": "product_card",
+          "settings": { "tab_key": "under-300", "title": "S2" }
+        },
+        {
+          "type": "product_card",
+          "settings": { "tab_key": "under-300", "title": "E2", "corner_tag": "BEST VALUE" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

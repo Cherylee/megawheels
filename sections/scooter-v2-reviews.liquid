@@ -1,0 +1,497 @@
+{%- comment -%}
+  Scooter collection v2 — auto-playing reviews carousel.
+{%- endcomment -%}
+
+{%- liquid
+  assign accent = section.settings.accent_color | default: '#E31C23'
+  assign max_w = section.settings.content_max_width | default: 1200
+  assign autoplay_ms = section.settings.autoplay_speed | default: 4 | times: 1000
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --sv2r-accent: {{ accent }};
+  }
+
+  #shopify-section-{{ section.id }} .sv2r {
+    width: 100%;
+    background: {{ section.settings.section_bg | default: '#ffffff' }};
+    padding: {{ section.settings.padding_top | default: 64 }}px 16px {{ section.settings.padding_bottom | default: 64 }}px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__inner {
+    max-width: {{ max_w }}px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__title {
+    margin: 0 0 8px;
+    font-family: var(--heading-font-family);
+    font-size: {{ section.settings.title_size | default: 28 }}px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: {{ section.settings.title_color | default: '#111111' }};
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__subtitle {
+    margin: 0;
+    font-size: {{ section.settings.subtitle_size | default: 16 }}px;
+    color: {{ section.settings.subtitle_color | default: '#555555' }};
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__track {
+    display: flex;
+    gap: 16px;
+    will-change: transform;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__card {
+    flex: 0 0 calc((100% - 32px) / 3);
+    min-width: 0;
+    background: {{ section.settings.card_bg | default: '#F7F7F7' }};
+    border-radius: 6px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__card-top {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__thumb {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+    object-fit: cover;
+    background: #eaeaea;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__stars {
+    color: var(--sv2r-accent);
+    letter-spacing: 1px;
+    font-size: 14px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__headline {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+    line-height: 1.3;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__body {
+    margin: 0 0 14px;
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__author {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #222222;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__verified {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #2e7d32;
+    color: #ffffff;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: #cccccc;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__dot.is-active {
+    background: var(--sv2r-accent);
+  }
+
+  @media screen and (max-width: 999px) {
+    #shopify-section-{{ section.id }} .sv2r__card {
+      flex-basis: calc((100% - 16px) / 2);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .sv2r__title {
+      font-size: {{ section.settings.title_size_mobile | default: 22 }}px;
+    }
+
+    #shopify-section-{{ section.id }} .sv2r__card {
+      flex-basis: 85%;
+    }
+  }
+</style>
+
+<section class="sv2r" data-sv2r-root data-autoplay="{{ autoplay_ms }}">
+  <div class="sv2r__inner">
+    <div class="sv2r__header">
+      {%- if section.settings.title != blank -%}
+        <h2 class="sv2r__title">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="sv2r__subtitle">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="sv2r__viewport">
+        <div class="sv2r__track" data-sv2r-track>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'review' -%}
+              <article class="sv2r__card" {{ block.shopify_attributes }}>
+                <div class="sv2r__card-top">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image
+                      | image_url: width: 160
+                      | image_tag: class: 'sv2r__thumb', widths: '80,160', sizes: '56px', loading: 'lazy', alt: block.settings.author
+                    }}
+                  {%- else -%}
+                    <div class="sv2r__thumb" aria-hidden="true"></div>
+                  {%- endif -%}
+                  <div>
+                    <div class="sv2r__stars" aria-label="{{ block.settings.rating | default: 5 }} stars">
+                      {%- assign rating = block.settings.rating | default: 5 -%}
+                      {%- for i in (1..5) -%}
+                        {%- if i <= rating -%}★{%- else -%}☆{%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                    {%- if block.settings.headline != blank -%}
+                      <h3 class="sv2r__headline">{{ block.settings.headline | escape }}</h3>
+                    {%- endif -%}
+                  </div>
+                </div>
+                {%- if block.settings.body != blank -%}
+                  <p class="sv2r__body">{{ block.settings.body | escape }}</p>
+                {%- endif -%}
+                {%- if block.settings.author != blank -%}
+                  <div class="sv2r__author">
+                    <span>{{ block.settings.author | escape }}</span>
+                    {%- if block.settings.verified -%}
+                      <span class="sv2r__verified" title="Verified">✓</span>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </article>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="sv2r__dots" data-sv2r-dots aria-hidden="true"></div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.querySelector('#shopify-section-{{ section.id }} [data-sv2r-root]');
+    if (!root) return;
+    var track = root.querySelector('[data-sv2r-track]');
+    var dotsWrap = root.querySelector('[data-sv2r-dots]');
+    if (!track) return;
+
+    var cards = Array.prototype.slice.call(track.children);
+    if (!cards.length) return;
+
+    var autoplay = parseInt(root.getAttribute('data-autoplay'), 10) || 4000;
+    var index = 0;
+    var timer = null;
+    var gap = 16;
+
+    function perView() {
+      var w = window.innerWidth;
+      if (w <= 749) return 1;
+      if (w <= 999) return 2;
+      return 3;
+    }
+
+    function maxIndex() {
+      return Math.max(0, cards.length - perView());
+    }
+
+    function cardStep() {
+      var card = cards[0];
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function renderDots() {
+      if (!dotsWrap) return;
+      var count = maxIndex() + 1;
+      dotsWrap.innerHTML = '';
+      for (var i = 0; i < count; i++) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'sv2r__dot' + (i === index ? ' is-active' : '');
+        btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        (function (iCopy) {
+          btn.addEventListener('click', function () {
+            goTo(iCopy);
+            restart();
+          });
+        })(i);
+        dotsWrap.appendChild(btn);
+      }
+    }
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(i, maxIndex()));
+      track.style.transition = 'transform 0.55s ease';
+      track.style.transform = 'translate3d(' + (-index * cardStep()) + 'px,0,0)';
+      if (dotsWrap) {
+        Array.prototype.forEach.call(dotsWrap.children, function (dot, di) {
+          dot.classList.toggle('is-active', di === index);
+        });
+      }
+    }
+
+    function next() {
+      var max = maxIndex();
+      goTo(index >= max ? 0 : index + 1);
+    }
+
+    function restart() {
+      if (timer) clearInterval(timer);
+      if (autoplay > 0 && cards.length > perView()) {
+        timer = setInterval(next, autoplay);
+      }
+    }
+
+    function onResize() {
+      if (index > maxIndex()) index = maxIndex();
+      renderDots();
+      goTo(index);
+      restart();
+    }
+
+    renderDots();
+    goTo(0);
+    restart();
+    window.addEventListener('resize', onResize);
+
+    root.addEventListener('mouseenter', function () {
+      if (timer) clearInterval(timer);
+    });
+    root.addEventListener('mouseleave', restart);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scooter V2 Reviews",
+  "tag": "section",
+  "class": "scooter-v2-reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "TRUSTED BY EVERYDAY RIDERS"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "4.9/5 from 181 verified reviews"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Title size (mobile)",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#F7F7F7"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Star / accent color",
+      "default": "#E31C23"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 960,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Thumbnail"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline",
+          "default": "Perfect daily commute scooter"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review text",
+          "default": "Smooth ride, solid build, and battery lasts through my weekdays."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Alex M."
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show verified badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scooter V2 Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "headline": "Best value under $300", "author": "Jordan P." } },
+        { "type": "review", "settings": { "headline": "Smooth and quiet", "author": "Sam R." } },
+        { "type": "review", "settings": { "headline": "Battery holds up", "author": "Casey L." } },
+        { "type": "review", "settings": { "headline": "Great for campus", "author": "Riley K." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
