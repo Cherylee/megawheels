@@ -41,7 +41,10 @@
         "trust_3"
       ],
       "settings": {
-        "title": "FIND YOUR PERFECT RIDE",
+        "title": "FIND YOUR\nPERFECT RIDE",
+        "title_weight": "500",
+        "title_size": 80,
+        "title_size_mobile": 36,
         "subtitle": "Reliable electric scooters for every commute.",
         "btn1_text": "SHOP BEST SELLERS",
         "btn2_text": "COMPARE MODELS",
@@ -143,7 +146,7 @@
           "settings": {
             "tab_key": "under-300",
             "title": "A1C",
-            "badge_text": "15% OFF",
+            "badge_text": "15%\nOFF",
             "rating_count": "181",
             "spec_range": "15 miles",
             "spec_speed": "15.5 mph",
@@ -158,7 +161,7 @@
           "settings": {
             "tab_key": "under-300",
             "title": "M1",
-            "badge_text": "15% OFF",
+            "badge_text": "15%\nOFF",
             "rating_count": "126",
             "spec_range": "18 miles",
             "spec_speed": "15 mph",
@@ -173,7 +176,7 @@
           "settings": {
             "tab_key": "under-300",
             "title": "S2",
-            "badge_text": "15% OFF",
+            "badge_text": "15%\nOFF",
             "rating_count": "98",
             "spec_range": "20 miles",
             "spec_speed": "16 mph",
@@ -188,7 +191,7 @@
           "settings": {
             "tab_key": "under-300",
             "title": "E2",
-            "badge_text": "15% OFF",
+            "badge_text": "15%\nOFF",
             "corner_tag": "BEST VALUE",
             "rating_count": "210",
             "spec_range": "22 miles",
@@ -214,7 +217,8 @@
         "heading": "SHOP BY RIDING STYLE",
         "accent_color": "#E31C23",
         "save_btn_bg": "#FFCC00",
-        "sale_price_color": "#E53935"
+        "sale_price_color": "#E53935",
+        "content_max_width": 1100
       }
     },
     "scooter_v2_reviews": {
@@ -271,7 +275,8 @@
         "title": "TRUSTED BY EVERYDAY RIDERS",
         "subtitle": "4.9/5 from 181 verified reviews",
         "accent_color": "#E31C23",
-        "autoplay_speed": 4
+        "autoplay_speed": 4,
+        "content_max_width": 1100
       }
     }
   },
