@@ -27,7 +27,7 @@
   #shopify-section-{{ section.id }} .sv2s {
     width: 100%;
     background: {{ section.settings.section_bg | default: '#ffffff' }};
-    padding: calc({{ section.settings.padding_top | default: 32 }} * var(--rem)) 0 0;
+    padding: calc({{ section.settings.padding_top | default: 36 }} * var(--rem)) 0 0;
     margin-bottom: 0;
     border-bottom: 1px solid #eeeeee;
     overflow: visible;
@@ -204,9 +204,7 @@
     align-items: center;
     justify-content: center;
     gap: 0;
-    min-width: calc(44 * var(--rem));
-    max-width: calc(56 * var(--rem));
-    padding: calc(3 * var(--rem)) calc(6 * var(--rem));
+    padding: calc(3 * var(--rem)) calc(5 * var(--rem));
     background: var(--sv2s-accent);
     color: #ffffff;
     font-size: calc(11 * var(--rem));
@@ -221,7 +219,7 @@
     display: block;
     margin: 0;
     padding: 0;
-    line-height: 1;
+    line-height: 1.2;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__tag {
@@ -289,6 +287,33 @@
     overflow: visible;
   }
 
+  #shopify-section-{{ section.id }} .sv2s-card__star--partial {
+    position: relative;
+    display: block;
+    width: calc(13 * var(--rem));
+    height: calc(13 * var(--rem));
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__star--partial .sv2s-card__star {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__star--partial .sv2s-card__star-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--sv2s-star-fill, 50%);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__star--empty {
+    color: #d0d0d0;
+  }
+
   #shopify-section-{{ section.id }} .sv2s-card__specs {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -303,26 +328,50 @@
 
   #shopify-section-{{ section.id }} .sv2s-card__spec {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: calc(4 * var(--rem));
-    text-align: center;
+    justify-content: center;
+    gap: calc(6 * var(--rem));
+    text-align: left;
     font-size: calc(11 * var(--rem));
     color: #555555;
     line-height: 1.25;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__spec-icon {
-    width: calc(22 * var(--rem));
-    height: calc(22 * var(--rem));
+    width: calc(16 * var(--rem));
+    height: calc(16 * var(--rem));
     object-fit: contain;
     display: block;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__spec-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__spec-label,
+  #shopify-section-{{ section.id }} .sv2s-card__spec-value {
+    display: block;
+    width: 100%;
+    line-height: 1.2;
+    font-weight: 500;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__spec-label {
     font-size: calc(10 * var(--rem));
     color: #999999;
     text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__spec-value {
+    font-size: calc(11 * var(--rem));
+    color: #333333;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__price {
@@ -536,7 +585,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: calc(56 * var(--rem)) calc(48 * var(--rem));
+    padding-left: calc(120 * var(--rem));
     background: #ffffff;
   }
 
@@ -562,8 +611,8 @@
 
   #shopify-section-{{ section.id }} .sv2s-feature__item {
     display: grid;
-    grid-template-columns: calc(48 * var(--rem)) 1fr;
-    gap: calc(14 * var(--rem));
+    grid-template-columns: calc(68 * var(--rem)) 1fr;
+    gap: calc(18 * var(--rem));
     align-items: start;
   }
 
@@ -571,23 +620,23 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: calc(48 * var(--rem));
-    height: calc(48 * var(--rem));
+    width: calc(68 * var(--rem));
+    height: calc(68 * var(--rem));
     border-radius: 50%;
-    background: #e8e8e8;
+    background:rgb(245, 245, 245);
     flex-shrink: 0;
     overflow: hidden;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__item-icon {
-    width: calc(24 * var(--rem));
-    height: calc(24 * var(--rem));
+    width: calc(26 * var(--rem));
+    height: calc(26 * var(--rem));
     object-fit: contain;
     display: block;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__item-title {
-    margin: 0 0 calc(4 * var(--rem));
+    margin: 0 0;
     font-size: calc(16 * var(--rem));
     font-weight: 700;
     color: #111111;
@@ -598,6 +647,7 @@
     font-size: calc(14 * var(--rem));
     color: #666666;
     line-height: 1.45;
+    width: calc(300 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__link {
@@ -828,8 +878,9 @@
                           {%- endfor -%}
                         </span>
                       {%- endif -%}
-                      {%- if product_block.settings.corner_tag != blank -%}
-                        <span class="sv2s-card__tag">{{ product_block.settings.corner_tag | escape }}</span>
+                      {%- assign corner_tag = product_block.settings.corner_tag | strip -%}
+                      {%- if corner_tag != blank -%}
+                        <span class="sv2s-card__tag">{{ corner_tag | escape }}</span>
                       {%- endif -%}
                       {%- if card_image != blank -%}
                         {{ card_image
@@ -850,23 +901,84 @@
                         </h4>
                       {%- endif -%}
 
-                      {%- if product_block.settings.rating_count != blank -%}
+                      {%- liquid
+                        assign rating_raw = product_block.settings.rating | strip
+                        if rating_raw == blank
+                          assign rating_raw = '5'
+                        endif
+                        assign rating_num = rating_raw | times: 1.0
+                        if rating_num < 1
+                          assign rating_num = 1.0
+                        endif
+                        if rating_num > 5
+                          assign rating_num = 5.0
+                        endif
+                        assign show_rating = false
+                        if product_block.settings.rating != blank or product_block.settings.rating_count != blank
+                          assign show_rating = true
+                        endif
+                      -%}
+                      {%- if show_rating -%}
                         <div class="sv2s-card__rating">
-                          <span class="sv2s-card__stars" aria-hidden="true">
+                          <span class="sv2s-card__stars" aria-label="{{ rating_num }} out of 5 stars">
                             {%- for i in (1..5) -%}
-                              <svg class="sv2s-card__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                                <path
-                                  fill="currentColor"
-                                  stroke="currentColor"
-                                  stroke-width="1.8"
-                                  stroke-linejoin="round"
-                                  stroke-linecap="round"
-                                  d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
-                                />
-                              </svg>
+                              {%- assign star_index = i -%}
+                              {%- assign star_prev = i | minus: 1 -%}
+                              {%- if rating_num >= star_index -%}
+                                <svg class="sv2s-card__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                  <path
+                                    fill="currentColor"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linejoin="round"
+                                    stroke-linecap="round"
+                                    d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                                  />
+                                </svg>
+                              {%- elsif rating_num > star_prev -%}
+                                {%- assign fill_frac = rating_num | minus: star_prev -%}
+                                {%- assign fill_pct = fill_frac | times: 100 -%}
+                                <span class="sv2s-card__star--partial" style="--sv2s-star-fill: {{ fill_pct }}%;">
+                                  <svg class="sv2s-card__star sv2s-card__star--empty" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <path
+                                      fill="none"
+                                      stroke="currentColor"
+                                      stroke-width="1.8"
+                                      stroke-linejoin="round"
+                                      stroke-linecap="round"
+                                      d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                                    />
+                                  </svg>
+                                  <span class="sv2s-card__star-fill">
+                                    <svg class="sv2s-card__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                      <path
+                                        fill="currentColor"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linejoin="round"
+                                        stroke-linecap="round"
+                                        d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              {%- else -%}
+                                <svg class="sv2s-card__star sv2s-card__star--empty" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                  <path
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linejoin="round"
+                                    stroke-linecap="round"
+                                    d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                                  />
+                                </svg>
+                              {%- endif -%}
                             {%- endfor -%}
                           </span>
-                          <span>({{ product_block.settings.rating_count | escape }})</span>
+                          {%- if product_block.settings.rating_count != blank -%}
+                            <span>({{ product_block.settings.rating_count | escape }})</span>
+                          {%- endif -%}
                         </div>
                       {%- endif -%}
 
@@ -876,22 +988,28 @@
                             {%- if product_block.settings.spec_range_icon != blank -%}
                               {{ product_block.settings.spec_range_icon | image_url: width: 64 | image_tag: class: 'sv2s-card__spec-icon', widths: '32,64', sizes: '22px', loading: 'lazy', alt: '' }}
                             {%- endif -%}
-                            <span class="sv2s-card__spec-label">{{ product_block.settings.spec_range_label | default: 'Range' | escape }}</span>
-                            <span>{{ product_block.settings.spec_range | default: '—' | escape }}</span>
+                            <div class="sv2s-card__spec-text">
+                              <span class="sv2s-card__spec-value">{{ product_block.settings.spec_range | default: '—' | escape }}</span>
+                              <span class="sv2s-card__spec-label">{{ product_block.settings.spec_range_label | default: 'Range' | escape }}</span>
+                            </div>
                           </div>
                           <div class="sv2s-card__spec">
                             {%- if product_block.settings.spec_speed_icon != blank -%}
                               {{ product_block.settings.spec_speed_icon | image_url: width: 64 | image_tag: class: 'sv2s-card__spec-icon', widths: '32,64', sizes: '22px', loading: 'lazy', alt: '' }}
                             {%- endif -%}
-                            <span class="sv2s-card__spec-label">{{ product_block.settings.spec_speed_label | default: 'Speed' | escape }}</span>
-                            <span>{{ product_block.settings.spec_speed | default: '—' | escape }}</span>
+                            <div class="sv2s-card__spec-text">
+                              <span class="sv2s-card__spec-value">{{ product_block.settings.spec_speed | default: '—' | escape }}</span>
+                              <span class="sv2s-card__spec-label">{{ product_block.settings.spec_speed_label | default: 'Speed' | escape }}</span>
+                            </div>
                           </div>
                           <div class="sv2s-card__spec">
                             {%- if product_block.settings.spec_motor_icon != blank -%}
                               {{ product_block.settings.spec_motor_icon | image_url: width: 64 | image_tag: class: 'sv2s-card__spec-icon', widths: '32,64', sizes: '22px', loading: 'lazy', alt: '' }}
                             {%- endif -%}
-                            <span class="sv2s-card__spec-label">{{ product_block.settings.spec_motor_label | default: 'Motor' | escape }}</span>
-                            <span>{{ product_block.settings.spec_motor | default: '—' | escape }}</span>
+                            <div class="sv2s-card__spec-text">
+                              <span class="sv2s-card__spec-value">{{ product_block.settings.spec_motor | default: '—' | escape }}</span>
+                              <span class="sv2s-card__spec-label">{{ product_block.settings.spec_motor_label | default: 'Motor' | escape }}</span>
+                            </div>
                           </div>
                         </div>
                       {%- endif -%}
@@ -1206,9 +1324,9 @@
       "label": "Padding top",
       "min": 20,
       "max": 100,
-      "step": 4,
+      "step": 2,
       "unit": "px",
-      "default": 32
+      "default": 36
     },
     {
       "type": "header",
@@ -1471,7 +1589,15 @@
         {
           "type": "text",
           "id": "corner_tag",
-          "label": "Corner tag (e.g. BEST VALUE)"
+          "label": "Corner tag (e.g. BEST VALUE)",
+          "info": "Leave empty to hide."
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Star rating",
+          "info": "1–5, decimals allowed (e.g. 4.5, 4.3). Leave empty to hide stars unless review count is set.",
+          "default": "5"
         },
         {
           "type": "text",
