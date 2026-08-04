@@ -6,8 +6,13 @@
 
 {%- liquid
   assign accent = section.settings.accent_color | default: '#E31C23'
-  assign max_w = section.settings.content_max_width | default: 1200
+  assign max_w = section.settings.content_max_width | default: 1100
+  assign panel_bg = section.settings.panel_bg | default: '#F3F3F3'
 -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
   #shopify-section-{{ section.id }} {
@@ -15,90 +20,104 @@
     --sv2s-save-bg: {{ section.settings.save_btn_bg | default: '#FFCC00' }};
     --sv2s-save-text: {{ section.settings.save_btn_text | default: '#000000' }};
     --sv2s-sale-color: {{ section.settings.sale_price_color | default: '#E53935' }};
+    --sv2s-heading-font: 'Bebas Neue', 'Oswald', sans-serif;
+    --sv2s-card-pad-x: calc(14 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s {
     width: 100%;
     background: {{ section.settings.section_bg | default: '#ffffff' }};
-    padding: {{ section.settings.padding_top | default: 56 }}px 16px {{ section.settings.padding_bottom | default: 56 }}px;
+    padding: calc({{ section.settings.padding_top | default: 32 }} * var(--rem)) 0 calc({{ section.settings.padding_bottom | default: 56 }} * var(--rem));
+    overflow: visible;
   }
 
   #shopify-section-{{ section.id }} .sv2s__inner {
-    max-width: {{ max_w }}px;
+    max-width: calc({{ max_w }} * var(--rem));
+    width: 100%;
     margin: 0 auto;
+    padding: 0 calc(16 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s__heading {
-    margin: 0 0 28px;
+    margin: 0 0 calc(28 * var(--rem));
     text-align: center;
-    font-family: var(--heading-font-family);
-    font-size: {{ section.settings.heading_size | default: 28 }}px;
-    font-weight: 800;
+    font-family: var(--sv2s-heading-font);
+    font-size: calc({{ section.settings.heading_size | default: 40 }} * var(--rem));
+    font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: {{ section.settings.heading_color | default: '#111111' }};
+    line-height: 1.1;
   }
 
   /* ===== Tabs ===== */
   #shopify-section-{{ section.id }} .sv2s__tabs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-    margin-bottom: 40px;
+    gap: calc(12 * var(--rem));
+    margin-bottom: 0;
     list-style: none;
     padding: 0;
+    overflow: visible;
   }
 
   #shopify-section-{{ section.id }} .sv2s__tab {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    padding: 18px 12px 16px;
+    gap: calc(8 * var(--rem));
+    padding: calc(18 * var(--rem)) calc(12 * var(--rem)) calc(16 * var(--rem));
     background: #ffffff;
-    border: 1px solid #e8e8e8;
-    border-bottom: 3px solid transparent;
-    border-radius: 4px;
+    border: 1px solid #d0d0d0;
+    border-radius: calc(4 * var(--rem));
     cursor: pointer;
     text-align: center;
+    box-sizing: border-box;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   #shopify-section-{{ section.id }} .sv2s__tab:hover {
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 calc(4 * var(--rem)) calc(14 * var(--rem)) rgba(0, 0, 0, 0.06);
   }
 
   #shopify-section-{{ section.id }} .sv2s__tab.is-active {
-    border-bottom-color: var(--sv2s-accent);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: #111111;
+    border-bottom: calc(3 * var(--rem)) solid var(--sv2s-accent);
+    box-shadow: 0 calc(4 * var(--rem)) calc(16 * var(--rem)) rgba(0, 0, 0, 0.08);
   }
 
   #shopify-section-{{ section.id }} .sv2s__tab-icon {
-    width: 36px;
-    height: 36px;
+    width: calc(36 * var(--rem));
+    height: calc(36 * var(--rem));
     object-fit: contain;
   }
 
   #shopify-section-{{ section.id }} .sv2s__tab-title {
     margin: 0;
-    font-size: 15px;
+    font-size: calc(15 * var(--rem));
     font-weight: 700;
     color: #111111;
   }
 
   #shopify-section-{{ section.id }} .sv2s__tab-sub {
     margin: 0;
-    font-size: 12px;
+    font-size: calc(12 * var(--rem));
     color: #777777;
     line-height: 1.3;
   }
 
   #shopify-section-{{ section.id }} .sv2s__panel {
     display: none;
+    margin-top: calc(24 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s__panel.is-active {
     display: block;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__panel-main {
+    background: {{ panel_bg }};
+    padding: calc(24 * var(--rem)) 0 calc(40 * var(--rem));
   }
 
   /* ===== Products ===== */
@@ -106,24 +125,24 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: calc(12 * var(--rem));
+    margin-bottom: calc(12 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s__products-title {
     margin: 0;
-    font-family: var(--heading-font-family);
-    font-size: 28px;
-    font-weight: 800;
-    font-style: italic;
+    font-family: var(--sv2s-heading-font);
+    font-size: calc(32 * var(--rem));
+    font-weight: 400;
+    font-style: normal;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #111111;
   }
 
   #shopify-section-{{ section.id }} .sv2s__view-all {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: calc(14 * var(--rem));
+    font-weight: 400;
     color: #333333;
     text-decoration: none;
   }
@@ -135,8 +154,8 @@
   #shopify-section-{{ section.id }} .sv2s__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 16px;
-    margin-bottom: 48px;
+    gap: calc(16 * var(--rem));
+    margin-bottom: calc(32 * var(--rem));
     align-items: stretch;
   }
 
@@ -145,7 +164,7 @@
     flex-direction: column;
     background: #ffffff;
     border: 1px solid #eeeeee;
-    border-radius: 4px;
+    border-radius: calc(4 * var(--rem));
     overflow: hidden;
     height: 100%;
   }
@@ -154,7 +173,7 @@
     position: relative;
     display: block;
     aspect-ratio: 1 / 1;
-    background: #f5f5f5;
+    background: #ffffff;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__media img {
@@ -166,49 +185,67 @@
 
   #shopify-section-{{ section.id }} .sv2s-card__badge {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: calc(10 * var(--rem));
+    left: calc(10 * var(--rem));
     z-index: 2;
-    min-width: 52px;
-    padding: 6px 8px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    min-width: calc(44 * var(--rem));
+    max-width: calc(56 * var(--rem));
+    padding: calc(3 * var(--rem)) calc(6 * var(--rem));
     background: var(--sv2s-accent);
     color: #ffffff;
-    font-size: 11px;
-    font-weight: 800;
-    line-height: 1.15;
+    font-size: calc(11 * var(--rem));
+    font-weight: 400;
+    line-height: 1;
     text-align: center;
     text-transform: uppercase;
+    border-radius: calc(4 * var(--rem));
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__badge-line {
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__tag {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: calc(10 * var(--rem));
+    right: calc(10 * var(--rem));
     z-index: 2;
-    padding: 5px 8px;
+    padding: calc(5 * var(--rem)) calc(8 * var(--rem));
     background: #111111;
     color: #ffffff;
-    font-size: 10px;
-    font-weight: 700;
+    font-size: calc(10 * var(--rem));
+    font-weight: 400;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+    border-radius: calc(4 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex: 1;
-    padding: 14px 14px 16px;
-    gap: 8px;
+    padding: calc(14 * var(--rem)) var(--sv2s-card-pad-x) calc(16 * var(--rem));
+    gap: calc(8 * var(--rem));
+    text-align: center;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__title {
     margin: 0;
-    font-size: 18px;
-    font-weight: 800;
+    font-size: calc(18 * var(--rem));
+    font-weight: 600;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #111111;
+    text-align: center;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__title a {
@@ -219,41 +256,60 @@
   #shopify-section-{{ section.id }} .sv2s-card__rating {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 13px;
+    justify-content: center;
+    gap: calc(6 * var(--rem));
+    font-size: calc(13 * var(--rem));
     color: #555555;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__stars {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(1 * var(--rem));
     color: var(--sv2s-accent);
-    letter-spacing: 1px;
-    font-size: 14px;
     line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__star {
+    display: block;
+    width: calc(13 * var(--rem));
+    height: calc(13 * var(--rem));
+    flex-shrink: 0;
+    overflow: visible;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__specs {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
-    margin: 4px 0 2px;
-    padding: 8px 0;
+    gap: calc(6 * var(--rem));
+    width: calc(100% + 2 * var(--sv2s-card-pad-x));
+    margin: calc(4 * var(--rem)) calc(-1 * var(--sv2s-card-pad-x)) 0;
+    padding: calc(8 * var(--rem)) var(--sv2s-card-pad-x) 0;
     border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: none;
+    box-sizing: border-box;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__spec {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: calc(4 * var(--rem));
     text-align: center;
-    font-size: 11px;
+    font-size: calc(11 * var(--rem));
     color: #555555;
     line-height: 1.25;
   }
 
+  #shopify-section-{{ section.id }} .sv2s-card__spec-icon {
+    width: calc(22 * var(--rem));
+    height: calc(22 * var(--rem));
+    object-fit: contain;
+    display: block;
+  }
+
   #shopify-section-{{ section.id }} .sv2s-card__spec-label {
-    font-size: 10px;
+    font-size: calc(10 * var(--rem));
     color: #999999;
     text-transform: uppercase;
   }
@@ -262,15 +318,15 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
-    gap: 2px 8px;
+    justify-content: center;
+    gap: calc(2 * var(--rem)) calc(8 * var(--rem));
     width: 100%;
-    margin: 4px 0 8px;
+    margin: calc(4 * var(--rem)) 0 calc(8 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__price-main {
-    font-size: 22px;
-    font-weight: 800;
+    font-size: calc(22 * var(--rem));
+    font-weight: 600;
     color: #111111;
     line-height: 1.1;
     transition: color 0.2s ease;
@@ -281,7 +337,7 @@
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__price-compare {
-    font-size: 13px;
+    font-size: calc(13 * var(--rem));
     color: #999999;
     text-decoration: line-through;
   }
@@ -307,15 +363,15 @@
     order: 3;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: calc(4 * var(--rem));
     margin: 0;
-    padding: 5px 8px;
+    padding: calc(5 * var(--rem)) calc(8 * var(--rem));
     border: none;
-    border-radius: 3px;
+    border-radius: calc(6 * var(--rem));
     background: var(--sv2s-save-bg);
     color: var(--sv2s-save-text);
-    font-size: 12px;
-    font-weight: 700;
+    font-size: calc(12 * var(--rem));
+    font-weight: 400;
     line-height: 1.2;
     cursor: pointer;
     width: max-content;
@@ -324,11 +380,11 @@
   #shopify-section-{{ section.id }} .sv2s-card__save-check {
     appearance: none;
     -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
+    width: calc(12 * var(--rem));
+    height: calc(12 * var(--rem));
     margin: 0;
     border: 1px solid currentColor;
-    border-radius: 2px;
+    border-radius: calc(2 * var(--rem));
     background: #ffffff;
     position: relative;
     flex-shrink: 0;
@@ -345,8 +401,8 @@
     position: absolute;
     left: 50%;
     top: 45%;
-    width: 3px;
-    height: 6px;
+    width: calc(3 * var(--rem));
+    height: calc(6 * var(--rem));
     border: solid var(--sv2s-save-bg);
     border-width: 0 1.5px 1.5px 0;
     transform: translate(-50%, -55%) rotate(45deg);
@@ -357,15 +413,15 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 44px;
+    min-height: calc(44 * var(--rem));
     margin-top: auto;
-    padding: 10px 12px;
+    padding: calc(10 * var(--rem)) calc(12 * var(--rem));
     border: none;
-    border-radius: 2px;
+    border-radius: calc(6 * var(--rem));
     background: {{ section.settings.atc_bg | default: '#111111' }};
     color: {{ section.settings.atc_text_color | default: '#ffffff' }};
-    font-size: 13px;
-    font-weight: 700;
+    font-size: calc(13 * var(--rem));
+    font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     text-decoration: none;
@@ -385,28 +441,28 @@
   #shopify-section-{{ section.id }} .sv2s-compare {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 24px;
+    gap: calc(24 * var(--rem));
     align-items: center;
-    padding: 36px 40px;
-    margin-bottom: 48px;
-    background: {{ section.settings.compare_bg | default: '#F2F2F2' }};
-    border-radius: 4px;
+    padding: calc(36 * var(--rem)) calc(40 * var(--rem));
+    margin-bottom: 0;
+    background: {{ section.settings.compare_bg | default: '#ffffff' }};
+    border-radius: calc(6 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s-compare__title {
-    margin: 0 0 10px;
-    font-family: var(--heading-font-family);
-    font-size: 32px;
-    font-weight: 800;
-    font-style: italic;
+    margin: 0 0 calc(10 * var(--rem));
+    font-family: var(--sv2s-heading-font);
+    font-size: calc(36 * var(--rem));
+    font-weight: 400;
+    font-style: normal;
     line-height: 1.15;
     text-transform: uppercase;
     color: #111111;
   }
 
   #shopify-section-{{ section.id }} .sv2s-compare__text {
-    margin: 0 0 18px;
-    font-size: 16px;
+    margin: 0 0 calc(18 * var(--rem));
+    font-size: calc(16 * var(--rem));
     color: #555555;
     line-height: 1.45;
   }
@@ -415,16 +471,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 46px;
-    padding: 12px 22px;
+    min-height: calc(46 * var(--rem));
+    padding: calc(12 * var(--rem)) calc(22 * var(--rem));
     background: var(--sv2s-accent);
     color: #ffffff;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: calc(13 * var(--rem));
+    font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: 2px;
+    border-radius: calc(6 * var(--rem));
   }
 
   #shopify-section-{{ section.id }} .sv2s-compare__media img {
@@ -434,33 +490,46 @@
     object-fit: contain;
   }
 
-  /* ===== Feature (image left / text right) ===== */
+  /* ===== Feature (image left / text right) — full bleed ===== */
   #shopify-section-{{ section.id }} .sv2s-feature {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
+    gap: 0;
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+    background: #ffffff;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__media {
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
-    background: #f3f3f3;
+    background: #ffffff;
+    min-height: 100%;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__media img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    min-height: calc(420 * var(--rem));
     display: block;
     object-fit: cover;
   }
 
+  #shopify-section-{{ section.id }} .sv2s-feature__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(56 * var(--rem)) calc(48 * var(--rem));
+    background: #ffffff;
+  }
+
   #shopify-section-{{ section.id }} .sv2s-feature__title {
-    margin: 0 0 20px;
-    font-family: var(--heading-font-family);
-    font-size: 30px;
-    font-weight: 800;
-    font-style: italic;
+    margin: 0 0 calc(20 * var(--rem));
+    font-family: var(--sv2s-heading-font);
+    font-size: calc(36 * var(--rem));
+    font-weight: 400;
+    font-style: normal;
     line-height: 1.15;
     text-transform: uppercase;
     color: #111111;
@@ -469,42 +538,42 @@
   #shopify-section-{{ section.id }} .sv2s-feature__list {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    margin: 0 0 20px;
+    gap: calc(18 * var(--rem));
+    margin: 0 0 calc(20 * var(--rem));
     padding: 0;
     list-style: none;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__item {
     display: grid;
-    grid-template-columns: 40px 1fr;
-    gap: 12px;
+    grid-template-columns: calc(40 * var(--rem)) 1fr;
+    gap: calc(12 * var(--rem));
     align-items: start;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__item-icon {
-    width: 36px;
-    height: 36px;
+    width: calc(36 * var(--rem));
+    height: calc(36 * var(--rem));
     object-fit: contain;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__item-title {
-    margin: 0 0 4px;
-    font-size: 16px;
-    font-weight: 700;
+    margin: 0 0 calc(4 * var(--rem));
+    font-size: calc(16 * var(--rem));
+    font-weight: 400;
     color: #111111;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__item-text {
     margin: 0;
-    font-size: 14px;
+    font-size: calc(14 * var(--rem));
     color: #666666;
     line-height: 1.45;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__link {
-    font-size: 14px;
-    font-weight: 700;
+    font-size: calc(14 * var(--rem));
+    font-weight: 400;
     color: #111111;
     text-decoration: none;
   }
@@ -522,37 +591,53 @@
     #shopify-section-{{ section.id }} .sv2s-feature {
       grid-template-columns: 1fr;
     }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__media img {
+      min-height: calc(280 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__content {
+      padding: calc(32 * var(--rem)) calc(20 * var(--rem)) calc(40 * var(--rem));
+    }
   }
 
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} .sv2s__tabs {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
+      gap: calc(8 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s__tab {
-      padding: 14px 8px 12px;
+      padding: calc(14 * var(--rem)) calc(8 * var(--rem)) calc(12 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s__tab-title {
-      font-size: 13px;
+      font-size: calc(13 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s__heading {
+      font-size: calc(32 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s__panel-main {
+      padding: calc(20 * var(--rem)) 0 calc(28 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s__products-title {
-      font-size: 22px;
+      font-size: calc(26 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s-card__price-main {
-      font-size: 18px;
+      font-size: calc(18 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s-compare {
-      padding: 24px 18px;
+      padding: calc(24 * var(--rem)) calc(18 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s-compare__title,
     #shopify-section-{{ section.id }} .sv2s-feature__title {
-      font-size: 24px;
+      font-size: calc(28 * var(--rem));
     }
   }
 </style>
@@ -600,37 +685,40 @@
         {%- endif -%}
       {%- endfor -%}
     </div>
+  </div>
 
-    {%- assign panel_index = 0 -%}
-    {%- for block in section.blocks -%}
-      {%- if block.type == 'tab' -%}
-        {%- liquid
-          assign tab_key = block.settings.tab_key | strip | handleize
-          if tab_key == blank
-            assign tab_key = block.settings.title | handleize
-          endif
-          if tab_key == blank
-            assign tab_key = 'tab-' | append: forloop.index
-          endif
-          assign panel_index = panel_index | plus: 1
-        -%}
-        <div
-          class="sv2s__panel{% if panel_index == 1 %} is-active{% endif %}"
-          role="tabpanel"
-          data-sv2s-panel
-          data-key="{{ tab_key | escape }}"
-        >
-          {%- comment -%} Products {%- endcomment -%}
-          <div class="sv2s__products-head">
-            <h3 class="sv2s__products-title">{{ block.settings.products_heading | default: 'BEST SELLERS' | escape }}</h3>
-            {%- if block.settings.view_all_text != blank -%}
-              <a class="sv2s__view-all" href="{{ block.settings.view_all_link | default: '#' }}">
-                {{ block.settings.view_all_text | escape }}
-              </a>
-            {%- endif -%}
-          </div>
+  {%- assign panel_index = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'tab' -%}
+      {%- liquid
+        assign tab_key = block.settings.tab_key | strip | handleize
+        if tab_key == blank
+          assign tab_key = block.settings.title | handleize
+        endif
+        if tab_key == blank
+          assign tab_key = 'tab-' | append: forloop.index
+        endif
+        assign panel_index = panel_index | plus: 1
+      -%}
+      <div
+        class="sv2s__panel{% if panel_index == 1 %} is-active{% endif %}"
+        role="tabpanel"
+        data-sv2s-panel
+        data-key="{{ tab_key | escape }}"
+      >
+        <div class="sv2s__panel-main">
+          <div class="sv2s__inner">
+            {%- comment -%} Products {%- endcomment -%}
+            <div class="sv2s__products-head">
+              <h3 class="sv2s__products-title">{{ block.settings.products_heading | default: 'BEST SELLERS' | escape }}</h3>
+              {%- if block.settings.view_all_text != blank -%}
+                <a class="sv2s__view-all" href="{{ block.settings.view_all_link | default: '#' }}">
+                  {{ block.settings.view_all_text | escape }}
+                </a>
+              {%- endif -%}
+            </div>
 
-          <div class="sv2s__grid">
+            <div class="sv2s__grid">
             {%- for product_block in section.blocks -%}
               {%- if product_block.type == 'product_card' -%}
                 {%- assign product_tab = product_block.settings.tab_key | strip | handleize -%}
@@ -680,7 +768,18 @@
                   <article class="sv2s-card" {{ product_block.shopify_attributes }}>
                     <a class="sv2s-card__media" href="{{ product_url }}">
                       {%- if product_block.settings.badge_text != blank -%}
-                        <span class="sv2s-card__badge">{{ product_block.settings.badge_text | escape }}</span>
+                        <span class="sv2s-card__badge">
+                          {%- assign badge_lines = product_block.settings.badge_text | newline_to_br | split: '<br />' -%}
+                          {%- if badge_lines.size == 1 -%}
+                            {%- assign badge_lines = product_block.settings.badge_text | newline_to_br | split: '<br>' -%}
+                          {%- endif -%}
+                          {%- for line in badge_lines -%}
+                            {%- assign line_text = line | strip -%}
+                            {%- if line_text != blank -%}
+                              <span class="sv2s-card__badge-line">{{ line_text | escape }}</span>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </span>
                       {%- endif -%}
                       {%- if product_block.settings.corner_tag != blank -%}
                         <span class="sv2s-card__tag">{{ product_block.settings.corner_tag | escape }}</span>
@@ -706,7 +805,20 @@
 
                       {%- if product_block.settings.rating_count != blank -%}
                         <div class="sv2s-card__rating">
-                          <span class="sv2s-card__stars" aria-hidden="true">★★★★★</span>
+                          <span class="sv2s-card__stars" aria-hidden="true">
+                            {%- for i in (1..5) -%}
+                              <svg class="sv2s-card__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path
+                                  fill="currentColor"
+                                  stroke="currentColor"
+                                  stroke-width="1.8"
+                                  stroke-linejoin="round"
+                                  stroke-linecap="round"
+                                  d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                                />
+                              </svg>
+                            {%- endfor -%}
+                          </span>
                           <span>({{ product_block.settings.rating_count | escape }})</span>
                         </div>
                       {%- endif -%}
@@ -714,15 +826,24 @@
                       {%- if product_block.settings.spec_range != blank or product_block.settings.spec_speed != blank or product_block.settings.spec_motor != blank -%}
                         <div class="sv2s-card__specs">
                           <div class="sv2s-card__spec">
-                            <span class="sv2s-card__spec-label">Range</span>
+                            {%- if product_block.settings.spec_range_icon != blank -%}
+                              {{ product_block.settings.spec_range_icon | image_url: width: 64 | image_tag: class: 'sv2s-card__spec-icon', widths: '32,64', sizes: '22px', loading: 'lazy', alt: '' }}
+                            {%- endif -%}
+                            <span class="sv2s-card__spec-label">{{ product_block.settings.spec_range_label | default: 'Range' | escape }}</span>
                             <span>{{ product_block.settings.spec_range | default: '—' | escape }}</span>
                           </div>
                           <div class="sv2s-card__spec">
-                            <span class="sv2s-card__spec-label">Speed</span>
+                            {%- if product_block.settings.spec_speed_icon != blank -%}
+                              {{ product_block.settings.spec_speed_icon | image_url: width: 64 | image_tag: class: 'sv2s-card__spec-icon', widths: '32,64', sizes: '22px', loading: 'lazy', alt: '' }}
+                            {%- endif -%}
+                            <span class="sv2s-card__spec-label">{{ product_block.settings.spec_speed_label | default: 'Speed' | escape }}</span>
                             <span>{{ product_block.settings.spec_speed | default: '—' | escape }}</span>
                           </div>
                           <div class="sv2s-card__spec">
-                            <span class="sv2s-card__spec-label">Motor</span>
+                            {%- if product_block.settings.spec_motor_icon != blank -%}
+                              {{ product_block.settings.spec_motor_icon | image_url: width: 64 | image_tag: class: 'sv2s-card__spec-icon', widths: '32,64', sizes: '22px', loading: 'lazy', alt: '' }}
+                            {%- endif -%}
+                            <span class="sv2s-card__spec-label">{{ product_block.settings.spec_motor_label | default: 'Motor' | escape }}</span>
                             <span>{{ product_block.settings.spec_motor | default: '—' | escape }}</span>
                           </div>
                         </div>
@@ -810,8 +931,10 @@
               {%- endif -%}
             </div>
           {%- endif -%}
+          </div>
+        </div>
 
-          {%- comment -%} Feature: image left / text right {%- endcomment -%}
+          {%- comment -%} Feature: image left / text right — full width {%- endcomment -%}
           {%- if block.settings.feature_heading != blank or block.settings.feature_image != blank -%}
             <div class="sv2s-feature">
               <div class="sv2s-feature__media">
@@ -888,7 +1011,6 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
-  </div>
 </div>
 
 <script>
@@ -961,10 +1083,10 @@
       "id": "heading_size",
       "label": "Heading size",
       "min": 18,
-      "max": 48,
+      "max": 64,
       "step": 1,
       "unit": "px",
-      "default": 28
+      "default": 40
     },
     {
       "type": "color",
@@ -980,6 +1102,12 @@
     },
     {
       "type": "color",
+      "id": "panel_bg",
+      "label": "Products / compare background",
+      "default": "#F3F3F3"
+    },
+    {
+      "type": "color",
       "id": "accent_color",
       "label": "Accent (red)",
       "default": "#E31C23"
@@ -988,17 +1116,24 @@
       "type": "color",
       "id": "compare_bg",
       "label": "Compare banner background",
-      "default": "#F2F2F2"
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "feature_bg",
+      "label": "Feature block background",
+      "default": "#ffffff"
     },
     {
       "type": "range",
       "id": "content_max_width",
-      "label": "Content max width",
+      "label": "Content max width (rem)",
+      "info": "Design px at 1440; rendered as calc(N * var(--rem)).",
       "min": 960,
       "max": 1400,
       "step": 20,
       "unit": "px",
-      "default": 1200
+      "default": 1100
     },
     {
       "type": "range",
@@ -1008,7 +1143,7 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "default": 56
+      "default": 32
     },
     {
       "type": "range",
@@ -1250,10 +1385,11 @@
           "default": "A1C"
         },
         {
-          "type": "text",
+          "type": "textarea",
           "id": "badge_text",
           "label": "Sale badge",
-          "default": "15% OFF"
+          "info": "Use a line break for two lines (e.g. 15% / OFF). Keep spacing tight.",
+          "default": "15%\nOFF"
         },
         {
           "type": "text",
@@ -1267,21 +1403,58 @@
           "default": "181"
         },
         {
+          "type": "header",
+          "content": "Specs"
+        },
+        {
+          "type": "image_picker",
+          "id": "spec_range_icon",
+          "label": "Range icon"
+        },
+        {
+          "type": "text",
+          "id": "spec_range_label",
+          "label": "Range label",
+          "default": "Range"
+        },
+        {
           "type": "text",
           "id": "spec_range",
-          "label": "Spec: Range",
+          "label": "Range value",
           "default": "15 miles"
+        },
+        {
+          "type": "image_picker",
+          "id": "spec_speed_icon",
+          "label": "Speed icon"
+        },
+        {
+          "type": "text",
+          "id": "spec_speed_label",
+          "label": "Speed label",
+          "default": "Speed"
         },
         {
           "type": "text",
           "id": "spec_speed",
-          "label": "Spec: Speed",
+          "label": "Speed value",
           "default": "15.5 mph"
+        },
+        {
+          "type": "image_picker",
+          "id": "spec_motor_icon",
+          "label": "Motor icon"
+        },
+        {
+          "type": "text",
+          "id": "spec_motor_label",
+          "label": "Motor label",
+          "default": "Motor"
         },
         {
           "type": "text",
           "id": "spec_motor",
-          "label": "Spec: Motor",
+          "label": "Motor value",
           "default": "300W"
         },
         {
