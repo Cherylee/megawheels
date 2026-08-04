@@ -486,11 +486,12 @@
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
-    transition: filter 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__atc:hover {
-    filter: brightness(1.08);
+    background: var(--sv2s-accent);
+    color: #ffffff;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__form {
@@ -1119,7 +1120,7 @@
               </div>
               <div class="sv2s-feature__content">
                 {%- if block.settings.feature_heading != blank -%}
-                  <h3 class="sv2s-feature__title">{{ block.settings.feature_heading | escape }}</h3>
+                  <h3 class="sv2s-feature__title">{{ block.settings.feature_heading | escape | newline_to_br }}</h3>
                 {%- endif -%}
                 <ul class="sv2s-feature__list">
                   {%- if block.settings.feature_1_title != blank or block.settings.feature_1_icon != blank -%}
@@ -1134,7 +1135,7 @@
                           <p class="sv2s-feature__item-title">{{ block.settings.feature_1_title | escape }}</p>
                         {%- endif -%}
                         {%- if block.settings.feature_1_text != blank -%}
-                          <p class="sv2s-feature__item-text">{{ block.settings.feature_1_text | escape }}</p>
+                          <p class="sv2s-feature__item-text">{{ block.settings.feature_1_text | escape | newline_to_br }}</p>
                         {%- endif -%}
                       </div>
                     </li>
@@ -1151,7 +1152,7 @@
                           <p class="sv2s-feature__item-title">{{ block.settings.feature_2_title | escape }}</p>
                         {%- endif -%}
                         {%- if block.settings.feature_2_text != blank -%}
-                          <p class="sv2s-feature__item-text">{{ block.settings.feature_2_text | escape }}</p>
+                          <p class="sv2s-feature__item-text">{{ block.settings.feature_2_text | escape | newline_to_br }}</p>
                         {%- endif -%}
                       </div>
                     </li>
@@ -1168,7 +1169,7 @@
                           <p class="sv2s-feature__item-title">{{ block.settings.feature_3_title | escape }}</p>
                         {%- endif -%}
                         {%- if block.settings.feature_3_text != blank -%}
-                          <p class="sv2s-feature__item-text">{{ block.settings.feature_3_text | escape }}</p>
+                          <p class="sv2s-feature__item-text">{{ block.settings.feature_3_text | escape | newline_to_br }}</p>
                         {%- endif -%}
                       </div>
                     </li>
@@ -1461,9 +1462,10 @@
           "label": "Left image"
         },
         {
-          "type": "text",
+          "type": "textarea",
           "id": "feature_heading",
           "label": "Right heading",
+          "info": "Press Enter to wrap onto a new line.",
           "default": "BUILT FOR THE EVERYDAY RIDE"
         },
         {
@@ -1482,9 +1484,10 @@
           "default": "Long-lasting range"
         },
         {
-          "type": "text",
+          "type": "textarea",
           "id": "feature_1_text",
           "label": "Item 1 text",
+          "info": "Press Enter to wrap onto a new line.",
           "default": "Ride farther without constant charging."
         },
         {
@@ -1503,9 +1506,10 @@
           "default": "Comfort-first suspension"
         },
         {
-          "type": "text",
+          "type": "textarea",
           "id": "feature_2_text",
           "label": "Item 2 text",
+          "info": "Press Enter to wrap onto a new line.",
           "default": "Stay smooth over city streets."
         },
         {
@@ -1524,9 +1528,10 @@
           "default": "Smart app control"
         },
         {
-          "type": "text",
+          "type": "textarea",
           "id": "feature_3_text",
           "label": "Item 3 text",
+          "info": "Press Enter to wrap onto a new line.",
           "default": "Track rides and lock from your phone."
         },
         {
