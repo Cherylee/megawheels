@@ -223,9 +223,6 @@
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__tag {
-    position: absolute;
-    top: calc(10 * var(--rem));
-    right: calc(10 * var(--rem));
     z-index: 2;
     padding: calc(5 * var(--rem)) calc(8 * var(--rem));
     background: #111111;
@@ -235,6 +232,17 @@
     letter-spacing: 0.03em;
     text-transform: uppercase;
     border-radius: calc(4 * var(--rem));
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__tag--media {
+    position: absolute;
+    top: calc(10 * var(--rem));
+    right: calc(10 * var(--rem));
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__tag--inline {
+    display: none;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__body {
@@ -245,6 +253,17 @@
     padding: calc(14 * var(--rem)) var(--sv2s-card-pad-x) calc(16 * var(--rem));
     gap: calc(8 * var(--rem));
     text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-card__aside {
+    display: contents;
   }
 
   #shopify-section-{{ section.id }} .sv2s-card__title {
@@ -546,11 +565,15 @@
     border-radius: calc(6 * var(--rem));
   }
 
-  #shopify-section-{{ section.id }} .sv2s-compare__media img {
+  #shopify-section-{{ section.id }} .sv2s-compare__media .sv2s-compare__img {
     width: 100%;
     height: auto;
     display: block;
     object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-compare__media .sv2s-compare__img--mobile {
+    display: none;
   }
 
   /* ===== Feature (image left / text right) — full bleed ===== */
@@ -573,13 +596,17 @@
     align-self: center;
   }
 
-  #shopify-section-{{ section.id }} .sv2s-feature__media img {
+  #shopify-section-{{ section.id }} .sv2s-feature__media .sv2s-feature__img {
     width: 100%;
     height: 100%;
     min-height: calc(380 * var(--rem));
     display: block;
     object-fit: cover;
     border-radius: 0 calc(8 * var(--rem)) calc(8 * var(--rem)) 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s-feature__media .sv2s-feature__img--mobile {
+    display: none;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__content {
@@ -677,42 +704,63 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    #shopify-section-{{ section.id }} .sv2s-compare,
-    #shopify-section-{{ section.id }} .sv2s-feature {
+    #shopify-section-{{ section.id }} .sv2s-compare {
       grid-template-columns: 1fr;
     }
 
-    #shopify-section-{{ section.id }} .sv2s-feature__media {
-      margin: calc(16 * var(--rem)) 0 0;
-      border-radius: 0;
+    #shopify-section-{{ section.id }} .sv2s-feature {
+      grid-template-columns: 1fr 1fr;
     }
 
-    #shopify-section-{{ section.id }} .sv2s-feature__media img {
+    #shopify-section-{{ section.id }} .sv2s-feature__media {
+      margin: calc(16 * var(--rem)) 0;
+      border-radius: 0 calc(8 * var(--rem)) calc(8 * var(--rem)) 0;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__media .sv2s-feature__img {
       min-height: calc(280 * var(--rem));
-      border-radius: 0 0 calc(8 * var(--rem)) calc(8 * var(--rem));
+      border-radius: 0 calc(8 * var(--rem)) calc(8 * var(--rem)) 0;
     }
 
     #shopify-section-{{ section.id }} .sv2s-feature__content {
-      padding: calc(32 * var(--rem)) calc(20 * var(--rem)) calc(40 * var(--rem));
+      padding: calc(24 * var(--rem)) calc(20 * var(--rem)) calc(24 * var(--rem)) calc(24 * var(--rem));
     }
   }
 
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} .sv2s__tabs {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: calc(8 * var(--rem));
+      display: flex;
+      flex-wrap: nowrap;
+      gap: calc(10 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s__tab {
-      padding: calc(14 * var(--rem)) calc(8 * var(--rem)) calc(12 * var(--rem));
+      flex: 1 1 0;
+      min-width: 0;
+      padding: calc(14 * var(--rem)) calc(6 * var(--rem)) calc(12 * var(--rem));
+      border-radius: calc(8 * var(--rem));
+      border: 1px solid #eeeeee;
+    }
+    #shopify-section-{{ section.id }} .sv2s__tab.is-active{
+      border: 1px solid #eeeeee;
+      border-bottom: calc(5.2 * var(--rem)) solid var(--sv2s-accent);
+    }
+
+    #shopify-section-{{ section.id }} .sv2s__tab-icon {
+      width: calc(42 * var(--rem));
+      height: calc(42 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s__tab-title {
-      font-size: calc(13 * var(--rem));
+      font-size: calc(18 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s__tab-sub {
+      font-size: calc(12 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s__heading {
-      font-size: calc(32 * var(--rem));
+      font-size: calc(38 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s__panel-main {
@@ -720,20 +768,312 @@
     }
 
     #shopify-section-{{ section.id }} .sv2s__products-title {
-      font-size: calc(26 * var(--rem));
+      font-size: calc(38 * var(--rem));
+    }
+    #shopify-section-template--17936600137936__scooter_v2_style_shop .sv2s__products-head{
+      margin-bottom: 0;
+    }
+    #shopify-section-template--17936600137936__scooter_v2_style_shop .sv2s__view-all{
+      font-size: calc(16 * var(--rem));
     }
 
-    #shopify-section-{{ section.id }} .sv2s-card__price-main {
+    #shopify-section-{{ section.id }} .sv2s__grid {
+      grid-template-columns: 1fr;
+      gap: calc(12 * var(--rem));
+      margin-bottom: calc(24 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card {
+      flex-direction: row;
+      align-items: stretch;
+      gap: calc(10 * var(--rem));
+      padding: 0;
+      border-radius: calc(10 * var(--rem));
+      height: auto;
+      overflow: visible;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__media {
+      flex: 0 0 calc(180 * var(--rem));
+      width: calc(180 * var(--rem));
+      aspect-ratio: 1 / 1;
+      align-self: center;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__badge {
+      top: calc(4 * var(--rem));
+      left: calc(4 * var(--rem));
+      padding: calc(2 * var(--rem)) calc(6 * var(--rem));
+      font-size: calc(16 * var(--rem));
+      border-radius: calc(6 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__tag--media {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__tag--inline {
+      display: inline-flex;
+      align-items: center;
+      position: static;
+      padding: calc(3 * var(--rem)) calc(7 * var(--rem));
+      font-size: calc(9 * var(--rem));
+      border-radius: calc(999 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__body {
+      flex: 1;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        'head aside'
+        'rating aside'
+        'specs aside';
+      align-items: start;
+      column-gap: calc(8 * var(--rem));
+      row-gap: calc(4 * var(--rem));
+      padding: calc(20 * var(--rem)) calc(20 * var(--rem));
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__head {
+      grid-area: head;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: calc(6 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__title {
+      font-size: calc(28 * var(--rem));
+      font-weight: 700;
+      text-align: left;
+      line-height: 1.1;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__rating {
+      grid-area: rating;
+      justify-content: flex-start;
       font-size: calc(18 * var(--rem));
+      gap: calc(4 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__star,
+    #shopify-section-{{ section.id }} .sv2s-card__star--partial {
+      width: calc(18 * var(--rem));
+      height: calc(18 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__specs {
+      grid-area: specs;
+      width: 94%;
+      margin: calc(2 * var(--rem)) 0 0;
+      padding: 0;
+      border-top: none;
+      gap: calc(8 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__spec {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: calc(8 * var(--rem));
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__spec-icon {
+      width: calc(24 * var(--rem));
+      height: calc(24 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__spec-text {
+      align-items: flex-start;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__spec-value {
+      font-size: calc(12 * var(--rem));
+      font-weight: 600;
+      color: #333333;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__spec-label {
+      font-size: calc(12 * var(--rem));
+      color: #999999;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__aside {
+      grid-area: aside;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+      align-self: stretch;
+      width: calc(158 * var(--rem));
+      min-width: calc(158 * var(--rem));
+      max-width: calc(158 * var(--rem));
+      gap: calc(8 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__price {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: calc(2 * var(--rem));
+      width: 100%;
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__price[data-sv2s-price]::before {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__price-main,
+    #shopify-section-{{ section.id }} .sv2s-card__price[data-sv2s-price] .sv2s-card__price-main {
+      font-size: calc(24 * var(--rem));
+      font-weight: 700;
+      order: 1;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__price-compare,
+    #shopify-section-{{ section.id }} .sv2s-card__price[data-sv2s-price] .sv2s-card__price-compare {
+      font-size: calc(14 * var(--rem));
+      order: 2;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__save,
+    #shopify-section-{{ section.id }} .sv2s-card__price[data-sv2s-price] .sv2s-card__save {
+      order: 3;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(6 * var(--rem));
+      font-size: calc(16 * var(--rem));
+      line-height: 1;
+      padding: calc(6 * var(--rem)) calc(8 * var(--rem));
+      margin-top: calc(4 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__save-check {
+      width: calc(14 * var(--rem));
+      height: calc(14 * var(--rem));
+      align-self: center;
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__save > span {
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__form {
+      display: block;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-card__atc {
+      width: 100%;
+      min-width: calc(108 * var(--rem));
+      min-height: calc(42 * var(--rem));
+      margin-top: 0;
+      padding: calc(8 * var(--rem)) calc(10 * var(--rem));
+      font-size: calc(14 * var(--rem));
+      border-radius: calc(10 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s-compare {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: calc(12 * var(--rem));
       padding: calc(24 * var(--rem)) calc(18 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-compare__content {
+      width: 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+      box-sizing: border-box;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-compare__media {
+      width: 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+      box-sizing: border-box;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-compare__media .sv2s-compare__img--desktop,
+    #shopify-section-{{ section.id }} .sv2s-feature__media .sv2s-feature__img--desktop {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-compare__media .sv2s-compare__img--mobile,
+    #shopify-section-{{ section.id }} .sv2s-feature__media .sv2s-feature__img--mobile {
+      display: block;
     }
 
     #shopify-section-{{ section.id }} .sv2s-compare__title,
     #shopify-section-{{ section.id }} .sv2s-feature__title {
-      font-size: calc(28 * var(--rem));
+      font-size: calc(38 * var(--rem));
+      margin-bottom: 0;
+    }
+    #shopify-section-template--17936600137936__scooter_v2_style_shop .sv2s-compare__text{
+      margin-bottom: 0;
+    }
+    #shopify-section-{{ section.id }} .sv2s-feature__title {
+      margin-bottom: 0;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__media {
+      margin: calc(12 * var(--rem)) 0;
+      border-radius: 0 calc(6 * var(--rem)) calc(6 * var(--rem)) 0;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__media .sv2s-feature__img {
+      min-height: calc(220 * var(--rem));
+      border-radius: 0 calc(6 * var(--rem)) calc(6 * var(--rem)) 0;
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__content {
+      padding: calc(16 * var(--rem)) calc(14 * var(--rem)) calc(16 * var(--rem)) calc(16 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__list {
+      gap: calc(12 * var(--rem));
+      margin-bottom: calc(14 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__item {
+      grid-template-columns: calc(40 * var(--rem)) 1fr;
+      gap: calc(8 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__item-icon-wrap {
+      width: calc(40 * var(--rem));
+      height: calc(40 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__item-icon {
+      width: calc(18 * var(--rem));
+      height: calc(18 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__item-title {
+      font-size: calc(13 * var(--rem));
+    }
+
+    #shopify-section-{{ section.id }} .sv2s-feature__item-text {
+      font-size: calc(12 * var(--rem));
     }
   }
 </style>
@@ -863,6 +1203,7 @@
                     assign card_save_text = product_block.settings.save_btn_text | default: section.settings.save_btn_text | default: '#000000'
                     assign card_sale_color = product_block.settings.sale_price_color | default: section.settings.sale_price_color | default: '#E53935'
                   -%}
+                  {%- assign corner_tag = product_block.settings.corner_tag | strip -%}
                   <article class="sv2s-card" {{ product_block.shopify_attributes }}>
                     <a class="sv2s-card__media" href="{{ product_url }}">
                       {%- if product_block.settings.badge_text != blank -%}
@@ -879,16 +1220,15 @@
                           {%- endfor -%}
                         </span>
                       {%- endif -%}
-                      {%- assign corner_tag = product_block.settings.corner_tag | strip -%}
                       {%- if corner_tag != blank -%}
-                        <span class="sv2s-card__tag">{{ corner_tag | escape }}</span>
+                        <span class="sv2s-card__tag sv2s-card__tag--media">{{ corner_tag | escape }}</span>
                       {%- endif -%}
                       {%- if card_image != blank -%}
                         {{ card_image
                           | image_url: width: 800
                           | image_tag:
                             widths: '300,400,600,800',
-                            sizes: '(max-width: 749px) 50vw, 25vw',
+                            sizes: '(max-width: 749px) 30vw, 25vw',
                             loading: 'lazy',
                             alt: display_title
                         }}
@@ -896,11 +1236,16 @@
                     </a>
 
                     <div class="sv2s-card__body">
-                      {%- if display_title != blank -%}
-                        <h4 class="sv2s-card__title">
-                          <a href="{{ product_url }}">{{ display_title | escape }}</a>
-                        </h4>
-                      {%- endif -%}
+                      <div class="sv2s-card__head">
+                        {%- if display_title != blank -%}
+                          <h4 class="sv2s-card__title">
+                            <a href="{{ product_url }}">{{ display_title | escape }}</a>
+                          </h4>
+                        {%- endif -%}
+                        {%- if corner_tag != blank -%}
+                          <span class="sv2s-card__tag sv2s-card__tag--inline">{{ corner_tag | escape }}</span>
+                        {%- endif -%}
+                      </div>
 
                       {%- liquid
                         assign rating_raw = product_block.settings.rating | strip
@@ -1015,51 +1360,53 @@
                         </div>
                       {%- endif -%}
 
-                      {%- if save_amount_label != blank and price_original_label != blank -%}
-                        <div
-                          class="sv2s-card__price"
-                          data-sv2s-price
-                          data-price-sale="{{ price_sale_label | escape }}"
-                          data-price-original="{{ price_original_label | escape }}"
-                          style="--sv2s-save-bg: {{ card_save_bg }}; --sv2s-save-text: {{ card_save_text }}; --sv2s-sale-color: {{ card_sale_color }};"
-                        >
-                          <span class="sv2s-card__price-main" data-sv2s-price-main>{{ price_original_label }}</span>
-                          <span class="sv2s-card__price-compare is-hidden" data-sv2s-price-compare>{{ price_original_label }}</span>
-                          <label class="sv2s-card__save" data-sv2s-save-btn aria-pressed="false">
-                            <input
-                              type="checkbox"
-                              class="sv2s-card__save-check"
-                              data-sv2s-save-check
-                              aria-label="Apply save {{ save_amount_label | escape }}"
-                            >
-                            <span>Save {{ save_amount_label }}</span>
-                          </label>
-                        </div>
-                      {%- elsif price_original_label != blank or price_sale_label != blank -%}
-                        <div class="sv2s-card__price">
-                          <span class="sv2s-card__price-main">{{ price_sale_label | default: price_original_label }}</span>
-                          {%- if price_original_label != blank and price_sale_label != blank and price_original_label != price_sale_label -%}
-                            <span class="sv2s-card__price-compare">{{ price_original_label }}</span>
-                          {%- endif -%}
-                        </div>
-                      {%- endif -%}
+                      <div class="sv2s-card__aside">
+                        {%- if save_amount_label != blank and price_original_label != blank -%}
+                          <div
+                            class="sv2s-card__price"
+                            data-sv2s-price
+                            data-price-sale="{{ price_sale_label | escape }}"
+                            data-price-original="{{ price_original_label | escape }}"
+                            style="--sv2s-save-bg: {{ card_save_bg }}; --sv2s-save-text: {{ card_save_text }}; --sv2s-sale-color: {{ card_sale_color }};"
+                          >
+                            <span class="sv2s-card__price-main" data-sv2s-price-main>{{ price_original_label }}</span>
+                            <span class="sv2s-card__price-compare is-hidden" data-sv2s-price-compare>{{ price_original_label }}</span>
+                            <label class="sv2s-card__save" data-sv2s-save-btn aria-pressed="false">
+                              <input
+                                type="checkbox"
+                                class="sv2s-card__save-check"
+                                data-sv2s-save-check
+                                aria-label="Apply save {{ save_amount_label | escape }}"
+                              >
+                              <span>Save {{ save_amount_label }}</span>
+                            </label>
+                          </div>
+                        {%- elsif price_original_label != blank or price_sale_label != blank -%}
+                          <div class="sv2s-card__price">
+                            <span class="sv2s-card__price-main">{{ price_sale_label | default: price_original_label }}</span>
+                            {%- if price_original_label != blank and price_sale_label != blank and price_original_label != price_sale_label -%}
+                              <span class="sv2s-card__price-compare">{{ price_original_label }}</span>
+                            {%- endif -%}
+                          </div>
+                        {%- endif -%}
 
-                      {%- if product != blank and product.available -%}
-                        {%- form 'product', product, id: form_id, is: 'product-form', class: 'sv2s-card__form' -%}
-                          <input type="hidden" name="id" value="{{ variant.id }}">
-                          <button type="submit" class="sv2s-card__atc" name="add">
+                        {%- if product != blank and product.available -%}
+                          {%- form 'product', product, id: form_id, is: 'product-form', class: 'sv2s-card__form' -%}
+                            <input type="hidden" name="id" value="{{ variant.id }}">
+                            <button type="submit" class="sv2s-card__atc" name="add">
+                              {{ section.settings.atc_text | default: 'ADD TO CART' }}
+                            </button>
+                          {%- endform -%}
+                        {%- elsif product_block.settings.atc_link != blank -%}
+                          <a class="sv2s-card__atc" href="{{ product_block.settings.atc_link }}">
                             {{ section.settings.atc_text | default: 'ADD TO CART' }}
-                          </button>
-                        {%- endform -%}
-                      {%- elsif product_block.settings.atc_link != blank -%}
-                        <a class="sv2s-card__atc" href="{{ product_block.settings.atc_link }}">
-                          {{ section.settings.atc_text | default: 'ADD TO CART' }}
-                        </a>
-                      {%- else -%}
-                        <a class="sv2s-card__atc" href="{{ product_url }}">
-                          {{ section.settings.atc_text | default: 'ADD TO CART' }}
-                        </a>
-                      {%- endif -%}
+                          </a>
+                        {%- else -%}
+                          <a class="sv2s-card__atc" href="{{ product_url }}">
+                            {{ section.settings.atc_text | default: 'ADD TO CART' }}
+                          </a>
+                        {%- endif -%}
+                      </div>
                     </div>
                   </article>
                 {%- endif -%}
@@ -1071,7 +1418,7 @@
           </div>
 
           {%- comment -%} Compare banner {%- endcomment -%}
-          {%- if block.settings.compare_heading != blank or block.settings.compare_image != blank -%}
+          {%- if block.settings.compare_heading != blank or block.settings.compare_image != blank or block.settings.compare_image_mobile != blank -%}
             <div class="sv2s-compare">
               <div class="sv2s-compare__content">
                 {%- if block.settings.compare_heading != blank -%}
@@ -1086,16 +1433,40 @@
                   </a>
                 {%- endif -%}
               </div>
-              {%- if block.settings.compare_image != blank -%}
+              {%- if block.settings.compare_image != blank or block.settings.compare_image_mobile != blank -%}
                 <div class="sv2s-compare__media">
-                  {{ block.settings.compare_image
-                    | image_url: width: 1200
-                    | image_tag:
-                      widths: '600,900,1200',
-                      sizes: '(max-width: 749px) 100vw, 40vw',
-                      loading: 'lazy',
-                      alt: block.settings.compare_heading
-                  }}
+                  {%- if block.settings.compare_image != blank -%}
+                    {{ block.settings.compare_image
+                      | image_url: width: 1200
+                      | image_tag:
+                        class: 'sv2s-compare__img sv2s-compare__img--desktop',
+                        widths: '600,900,1200',
+                        sizes: '40vw',
+                        loading: 'lazy',
+                        alt: block.settings.compare_heading
+                    }}
+                  {%- endif -%}
+                  {%- if block.settings.compare_image_mobile != blank -%}
+                    {{ block.settings.compare_image_mobile
+                      | image_url: width: 900
+                      | image_tag:
+                        class: 'sv2s-compare__img sv2s-compare__img--mobile',
+                        widths: '400,600,900',
+                        sizes: '50vw',
+                        loading: 'lazy',
+                        alt: block.settings.compare_heading
+                    }}
+                  {%- elsif block.settings.compare_image != blank -%}
+                    {{ block.settings.compare_image
+                      | image_url: width: 900
+                      | image_tag:
+                        class: 'sv2s-compare__img sv2s-compare__img--mobile',
+                        widths: '400,600,900',
+                        sizes: '50vw',
+                        loading: 'lazy',
+                        alt: block.settings.compare_heading
+                    }}
+                  {%- endif -%}
                 </div>
               {%- endif -%}
             </div>
@@ -1104,15 +1475,37 @@
         </div>
 
           {%- comment -%} Feature: image left / text right — full width {%- endcomment -%}
-          {%- if block.settings.feature_heading != blank or block.settings.feature_image != blank -%}
+          {%- if block.settings.feature_heading != blank or block.settings.feature_image != blank or block.settings.feature_image_mobile != blank -%}
             <div class="sv2s-feature">
               <div class="sv2s-feature__media">
                 {%- if block.settings.feature_image != blank -%}
                   {{ block.settings.feature_image
                     | image_url: width: 1400
                     | image_tag:
+                      class: 'sv2s-feature__img sv2s-feature__img--desktop',
                       widths: '600,900,1200,1400',
-                      sizes: '(max-width: 749px) 100vw, 50vw',
+                      sizes: '50vw',
+                      loading: 'lazy',
+                      alt: block.settings.feature_heading
+                  }}
+                {%- endif -%}
+                {%- if block.settings.feature_image_mobile != blank -%}
+                  {{ block.settings.feature_image_mobile
+                    | image_url: width: 900
+                    | image_tag:
+                      class: 'sv2s-feature__img sv2s-feature__img--mobile',
+                      widths: '400,600,900',
+                      sizes: '50vw',
+                      loading: 'lazy',
+                      alt: block.settings.feature_heading
+                  }}
+                {%- elsif block.settings.feature_image != blank -%}
+                  {{ block.settings.feature_image
+                    | image_url: width: 900
+                    | image_tag:
+                      class: 'sv2s-feature__img sv2s-feature__img--mobile',
+                      widths: '400,600,900',
+                      sizes: '50vw',
                       loading: 'lazy',
                       alt: block.settings.feature_heading
                   }}
@@ -1450,7 +1843,13 @@
         {
           "type": "image_picker",
           "id": "compare_image",
-          "label": "Compare image"
+          "label": "Compare image (desktop)"
+        },
+        {
+          "type": "image_picker",
+          "id": "compare_image_mobile",
+          "label": "Compare image (mobile)",
+          "info": "Optional. Shown on screens 749px and below. Falls back to desktop image if empty."
         },
         {
           "type": "header",
@@ -1459,7 +1858,13 @@
         {
           "type": "image_picker",
           "id": "feature_image",
-          "label": "Left image"
+          "label": "Left image (desktop)"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_mobile",
+          "label": "Left image (mobile)",
+          "info": "Optional. Shown on screens 749px and below. Falls back to desktop image if empty."
         },
         {
           "type": "textarea",

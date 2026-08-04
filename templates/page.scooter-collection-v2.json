@@ -49,15 +49,15 @@
         "text_color": "#ffffff",
         "accent_color": "#e31c23",
         "min_height": 560,
-        "min_height_mobile": 480,
+        "min_height_mobile": 560,
         "content_max_width": 900,
         "title": "FIND YOUR \nPERFECT RIDE",
         "title_weight": "500",
         "title_size": 80,
-        "title_size_mobile": 32,
+        "title_size_mobile": 58,
         "subtitle": "Reliable electric scooters for every commute.",
         "subtitle_size": 18,
-        "subtitle_size_mobile": 15,
+        "subtitle_size_mobile": 16,
         "btn1_text": "SHOP BEST SELLERS",
         "btn1_link": "",
         "btn2_text": "COMPARE MODELS",
@@ -311,7 +311,7 @@
         "rev_1": {
           "type": "review",
           "settings": {
-            "rating": 5,
+            "rating": "5",
             "headline": "Perfect daily commute scooter",
             "body": "Smooth ride, solid build, and battery lasts through my weekdays.",
             "author": "Alex M.",
@@ -321,7 +321,7 @@
         "rev_2": {
           "type": "review",
           "settings": {
-            "rating": 5,
+            "rating": "5",
             "headline": "Best value under $300",
             "body": "Surprisingly powerful for the price. Easy to fold and store.",
             "author": "Jordan P.",
@@ -331,7 +331,7 @@
         "rev_3": {
           "type": "review",
           "settings": {
-            "rating": 5,
+            "rating": "5",
             "headline": "Quiet and comfortable",
             "body": "Suspension handles rough pavement well. Highly recommend.",
             "author": "Sam R.",
@@ -341,7 +341,7 @@
         "rev_4": {
           "type": "review",
           "settings": {
-            "rating": 5,
+            "rating": "5",
             "headline": "Battery holds up",
             "body": "I get a full week of short trips before charging again.",
             "author": "Casey L.",
@@ -359,7 +359,7 @@
         "title": "TRUSTED BY EVERYDAY RIDERS",
         "subtitle": "4.9/5 from 181 verified reviews",
         "title_size": 32,
-        "title_size_mobile": 28,
+        "title_size_mobile": 38,
         "title_color": "#111111",
         "subtitle_size": 16,
         "subtitle_color": "#111111",
