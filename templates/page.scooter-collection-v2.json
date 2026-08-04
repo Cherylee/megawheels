@@ -295,7 +295,11 @@
         "panel_bg": "#f3f3f3",
         "accent_color": "#e31c23",
         "feature_bg": "#ffffff",
+<<<<<<< HEAD
         "content_max_width": 1100,
+=======
+        "content_max_width": 1200,
+>>>>>>> 996763f1a1d1fc6b602038eeea5b709ff1f61bad
         "padding_top": 56,
         "atc_text": "ADD TO CART",
         "atc_bg": "#111111",
