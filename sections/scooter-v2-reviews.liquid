@@ -113,6 +113,34 @@
     width: calc(14 * var(--rem));
     height: calc(14 * var(--rem));
     flex-shrink: 0;
+    overflow: visible;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__star--partial {
+    position: relative;
+    display: block;
+    width: calc(14 * var(--rem));
+    height: calc(14 * var(--rem));
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__star--partial .sv2r__star {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__star--partial .sv2r__star-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--sv2r-star-fill, 50%);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .sv2r__star--empty {
+    color: #d0d0d0;
   }
 
   #shopify-section-{{ section.id }} .sv2r__headline {
@@ -223,10 +251,24 @@
                     <div class="sv2r__thumb" aria-hidden="true"></div>
                   {%- endif -%}
                   <div class="sv2r__card-content">
-                    <div class="sv2r__stars" aria-label="{{ block.settings.rating | default: 5 }} stars">
-                      {%- assign rating = block.settings.rating | default: 5 -%}
+                    {%- liquid
+                      assign rating_raw = block.settings.rating | strip
+                      if rating_raw == blank
+                        assign rating_raw = '5'
+                      endif
+                      assign rating_num = rating_raw | times: 1.0
+                      if rating_num < 1
+                        assign rating_num = 1.0
+                      endif
+                      if rating_num > 5
+                        assign rating_num = 5.0
+                      endif
+                    -%}
+                    <div class="sv2r__stars" aria-label="{{ rating_num }} out of 5 stars">
                       {%- for i in (1..5) -%}
-                        {%- if i <= rating -%}
+                        {%- assign star_index = i -%}
+                        {%- assign star_prev = i | minus: 1 -%}
+                        {%- if rating_num >= star_index -%}
                           <svg class="sv2r__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                             <path
                               fill="currentColor"
@@ -237,8 +279,35 @@
                               d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
                             />
                           </svg>
+                        {%- elsif rating_num > star_prev -%}
+                          {%- assign fill_frac = rating_num | minus: star_prev -%}
+                          {%- assign fill_pct = fill_frac | times: 100 -%}
+                          <span class="sv2r__star--partial" style="--sv2r-star-fill: {{ fill_pct }}%;">
+                            <svg class="sv2r__star sv2r__star--empty" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                              <path
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linejoin="round"
+                                stroke-linecap="round"
+                                d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                              />
+                            </svg>
+                            <span class="sv2r__star-fill">
+                              <svg class="sv2r__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path
+                                  fill="currentColor"
+                                  stroke="currentColor"
+                                  stroke-width="1.8"
+                                  stroke-linejoin="round"
+                                  stroke-linecap="round"
+                                  d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                                />
+                              </svg>
+                            </span>
+                          </span>
                         {%- else -%}
-                          <svg class="sv2r__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                          <svg class="sv2r__star sv2r__star--empty" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                             <path
                               fill="none"
                               stroke="currentColor"
@@ -506,13 +575,11 @@
           "label": "Thumbnail"
         },
         {
-          "type": "range",
+          "type": "text",
           "id": "rating",
-          "label": "Stars",
-          "min": 1,
-          "max": 5,
-          "step": 1,
-          "default": 5
+          "label": "Star rating",
+          "info": "1–5, decimals allowed (e.g. 4.5, 4.3).",
+          "default": "5"
         },
         {
           "type": "text",
