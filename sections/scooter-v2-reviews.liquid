@@ -40,7 +40,7 @@
   #shopify-section-{{ section.id }} .sv2r__title {
     margin: 0 0 calc(8 * var(--rem));
     font-family: var(--sv2s-heading-font);
-    font-size: calc({{ section.settings.title_size | default: 36 }} * var(--rem));
+    font-size: calc({{ section.settings.title_size | default: 32 }} * var(--rem));
     font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -51,7 +51,8 @@
   #shopify-section-{{ section.id }} .sv2r__subtitle {
     margin: 0;
     font-size: calc({{ section.settings.subtitle_size | default: 16 }} * var(--rem));
-    color: {{ section.settings.subtitle_color | default: '#555555' }};
+    font-weight: 600;
+    color: {{ section.settings.subtitle_color | default: '#111111' }};
   }
 
   #shopify-section-{{ section.id }} .sv2r__viewport {
@@ -400,7 +401,7 @@
       "max": 64,
       "step": 1,
       "unit": "px",
-      "default": 36
+      "default": 32
     },
     {
       "type": "range",
@@ -432,7 +433,7 @@
       "type": "color",
       "id": "subtitle_color",
       "label": "Subtitle color",
-      "default": "#555555"
+      "default": "#111111"
     },
     {
       "type": "color",
