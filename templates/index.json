@@ -1605,6 +1605,64 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "1785809292358e6ff5": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_reviews_grid_widget_ap3dyB": {
+          "type": "shopify://apps/judge-me-reviews/blocks/reviews_grid_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "show_sample_reviews": false,
+            "review_selection": "custom_products",
+            "products": [
+              "e3-electric-scooter",
+              "a1c-electric-scooter",
+              "a6l-eco-electric-scooter",
+              "a6l-max-electric-scooter",
+              "c2-electric-scooter",
+              "e2-electric-scooter",
+              "m1-electric-scooter"
+            ],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "show_media_only": false,
+            "display_order": "media_first",
+            "card_grouping": "per_review",
+            "columns_desktop": 4,
+            "rows_desktop": 1,
+            "columns_mobile": "2",
+            "rows_mobile": 4,
+            "show_stars": true,
+            "show_reviewer_name": true,
+            "show_review_title_on_hover_desktop": true,
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "card_spacing": "medium",
+            "header_text_color": "#000000",
+            "star_and_reviewer_name_color": "#F9F9F9",
+            "drop_shadow_color": "#000000",
+            "overlay_and_background_color": "#000000",
+            "content_color": "#F9F9F9",
+            "header_text": "From our customers",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_reviews_grid_widget_ap3dyB"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
@@ -1627,6 +1685,7 @@
     "section-8",
     "slideshow_3yzyiU",
     "blog_posts_CBRdTL",
-    "17828871045a0ec593"
+    "17828871045a0ec593",
+    "1785809292358e6ff5"
   ]
 }
