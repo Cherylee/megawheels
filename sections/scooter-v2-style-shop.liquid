@@ -27,7 +27,9 @@
   #shopify-section-{{ section.id }} .sv2s {
     width: 100%;
     background: {{ section.settings.section_bg | default: '#ffffff' }};
-    padding: calc({{ section.settings.padding_top | default: 32 }} * var(--rem)) 0 calc({{ section.settings.padding_bottom | default: 56 }} * var(--rem));
+    padding: calc({{ section.settings.padding_top | default: 32 }} * var(--rem)) 0 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #eeeeee;
     overflow: visible;
   }
 
@@ -42,7 +44,7 @@
     margin: 0 0 calc(28 * var(--rem));
     text-align: center;
     font-family: var(--sv2s-heading-font);
-    font-size: calc({{ section.settings.heading_size | default: 40 }} * var(--rem));
+    font-size: calc({{ section.settings.heading_size | default: 32 }} * var(--rem));
     font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -65,7 +67,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: calc(8 * var(--rem));
+    gap: calc(4 * var(--rem));
     padding: calc(18 * var(--rem)) calc(12 * var(--rem)) calc(16 * var(--rem));
     background: #ffffff;
     border: 1px solid #d0d0d0;
@@ -113,6 +115,15 @@
 
   #shopify-section-{{ section.id }} .sv2s__panel.is-active {
     display: block;
+  }
+
+  #shopify-section-{{ section.id }} .sv2s__grid-empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: calc(24 * var(--rem)) 0;
+    text-align: center;
+    font-size: calc(14 * var(--rem));
+    color: #888888;
   }
 
   #shopify-section-{{ section.id }} .sv2s__panel-main {
@@ -445,8 +456,10 @@
     align-items: center;
     padding: calc(36 * var(--rem)) calc(40 * var(--rem));
     margin-bottom: 0;
-    background: {{ section.settings.compare_bg | default: '#ffffff' }};
-    border-radius: calc(6 * var(--rem));
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: calc(8 * var(--rem));
+    box-sizing: border-box;
   }
 
   #shopify-section-{{ section.id }} .sv2s-compare__title {
@@ -495,25 +508,28 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    align-items: stretch;
+    align-items: center;
     width: 100%;
     margin: 0;
     background: #ffffff;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__media {
-    border-radius: 0;
+    margin: calc(20 * var(--rem)) 0;
+    margin-left: 0;
+    border-radius: 0 calc(8 * var(--rem)) calc(8 * var(--rem)) 0;
     overflow: hidden;
     background: #ffffff;
-    min-height: 100%;
+    align-self: center;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__media img {
     width: 100%;
     height: 100%;
-    min-height: calc(420 * var(--rem));
+    min-height: calc(380 * var(--rem));
     display: block;
     object-fit: cover;
+    border-radius: 0 calc(8 * var(--rem)) calc(8 * var(--rem)) 0;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__content {
@@ -546,21 +562,34 @@
 
   #shopify-section-{{ section.id }} .sv2s-feature__item {
     display: grid;
-    grid-template-columns: calc(40 * var(--rem)) 1fr;
-    gap: calc(12 * var(--rem));
+    grid-template-columns: calc(48 * var(--rem)) 1fr;
+    gap: calc(14 * var(--rem));
     align-items: start;
   }
 
+  #shopify-section-{{ section.id }} .sv2s-feature__item-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(48 * var(--rem));
+    height: calc(48 * var(--rem));
+    border-radius: 50%;
+    background: #e8e8e8;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
   #shopify-section-{{ section.id }} .sv2s-feature__item-icon {
-    width: calc(36 * var(--rem));
-    height: calc(36 * var(--rem));
+    width: calc(24 * var(--rem));
+    height: calc(24 * var(--rem));
     object-fit: contain;
+    display: block;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__item-title {
     margin: 0 0 calc(4 * var(--rem));
     font-size: calc(16 * var(--rem));
-    font-weight: 400;
+    font-weight: 700;
     color: #111111;
   }
 
@@ -572,10 +601,20 @@
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__link {
-    font-size: calc(14 * var(--rem));
-    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 0;
+    background: transparent;
     color: #111111;
+    font-size: calc(14 * var(--rem));
+    font-weight: 700;
+    letter-spacing: 0.02em;
     text-decoration: none;
+    border: none;
+    border-radius: 0;
+    transition: color 0.2s ease;
   }
 
   #shopify-section-{{ section.id }} .sv2s-feature__link:hover {
@@ -592,8 +631,14 @@
       grid-template-columns: 1fr;
     }
 
+    #shopify-section-{{ section.id }} .sv2s-feature__media {
+      margin: calc(16 * var(--rem)) 0 0;
+      border-radius: 0;
+    }
+
     #shopify-section-{{ section.id }} .sv2s-feature__media img {
       min-height: calc(280 * var(--rem));
+      border-radius: 0 0 calc(8 * var(--rem)) calc(8 * var(--rem));
     }
 
     #shopify-section-{{ section.id }} .sv2s-feature__content {
@@ -719,10 +764,12 @@
             </div>
 
             <div class="sv2s__grid">
+            {%- assign panel_product_count = 0 -%}
             {%- for product_block in section.blocks -%}
               {%- if product_block.type == 'product_card' -%}
                 {%- assign product_tab = product_block.settings.tab_key | strip | handleize -%}
                 {%- if product_tab == tab_key -%}
+                  {%- assign panel_product_count = panel_product_count | plus: 1 -%}
                   {%- liquid
                     assign product = product_block.settings.product
                     assign variant = product.selected_or_first_available_variant
@@ -899,6 +946,9 @@
                 {%- endif -%}
               {%- endif -%}
             {%- endfor -%}
+            {%- if panel_product_count == 0 -%}
+              <p class="sv2s__grid-empty">No products for this tab yet. Add Product card blocks and set Tab key to “{{ tab_key }}”.</p>
+            {%- endif -%}
           </div>
 
           {%- comment -%} Compare banner {%- endcomment -%}
@@ -954,45 +1004,51 @@
                   <h3 class="sv2s-feature__title">{{ block.settings.feature_heading | escape }}</h3>
                 {%- endif -%}
                 <ul class="sv2s-feature__list">
-                  {%- if block.settings.feature_1_title != blank -%}
+                  {%- if block.settings.feature_1_title != blank or block.settings.feature_1_icon != blank -%}
                     <li class="sv2s-feature__item">
-                      {%- if block.settings.feature_1_icon != blank -%}
-                        {{ block.settings.feature_1_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '36px', loading: 'lazy', alt: '' }}
-                      {%- else -%}
-                        <span></span>
-                      {%- endif -%}
+                      <span class="sv2s-feature__item-icon-wrap">
+                        {%- if block.settings.feature_1_icon != blank -%}
+                          {{ block.settings.feature_1_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '24px', loading: 'lazy', alt: '' }}
+                        {%- endif -%}
+                      </span>
                       <div>
-                        <p class="sv2s-feature__item-title">{{ block.settings.feature_1_title | escape }}</p>
+                        {%- if block.settings.feature_1_title != blank -%}
+                          <p class="sv2s-feature__item-title">{{ block.settings.feature_1_title | escape }}</p>
+                        {%- endif -%}
                         {%- if block.settings.feature_1_text != blank -%}
                           <p class="sv2s-feature__item-text">{{ block.settings.feature_1_text | escape }}</p>
                         {%- endif -%}
                       </div>
                     </li>
                   {%- endif -%}
-                  {%- if block.settings.feature_2_title != blank -%}
+                  {%- if block.settings.feature_2_title != blank or block.settings.feature_2_icon != blank -%}
                     <li class="sv2s-feature__item">
-                      {%- if block.settings.feature_2_icon != blank -%}
-                        {{ block.settings.feature_2_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '36px', loading: 'lazy', alt: '' }}
-                      {%- else -%}
-                        <span></span>
-                      {%- endif -%}
+                      <span class="sv2s-feature__item-icon-wrap">
+                        {%- if block.settings.feature_2_icon != blank -%}
+                          {{ block.settings.feature_2_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '24px', loading: 'lazy', alt: '' }}
+                        {%- endif -%}
+                      </span>
                       <div>
-                        <p class="sv2s-feature__item-title">{{ block.settings.feature_2_title | escape }}</p>
+                        {%- if block.settings.feature_2_title != blank -%}
+                          <p class="sv2s-feature__item-title">{{ block.settings.feature_2_title | escape }}</p>
+                        {%- endif -%}
                         {%- if block.settings.feature_2_text != blank -%}
                           <p class="sv2s-feature__item-text">{{ block.settings.feature_2_text | escape }}</p>
                         {%- endif -%}
                       </div>
                     </li>
                   {%- endif -%}
-                  {%- if block.settings.feature_3_title != blank -%}
+                  {%- if block.settings.feature_3_title != blank or block.settings.feature_3_icon != blank -%}
                     <li class="sv2s-feature__item">
-                      {%- if block.settings.feature_3_icon != blank -%}
-                        {{ block.settings.feature_3_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '36px', loading: 'lazy', alt: '' }}
-                      {%- else -%}
-                        <span></span>
-                      {%- endif -%}
+                      <span class="sv2s-feature__item-icon-wrap">
+                        {%- if block.settings.feature_3_icon != blank -%}
+                          {{ block.settings.feature_3_icon | image_url: width: 80 | image_tag: class: 'sv2s-feature__item-icon', widths: '40,80', sizes: '24px', loading: 'lazy', alt: '' }}
+                        {%- endif -%}
+                      </span>
                       <div>
-                        <p class="sv2s-feature__item-title">{{ block.settings.feature_3_title | escape }}</p>
+                        {%- if block.settings.feature_3_title != blank -%}
+                          <p class="sv2s-feature__item-title">{{ block.settings.feature_3_title | escape }}</p>
+                        {%- endif -%}
                         {%- if block.settings.feature_3_text != blank -%}
                           <p class="sv2s-feature__item-text">{{ block.settings.feature_3_text | escape }}</p>
                         {%- endif -%}
@@ -1000,7 +1056,7 @@
                     </li>
                   {%- endif -%}
                 </ul>
-                {%- if block.settings.feature_link_text != blank -%}
+                {%- if block.settings.show_feature_link and block.settings.feature_link_text != blank -%}
                   <a class="sv2s-feature__link" href="{{ block.settings.feature_link | default: '#' }}">
                     {{ block.settings.feature_link_text | escape }}
                   </a>
@@ -1015,25 +1071,40 @@
 
 <script>
   (function () {
-    var root = document.querySelector('#shopify-section-{{ section.id }} [data-sv2s-root]');
-    if (!root) return;
+    function initSv2s(root) {
+      if (!root || root.getAttribute('data-sv2s-ready') === '1') return;
+      root.setAttribute('data-sv2s-ready', '1');
 
-    var tabs = root.querySelectorAll('[data-sv2s-tab]');
-    var panels = root.querySelectorAll('[data-sv2s-panel]');
+      var tabs = root.querySelectorAll('[data-sv2s-tab]');
+      var panels = root.querySelectorAll('[data-sv2s-panel]');
 
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var key = tab.getAttribute('data-target');
+      function activate(key) {
+        var normalized = (key || '').trim();
         tabs.forEach(function (t) {
-          var on = t === tab;
+          var on = (t.getAttribute('data-target') || '').trim() === normalized;
           t.classList.toggle('is-active', on);
           t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
         panels.forEach(function (panel) {
-          panel.classList.toggle('is-active', panel.getAttribute('data-key') === key);
+          var on = (panel.getAttribute('data-key') || '').trim() === normalized;
+          panel.classList.toggle('is-active', on);
+        });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          activate(tab.getAttribute('data-target'));
         });
       });
-    });
+
+      root.querySelectorAll('[data-sv2s-price]').forEach(function (priceWrap) {
+        var check = priceWrap.querySelector('[data-sv2s-save-check]');
+        if (!check) return;
+        check.addEventListener('change', function () {
+          setSaveActive(priceWrap, check.checked);
+        });
+      });
+    }
 
     function setSaveActive(priceWrap, active) {
       if (!priceWrap) return;
@@ -1056,13 +1127,13 @@
       }
     }
 
-    root.querySelectorAll('[data-sv2s-price]').forEach(function (priceWrap) {
-      var check = priceWrap.querySelector('[data-sv2s-save-check]');
-      if (!check) return;
-      check.addEventListener('change', function () {
-        setSaveActive(priceWrap, check.checked);
-      });
-    });
+    function boot() {
+      document.querySelectorAll('#shopify-section-{{ section.id }} [data-sv2s-root]').forEach(initSv2s);
+    }
+
+    boot();
+    document.addEventListener('shopify:section:load', boot);
+    document.addEventListener('shopify:section:reorder', boot);
   })();
 </script>
 
@@ -1086,7 +1157,7 @@
       "max": 64,
       "step": 1,
       "unit": "px",
-      "default": 40
+      "default": 32
     },
     {
       "type": "color",
@@ -1114,12 +1185,6 @@
     },
     {
       "type": "color",
-      "id": "compare_bg",
-      "label": "Compare banner background",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
       "id": "feature_bg",
       "label": "Feature block background",
       "default": "#ffffff"
@@ -1144,16 +1209,6 @@
       "step": 4,
       "unit": "px",
       "default": 32
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding bottom",
-      "min": 20,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 56
     },
     {
       "type": "header",
@@ -1205,7 +1260,7 @@
           "type": "text",
           "id": "tab_key",
           "label": "Tab key",
-          "info": "Used to match product cards. e.g. under-300",
+          "info": "Unique ID for this tab. Product cards with the same Tab key show here. Also owns this tab’s compare banner + feature panel settings below.",
           "default": "under-300"
         },
         {
@@ -1285,75 +1340,97 @@
         {
           "type": "image_picker",
           "id": "feature_image",
-          "label": "Feature image"
+          "label": "Left image"
         },
         {
           "type": "text",
           "id": "feature_heading",
-          "label": "Feature heading",
+          "label": "Right heading",
           "default": "BUILT FOR THE EVERYDAY RIDE"
+        },
+        {
+          "type": "header",
+          "content": "Feature item 1"
         },
         {
           "type": "image_picker",
           "id": "feature_1_icon",
-          "label": "Feature 1 icon"
+          "label": "Item 1 icon"
         },
         {
           "type": "text",
           "id": "feature_1_title",
-          "label": "Feature 1 title",
+          "label": "Item 1 title",
           "default": "Long-lasting range"
         },
         {
           "type": "text",
           "id": "feature_1_text",
-          "label": "Feature 1 text",
+          "label": "Item 1 text",
           "default": "Ride farther without constant charging."
+        },
+        {
+          "type": "header",
+          "content": "Feature item 2"
         },
         {
           "type": "image_picker",
           "id": "feature_2_icon",
-          "label": "Feature 2 icon"
+          "label": "Item 2 icon"
         },
         {
           "type": "text",
           "id": "feature_2_title",
-          "label": "Feature 2 title",
+          "label": "Item 2 title",
           "default": "Comfort-first suspension"
         },
         {
           "type": "text",
           "id": "feature_2_text",
-          "label": "Feature 2 text",
+          "label": "Item 2 text",
           "default": "Stay smooth over city streets."
+        },
+        {
+          "type": "header",
+          "content": "Feature item 3"
         },
         {
           "type": "image_picker",
           "id": "feature_3_icon",
-          "label": "Feature 3 icon"
+          "label": "Item 3 icon"
         },
         {
           "type": "text",
           "id": "feature_3_title",
-          "label": "Feature 3 title",
+          "label": "Item 3 title",
           "default": "Smart app control"
         },
         {
           "type": "text",
           "id": "feature_3_text",
-          "label": "Feature 3 text",
+          "label": "Item 3 text",
           "default": "Track rides and lock from your phone."
+        },
+        {
+          "type": "header",
+          "content": "Feature CTA button"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_feature_link",
+          "label": "Show feature button",
+          "default": true
         },
         {
           "type": "text",
           "id": "feature_link_text",
-          "label": "Feature link text",
-          "default": "Explore the technology >"
+          "label": "Button text",
+          "default": "Explore the technology"
         },
         {
           "type": "url",
           "id": "feature_link",
-          "label": "Feature link"
+          "label": "Button link"
         }
       ]
     },
@@ -1365,7 +1442,7 @@
           "type": "text",
           "id": "tab_key",
           "label": "Tab key",
-          "info": "Must match a Style tab key.",
+          "info": "Must exactly match a Style tab’s Tab key (e.g. under-300, daily-commute). Only then this card appears in that tab’s product list.",
           "default": "under-300"
         },
         {
