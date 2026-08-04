@@ -7,10 +7,6 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-/*
- * Scooter collection page — design v2
- * Sections: Hero banner → Style shop (tabs + products/compare/feature) → Reviews carousel
- */
 {
   "sections": {
     "scooter_v2_hero": {
@@ -19,19 +15,25 @@
         "trust_1": {
           "type": "trust",
           "settings": {
-            "text": "UL Certified"
+            "icon": "shopify://shop_images/Warranty_2_1.png",
+            "text": "UL Certified",
+            "link": ""
           }
         },
         "trust_2": {
           "type": "trust",
           "settings": {
-            "text": "Free Shipping"
+            "icon": "shopify://shop_images/ul_2_1.png",
+            "text": "Free Shipping",
+            "link": ""
           }
         },
         "trust_3": {
           "type": "trust",
           "settings": {
-            "text": "30-Day Returns"
+            "icon": "shopify://shop_images/Warranty_2_1.png",
+            "text": "30-Day Returns",
+            "link": ""
           }
         }
       },
@@ -41,17 +43,24 @@
         "trust_3"
       ],
       "settings": {
-        "title": "FIND YOUR\nPERFECT RIDE",
-        "title_weight": "500",
-        "title_size": 80,
-        "title_size_mobile": 36,
-        "subtitle": "Reliable electric scooters for every commute.",
-        "btn1_text": "SHOP BEST SELLERS",
-        "btn2_text": "COMPARE MODELS",
-        "accent_color": "#E31C23",
+        "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-1920x787.jpg",
+        "overlay_color": "#000000",
         "overlay_opacity": 35,
+        "text_color": "#ffffff",
+        "accent_color": "#e31c23",
         "min_height": 560,
-        "min_height_mobile": 480
+        "min_height_mobile": 480,
+        "content_max_width": 900,
+        "title": "FIND YOUR PERFECT RIDE",
+        "title_size": 56,
+        "title_size_mobile": 32,
+        "subtitle": "Reliable electric scooters for every commute.",
+        "subtitle_size": 18,
+        "subtitle_size_mobile": 15,
+        "btn1_text": "SHOP BEST SELLERS",
+        "btn1_link": "",
+        "btn2_text": "COMPARE MODELS",
+        "btn2_link": ""
       }
     },
     "scooter_v2_style_shop": {
@@ -61,13 +70,16 @@
           "type": "tab",
           "settings": {
             "tab_key": "under-300",
+            "icon": "shopify://shop_images/Warranty_2.png",
             "title": "Under $300",
             "subtitle": "Great value picks",
             "products_heading": "BEST SELLERS",
             "view_all_text": "View all scooters >",
+            "view_all_link": "",
             "compare_heading": "NOT SURE WHICH SCOOTER FITS YOU?",
             "compare_text": "Compare range, speed and comfort side by side.",
             "compare_btn_text": "COMPARE ALL MODELS",
+            "compare_btn_link": "",
             "feature_heading": "BUILT FOR THE EVERYDAY RIDE",
             "feature_1_title": "Long-lasting range",
             "feature_1_text": "Ride farther without constant charging.",
@@ -75,20 +87,24 @@
             "feature_2_text": "Stay smooth over city streets.",
             "feature_3_title": "Smart app control",
             "feature_3_text": "Track rides and lock from your phone.",
-            "feature_link_text": "Explore the technology >"
+            "feature_link_text": "Explore the technology >",
+            "feature_link": ""
           }
         },
         "tab_commute": {
           "type": "tab",
           "settings": {
             "tab_key": "daily-commute",
+            "icon": "shopify://shop_images/UL-icon-500.png",
             "title": "Daily Commute",
             "subtitle": "Balanced & reliable",
             "products_heading": "BEST SELLERS",
             "view_all_text": "View all scooters >",
+            "view_all_link": "",
             "compare_heading": "NOT SURE WHICH SCOOTER FITS YOU?",
             "compare_text": "Compare range, speed and comfort side by side.",
             "compare_btn_text": "COMPARE ALL MODELS",
+            "compare_btn_link": "",
             "feature_heading": "BUILT FOR THE EVERYDAY RIDE",
             "feature_1_title": "Long-lasting range",
             "feature_1_text": "Ride farther without constant charging.",
@@ -96,20 +112,24 @@
             "feature_2_text": "Stay smooth over city streets.",
             "feature_3_title": "Smart app control",
             "feature_3_text": "Track rides and lock from your phone.",
-            "feature_link_text": "Explore the technology >"
+            "feature_link_text": "Explore the technology >",
+            "feature_link": ""
           }
         },
         "tab_long_range": {
           "type": "tab",
           "settings": {
             "tab_key": "long-range",
+            "icon": "shopify://shop_images/Warranty_2.png",
             "title": "Long Range",
             "subtitle": "Go further, worry less",
             "products_heading": "BEST SELLERS",
             "view_all_text": "View all scooters >",
+            "view_all_link": "",
             "compare_heading": "NOT SURE WHICH SCOOTER FITS YOU?",
             "compare_text": "Compare range, speed and comfort side by side.",
             "compare_btn_text": "COMPARE ALL MODELS",
+            "compare_btn_link": "",
             "feature_heading": "BUILT FOR THE EVERYDAY RIDE",
             "feature_1_title": "Long-lasting range",
             "feature_1_text": "Ride farther without constant charging.",
@@ -117,20 +137,24 @@
             "feature_2_text": "Stay smooth over city streets.",
             "feature_3_title": "Smart app control",
             "feature_3_text": "Track rides and lock from your phone.",
-            "feature_link_text": "Explore the technology >"
+            "feature_link_text": "Explore the technology >",
+            "feature_link": ""
           }
         },
         "tab_smooth": {
           "type": "tab",
           "settings": {
             "tab_key": "smooth-ride",
+            "icon": "shopify://shop_images/ul_2.png",
             "title": "Smooth Ride",
             "subtitle": "Comfort over any road",
             "products_heading": "BEST SELLERS",
             "view_all_text": "View all scooters >",
+            "view_all_link": "",
             "compare_heading": "NOT SURE WHICH SCOOTER FITS YOU?",
             "compare_text": "Compare range, speed and comfort side by side.",
             "compare_btn_text": "COMPARE ALL MODELS",
+            "compare_btn_link": "",
             "feature_heading": "BUILT FOR THE EVERYDAY RIDE",
             "feature_1_title": "Long-lasting range",
             "feature_1_text": "Ride farther without constant charging.",
@@ -138,60 +162,80 @@
             "feature_2_text": "Stay smooth over city streets.",
             "feature_3_title": "Smart app control",
             "feature_3_text": "Track rides and lock from your phone.",
-            "feature_link_text": "Explore the technology >"
+            "feature_link_text": "Explore the technology >",
+            "feature_link": ""
           }
         },
         "prod_a1c": {
           "type": "product_card",
           "settings": {
             "tab_key": "under-300",
+            "product": "e3-electric-scooter",
             "title": "A1C",
-            "badge_text": "15%\nOFF",
+            "badge_text": "15% OFF",
+            "corner_tag": "",
             "rating_count": "181",
             "spec_range": "15 miles",
             "spec_speed": "15.5 mph",
             "spec_motor": "300W",
             "original_price": "$279.99",
             "sale_price": "$235.99",
-            "save_amount": "44"
+            "save_amount": "44",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "atc_link": ""
           }
         },
         "prod_m1": {
           "type": "product_card",
           "settings": {
             "tab_key": "under-300",
+            "product": "",
             "title": "M1",
-            "badge_text": "15%\nOFF",
+            "badge_text": "15% OFF",
+            "corner_tag": "",
             "rating_count": "126",
             "spec_range": "18 miles",
             "spec_speed": "15 mph",
             "spec_motor": "350W",
             "original_price": "$299.99",
             "sale_price": "$254.99",
-            "save_amount": "45"
+            "save_amount": "45",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "atc_link": ""
           }
         },
         "prod_s2": {
           "type": "product_card",
           "settings": {
             "tab_key": "under-300",
+            "product": "",
             "title": "S2",
-            "badge_text": "15%\nOFF",
+            "badge_text": "15% OFF",
+            "corner_tag": "",
             "rating_count": "98",
             "spec_range": "20 miles",
             "spec_speed": "16 mph",
             "spec_motor": "350W",
             "original_price": "$319.99",
             "sale_price": "$271.99",
-            "save_amount": "48"
+            "save_amount": "48",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "atc_link": ""
           }
         },
         "prod_e2": {
           "type": "product_card",
           "settings": {
             "tab_key": "under-300",
+            "product": "",
             "title": "E2",
-            "badge_text": "15%\nOFF",
+            "badge_text": "15% OFF",
             "corner_tag": "BEST VALUE",
             "rating_count": "210",
             "spec_range": "22 miles",
@@ -199,7 +243,11 @@
             "spec_motor": "400W",
             "original_price": "$339.99",
             "sale_price": "$288.99",
-            "save_amount": "51"
+            "save_amount": "51",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "atc_link": ""
           }
         }
       },
@@ -215,10 +263,20 @@
       ],
       "settings": {
         "heading": "SHOP BY RIDING STYLE",
-        "accent_color": "#E31C23",
-        "save_btn_bg": "#FFCC00",
-        "sale_price_color": "#E53935",
-        "content_max_width": 1100
+        "heading_size": 28,
+        "heading_color": "#111111",
+        "section_bg": "#ffffff",
+        "accent_color": "#e31c23",
+        "compare_bg": "#f2f2f2",
+        "content_max_width": 1200,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "atc_text": "ADD TO CART",
+        "atc_bg": "#111111",
+        "atc_text_color": "#ffffff",
+        "save_btn_bg": "#ffcc00",
+        "save_btn_text": "#000000",
+        "sale_price_color": "#e53935"
       }
     },
     "scooter_v2_reviews": {
@@ -227,41 +285,41 @@
         "rev_1": {
           "type": "review",
           "settings": {
+            "rating": 5,
             "headline": "Perfect daily commute scooter",
             "body": "Smooth ride, solid build, and battery lasts through my weekdays.",
             "author": "Alex M.",
-            "verified": true,
-            "rating": 5
+            "verified": true
           }
         },
         "rev_2": {
           "type": "review",
           "settings": {
+            "rating": 5,
             "headline": "Best value under $300",
             "body": "Surprisingly powerful for the price. Easy to fold and store.",
             "author": "Jordan P.",
-            "verified": true,
-            "rating": 5
+            "verified": true
           }
         },
         "rev_3": {
           "type": "review",
           "settings": {
+            "rating": 5,
             "headline": "Quiet and comfortable",
             "body": "Suspension handles rough pavement well. Highly recommend.",
             "author": "Sam R.",
-            "verified": true,
-            "rating": 5
+            "verified": true
           }
         },
         "rev_4": {
           "type": "review",
           "settings": {
+            "rating": 5,
             "headline": "Battery holds up",
             "body": "I get a full week of short trips before charging again.",
             "author": "Casey L.",
-            "verified": true,
-            "rating": 5
+            "verified": true
           }
         }
       },
@@ -274,9 +332,18 @@
       "settings": {
         "title": "TRUSTED BY EVERYDAY RIDERS",
         "subtitle": "4.9/5 from 181 verified reviews",
-        "accent_color": "#E31C23",
+        "title_size": 28,
+        "title_size_mobile": 22,
+        "title_color": "#111111",
+        "subtitle_size": 16,
+        "subtitle_color": "#555555",
+        "section_bg": "#ffffff",
+        "card_bg": "#f7f7f7",
+        "accent_color": "#e31c23",
         "autoplay_speed": 4,
-        "content_max_width": 1100
+        "content_max_width": 1200,
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     }
   },
