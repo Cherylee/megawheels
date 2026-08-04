@@ -120,7 +120,7 @@
     text-decoration: none;
     text-transform: uppercase;
     border-radius: calc(6 * var(--rem));
-    transition: filter 0.2s ease, background 0.2s ease, color 0.2s ease;
+    transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, backdrop-filter 0.2s ease;
   }
 
   #shopify-section-{{ section.id }} .sv2h__btn--primary {
@@ -129,14 +129,22 @@
     border: 2px solid var(--sv2h-accent);
   }
 
+  #shopify-section-{{ section.id }} .sv2h__btn--primary:hover {
+    opacity: 0.85;
+  }
+
   #shopify-section-{{ section.id }} .sv2h__btn--secondary {
     background: transparent;
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
   }
 
-  #shopify-section-{{ section.id }} .sv2h__btn:hover {
-    filter: brightness(1.05);
+  #shopify-section-{{ section.id }} .sv2h__btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   #shopify-section-{{ section.id }} .sv2h__trust {
