@@ -469,6 +469,24 @@
             "link_cart": ""
           }
         },
+        "product_item_bheLcC": {
+          "type": "product_item",
+          "settings": {
+            "product_image": "shopify://shop_images/AOTOS-E3-electric-scooter-900x1200.jpg",
+            "badge_text": "SAVE 15%",
+            "model_name": "E3",
+            "spec_text": "28 miles | 650w | 20 mph",
+            "current_price": "$399.99",
+            "original_price": "$469.99",
+            "sale_price": "$399.99",
+            "save_amount": "70",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "link_learn": "shopify://products/e3-electric-scooter",
+            "link_cart": "shopify://products/e3-electric-scooter"
+          }
+        },
         "product_item_QdTx9q": {
           "type": "product_item",
           "settings": {
@@ -486,24 +504,6 @@
             "link_learn": "shopify://products/s2-electric-scooter",
             "link_cart": "shopify://products/s2-electric-scooter"
           }
-        },
-        "product_item_bheLcC": {
-          "type": "product_item",
-          "settings": {
-            "product_image": "shopify://shop_images/AOTOS-E3-electric-scooter-900x1200.jpg",
-            "badge_text": "SAVE 52%",
-            "model_name": "E3",
-            "spec_text": "28 miles | 650w | 20 mph",
-            "current_price": "$399.99",
-            "original_price": "$469.99",
-            "sale_price": "$399.99",
-            "save_amount": "70",
-            "save_btn_bg": "#ffcc00",
-            "save_btn_text": "#000000",
-            "sale_price_color": "#e53935",
-            "link_learn": "shopify://products/e3-electric-scooter",
-            "link_cart": "shopify://products/e3-electric-scooter"
-          }
         }
       },
       "block_order": [
@@ -512,8 +512,8 @@
         "product_item_YJfdEX",
         "product_item_HjfgFf",
         "product_item_4r96zd",
-        "product_item_QdTx9q",
-        "product_item_bheLcC"
+        "product_item_bheLcC",
+        "product_item_QdTx9q"
       ],
       "name": "电动滑板车产品卡片网格",
       "settings": {
