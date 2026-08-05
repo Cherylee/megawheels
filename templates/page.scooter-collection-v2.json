@@ -45,7 +45,7 @@
       "settings": {
         "image": "shopify://shop_images/MEGAWHEELS-M1-electric-scooter-1920x787.jpg",
         "overlay_color": "#000000",
-        "overlay_opacity": 35,
+        "overlay_opacity": 0,
         "text_color": "#ffffff",
         "accent_color": "#e31c23",
         "min_height": 560,
