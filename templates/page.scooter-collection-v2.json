@@ -53,13 +53,13 @@
         "content_max_width": 900,
         "title": "FIND YOUR \nPERFECT RIDE",
         "title_weight": "500",
-        "title_size": 80,
+        "title_size": 76,
         "title_size_mobile": 58,
         "subtitle": "Reliable electric scooters for every commute.",
         "subtitle_size": 18,
         "subtitle_size_mobile": 16,
         "btn1_text": "SHOP BEST SELLERS",
-        "btn1_link": "",
+        "btn1_link": "shopify://pages/sales",
         "btn2_text": "COMPARE MODELS",
         "btn2_link": ""
       }
