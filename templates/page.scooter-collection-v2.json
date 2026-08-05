@@ -23,7 +23,7 @@
         "trust_2": {
           "type": "trust",
           "settings": {
-            "icon": "shopify://shop_images/ul_2_1.png",
+            "icon": "shopify://shop_images/free-shipping_e6a467c8-e529-4fc3-94a5-28fb8a04bf45.png",
             "text": "Free Shipping",
             "link": ""
           }
@@ -31,7 +31,7 @@
         "trust_3": {
           "type": "trust",
           "settings": {
-            "icon": "shopify://shop_images/Warranty_2_1.png",
+            "icon": "shopify://shop_images/Icon_30-Day_Return.png",
             "text": "30-Day Returns",
             "link": ""
           }
