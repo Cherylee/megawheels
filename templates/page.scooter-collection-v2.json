@@ -200,6 +200,87 @@
             "atc_link": ""
           }
         },
+        "product_card_kKb3kb": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "under-300",
+            "product": "a1c-electric-scooter",
+            "image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
+            "title": "A1C",
+            "badge_text": "28%\nOFF",
+            "corner_tag": "",
+            "spec_range_icon": "shopify://shop_images/Warranty_2.png",
+            "spec_range_label": "Range",
+            "spec_range": "12 miles",
+            "spec_speed_icon": "shopify://shop_images/UL.png",
+            "spec_speed_label": "Speed",
+            "spec_speed": "15.5 mph",
+            "spec_motor_icon": "shopify://shop_images/UL-icon.png",
+            "spec_motor_label": "Motor",
+            "spec_motor": "300W",
+            "original_price": "$235.99",
+            "sale_price": "$170.99",
+            "save_amount": "65",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "atc_link": ""
+          }
+        },
+        "product_card_qYACgh": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "under-300",
+            "product": "a1c-electric-scooter",
+            "image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
+            "title": "A1C",
+            "badge_text": "28%\nOFF",
+            "corner_tag": "",
+            "spec_range_icon": "shopify://shop_images/Warranty_2.png",
+            "spec_range_label": "Range",
+            "spec_range": "12 miles",
+            "spec_speed_icon": "shopify://shop_images/UL.png",
+            "spec_speed_label": "Speed",
+            "spec_speed": "15.5 mph",
+            "spec_motor_icon": "shopify://shop_images/UL-icon.png",
+            "spec_motor_label": "Motor",
+            "spec_motor": "300W",
+            "original_price": "$235.99",
+            "sale_price": "$170.99",
+            "save_amount": "65",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "atc_link": ""
+          }
+        },
+        "product_card_N7Bed9": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "under-300",
+            "product": "a1c-electric-scooter",
+            "image": "shopify://shop_images/Megawheels-A1C-electric-scooter-900x1200.jpg",
+            "title": "A1C",
+            "badge_text": "28%\nOFF",
+            "corner_tag": "",
+            "spec_range_icon": "shopify://shop_images/Warranty_2.png",
+            "spec_range_label": "Range",
+            "spec_range": "12 miles",
+            "spec_speed_icon": "shopify://shop_images/UL.png",
+            "spec_speed_label": "Speed",
+            "spec_speed": "15.5 mph",
+            "spec_motor_icon": "shopify://shop_images/UL-icon.png",
+            "spec_motor_label": "Motor",
+            "spec_motor": "300W",
+            "original_price": "$235.99",
+            "sale_price": "$170.99",
+            "save_amount": "65",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "atc_link": ""
+          }
+        },
         "prod_s2": {
           "type": "product_card",
           "settings": {
@@ -276,6 +357,9 @@
         "tab_long_range",
         "tab_smooth",
         "prod_a1c",
+        "product_card_kKb3kb",
+        "product_card_qYACgh",
+        "product_card_N7Bed9",
         "prod_s2",
         "prod_e2",
         "prod_c1"
