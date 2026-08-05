@@ -1,0 +1,111 @@
+{%- comment -%}
+  Product rating for Scooter V2 style-shop cards.
+  Reads from linked product: Shopify reviews metafields, then Judge.me badge fallback.
+{%- endcomment -%}
+
+{%- liquid
+  assign rating_num = blank
+  assign rating_count = blank
+  assign show_rating = false
+
+  if product != blank
+    if product.metafields.reviews.rating.value != blank
+      assign rating_num = product.metafields.reviews.rating.value.rating | times: 1.0
+      assign rating_count = product.metafields.reviews.rating_count.value
+    elsif product.metafields.judgeme.badge != blank
+      assign judgeme_badge = product.metafields.judgeme.badge
+      if judgeme_badge contains "data-average-rating='"
+        assign rating_chunk = judgeme_badge | split: "data-average-rating='" | last | split: "'" | first
+        assign rating_num = rating_chunk | times: 1.0
+      elsif judgeme_badge contains 'data-average-rating="'
+        assign rating_chunk = judgeme_badge | split: 'data-average-rating="' | last | split: '"' | first
+        assign rating_num = rating_chunk | times: 1.0
+      endif
+      if judgeme_badge contains "data-number-of-reviews='"
+        assign count_chunk = judgeme_badge | split: "data-number-of-reviews='" | last | split: "'" | first
+        assign rating_count = count_chunk
+      elsif judgeme_badge contains 'data-number-of-reviews="'
+        assign count_chunk = judgeme_badge | split: 'data-number-of-reviews="' | last | split: '"' | first
+        assign rating_count = count_chunk
+      endif
+    endif
+
+    if rating_num != blank
+      if rating_num < 0
+        assign rating_num = 0.0
+      endif
+      if rating_num > 5
+        assign rating_num = 5.0
+      endif
+      assign show_rating = true
+    elsif rating_count != blank and rating_count != '0'
+      assign show_rating = true
+    endif
+  endif
+-%}
+
+{%- if show_rating -%}
+  <div class="sv2s-card__rating">
+    {%- if rating_num != blank -%}
+      <span class="sv2s-card__stars" aria-label="{{ rating_num }} out of 5 stars">
+        {%- for i in (1..5) -%}
+          {%- assign star_index = i -%}
+          {%- assign star_prev = i | minus: 1 -%}
+          {%- if rating_num >= star_index -%}
+            <svg class="sv2s-card__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+              />
+            </svg>
+          {%- elsif rating_num > star_prev -%}
+            {%- assign fill_frac = rating_num | minus: star_prev -%}
+            {%- assign fill_pct = fill_frac | times: 100 -%}
+            <span class="sv2s-card__star--partial" style="--sv2s-star-fill: {{ fill_pct }}%;">
+              <svg class="sv2s-card__star sv2s-card__star--empty" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                />
+              </svg>
+              <span class="sv2s-card__star-fill">
+                <svg class="sv2s-card__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+                  />
+                </svg>
+              </span>
+            </span>
+          {%- else -%}
+            <svg class="sv2s-card__star sv2s-card__star--empty" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                d="M12 3.1l2.55 5.55 6.05.55-4.55 4.15 1.35 5.95L12 16.55 6.6 19.3l1.35-5.95-4.55-4.15 6.05-.55L12 3.1z"
+              />
+            </svg>
+          {%- endif -%}
+        {%- endfor -%}
+      </span>
+    {%- endif -%}
+    {%- if rating_count != blank and rating_count != '0' -%}
+      <span>({{ rating_count }})</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}
