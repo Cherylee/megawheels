@@ -310,6 +310,33 @@
             "atc_link": ""
           }
         },
+        "product_card_T9fCwH": {
+          "type": "product_card",
+          "settings": {
+            "tab_key": "long-range",
+            "product": "e3-electric-scooter",
+            "image": "shopify://shop_images/AOTOS-E3-electric-scooter-900x1200.jpg",
+            "title": "E3",
+            "badge_text": "15% OFF",
+            "corner_tag": "BEST VALUE",
+            "spec_range_icon": "shopify://shop_images/icon-range.png",
+            "spec_range_label": "Range",
+            "spec_range": "44 miles",
+            "spec_speed_icon": "shopify://shop_images/icon-speed.png",
+            "spec_speed_label": "Speed",
+            "spec_speed": "20 mph",
+            "spec_motor_icon": "shopify://shop_images/icon-motor.png",
+            "spec_motor_label": "Motor",
+            "spec_motor": "750W",
+            "original_price": "$499.99",
+            "sale_price": "$439.99",
+            "save_amount": "60",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "atc_link": ""
+          }
+        },
         "prod_s2": {
           "type": "product_card",
           "settings": {
@@ -367,6 +394,7 @@
         "product_card_qYACgh",
         "product_card_N7Bed9",
         "prod_e2",
+        "product_card_T9fCwH",
         "prod_s2",
         "prod_c1"
       ],
