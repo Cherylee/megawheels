@@ -89,6 +89,7 @@
             "feature_2_icon": "shopify://shop_images/icon-budget-friendly.png",
             "feature_2_title": "Budget-friendly e-scooter",
             "feature_2_text": "Enough motor for short city trips.",
+            "feature_3_icon": "shopify://shop_images/icon-fold-scooter.png",
             "feature_3_title": "Light & portable",
             "feature_3_text": "Carry upstairs or onto transit with ease.",
             "show_feature_link": true,
