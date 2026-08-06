@@ -97,32 +97,6 @@
             "feature_link": ""
           }
         },
-        "tab_commute": {
-          "type": "tab",
-          "settings": {
-            "tab_key": "daily-commute",
-            "icon": "shopify://shop_images/icon-scooter.png",
-            "title": "Daily Commute",
-            "subtitle": "Balanced & reliable",
-            "products_heading": "COMMUTE FAVORITES",
-            "view_all_text": "View all scooters >",
-            "view_all_link": "",
-            "compare_heading": "WHICH COMMUTER FITS YOUR ROUTE?",
-            "compare_text": "Balance speed, battery and foldability for workdays.",
-            "compare_btn_text": "COMPARE COMMUTERS",
-            "compare_btn_link": "",
-            "feature_heading": "MADE FOR THE DAILY GRIND",
-            "feature_1_title": "Reliable range",
-            "feature_1_text": "Get to work and back without range anxiety.",
-            "feature_2_title": "Quick fold",
-            "feature_2_text": "Pack up fast for elevators and trains.",
-            "feature_3_title": "All-weather ready",
-            "feature_3_text": "Grips and brakes you can trust in the city.",
-            "show_feature_link": true,
-            "feature_link_text": "Explore the technology >",
-            "feature_link": ""
-          }
-        },
         "tab_long_range": {
           "type": "tab",
           "settings": {
@@ -144,6 +118,32 @@
             "feature_2_text": "Power that lasts without draining fast.",
             "feature_3_title": "Ride monitoring",
             "feature_3_text": "Track remaining range from the app.",
+            "show_feature_link": true,
+            "feature_link_text": "Explore the technology >",
+            "feature_link": ""
+          }
+        },
+        "tab_commute": {
+          "type": "tab",
+          "settings": {
+            "tab_key": "daily-commute",
+            "icon": "shopify://shop_images/icon-scooter.png",
+            "title": "Daily Commute",
+            "subtitle": "Balanced & reliable",
+            "products_heading": "COMMUTE FAVORITES",
+            "view_all_text": "View all scooters >",
+            "view_all_link": "",
+            "compare_heading": "WHICH COMMUTER FITS YOUR ROUTE?",
+            "compare_text": "Balance speed, battery and foldability for workdays.",
+            "compare_btn_text": "COMPARE COMMUTERS",
+            "compare_btn_link": "",
+            "feature_heading": "MADE FOR THE DAILY GRIND",
+            "feature_1_title": "Reliable range",
+            "feature_1_text": "Get to work and back without range anxiety.",
+            "feature_2_title": "Quick fold",
+            "feature_2_text": "Pack up fast for elevators and trains.",
+            "feature_3_title": "All-weather ready",
+            "feature_3_text": "Grips and brakes you can trust in the city.",
             "show_feature_link": true,
             "feature_link_text": "Explore the technology >",
             "feature_link": ""
@@ -355,8 +355,8 @@
       },
       "block_order": [
         "tab_under_300",
-        "tab_commute",
         "tab_long_range",
+        "tab_commute",
         "tab_smooth",
         "prod_a1c",
         "product_card_kKb3kb",
