@@ -288,8 +288,9 @@
           "settings": {
             "tab_key": "long-range",
             "product": "s2-electric-scooter",
-            "title": "E2",
-            "badge_text": "15% OFF",
+            "image": "shopify://shop_images/AOTOS-S2-electric-scooter-900x1200.jpg",
+            "title": "S2",
+            "badge_text": "12% OFF",
             "corner_tag": "BEST VALUE",
             "spec_range_label": "Range",
             "spec_range": "22 miles",
