@@ -188,7 +188,7 @@
             "spec_speed_icon": "shopify://shop_images/icon-speed.png",
             "spec_speed_label": "Speed",
             "spec_speed": "15.5 mph",
-            "spec_motor_icon": "shopify://shop_images/UL-icon.png",
+            "spec_motor_icon": "shopify://shop_images/icon-motor.png",
             "spec_motor_label": "Motor",
             "spec_motor": "300W",
             "original_price": "$235.99",
