@@ -185,7 +185,7 @@
             "spec_range_icon": "shopify://shop_images/icon-range.png",
             "spec_range_label": "Range",
             "spec_range": "12 miles",
-            "spec_speed_icon": "shopify://shop_images/UL.png",
+            "spec_speed_icon": "shopify://shop_images/icon-speed.png",
             "spec_speed_label": "Speed",
             "spec_speed": "15.5 mph",
             "spec_motor_icon": "shopify://shop_images/UL-icon.png",
