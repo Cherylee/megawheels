@@ -504,6 +504,23 @@
             "link_learn": "shopify://products/s2-electric-scooter",
             "link_cart": "shopify://products/s2-electric-scooter"
           }
+        },
+        "product_item_dyECiw": {
+          "type": "product_item",
+          "settings": {
+            "badge_text": "SAVE 30%",
+            "model_name": "S2 Nova",
+            "spec_text": "20 miles | 350w | 19 mph",
+            "current_price": "$314.99",
+            "original_price": "$659.99",
+            "sale_price": "",
+            "save_amount": "",
+            "save_btn_bg": "#ffcc00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#e53935",
+            "link_learn": "",
+            "link_cart": ""
+          }
         }
       },
       "block_order": [
@@ -513,7 +530,8 @@
         "product_item_HjfgFf",
         "product_item_4r96zd",
         "product_item_bheLcC",
-        "product_item_QdTx9q"
+        "product_item_QdTx9q",
+        "product_item_dyECiw"
       ],
       "name": "电动滑板车产品卡片网格",
       "settings": {
