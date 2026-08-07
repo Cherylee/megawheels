@@ -271,9 +271,9 @@
           "settings": {
             "category_key": "long-range",
             "product": "e3-electric-scooter",
-            "sale_price": "",
+            "sale_price": "499.99",
             "original_price": "",
-            "save_amount": "70",
+            "save_amount": "",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
