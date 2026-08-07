@@ -224,12 +224,12 @@
             "category_key": "scooter-under-300",
             "product": "m1-electric-scooter",
             "sale_price": "$339.99",
-            "original_price": "",
+            "original_price": "369.99",
             "save_amount": "",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
-            "save_percent": 19,
+            "save_percent": 8,
             "title": "M1",
             "attributes": "28 miles | 20 mph | APP"
           }
@@ -287,13 +287,13 @@
           "settings": {
             "category_key": "long-range",
             "product": "s2-electric-scooter",
-            "sale_price": "",
-            "original_price": "",
-            "save_amount": "60",
+            "sale_price": "489.99",
+            "original_price": "549.99",
+            "save_amount": "",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
-            "save_percent": 12,
+            "save_percent": 11,
             "title": "S2",
             "attributes": "44 miles | 750W | 20 mph"
           }
