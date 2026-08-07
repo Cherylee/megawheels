@@ -689,6 +689,13 @@
                               assign card_price = sale_cents
                             endif
                           endif
+                          assign original_price_input = product_block.settings.original_price | strip | replace: '$', '' | replace: ',', ''
+                          if original_price_input != blank
+                            assign original_price_cents = original_price_input | times: 100.0 | round | plus: 0
+                            if original_price_cents > card_price
+                              assign card_compare_at = original_price_cents
+                            endif
+                          endif
                           assign save_amount_input = product_block.settings.save_amount | strip | replace: '$', '' | replace: ',', ''
                           if save_amount_input != blank
                             assign save_amount_cents = save_amount_input | times: 100.0 | round | plus: 0
@@ -768,16 +775,20 @@
                               assign card_sale_price_color = product_block.settings.sale_price_color | default: section.settings.sale_price_color | default: '#E53935'
                             -%}
                             <div
-                              class="scn-card__price"
+                              class="scn-card__price{% if save_amount_cents <= 0 and price_original > price_sale %} is-saved{% endif %}"
                               data-scn-price
                               data-price-sale="{{ price_sale_label | escape }}"
                               data-price-original="{{ price_original_label | escape }}"
                               style="--scn-save-btn-bg: {{ card_save_btn_bg }}; --scn-save-btn-text: {{ card_save_btn_text }}; --scn-sale-price-color: {{ card_sale_price_color }};"
                             >
                               <span class="scn-card__price-sale" data-scn-price-main>
-                                {{ price_original_label }}
+                                {%- if save_amount_cents > 0 -%}
+                                  {{ price_original_label }}
+                                {%- else -%}
+                                  {{ price_sale_label }}
+                                {%- endif -%}
                               </span>
-                              <span class="scn-card__price-compare is-hidden" data-scn-price-compare>
+                              <span class="scn-card__price-compare{% if save_amount_cents > 0 or price_original <= price_sale %} is-hidden{% endif %}" data-scn-price-compare>
                                 {{ price_original_label }}
                               </span>
                               {%- if save_amount_cents > 0 -%}
@@ -1281,6 +1292,12 @@
           "id": "sale_price",
           "label": "Sale price",
           "info": "Discounted price to show after clicking Save (e.g. 299.00). Leave empty to derive from product price − Save amount."
+        },
+        {
+          "type": "text",
+          "id": "original_price",
+          "label": "Original price (strikethrough)",
+          "info": "Optional original price shown with a strikethrough (e.g. 399.00). It must be greater than the sale price."
         },
         {
           "type": "text",
