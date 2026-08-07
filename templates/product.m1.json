@@ -28,6 +28,7 @@
         },
         "price_second_UXQPyz": {
           "type": "price_second",
+          "disabled": true,
           "settings": {
             "show_currency_code": true
           }
@@ -40,7 +41,6 @@
         },
         "price": {
           "type": "price",
-          "disabled": true,
           "settings": {
             "show_taxes_notice": false
           }
