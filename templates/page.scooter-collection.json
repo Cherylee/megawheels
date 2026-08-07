@@ -207,13 +207,13 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "a6l-eco-electric-scooter",
-            "sale_price": "￥239.99",
+            "sale_price": "$259.99",
             "original_price": "299.99",
             "save_amount": "",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
-            "save_percent": 18,
+            "save_percent": 13,
             "title": "A6L ECO",
             "attributes": "350W | 19 miles | APP"
           }
