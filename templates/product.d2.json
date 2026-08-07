@@ -40,19 +40,20 @@
         },
         "price_second_BTpwb3": {
           "type": "price_second",
+          "disabled": true,
           "settings": {
             "show_currency_code": false
           }
         },
         "discount_code_8wQi3T": {
           "type": "discount_code",
+          "disabled": true,
           "settings": {
             "default_checked": false
           }
         },
         "price": {
           "type": "price",
-          "disabled": true,
           "settings": {
             "show_taxes_notice": false
           }
