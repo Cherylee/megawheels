@@ -223,7 +223,7 @@
             "spec_motor": "350W",
             "original_price": "$292.99",
             "sale_price": "$239.99",
-            "save_amount": "53",
+            "save_amount": "",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
