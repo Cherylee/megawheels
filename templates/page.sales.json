@@ -448,7 +448,7 @@
         "subtitle_margin_top": 8,
         "subtitle_font_size": 18,
         "subtitle_color": "#444444",
-        "card_content_align": "center",
+        "card_content_align": "left",
         "badge_bg_color": "#ff0000",
         "badge_text_color": "#ffffff",
         "badge_font_size": 12,
