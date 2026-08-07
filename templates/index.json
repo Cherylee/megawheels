@@ -1682,6 +1682,128 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "scooter_v2_product_grid_UGnTQY": {
+      "type": "scooter-v2-product-grid",
+      "blocks": {
+        "product_card_tYMqtX": {
+          "type": "product_card",
+          "settings": {
+            "product": "",
+            "title": "A1C",
+            "badge_text": "15%\nOFF",
+            "corner_tag": "",
+            "spec_range_label": "Range",
+            "spec_range": "15 miles",
+            "spec_speed_label": "Speed",
+            "spec_speed": "15.5 mph",
+            "spec_motor_label": "Motor",
+            "spec_motor": "300W",
+            "original_price": "$279.99",
+            "sale_price": "$235.99",
+            "save_amount": "44",
+            "save_btn_bg": "#FFCC00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#E53935",
+            "atc_link": ""
+          }
+        },
+        "product_card_rh4Thj": {
+          "type": "product_card",
+          "settings": {
+            "product": "",
+            "title": "M1",
+            "badge_text": "15%\nOFF",
+            "corner_tag": "",
+            "spec_range_label": "Range",
+            "spec_range": "15 miles",
+            "spec_speed_label": "Speed",
+            "spec_speed": "15.5 mph",
+            "spec_motor_label": "Motor",
+            "spec_motor": "300W",
+            "original_price": "$279.99",
+            "sale_price": "$235.99",
+            "save_amount": "44",
+            "save_btn_bg": "#FFCC00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#E53935",
+            "atc_link": ""
+          }
+        },
+        "product_card_4LX4A6": {
+          "type": "product_card",
+          "settings": {
+            "product": "",
+            "title": "S2",
+            "badge_text": "15%\nOFF",
+            "corner_tag": "",
+            "spec_range_label": "Range",
+            "spec_range": "15 miles",
+            "spec_speed_label": "Speed",
+            "spec_speed": "15.5 mph",
+            "spec_motor_label": "Motor",
+            "spec_motor": "300W",
+            "original_price": "$279.99",
+            "sale_price": "$235.99",
+            "save_amount": "44",
+            "save_btn_bg": "#FFCC00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#E53935",
+            "atc_link": ""
+          }
+        },
+        "product_card_nf49EY": {
+          "type": "product_card",
+          "settings": {
+            "product": "",
+            "title": "E2",
+            "badge_text": "15%\nOFF",
+            "corner_tag": "BEST VALUE",
+            "spec_range_label": "Range",
+            "spec_range": "15 miles",
+            "spec_speed_label": "Speed",
+            "spec_speed": "15.5 mph",
+            "spec_motor_label": "Motor",
+            "spec_motor": "300W",
+            "original_price": "$279.99",
+            "sale_price": "$235.99",
+            "save_amount": "44",
+            "save_btn_bg": "#FFCC00",
+            "save_btn_text": "#000000",
+            "sale_price_color": "#E53935",
+            "atc_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_card_tYMqtX",
+        "product_card_rh4Thj",
+        "product_card_4LX4A6",
+        "product_card_nf49EY"
+      ],
+      "disabled": true,
+      "name": "Scooter V2 Product Grid",
+      "settings": {
+        "products_heading": "BEST SELLERS",
+        "view_all_text": "View all scooters >",
+        "view_all_link": "",
+        "compare_heading": "",
+        "compare_text": "",
+        "compare_btn_text": "",
+        "compare_btn_link": "",
+        "section_bg": "#ffffff",
+        "panel_bg": "#F3F3F3",
+        "accent_color": "#E31C23",
+        "content_max_width": 1200,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "atc_text": "ADD TO CART",
+        "atc_bg": "#111111",
+        "atc_text_color": "#ffffff",
+        "save_btn_bg": "#FFCC00",
+        "save_btn_text": "#000000",
+        "sale_price_color": "#E53935"
+      }
     }
   },
   "order": [
@@ -1705,6 +1827,7 @@
     "slideshow_3yzyiU",
     "blog_posts_CBRdTL",
     "17828871045a0ec593",
-    "1785809292358e6ff5"
+    "1785809292358e6ff5",
+    "scooter_v2_product_grid_UGnTQY"
   ]
 }
