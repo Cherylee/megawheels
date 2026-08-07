@@ -923,7 +923,7 @@
                       </label>
                     </div>
                   {%- elsif price_original_label != blank or price_sale_label != blank -%}
-                    <div class="sv2s-card__price">
+                    <div class="sv2s-card__price{% if price_original_label != blank and price_sale_label != blank and price_original_label != price_sale_label %} is-saved{% endif %}" style="--sv2s-sale-color: {{ card_sale_color }};">
                       <span class="sv2s-card__price-main">{{ price_sale_label | default: price_original_label }}</span>
                       {%- if price_original_label != blank and price_sale_label != blank and price_original_label != price_sale_label -%}
                         <span class="sv2s-card__price-compare">{{ price_original_label }}</span>
@@ -1318,14 +1318,14 @@
           "type": "text",
           "id": "original_price",
           "label": "Original price",
-          "info": "Shown by default. Also used as strikethrough after Save.",
+          "info": "Used as the strikethrough price. Shown by default when Save amount is set; when Save amount is empty, shown as the strikethrough beside the sale price.",
           "default": "$279.99"
         },
         {
           "type": "text",
           "id": "sale_price",
           "label": "Sale price",
-          "info": "Shown after clicking Save. Leave empty to use product price minus Save amount.",
+          "info": "Discounted price. Shown after clicking Save when Save amount is set; shown directly when Save amount is empty.",
           "default": "$235.99"
         },
         {
