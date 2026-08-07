@@ -239,13 +239,13 @@
           "settings": {
             "category_key": "scooter-under-300",
             "product": "c2-electric-scooter",
-            "sale_price": "$259.99",
-            "original_price": "",
-            "save_amount": "45",
+            "sale_price": "$279.99",
+            "original_price": "339.99",
+            "save_amount": "",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
-            "save_percent": 15,
+            "save_percent": 17,
             "title": "C2",
             "attributes": "350W | 19 miles | Suspension design"
           }
