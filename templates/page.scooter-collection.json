@@ -224,12 +224,12 @@
             "category_key": "scooter-under-300",
             "product": "m1-electric-scooter",
             "sale_price": "$339.99",
-            "original_price": "",
+            "original_price": "369.99",
             "save_amount": "",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
-            "save_percent": 19,
+            "save_percent": 8,
             "title": "M1",
             "attributes": "28 miles | 20 mph | APP"
           }
