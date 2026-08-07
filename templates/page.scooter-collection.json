@@ -287,9 +287,9 @@
           "settings": {
             "category_key": "long-range",
             "product": "s2-electric-scooter",
-            "sale_price": "",
-            "original_price": "",
-            "save_amount": "60",
+            "sale_price": "489.99",
+            "original_price": "549.99",
+            "save_amount": "",
             "save_btn_bg": "#ffcc00",
             "save_btn_text": "#000000",
             "sale_price_color": "#e53935",
