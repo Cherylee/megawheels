@@ -508,9 +508,10 @@
         "product_item_dyECiw": {
           "type": "product_item",
           "settings": {
+            "product_image": "shopify://shop_images/MEGAWHEELS-A6L-MAX-electric-scooter-900x1200.jpg",
             "badge_text": "SAVE 30%",
-            "model_name": "S2 Nova",
-            "spec_text": "20 miles | 350w | 19 mph",
+            "model_name": "A6L MAX",
+            "spec_text": "28 miles | 500W | 15.5 mph",
             "current_price": "$314.99",
             "original_price": "$659.99",
             "sale_price": "",
